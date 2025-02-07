@@ -12,59 +12,62 @@ import {
   faYoutube 
 } from "@fortawesome/free-brands-svg-icons";
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import LabPic from "../../../public/images/cyber-lab.jpg"; // Changed to use an existing image
+import LabPic from "../../../public/images/ctf24.jpg";
 
 export default function About() {
   return (
     <div className="mt-[-100px] text-center items-center justify-center max-w-7xl mx-auto px-8">
-      {/* Hero Section */}
       <div className="p-8">
-        <h1 className="text-4xl font-bold mb-12 text-white">About</h1>
-        <div className="mb-24">
-          <p className="text-lg text-neutral-300 max-w-3xl mx-auto leading-relaxed mb-6">
-            We are St. John's University's premier organization for Computer Science and Cyber Security. 
-            We focus on providing students with hands-on experience, industry connections, and a supportive 
-            community of tech enthusiasts.
-          </p>
-          <p className="text-lg text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-            We aim to enhance the experience of STJ tech students by providing them with a platform to learn, share, and collaborate through our labs and presentations.
-          </p>
+        {/* Hero Section */}
+        <div className="mb-12">
+          <h1 className="text-4xl font-bold mb-8 text-white">About</h1>
+          <div className="max-w-3xl mx-auto">
+            <p className="text-xl text-neutral-300 leading-relaxed mb-6">
+              We are St. John's University's premier organization for Computer Science and Cyber Security. 
+              We focus on providing students with hands-on experience, industry connections, and a supportive 
+              community of tech enthusiasts.
+            </p>
+            <p className="text-xl text-neutral-300 leading-relaxed">
+              We aim to enhance the experience of STJ tech students by providing them with a platform to learn, share, and collaborate through our labs and presentations.
+            </p>
+          </div>
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-8 mb-20 max-w-6xl mx-auto">
           <FeatureCard 
             icon={faUsers as IconProp}
             title="Community"
-            description="Join a vibrant community of tech enthusiasts, developers, and cybersecurity experts who share your passion for technology."
+            description="Join a community of tech enthusiasts, developers, and cybersecurity experts!"
           />
           <FeatureCard 
             icon={faLaptopCode as IconProp}
             title="Hands-on Learning"
-            description="Participate in workshops, hackathons, and projects that give you practical experience with cutting-edge technologies."
+            description="Gain hands-on experience through workshops, hackathons, and projects!"
           />
           <FeatureCard 
             icon={faHandshake as IconProp}
             title="Industry Connections"
-            description="Connect with industry professionals, alumni, and potential employers through our network of partnerships."
+            description="Connect with industry professionals, alumni, and employers through us!"
           />
           <FeatureCard 
             icon={faTrophy as IconProp}
             title="Growth Opportunities"
-            description="Develop leadership skills, build your portfolio, and prepare for a successful career in technology."
+            description="Develop leadership skills, build your portfolio, and prepare for a career!"
           />
         </div>
 
-        {/* Meeting Info Section - Added after Feature Cards */}
-        <div className="relative p-12 mb-16 bg-gradient-to-r from-black/50 via-black/30 to-black/50 rounded-xl border border-neutral-800/50">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Text Column */}
+        {/* Meeting Info Section */}
+        <div className="relative p-12 mb-20 bg-gradient-to-r from-black/50 via-black/30 to-black/50 rounded-xl border border-neutral-800/50 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-red-500/10 to-transparent opacity-50"></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
             <div className="text-left space-y-6">
+              <h2 className="text-2xl font-semibold text-white mb-6">Join Our Community</h2>
               <p className="text-lg text-neutral-300 leading-relaxed">
                 Operating under the Collins College of Professional Studies, SJU ACM is moderated by Dr. Joan DeBello and is supported by Professors across the Computer Science & Cyber Security departments.
               </p>
               
-              <div className="space-y-4 bg-black/30 p-6 rounded-lg border border-neutral-800">
+              <div className="space-y-4 bg-black/30 p-6 rounded-lg border border-neutral-800 backdrop-blur-sm">
                 <p className="text-lg text-neutral-300 leading-relaxed">
                   Our meetings are held on Thursdays during Common Hour (2:00 - 3:00 PM) in the Cyber Security Lab (Room 2-140A in the 2nd Floor of St. Augustine)
                 </p>
@@ -75,23 +78,23 @@ export default function About() {
               </div>
             </div>
 
-            {/* Image Column */}
-            <div className="relative h-[400px] rounded-xl overflow-hidden">
+            <div className="relative h-[400px] rounded-xl overflow-hidden group">
               <Image
                 src={LabPic}
                 alt="SJU Cyber Security Lab"
                 fill
-                className="object-cover rounded-xl"
+                className="object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
                 priority
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
             </div>
           </div>
         </div>
 
         {/* Social Media Section */}
-        <div className="relative p-12 mb-24 bg-gradient-to-r from-black/50 via-black/30 to-black/50 rounded-xl border border-neutral-800/50">
+        <div className="relative p-12 bg-gradient-to-r from-black/50 via-black/30 to-black/50 rounded-xl border border-neutral-800/50">
           <h2 className="text-3xl font-semibold text-white mb-12 relative">
-            Check Out Our Socials!
+            Connect With Us
             <div className="h-1 w-40 bg-red-500 mx-auto mt-4"></div>
           </h2>
           
@@ -140,22 +143,22 @@ export default function About() {
 function FeatureCard({ icon, title, description }: { icon: IconProp; title: string; description: string }) {
   return (
     <CardContainer className="inter-var">
-      <CardBody className="bg-black relative group/card dark:hover:shadow-2xl dark:hover:shadow-red-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] p-8 rounded-xl border">
+      <CardBody className="bg-black group/card dark:hover:shadow-2xl dark:hover:shadow-red-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] p-6 rounded-xl border h-[200px] w-full max-w-[280px] mx-auto">
         <CardItem
           translateZ="50"
-          className="text-3xl text-red-500 mb-4"
+          className="text-xl text-red-500 mb-3"
         >
           <FontAwesomeIcon icon={icon} />
         </CardItem>
         <CardItem
           translateZ="60"
-          className="text-xl font-bold text-white mb-2"
+          className="text-base font-bold text-white mb-2"
         >
           {title}
         </CardItem>
         <CardItem
           translateZ="40"
-          className="text-neutral-300"
+          className="text-sm text-neutral-300 leading-relaxed"
         >
           {description}
         </CardItem>
