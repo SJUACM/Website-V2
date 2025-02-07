@@ -28,6 +28,7 @@ import Jade from "../../../public/images/eboard/jade.png";
 
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 export default function Eboard() {
   return (
@@ -274,14 +275,14 @@ export function EboardMember({
           <div className="flex items-center justify-start gap-4">
             <a href={linkedin} target="_blank" rel="noreferrer">
               <FontAwesomeIcon
-                icon={faLinkedin}
+                icon={faLinkedin as IconProp}
                 className="text-xl text-neutral-300 hover:text-blue-500 transition-colors"
               />
             </a>
             {github && (
               <a href={github} target="_blank" rel="noreferrer">
                 <FontAwesomeIcon
-                  icon={faGithub}
+                  icon={faGithub as IconProp}
                   className="text-xl text-neutral-300 hover:text-purple-500 transition-colors"
                 />
               </a>
@@ -346,14 +347,14 @@ export function PastEboardMember({
           <div className="flex items-center justify-start gap-4">
             <a href={linkedin} target="_blank" rel="noreferrer">
               <FontAwesomeIcon
-                icon={faLinkedin}
+                icon={faLinkedin as IconProp}
                 className="text-xl text-neutral-300 hover:text-blue-500 transition-colors"
               />
             </a>
             {github && (
               <a href={github} target="_blank" rel="noreferrer">
                 <FontAwesomeIcon
-                  icon={faGithub}
+                  icon={faGithub as IconProp}
                   className="text-xl text-neutral-300 hover:text-purple-500 transition-colors"
                 />
               </a>
