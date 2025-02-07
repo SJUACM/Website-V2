@@ -17,22 +17,23 @@ export default function About() {
     <div className="mt-[-100px] text-center items-center justify-center max-w-7xl mx-auto px-8">
       {/* Hero Section */}
       <div className="p-8">
-        <h1 className="text-4xl font-bold mb-8 text-white">About</h1>
-        <p className="text-lg text-neutral-300 max-w-3xl mx-auto leading-relaxed mb-6">
-          We are St. John's University's premier organization for Computer Science and Cyber Security. 
-          We focus on providing students with hands-on experience, industry connections, and a supportive 
-          community of tech enthusiasts.
-        </p>
-        <p className="text-lg text-neutral-300 max-w-3xl mx-auto leading-relaxed mb-8">
-          We aim to enhance the experience of STJ tech students by providing them with a platform to learn, share, and collaborate through our labs and presentations.
-        </p>
+        <h1 className="text-4xl font-bold mb-12 text-white">About</h1>
+        <div className="mb-24">
+          <p className="text-lg text-neutral-300 max-w-3xl mx-auto leading-relaxed mb-6">
+            We are St. John's University's premier organization for Computer Science and Cyber Security. 
+            We focus on providing students with hands-on experience, industry connections, and a supportive 
+            community of tech enthusiasts.
+          </p>
+          <p className="text-lg text-neutral-300 max-w-3xl mx-auto leading-relaxed">
+            We aim to enhance the experience of STJ tech students by providing them with a platform to learn, share, and collaborate through our labs and presentations.
+          </p>
+        </div>
 
         {/* Social Media Section */}
-        <div className="relative p-8 mb-16">
-          <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 via-transparent to-red-500/10 rounded-lg"></div>
-          <h2 className="text-2xl font-semibold text-white mb-8 relative">
+        <div className="relative p-12 mb-24 bg-gradient-to-r from-black/50 via-black/30 to-black/50 rounded-xl border border-neutral-800/50">
+          <h2 className="text-3xl font-semibold text-white mb-12 relative">
             Check Out Our Socials!
-            <div className="h-1 w-40 bg-red-500 mx-auto mt-2"></div>
+            <div className="h-1 w-40 bg-red-500 mx-auto mt-4"></div>
           </h2>
           
           <div className="flex justify-center gap-8 relative">

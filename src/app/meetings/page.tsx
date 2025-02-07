@@ -26,14 +26,12 @@ export default function Meetings() {
             date="2/7/2025"
             image={Linuxspring25}
             description="Gabriel and David led an Introduction to Linux lab, teaching essential commands, file navigation, and system management. The hands-on session helped students build foundational Linux skills."
-            slides="slides/introtolinux25slides.pdf"
           />
           <Meeting
             title="Spring 2025 Kickoff"
             date="1/30/2025"
             image={Clue}
             description="We kicked off the spring semester with a meeting introducing the e-board and upcoming events. The session ended with a fun Kahoot game to engage our members!"
-            slides="slides/Spring2025KickoffMeeting.pdf"
           />
           <Meeting
             title="Fireside Chat"
@@ -49,7 +47,7 @@ export default function Meetings() {
             title="Brainrot Video Workshop"
             date="11/25/2024"
             image={Brainrot24}
-            description="We hosted a workshop led by Faizan, co-founder of Headstarter and a St. John’s alum, former ACM president. Students learned to create brainrot videos, explored the latest AI models, and gained insights into video processing techniques."
+            description="We hosted a workshop led by Faizan, co-founder of Headstarter and a St. John's alum, former ACM president. Students learned to create brainrot videos, explored the latest AI models, and gained insights into video processing techniques."
           />
           <Meeting
             title="Building Your Web Portfolio!"
@@ -61,7 +59,7 @@ export default function Meetings() {
             title="How To Use AI in Tech"
             date="11/18/2024"
             image={BenAI24}
-            description="As a former ACM committee chair, Ben taught students how to use AI tools like ChatGPT to enhance coding efficiency, streamline workflows, and improve problem-solving skills. The event provided valuable insights into AI’s impact on software development."
+            description="As a former ACM committee chair, Ben taught students how to use AI tools like ChatGPT to enhance coding efficiency, streamline workflows, and improve problem-solving skills. The event provided valuable insights into AI's impact on software development."
           />
         </div>
 
@@ -116,14 +114,12 @@ export default function Meetings() {
             date="9/18/2024"
             image={Resumefall24}
             description="In this workshop, our Information Officer, Hinna, provided students with a guide to crafting good resumes and LinkedIn profiles. Our members learned about the importance of a strong online presence in the job market and how to use LinkedIn to its full potential."
-            slides="slides/ResumeLinkedin.pdf"
           />
           <Meeting
             title="Fall 2024 Kickoff"
             date="9/12/2024"
             image={FallKickoff24}
             description="STJ ACM kicked off the academic year with a BANG! We welcomed new and returning members to the club by presenting the new E-Board, discussing the club's plans for the year, and doing a TryHackMe room together as a group!"
-            slides="slides/Fall2024SemesterKickoff.pdf"
           />
           <Meeting
             title="Capture The Flag!"
@@ -146,8 +142,6 @@ export default function Meetings() {
             date="4/18/2024"
             image={Clue}
             description="HELP! SJU ACM has been HACKED, and members have been recruited to investigate. This time, you'll get the chance to interact with Microsoft Azure and examine an incident produced by the Sentinel SIEM!"
-            slides="https://www.sjuacm.com/static/media/SJU_ACM_Clue_Pt2_Slides.f9bb5bd8bbf42fadb95b.pdf"
-            recording="https://youtu.be/fjgw7Md_-jE?si=Op3Ij8DcqYpXQy7R"
           />
         </div>
       </div>
