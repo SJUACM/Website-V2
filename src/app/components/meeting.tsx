@@ -21,7 +21,7 @@ export default function Meeting({
   return (
     <CardContainer className="inter-var">
       <CardBody
-        className={`bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] rounded-xl p-8 border ${slides ? "h-[37rem]" : "h-[37rem]"}`}
+        className={`bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[24rem] rounded-xl p-8 border h-[42rem]`}
       >
         <CardItem
           translateZ="50"
@@ -52,7 +52,7 @@ export default function Meeting({
         >
           {description}
         </CardItem>
-        <div className="flex justify-left space-x-4 items-center mt-10">
+        <div className="absolute bottom-8 left-8 right-8 flex justify-left space-x-4 items-center">
           {slides && (
             <CardItem
               translateZ={20}
