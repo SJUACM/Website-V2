@@ -5,7 +5,7 @@ import Clue from "../../../public/images/Clue_Pt2_1.jpg";
 export default function Meetings() {
   return (
     <div className="mt-[-100px] text-center items-center justify-center">
-      <h1 className="text-4xl">Spring 2024 Meetings</h1>
+      <h1 className="text-4xl">Meetings</h1>
       <div className="flex flex-row items-center justify-center space-x-8">
         <Meeting
           title="AWS Career Insight + GenAI Info Session"

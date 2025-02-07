@@ -16,14 +16,6 @@ export default function Layout({
             className="flex place-items-center gap-2 lg:pointer-events-auto lg:p-0"
             href="/"
           >
-            <Image
-              src={Logo}
-              alt="SJU ACM Logo"
-              width={140}
-              height={48}
-              className="mt-[-65px]"
-              priority
-            />
           </a>
         </div>
       </div>
