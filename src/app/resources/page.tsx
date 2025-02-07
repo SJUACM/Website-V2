@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
   faCode, 
@@ -164,6 +164,48 @@ function ResourceCard({ resource }: { resource: Resource }) {
 }
 
 export default function Resources() {
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+
+  const renderResources = () => {
+    switch (activeSection) {
+      case 'interview-prep':
+        return (
+          <div className="mt-16">
+            <h2 className="text-3xl font-semibold text-white mb-8">Technical Interview Prep</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {interviewResources.map((resource, index) => (
+                <ResourceCard key={index} resource={resource} />
+              ))}
+            </div>
+          </div>
+        );
+      case 'helpful-websites':
+        return (
+          <div className="mt-16">
+            <h2 className="text-3xl font-semibold text-white mb-8">Helpful Websites</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {helpfulWebsites.map((resource, index) => (
+                <ResourceCard key={index} resource={resource} />
+              ))}
+            </div>
+          </div>
+        );
+      case 'youtube-channels':
+        return (
+          <div className="mt-16">
+            <h2 className="text-3xl font-semibold text-white mb-8">Recommended YouTube Channels</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {youtubeChannels.map((resource, index) => (
+                <ResourceCard key={index} resource={resource} />
+              ))}
+            </div>
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="mt-[-100px] text-center items-center justify-center max-w-7xl mx-auto px-8">
       <div className="p-8">
@@ -181,7 +223,7 @@ export default function Resources() {
                      hover:shadow-[0_7px_29px_0px_rgba(239,68,68,0.75)]
                      active:transform active:translate-y-2.5 active:shadow-none
                      active:transition-[100ms]"
-            onClick={() => document.getElementById('interview-prep')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => setActiveSection('interview-prep')}
           >
             Technical Interview Prep
           </button>
@@ -193,7 +235,7 @@ export default function Resources() {
                      hover:shadow-[0_7px_29px_0px_rgba(239,68,68,0.75)]
                      active:transform active:translate-y-2.5 active:shadow-none
                      active:transition-[100ms]"
-            onClick={() => document.getElementById('helpful-websites')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => setActiveSection('helpful-websites')}
           >
             Helpful Websites
           </button>
@@ -205,41 +247,14 @@ export default function Resources() {
                      hover:shadow-[0_7px_29px_0px_rgba(239,68,68,0.75)]
                      active:transform active:translate-y-2.5 active:shadow-none
                      active:transition-[100ms]"
-            onClick={() => document.getElementById('youtube-channels')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => setActiveSection('youtube-channels')}
           >
             Youtube Channels
           </button>
         </div>
 
-        {/* Interview Prep Section */}
-        <div id="interview-prep" className="mb-16">
-          <h2 className="text-3xl font-semibold text-white mb-8">Technical Interview Prep</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {interviewResources.map((resource, index) => (
-              <ResourceCard key={index} resource={resource} />
-            ))}
-          </div>
-        </div>
-
-        {/* Helpful Websites Section */}
-        <div id="helpful-websites" className="mb-16">
-          <h2 className="text-3xl font-semibold text-white mb-8">Helpful Websites</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {helpfulWebsites.map((resource, index) => (
-              <ResourceCard key={index} resource={resource} />
-            ))}
-          </div>
-        </div>
-
-        {/* YouTube Channels Section */}
-        <div id="youtube-channels">
-          <h2 className="text-3xl font-semibold text-white mb-8">Recommended YouTube Channels</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {youtubeChannels.map((resource, index) => (
-              <ResourceCard key={index} resource={resource} />
-            ))}
-          </div>
-        </div>
+        {/* Dynamically rendered content */}
+        {renderResources()}
       </div>
     </div>
   );
