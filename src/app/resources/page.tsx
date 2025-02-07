@@ -167,43 +167,76 @@ export default function Resources() {
   return (
     <div className="mt-[-100px] text-center items-center justify-center max-w-7xl mx-auto px-8">
       <div className="p-8">
-        <h1 className="text-4xl font-bold mb-12">Resources</h1>
+        <h1 className="text-4xl font-bold mb-8 text-white">Resources</h1>
+        <p className="text-xl text-neutral-300 max-w-3xl mx-auto mb-16">
+          STJ ACM provides a collection of tools and materials to help students develop their skills. Whether you're preparing for interviews, expanding your knowledge, or looking for expert insights, these resources will support your learning journey.
+        </p>
 
-        {/* Technical Interview Prep Section */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6 text-neutral-200">
+        {/* Navigation Buttons */}
+        <div className="flex flex-col items-center gap-6 mb-16">
+          <button 
+            className="px-10 py-4 rounded-full border-0 bg-white text-black shadow-sm 
+                     uppercase tracking-wider text-sm transition-all duration-500 ease-in-out
+                     hover:tracking-widest hover:bg-red-500 hover:text-white
+                     hover:shadow-[0_7px_29px_0px_rgba(239,68,68,0.75)]
+                     active:transform active:translate-y-2.5 active:shadow-none
+                     active:transition-[100ms]"
+            onClick={() => document.getElementById('interview-prep')?.scrollIntoView({ behavior: 'smooth' })}
+          >
             Technical Interview Prep
-            <div className="h-1 w-40 bg-red-500 mx-auto mt-4"></div>
-          </h2>
+          </button>
+
+          <button 
+            className="px-10 py-4 rounded-full border-0 bg-white text-black shadow-sm 
+                     uppercase tracking-wider text-sm transition-all duration-500 ease-in-out
+                     hover:tracking-widest hover:bg-red-500 hover:text-white
+                     hover:shadow-[0_7px_29px_0px_rgba(239,68,68,0.75)]
+                     active:transform active:translate-y-2.5 active:shadow-none
+                     active:transition-[100ms]"
+            onClick={() => document.getElementById('helpful-websites')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            Helpful Websites
+          </button>
+
+          <button 
+            className="px-10 py-4 rounded-full border-0 bg-white text-black shadow-sm 
+                     uppercase tracking-wider text-sm transition-all duration-500 ease-in-out
+                     hover:tracking-widest hover:bg-red-500 hover:text-white
+                     hover:shadow-[0_7px_29px_0px_rgba(239,68,68,0.75)]
+                     active:transform active:translate-y-2.5 active:shadow-none
+                     active:transition-[100ms]"
+            onClick={() => document.getElementById('youtube-channels')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            Youtube Channels
+          </button>
+        </div>
+
+        {/* Interview Prep Section */}
+        <div id="interview-prep" className="mb-16">
+          <h2 className="text-3xl font-semibold text-white mb-8">Technical Interview Prep</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {interviewResources.map((resource) => (
-              <ResourceCard key={resource.title} resource={resource} />
+            {interviewResources.map((resource, index) => (
+              <ResourceCard key={index} resource={resource} />
             ))}
           </div>
         </div>
 
         {/* Helpful Websites Section */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6 text-neutral-200">
-            Helpful Websites
-            <div className="h-1 w-40 bg-red-500 mx-auto mt-4"></div>
-          </h2>
+        <div id="helpful-websites" className="mb-16">
+          <h2 className="text-3xl font-semibold text-white mb-8">Helpful Websites</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {helpfulWebsites.map((resource) => (
-              <ResourceCard key={resource.title} resource={resource} />
+            {helpfulWebsites.map((resource, index) => (
+              <ResourceCard key={index} resource={resource} />
             ))}
           </div>
         </div>
 
         {/* YouTube Channels Section */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6 text-neutral-200">
-            YouTube Channels
-            <div className="h-1 w-40 bg-red-500 mx-auto mt-4"></div>
-          </h2>
+        <div id="youtube-channels">
+          <h2 className="text-3xl font-semibold text-white mb-8">Recommended YouTube Channels</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {youtubeChannels.map((resource) => (
-              <ResourceCard key={resource.title} resource={resource} />
+            {youtubeChannels.map((resource, index) => (
+              <ResourceCard key={index} resource={resource} />
             ))}
           </div>
         </div>
