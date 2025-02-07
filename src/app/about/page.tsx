@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import { CardBody, CardContainer, CardItem } from "../components/3d-card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers, faLaptopCode, faHandshake, faTrophy } from "@fortawesome/free-solid-svg-icons";
@@ -11,6 +12,7 @@ import {
   faYoutube 
 } from "@fortawesome/free-brands-svg-icons";
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import LabPic from "../../../public/images/cyber-lab.jpg"; // Changed to use an existing image
 
 export default function About() {
   return (
@@ -27,6 +29,63 @@ export default function About() {
           <p className="text-lg text-neutral-300 max-w-3xl mx-auto leading-relaxed">
             We aim to enhance the experience of STJ tech students by providing them with a platform to learn, share, and collaborate through our labs and presentations.
           </p>
+        </div>
+
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          <FeatureCard 
+            icon={faUsers as IconProp}
+            title="Community"
+            description="Join a vibrant community of tech enthusiasts, developers, and cybersecurity experts who share your passion for technology."
+          />
+          <FeatureCard 
+            icon={faLaptopCode as IconProp}
+            title="Hands-on Learning"
+            description="Participate in workshops, hackathons, and projects that give you practical experience with cutting-edge technologies."
+          />
+          <FeatureCard 
+            icon={faHandshake as IconProp}
+            title="Industry Connections"
+            description="Connect with industry professionals, alumni, and potential employers through our network of partnerships."
+          />
+          <FeatureCard 
+            icon={faTrophy as IconProp}
+            title="Growth Opportunities"
+            description="Develop leadership skills, build your portfolio, and prepare for a successful career in technology."
+          />
+        </div>
+
+        {/* Meeting Info Section - Added after Feature Cards */}
+        <div className="relative p-12 mb-16 bg-gradient-to-r from-black/50 via-black/30 to-black/50 rounded-xl border border-neutral-800/50">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            {/* Text Column */}
+            <div className="text-left space-y-6">
+              <p className="text-lg text-neutral-300 leading-relaxed">
+                Operating under the Collins College of Professional Studies, SJU ACM is moderated by Dr. Joan DeBello and is supported by Professors across the Computer Science & Cyber Security departments.
+              </p>
+              
+              <div className="space-y-4 bg-black/30 p-6 rounded-lg border border-neutral-800">
+                <p className="text-lg text-neutral-300 leading-relaxed">
+                  Our meetings are held on Thursdays during Common Hour (2:00 - 3:00 PM) in the Cyber Security Lab (Room 2-140A in the 2nd Floor of St. Augustine)
+                </p>
+                
+                <p className="text-lg text-neutral-300 leading-relaxed font-medium">
+                  Our meetings are open to everyone, regardless of major or experience. We welcome everyone to join our community and share our love for technology!
+                </p>
+              </div>
+            </div>
+
+            {/* Image Column */}
+            <div className="relative h-[400px] rounded-xl overflow-hidden">
+              <Image
+                src={LabPic}
+                alt="SJU Cyber Security Lab"
+                fill
+                className="object-cover rounded-xl"
+                priority
+              />
+            </div>
+          </div>
         </div>
 
         {/* Social Media Section */}
@@ -73,30 +132,6 @@ export default function About() {
             </a>
           </div>
         </div>
-      </div>
-
-      {/* Features Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-        <FeatureCard 
-          icon={faUsers as IconProp}
-          title="Community"
-          description="Join a vibrant community of tech enthusiasts, developers, and cybersecurity experts who share your passion for technology."
-        />
-        <FeatureCard 
-          icon={faLaptopCode as IconProp}
-          title="Hands-on Learning"
-          description="Participate in workshops, hackathons, and projects that give you practical experience with cutting-edge technologies."
-        />
-        <FeatureCard 
-          icon={faHandshake as IconProp}
-          title="Industry Connections"
-          description="Connect with industry professionals, alumni, and potential employers through our network of partnerships."
-        />
-        <FeatureCard 
-          icon={faTrophy as IconProp}
-          title="Growth Opportunities"
-          description="Develop leadership skills, build your portfolio, and prepare for a successful career in technology."
-        />
       </div>
     </div>
   );
