@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@tabler/icons-react": "^2.47.0",
     "clsx": "^2.1.1",
