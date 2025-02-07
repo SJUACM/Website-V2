@@ -1,3 +1,5 @@
+"use client";
+
 import Meeting from "../components/meeting";
 import AWS from "../../../public/images/AWS_1.jpg";
 import Clue from "../../../public/images/Clue_Pt2_1.jpg";
