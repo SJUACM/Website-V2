@@ -24,6 +24,46 @@ const interviewResources = [
     description: "One of the best websites to use for technical interview prep. NeetCode provides a roadmap to help you practice for those interviews.",
     link: "https://www.youtube.com/c/neetcode",
   },
+  {
+    title: "LeetCode",
+    description: "The most popular platform for technical interview preparation with thousands of coding problems and company-specific questions.",
+    link: "https://leetcode.com",
+  },
+  {
+    title: "Blind 75 LeetCode Questions",
+    description: "A curated list of 75 most important coding interview questions in tech interviews.",
+    link: "https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions",
+  },
+  {
+    title: "HackerRank",
+    description: "Practice coding, prepare for interviews, and get hired. Great platform for beginners with structured learning paths.",
+    link: "https://www.hackerrank.com",
+  },
+  {
+    title: "AlgoExpert (Free Problems)",
+    description: "Platform with high-quality coding interview questions. Some problems are free to access!",
+    link: "https://www.algoexpert.io",
+  },
+  {
+    title: "GeeksforGeeks",
+    description: "Comprehensive resource for computer science concepts, coding problems, and interview preparation materials.",
+    link: "https://www.geeksforgeeks.org",
+  },
+  {
+    title: "InterviewBit",
+    description: "Free platform offering programming interview questions and a structured study plan for interview preparation.",
+    link: "https://www.interviewbit.com",
+  },
+  {
+    title: "Project Euler",
+    description: "Collection of computational problems intended to be solved with computer programs. Great for improving problem-solving skills.",
+    link: "https://projecteuler.net",
+  },
+  {
+    title: "CSES Problem Set",
+    description: "A collection of algorithmic programming problems to help you master common algorithms and data structures.",
+    link: "https://cses.fi/problemset",
+  }
   // ... rest of the interview resources
 ];
 
