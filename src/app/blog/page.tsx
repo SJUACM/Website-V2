@@ -7,31 +7,31 @@ import { CardBody, CardContainer, CardItem } from "../components/3d-card";
 function BlogCard({ post }: { post: BlogPost }) {
   return (
     <CardContainer className="inter-var">
-      <CardBody className="bg-black/40 relative group/card dark:hover:shadow-2xl dark:hover:shadow-red-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[280px] h-[280px] rounded-xl p-6 border">
+      <CardBody className="bg-black/40 relative group/card dark:hover:shadow-2xl dark:hover:shadow-red-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-[400px] rounded-xl p-6 border">
         <CardItem
           translateZ="50"
-          className="text-xl font-bold text-neutral-200 mb-4"
+          className="text-2xl font-bold text-neutral-200 mb-4"
         >
           {post.fields.title}
         </CardItem>
         <CardItem
           as="p"
           translateZ="60"
-          className="text-neutral-400 text-sm mb-4"
+          className="text-neutral-400 text-sm mb-8 line-clamp-4"
         >
           {post.fields.excerpt}
         </CardItem>
         <CardItem
           translateZ="40"
-          className="absolute bottom-4 left-4 right-4"
+          className="absolute bottom-6 left-6 right-6"
         >
-          <div className="flex justify-between text-sm text-neutral-300">
+          <div className="flex justify-between text-sm text-neutral-300 mb-4">
             <span>{post.fields.author}</span>
             <span>{new Date(post.fields.publishDate).toLocaleDateString()}</span>
           </div>
           <Link
             href={`/blog/${post.fields.slug}`}
-            className="mt-4 block text-center py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+            className="block text-center py-3 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
           >
             Read More
           </Link>
@@ -71,7 +71,7 @@ export default function Blog() {
         <p className="text-lg text-neutral-300 max-w-3xl mx-auto mb-16">
           Stay tuned for upcoming blog posts about our events, tutorials, and tech insights.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post) => (
             <BlogCard key={post.sys.id} post={post} />
           ))}
