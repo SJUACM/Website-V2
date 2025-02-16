@@ -67,10 +67,7 @@ export default function Blog() {
   return (
     <div className="mt-[-100px] text-center items-center justify-center max-w-7xl mx-auto px-8">
       <div className="p-8">
-        <h1 className="text-4xl font-bold mb-8">Blog</h1>
-        <p className="text-lg text-neutral-300 max-w-3xl mx-auto mb-16">
-          Stay tuned for upcoming blog posts about our events, tutorials, and tech insights.
-        </p>
+        <h1 className="text-4xl font-bold mb-16">Blog</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post) => (
             <BlogCard key={post.sys.id} post={post} />
