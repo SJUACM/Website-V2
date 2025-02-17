@@ -33,17 +33,17 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 export default function Eboard() {
   return (
     <div className="mt-[-100px] text-center items-center justify-center max-w-7xl mx-auto px-8">
-      <div className="p-8">
-        <h1 className="text-4xl font-bold mb-8">E-Board</h1>
-        {/* Top Row - 4 members */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div className="p-8">
+      <h1 className="text-4xl font-bold mb-8">E-Board</h1>
+      {/* Top Row - 4 members */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <EboardMember
-            name="Tomas Santos Yciano"
-            position="President"
-            image={Tomas}
-            description="Launch Intern @ EY"
-            linkedin="https://www.linkedin.com/in/tjsy/"
-            github="https://github.com/tomassantos484"
+          name="Tomas Santos Yciano"
+          position="President"
+          image={Tomas}
+          description="Launch Intern @ EY"
+          linkedin="https://www.linkedin.com/in/tjsy/"
+          github="https://github.com/tomassantos484"
           />
           <EboardMember
             name="David Rosoff"
