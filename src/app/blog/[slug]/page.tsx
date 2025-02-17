@@ -4,10 +4,30 @@ import type { BlogPost } from "@/lib/contentful";
 import { getPostBySlug } from "@/lib/contentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Image from "next/image";
+import { BLOCKS } from '@contentful/rich-text-types';
 
 export default function BlogPost({ params }: { params: { slug: string } }) {
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const renderOptions = {
+    renderNode: {
+      [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
+        const { url, title, width, height } = node.data.target.fields.file;
+        return (
+          <div className="my-8">
+            <Image
+              src={`https:${url}`}
+              alt={title || 'Blog image'}
+              width={width || 800}
+              height={height || 400}
+              className="rounded-lg w-full"
+            />
+          </div>
+        );
+      },
+    },
+  };
 
   useEffect(() => {
     async function fetchPost() {
@@ -51,7 +71,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
           <span>{post.fields.author}</span>
           <span>{new Date(post.fields.publishDate).toLocaleDateString()}</span>
         </div>
-        {documentToReactComponents(post.fields.content)}
+        {documentToReactComponents(post.fields.content, renderOptions)}
       </article>
     </div>
   );
