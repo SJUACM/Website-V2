@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { BackgroundBeams } from "./components/background-beam";
 import { Navbar } from "./components/navbar";
-import MacBookScroll from "./components/macbook-scroll";
 import Parallax from "./components/hero-parallax";
+import UpcomingMeetings from "./components/upcoming-meetings";
 
 export default function Home() {
   return (
@@ -50,8 +50,7 @@ export default function Home() {
 
       <BackgroundBeams />
       <Parallax />
-      <MacBookScroll />
-
+      <UpcomingMeetings />
       <div className="pb-40"></div>
     </main>
   );

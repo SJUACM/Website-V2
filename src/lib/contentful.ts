@@ -44,6 +44,7 @@ export interface Meeting extends EntrySkeletonType {
         };
       };
     };
+    location?: string;
     slides?: string;
     recording?: string;
   };
@@ -106,6 +107,23 @@ export async function getAllMeetings(): Promise<Meeting[]> {
     return response.items.map(item => ({
       ...item,
       contentTypeId: 'meeting'
+    }));
+  } catch (error) {
+    console.error('Contentful error:', error);
+    return [];
+  }
+}
+
+export async function getUpcomingMeetings(): Promise<Meeting[]> {
+  try {
+    const response = await client.getEntries<Meeting>({
+      content_type: 'upcomingMeeting',
+      order: ['-sys.createdAt'],
+    });
+    
+    return response.items.map(item => ({
+      ...item,
+      contentTypeId: 'upcomingMeeting'
     }));
   } catch (error) {
     console.error('Contentful error:', error);
