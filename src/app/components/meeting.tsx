@@ -13,7 +13,7 @@ export default function Meeting({
 }: {
   title: string;
   date: string;
-  image: StaticImageData;
+  image: string | StaticImageData;
   description: string;
   slides?: string;
   recording?: string;

@@ -4,6 +4,7 @@ import { BlogPost, getAllPosts } from "@/lib/contentful";
 import Link from "next/link";
 import { CardBody, CardContainer, CardItem } from "../components/3d-card";
 import Image from "next/image";
+import { PageTitle } from "@/app/components/page-title";
 
 function BlogCard({ post }: { post: BlogPost }) {
   return (
@@ -95,7 +96,7 @@ export default function Blog() {
 
   return (
     <div className="mt-[-100px] max-w-7xl mx-auto px-8">
-      <h1 className="text-4xl font-bold mb-8 text-center text-white">Blog Posts</h1>
+      <PageTitle>Blog Posts</PageTitle>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {posts.map((post) => (
           <BlogCard key={post.sys.id} post={post} />
