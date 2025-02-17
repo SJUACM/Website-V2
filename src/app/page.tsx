@@ -53,10 +53,23 @@ export default function Home() {
 
       <BackgroundBeams />
       <Parallax />
-      <UpcomingMeetings />
-      <InfoSection />
-      <LeadershipSection />
-      <ResourcesSection />
+      
+      <div className="py-20">
+        <UpcomingMeetings />
+      </div>
+      
+      <div className="py-20">
+        <InfoSection />
+      </div>
+      
+      <div className="py-20">
+        <LeadershipSection />
+      </div>
+      
+      <div className="py-20">
+        <ResourcesSection />
+      </div>
+      
       <div className="pb-40"></div>
     </main>
   );

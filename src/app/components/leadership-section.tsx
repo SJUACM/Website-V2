@@ -27,7 +27,7 @@ export default function LeadershipSection() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-6"
+            className="space-y-8"
           >
             <h3 className="text-red-500 font-bold">LEADERSHIP</h3>
             <h2 className="text-4xl font-bold">
@@ -38,12 +38,14 @@ export default function LeadershipSection() {
               across Computer Science & Cyber Security. We yearn to inspire and uplift our members in order to secure 
               a successful career in tech!
             </p>
-            <Link href="/about#eboard">
-              <button className="px-8 py-4 rounded-full bg-red-500 text-white font-medium 
+            <div className="pt-4">
+              <Link href="/about#eboard">
+                <button className="px-8 py-4 rounded-full bg-red-500 text-white font-medium 
                                hover:bg-red-600 transition-colors duration-200">
-                View our E-Board Members
-              </button>
-            </Link>
+                  View our E-Board Members
+                </button>
+              </Link>
+            </div>
           </motion.div>
         </div>
       </div>

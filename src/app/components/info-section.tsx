@@ -12,7 +12,7 @@ export default function InfoSection() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-6"
+            className="space-y-8"
           >
             <h2 className="text-4xl font-bold">
               Expanding knowledge beyond the classroom
@@ -21,12 +21,14 @@ export default function InfoSection() {
               We provide the necessary materials to help you succeed in a future career in tech! 
               Gain hands-on experience through our interactive labs and workshops
             </p>
-            <Link href="/meetings">
-              <button className="px-8 py-4 rounded-full bg-red-500 text-white font-medium 
-                               hover:bg-red-600 transition-colors duration-200">
-                View our Past Meetings
-              </button>
-            </Link>
+            <div className="pt-4">
+              <Link href="/meetings">
+                <button className="px-8 py-4 rounded-full bg-red-500 text-white font-medium 
+                                 hover:bg-red-600 transition-colors duration-200">
+                  View our Past Meetings
+                </button>
+              </Link>
+            </div>
           </motion.div>
 
           <motion.div
