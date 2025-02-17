@@ -5,6 +5,9 @@ import { BackgroundBeams } from "./components/background-beam";
 import { Navbar } from "./components/navbar";
 import Parallax from "./components/hero-parallax";
 import UpcomingMeetings from "./components/upcoming-meetings";
+import InfoSection from "./components/info-section";
+import LeadershipSection from "./components/leadership-section";
+import ResourcesSection from "./components/resources-section";
 
 export default function Home() {
   return (
@@ -51,6 +54,9 @@ export default function Home() {
       <BackgroundBeams />
       <Parallax />
       <UpcomingMeetings />
+      <InfoSection />
+      <LeadershipSection />
+      <ResourcesSection />
       <div className="pb-40"></div>
     </main>
   );
