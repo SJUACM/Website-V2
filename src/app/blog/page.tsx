@@ -95,12 +95,14 @@ export default function Blog() {
   }
 
   return (
-    <div className="mt-[-100px] max-w-7xl mx-auto px-8">
-      <PageTitle>Blog Posts</PageTitle>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {posts.map((post) => (
-          <BlogCard key={post.sys.id} post={post} />
-        ))}
+    <div className="mt-[-100px] text-center items-center justify-center max-w-7xl mx-auto px-8">
+      <div className="p-8">
+        <h1 className="text-4xl font-bold mb-8 text-white">Blog</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.map((post) => (
+            <BlogCard key={post.sys.id} post={post} />
+          ))}
+        </div>
       </div>
     </div>
   );

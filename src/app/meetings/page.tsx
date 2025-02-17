@@ -27,24 +27,26 @@ export default function MeetingsPage() {
   }
 
   return (
-    <div className="mt-[-100px] max-w-7xl mx-auto px-8">
-      <h1 className="text-4xl font-bold mb-8 text-center text-white">Meetings</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {meetings.map((meeting) => (
-          <Meeting
-            key={meeting.sys.id}
-            title={meeting.fields.title}
-            date={new Date(meeting.fields.date).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
-            })}
-            image={`https:${meeting.fields.image.fields.file.url}`}
-            description={meeting.fields.description}
-            slides={meeting.fields.slides}
-            recording={meeting.fields.recording}
-          />
-        ))}
+    <div className="mt-[-100px] text-center items-center justify-center max-w-7xl mx-auto px-8">
+      <div className="p-8">
+        <h1 className="text-4xl font-bold mb-8 text-white">Meetings</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {meetings.map((meeting) => (
+            <Meeting
+              key={meeting.sys.id}
+              title={meeting.fields.title}
+              date={new Date(meeting.fields.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+              image={`https:${meeting.fields.image.fields.file.url}`}
+              description={meeting.fields.description}
+              slides={meeting.fields.slides}
+              recording={meeting.fields.recording}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
