@@ -14,30 +14,15 @@ export default function UpcomingMeetings() {
     async function fetchNextMeeting() {
       try {
         const allMeetings = await getUpcomingMeetings();
-        // Sort meetings by date
-        const upcomingMeetings = allMeetings
-          .filter(meeting => new Date(meeting.fields.date) >= new Date())
-          .sort((a, b) => 
-            new Date(a.fields.date).getTime() - new Date(b.fields.date).getTime()
-          );
-        
-        // Set the next meeting to the earliest upcoming meeting
-        if (upcomingMeetings.length > 0) {
-          setNextMeeting(upcomingMeetings[0]); // This only takes the first meeting
-        }
+        setNextMeeting(allMeetings[0]);
       } catch (error) {
         console.error("Error fetching meetings:", error);
       } finally {
         setLoading(false);
       }
     }
-
     fetchNextMeeting();
   }, []);
-
-  if (loading) {
-    return <div className="py-32 text-center">Loading...</div>;
-  }
 
   if (!nextMeeting) {
     return null;
@@ -55,59 +40,71 @@ export default function UpcomingMeetings() {
   });
 
   return (
-    <div className="py-24 relative">
-      <div className="max-w-5xl mx-auto px-6">
+    <div className="relative w-full">
+      <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-32"
         >
-          <h2 className="text-4xl font-bold mb-4">Upcoming Meetings</h2>
+          <h3 className="text-red-500 font-bold text-sm tracking-wider mb-3">UPCOMING EVENT</h3>
+          <h2 className="text-4xl font-bold mb-4">Next Meeting</h2>
+          <div className="w-16 h-0.5 bg-red-500 mx-auto"></div>
         </motion.div>
 
-        <CardContainer>
-          <CardBody className="relative group/card dark:hover:shadow-2xl dark:hover:shadow-red-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] rounded-xl border">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
-              <CardItem translateZ="100" className="w-full">
-                <div className="h-[250px] relative rounded-xl overflow-hidden">
-                  <Image
-                    src={`https:${nextMeeting.fields.image.fields.file.url}`}
-                    alt={nextMeeting.fields.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover/card:scale-105"
-                  />
-                </div>
-              </CardItem>
-              
-              <CardItem translateZ="50" className="flex flex-col justify-between text-left space-y-4">
-                <div>
-                  <h3 className="text-xl font-bold text-white mb-4">{nextMeeting.fields.title}</h3>
-                  <div className="space-y-2">
-                    <p className="text-neutral-300 text-sm">
-                      <span className="text-red-500">When:</span> {formattedDate}
-                    </p>
-                    <p className="text-neutral-300 text-sm">
-                      <span className="text-red-500">Time:</span> {formattedTime}
-                    </p>
-                    <p className="text-neutral-300 text-sm">
-                      <span className="text-red-500">Where:</span> {typeof nextMeeting.fields.location === 'object' ? 'TBA' : nextMeeting.fields.location || 'TBA'}
-                    </p>
-                  </div>
-                </div>
-                
-                <Link href="/meetings" className="inline-block mt-4">
-                  <button className="px-6 py-3 rounded-full bg-red-500 text-white text-sm font-medium 
-                                   hover:bg-red-600 transition-colors duration-200 
-                                   shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-                    View All Meetings
-                  </button>
-                </Link>
-              </CardItem>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="relative h-[400px] rounded-2xl overflow-hidden group"
+          >
+            <Image
+              src={`https:${nextMeeting.fields.image.fields.file.url}`}
+              alt={nextMeeting.fields.title}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-6"
+          >
+            <h3 className="text-3xl font-bold text-white">{nextMeeting.fields.title}</h3>
+            <p className="text-neutral-300 text-base leading-relaxed">{nextMeeting.fields.description}</p>
+
+            <div className="grid grid-cols-2 gap-4 pt-2">
+              <div className="bg-black/20 p-4 rounded-xl backdrop-blur-sm">
+                <p className="text-red-500 font-medium mb-1 text-xs">DATE</p>
+                <p className="text-white text-sm font-medium">{formattedDate}</p>
+              </div>
+              <div className="bg-black/20 p-4 rounded-xl backdrop-blur-sm">
+                <p className="text-red-500 font-medium mb-1 text-xs">TIME</p>
+                <p className="text-white text-sm font-medium">{formattedTime}</p>
+              </div>
             </div>
-          </CardBody>
-        </CardContainer>
+
+            <div className="bg-black/20 p-4 rounded-xl backdrop-blur-sm">
+              <p className="text-red-500 font-medium mb-1 text-xs">LOCATION</p>
+              <p className="text-white text-sm font-medium">
+                {typeof nextMeeting.fields.location === 'object' ? 'TBA' : nextMeeting.fields.location || 'TBA'}
+              </p>
+            </div>
+
+            <Link href="/meetings" className="inline-block pt-2">
+              <button className="px-6 py-3 rounded-full bg-red-500 text-white text-sm font-medium 
+                             hover:bg-red-600 transition-all duration-200">
+                View All Meetings
+              </button>
+            </Link>
+          </motion.div>
+        </div>
       </div>
     </div>
   );
-} 
+}

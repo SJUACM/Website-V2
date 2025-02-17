@@ -39,7 +39,7 @@ export default function LeadershipSection() {
               a successful career in tech!
             </p>
             <div className="pt-4">
-              <Link href="/about#eboard">
+              <Link href="/eboard">
                 <button className="px-8 py-4 rounded-full bg-red-500 text-white font-medium 
                                hover:bg-red-600 transition-colors duration-200">
                   View our E-Board Members
