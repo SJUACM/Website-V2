@@ -11,6 +11,20 @@ export interface BlogPost extends EntrySkeletonType {
     excerpt: string;
     author: string;
     publishDate: string;
+    coverImage: {
+      fields: {
+        file: {
+          url: string;
+          details: {
+            image: {
+              width: number;
+              height: number;
+            };
+          };
+        };
+        title: string;
+      };
+    };
   };
 }
 
