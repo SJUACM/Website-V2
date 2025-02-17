@@ -7,6 +7,7 @@ import Image from "next/image";
 import { BLOCKS } from '@contentful/rich-text-types';
 
 export default function BlogPost({ params }: { params: { slug: string } }) {
+  const { slug } = params;
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -32,7 +33,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
   useEffect(() => {
     async function fetchPost() {
       try {
-        const blogPost = await getPostBySlug(params.slug);
+        const blogPost = await getPostBySlug(slug);
         setPost(blogPost);
       } catch (error) {
         console.error("Error fetching post:", error);
@@ -42,7 +43,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
     }
 
     fetchPost();
-  }, [params.slug]);
+  }, [slug]);
 
   if (loading) {
     return <div className="text-center mt-8">Loading...</div>;
