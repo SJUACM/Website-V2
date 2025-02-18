@@ -1,63 +1,113 @@
 "use client";
 import React from "react";
-import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { interviewResources, helpfulWebsites, youtubeChannels, Resource } from "./data";
 
-export default function Resources() {
-  const router = useRouter();
-
+function ResourceCard({ resource }: { resource: Resource }) {
   return (
-    <div className="text-center items-center justify-center max-w-7xl mx-auto px-4 sm:px-8">
-      <div className="p-4 sm:p-8">
-        <p className="text-base sm:text-xl text-neutral-300 max-w-3xl mx-auto mb-12 sm:mb-16 leading-relaxed">
-          STJ ACM provides a collection of tools and materials to help students develop their skills. 
-          Whether you're preparing for interviews, expanding your knowledge, or looking for expert insights, 
-          these resources will support your learning journey.
-        </p>
-
-        <div className="flex flex-col items-center gap-6 mb-8 sm:mb-16 pt-4 sm:pt-0">
-          <button 
-            className="w-full sm:w-[280px] h-14 px-8 rounded-full border-0 
-                     bg-white text-black shadow-sm uppercase tracking-wide
-                     text-sm font-medium transition-all duration-500 ease-in-out
-                     hover:tracking-widest hover:bg-red-500 hover:text-white
-                     hover:shadow-[0_7px_29px_0px_rgba(239,68,68,0.75)]
-                     active:transform active:translate-y-2.5 active:shadow-none
-                     active:transition-[100ms]
-                     flex items-center justify-center"
-            onClick={() => router.push('/resources/interview-prep')}
-          >
-            Interview Prep
-          </button>
-
-          <button 
-            className="w-full sm:w-[280px] h-14 px-8 rounded-full border-0 
-                     bg-white text-black shadow-sm uppercase tracking-wide
-                     text-sm font-medium transition-all duration-500 ease-in-out
-                     hover:tracking-widest hover:bg-red-500 hover:text-white
-                     hover:shadow-[0_7px_29px_0px_rgba(239,68,68,0.75)]
-                     active:transform active:translate-y-2.5 active:shadow-none
-                     active:transition-[100ms]
-                     flex items-center justify-center"
-            onClick={() => router.push('/resources/helpful-websites')}
-          >
-            Helpful Websites
-          </button>
-
-          <button 
-            className="w-full sm:w-[280px] h-14 px-8 rounded-full border-0 
-                     bg-white text-black shadow-sm uppercase tracking-wide
-                     text-sm font-medium transition-all duration-500 ease-in-out
-                     hover:tracking-widest hover:bg-red-500 hover:text-white
-                     hover:shadow-[0_7px_29px_0px_rgba(239,68,68,0.75)]
-                     active:transform active:translate-y-2.5 active:shadow-none
-                     active:transition-[100ms]
-                     flex items-center justify-center"
-            onClick={() => router.push('/resources/youtube-channels')}
-          >
-            Youtube Channels
-          </button>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      className="group relative"
+    >
+      <div className="relative bg-gradient-to-br from-neutral-900/50 to-black/50 
+                    backdrop-blur-sm rounded-xl overflow-hidden border border-neutral-800/50
+                    transition-all duration-300 hover:border-red-500/50 hover:shadow-lg 
+                    hover:shadow-red-500/10">
+        <div className="absolute inset-0 bg-gradient-to-br from-red-500/0 to-red-500/0 
+                      group-hover:from-red-500/10 group-hover:to-transparent transition-all duration-300" />
+        <div className="relative p-6 h-full">
+          <h3 className="text-xl font-bold text-white text-center mb-3 group-hover:text-red-500 
+                       transition-colors duration-300">
+            {resource.title}
+          </h3>
+          <p className="text-neutral-300 text-sm mb-8 leading-relaxed text-center">
+            {resource.description}
+          </p>
+          <div className="absolute bottom-4 right-4">
+            <a
+              href={resource.link}
+              target="_blank"
+              rel="noreferrer"
+              className="text-neutral-400 hover:text-red-500 transition-all duration-300
+                       transform group-hover:scale-110"
+            >
+              <FontAwesomeIcon icon={faExternalLinkAlt as IconProp} />
+            </a>
+          </div>
         </div>
       </div>
+    </motion.div>
+  );
+}
+
+function SectionTitle({ title }: { title: string }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      className="relative mb-16 text-center"
+    >
+      <h2 className="text-3xl font-bold text-white mb-4">{title}</h2>
+      <div className="h-1 w-20 bg-red-500 mx-auto rounded-full" />
+    </motion.div>
+  );
+}
+
+export default function Resources() {
+  return (
+    <div className="min-h-screen">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12"
+      >
+        <div className="text-center max-w-3xl mx-auto mb-24">
+          <p className="text-lg text-neutral-300 leading-relaxed">
+            STJ ACM provides a collection of tools and materials to help students develop their skills. 
+            Whether you're preparing for interviews, expanding your knowledge, or looking for expert insights, 
+            these resources will support your learning journey.
+          </p>
+        </div>
+
+        <div className="space-y-32">
+          <section id="interview-prep" className="scroll-mt-24">
+            <SectionTitle title="Interview Preparation" />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {interviewResources.map((resource, index) => (
+                <ResourceCard key={index} resource={resource} />
+              ))}
+            </div>
+          </section>
+
+          <section id="helpful-websites" className="scroll-mt-24">
+            <SectionTitle title="Helpful Websites" />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {helpfulWebsites.map((resource, index) => (
+                <ResourceCard key={index} resource={resource} />
+              ))}
+            </div>
+          </section>
+
+          <section id="youtube-channels" className="scroll-mt-24">
+            <SectionTitle title="YouTube Channels" />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {youtubeChannels.map((resource, index) => (
+                <ResourceCard key={index} resource={resource} />
+              ))}
+            </div>
+          </section>
+        </div>
+      </motion.div>
     </div>
   );
 }

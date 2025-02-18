@@ -30,9 +30,9 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="text-xl font-bold text-red-500">Resources</h3>
             <ul className="space-y-2">
-              <li><a href="/resources/interview-prep" className="text-neutral-400 hover:text-red-500 text-sm transition-colors">Interview Prep</a></li>
-              <li><a href="/resources/helpful-websites" className="text-neutral-400 hover:text-red-500 text-sm transition-colors">Helpful Websites</a></li>
-              <li><a href="/resources/youtube-channels" className="text-neutral-400 hover:text-red-500 text-sm transition-colors">YouTube Channels</a></li>
+              <li><a href="/resources#interview-prep" className="text-neutral-400 hover:text-red-500 text-sm transition-colors">Interview Prep</a></li>
+              <li><a href="/resources#helpful-websites" className="text-neutral-400 hover:text-red-500 text-sm transition-colors">Helpful Websites</a></li>
+              <li><a href="/resources#youtube-channels" className="text-neutral-400 hover:text-red-500 text-sm transition-colors">YouTube Channels</a></li>
             </ul>
           </div>
 
