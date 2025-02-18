@@ -32,18 +32,18 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 export default function Eboard() {
   return (
-    <div className="mt-[-100px] text-center items-center justify-center max-w-7xl mx-auto px-8">
-    <div className="p-8">
-      <h1 className="text-4xl font-bold mb-8">E-Board</h1>
-      {/* Top Row - 4 members */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div className="mt-[-100px] md:mt-[-100px] text-center items-center justify-center max-w-7xl mx-auto px-4 md:px-8">
+      <div className="p-4 md:p-8">
+        <h1 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12">E-Board</h1>
+        {/* Current E-board section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-8 mb-12">
           <EboardMember
-          name="Tomas Santos Yciano"
-          position="President"
-          image={Tomas}
-          description="Launch Intern @ EY"
-          linkedin="https://www.linkedin.com/in/tjsy/"
-          github="https://github.com/tomassantos484"
+            name="Tomas Santos Yciano"
+            position="President"
+            image={Tomas}
+            description="Launch Intern @ EY"
+            linkedin="https://www.linkedin.com/in/tjsy/"
+            github="https://github.com/tomassantos484"
           />
           <EboardMember
             name="David Rosoff"
@@ -69,9 +69,6 @@ export default function Eboard() {
             linkedin="https://www.linkedin.com/in/richard-perez-jr/"
             github="https://github.com/richardp23"
           />
-        </div>
-        {/* Bottom Row - 4 members */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <EboardMember
             name="Jennifer Venus"
             position="Social Media Chair"
@@ -106,9 +103,9 @@ export default function Eboard() {
         </div>
 
         {/* Past E-board section */}
-        <div className="mt-24">
-          <h2 className="text-3xl font-bold mb-12">Past E-Board Members</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="mt-16 md:mt-24">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8 md:mb-12">Past E-Board Members</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-8">
             <PastEboardMember
               name="Raymond Ramdat"
               position="President"
@@ -139,12 +136,9 @@ export default function Eboard() {
               linkedin="https://www.linkedin.com/in/benjamin-hanim/"
               github="https://github.com/ben45123"
             />
-          </div>
-          {/* Past board members Bottom Row - 4 members */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <PastEboardMember
               name="Aqueena Alexander"
-              position="Social Media Coordinator"
+              position="Social Media"
               year="2024"
               image={Aqueena}
               linkedin="https://www.linkedin.com/in/aqueena-alexander/"
@@ -172,12 +166,9 @@ export default function Eboard() {
               linkedin="https://www.linkedin.com/in/teutaelezaj/"
               github="https://github.com/teutaelezaj"
             />
-          </div>
-          {/* Past board members Bottom Row - 4 members */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <PastEboardMember
               name="Katarina Kobetitsch"
-              position="Social Media Coordinator"
+              position="Social Media"
               year="2023"
               image={Kat}
               linkedin="https://www.linkedin.com/in/katarina-kobetitsch/"
@@ -204,17 +195,13 @@ export default function Eboard() {
               image={Ava}
               linkedin="https://www.linkedin.com/in/ava-mcnevin/"
             />
-
-            {/* Single centered past member */}
-            <div className="mt-8 flex justify-center">
-              <PastEboardMember
-                name="Jade Deo"
-                position="Social Media Coordinator"
-                year="2022"
-                image={Jade}
-                linkedin="https://www.linkedin.com/in/jadedeo/"
-              />
-            </div>
+            <PastEboardMember
+              name="Jade Deo"
+              position="Social Media"
+              year="2022"
+              image={Jade}
+              linkedin="https://www.linkedin.com/in/jadedeo/"
+            />
           </div>
         </div>
       </div>
@@ -240,55 +227,57 @@ export function EboardMember({
   return (
     <CardContainer className="inter-var">
       <CardBody
-        className={`bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.3] border-black/[0.1] w-auto sm:w-[280px] rounded-xl p-4 border h-[400px]`}
+        className={`bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.3] border-black/[0.1] w-full sm:w-[280px] min-h-[580px] sm:min-h-0 sm:h-[400px] rounded-xl p-6 md:p-4 border`}
       >
-        <CardItem
-          translateZ="50"
-          className="text-lg font-bold text-neutral-600 dark:text-white mb-2"
-        >
-          {name}
-        </CardItem>
-        <CardItem translateZ="100" className="w-full">
-          <Image
-            src={image}
-            height="1000"
-            width="1000"
-            className="h-[200px] w-full object-cover rounded-xl group-hover/card:shadow-xl"
-            alt={name}
-          />
-        </CardItem>
-        <CardItem
-          as="p"
-          translateZ="60"
-          className="text-neutral-300 text-md mt-3"
-        >
-          {position}
-        </CardItem>
-        <CardItem
-          as="p"
-          translateZ="60"
-          className="text-neutral-400 text-sm mt-1"
-        >
-          {description}
-        </CardItem>
-        <CardItem translateZ="40" className="absolute bottom-4 left-4 right-4">
-          <div className="flex items-center justify-start gap-4">
-            <a href={linkedin} target="_blank" rel="noreferrer">
-              <FontAwesomeIcon
-                icon={faLinkedin as IconProp}
-                className="text-xl text-neutral-300 hover:text-blue-500 transition-colors"
-              />
-            </a>
-            {github && (
-              <a href={github} target="_blank" rel="noreferrer">
+        <div className="flex flex-col h-full">
+          <CardItem
+            translateZ="50"
+            className="text-2xl md:text-lg font-bold text-neutral-600 dark:text-white mb-4 md:mb-2"
+          >
+            {name}
+          </CardItem>
+          <CardItem translateZ="100" className="w-full mt-2">
+            <Image
+              src={image}
+              height="1000"
+              width="1000"
+              className="h-[260px] md:h-[200px] w-full object-cover rounded-xl group-hover/card:shadow-xl"
+              alt={name}
+            />
+          </CardItem>
+          <CardItem
+            as="p"
+            translateZ="60"
+            className="text-neutral-300 text-xl md:text-md mt-4 md:mt-3"
+          >
+            {position}
+          </CardItem>
+          <CardItem
+            as="p"
+            translateZ="60"
+            className="text-neutral-400 text-lg md:text-sm mt-2 md:mt-1"
+          >
+            {description}
+          </CardItem>
+          <CardItem translateZ="40" className="mt-auto pt-6 md:pt-4">
+            <div className="flex items-center justify-start gap-6 md:gap-4 pb-2 md:pb-0">
+              <a href={linkedin} target="_blank" rel="noreferrer">
                 <FontAwesomeIcon
-                  icon={faGithub as IconProp}
-                  className="text-xl text-neutral-300 hover:text-purple-500 transition-colors"
+                  icon={faLinkedin as IconProp}
+                  className="text-2xl md:text-xl text-neutral-300 hover:text-blue-500 transition-colors"
                 />
               </a>
-            )}
-          </div>
-        </CardItem>
+              {github && (
+                <a href={github} target="_blank" rel="noreferrer">
+                  <FontAwesomeIcon
+                    icon={faGithub as IconProp}
+                    className="text-2xl md:text-xl text-neutral-300 hover:text-purple-500 transition-colors"
+                  />
+                </a>
+              )}
+            </div>
+          </CardItem>
+        </div>
       </CardBody>
     </CardContainer>
   );
@@ -312,55 +301,57 @@ export function PastEboardMember({
   return (
     <CardContainer className="inter-var">
       <CardBody
-        className={`bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.3] border-black/[0.1] w-auto sm:w-[280px] rounded-xl p-4 border h-[400px]`}
+        className={`bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.3] border-black/[0.1] w-full sm:w-[280px] min-h-[580px] sm:min-h-0 sm:h-[400px] rounded-xl p-6 md:p-4 border`}
       >
-        <CardItem
-          translateZ="50"
-          className="text-lg font-bold text-neutral-600 dark:text-white mb-2"
-        >
-          {name}
-        </CardItem>
-        <CardItem translateZ="100" className="w-full">
-          <Image
-            src={image}
-            height="1000"
-            width="1000"
-            className="h-[200px] w-full object-cover rounded-xl group-hover/card:shadow-xl"
-            alt={name}
-          />
-        </CardItem>
-        <CardItem
-          as="p"
-          translateZ="60"
-          className="text-neutral-300 text-md mt-3"
-        >
-          {position}
-        </CardItem>
-        <CardItem
-          as="p"
-          translateZ="60"
-          className="text-neutral-400 text-sm mt-1"
-        >
-          {year}
-        </CardItem>
-        <CardItem translateZ="40" className="absolute bottom-4 left-4 right-4">
-          <div className="flex items-center justify-start gap-4">
-            <a href={linkedin} target="_blank" rel="noreferrer">
-              <FontAwesomeIcon
-                icon={faLinkedin as IconProp}
-                className="text-xl text-neutral-300 hover:text-blue-500 transition-colors"
-              />
-            </a>
-            {github && (
-              <a href={github} target="_blank" rel="noreferrer">
+        <div className="flex flex-col h-full">
+          <CardItem
+            translateZ="50"
+            className="text-2xl md:text-lg font-bold text-neutral-600 dark:text-white mb-4 md:mb-2"
+          >
+            {name}
+          </CardItem>
+          <CardItem translateZ="100" className="w-full mt-2">
+            <Image
+              src={image}
+              height="1000"
+              width="1000"
+              className="h-[260px] md:h-[200px] w-full object-cover rounded-xl group-hover/card:shadow-xl"
+              alt={name}
+            />
+          </CardItem>
+          <CardItem
+            as="p"
+            translateZ="60"
+            className="text-neutral-300 text-xl md:text-md mt-4 md:mt-3"
+          >
+            {position}
+          </CardItem>
+          <CardItem
+            as="p"
+            translateZ="60"
+            className="text-neutral-400 text-lg md:text-sm mt-2 md:mt-1"
+          >
+            {year}
+          </CardItem>
+          <CardItem translateZ="40" className="mt-auto pt-6 md:pt-4">
+            <div className="flex items-center justify-start gap-6 md:gap-4 pb-2 md:pb-0">
+              <a href={linkedin} target="_blank" rel="noreferrer">
                 <FontAwesomeIcon
-                  icon={faGithub as IconProp}
-                  className="text-xl text-neutral-300 hover:text-purple-500 transition-colors"
+                  icon={faLinkedin as IconProp}
+                  className="text-2xl md:text-xl text-neutral-300 hover:text-blue-500 transition-colors"
                 />
               </a>
-            )}
-          </div>
-        </CardItem>
+              {github && (
+                <a href={github} target="_blank" rel="noreferrer">
+                  <FontAwesomeIcon
+                    icon={faGithub as IconProp}
+                    className="text-2xl md:text-xl text-neutral-300 hover:text-purple-500 transition-colors"
+                  />
+                </a>
+              )}
+            </div>
+          </CardItem>
+        </div>
       </CardBody>
     </CardContainer>
   );
