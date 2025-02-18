@@ -8,6 +8,7 @@ import UpcomingMeetings from "./components/upcoming-meetings";
 import InfoSection from "./components/info-section";
 import LeadershipSection from "./components/leadership-section";
 import ResourcesSection from "./components/resources-section";
+import styles from './styles/customFont.module.css'
 
 export default function Home() {
   return (
@@ -20,7 +21,7 @@ export default function Home() {
 
       <div className="pt-24 md:pt-48 space-y-4 text-center w-full px-4 md:px-0">
         {/* Desktop Title */}
-        <h1 className="hidden md:block text-4xl font-semibold">
+        <h1 className={`hidden md:block text-4xl font-semibold ${styles.customFont}`}>
           St. John&apos;s University ACM Student Chapter
         </h1>
         

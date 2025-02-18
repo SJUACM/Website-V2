@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'CustomFont';
+  src: url('/fonts/main.otf') format('opentype');
+}
+
+.customFont {
+  font-family: 'CustomFont', system-ui, -apple-system, sans-serif;
+} 
