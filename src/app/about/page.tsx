@@ -16,124 +16,163 @@ import LabPic from "../../../public/images/ctf24.jpg";
 
 export default function About() {
   return (
-    <div className="mt-[-50px] md:mt-[-100px] text-center items-center justify-center max-w-7xl mx-auto px-4 md:px-8">
-      <div className="p-4 md:p-8">
-        {/* Hero Section */}
-        <div className="mb-8 md:mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 md:mb-8 text-white">About</h1>
-          <div className="max-w-3xl mx-auto">
-            <p className="text-lg md:text-xl text-neutral-300 leading-relaxed mb-4 md:mb-6">
-              We are St. John's University's premier organization for Computer Science and Cyber Security. 
-              We focus on providing students with hands-on experience, industry connections, and a supportive 
-              community of tech enthusiasts.
-            </p>
-            <p className="text-lg md:text-xl text-neutral-300 leading-relaxed">
-              We aim to enhance the experience of STJ tech students by providing them with a platform to learn, share, and collaborate through our labs and presentations.
-            </p>
-          </div>
+    <div className="max-w-7xl mx-auto px-4 md:px-8">
+      {/* Hero Section */}
+      <div className="text-center mb-12 md:mb-16">
+        <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200">
+          About Us
+        </h1>
+        
+        <div className="max-w-3xl mx-auto space-y-4 text-left md:text-center">
+          <p className="text-lg md:text-xl text-neutral-300 leading-relaxed">
+            We are St. John's University's premier organization for Computer Science and Cyber Security. 
+            We focus on providing students with hands-on experience, industry connections, and a supportive 
+            community of tech enthusiasts.
+          </p>
+          <p className="text-lg md:text-xl text-neutral-300 leading-relaxed">
+            We aim to enhance the experience of STJ tech students by providing them with a platform to learn, 
+            share, and collaborate through our labs and presentations.
+          </p>
         </div>
+      </div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-8 mb-20 max-w-6xl mx-auto">
-          <FeatureCard 
-            icon={faUsers as IconProp}
-            title="Community"
-            description="Join a community of tech enthusiasts, developers, and cybersecurity experts!"
-          />
-          <FeatureCard 
-            icon={faLaptopCode as IconProp}
-            title="Hands-on Learning"
-            description="Gain hands-on experience through workshops, hackathons, and projects!"
-          />
-          <FeatureCard 
-            icon={faHandshake as IconProp}
-            title="Industry Connections"
-            description="Connect with industry professionals, alumni, and employers through us!"
-          />
-          <FeatureCard 
-            icon={faTrophy as IconProp}
-            title="Growth Opportunities"
-            description="Develop leadership skills, build your portfolio, and prepare for a career!"
-          />
-        </div>
+      {/* Features Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-8 mb-20 max-w-6xl mx-auto">
+        <FeatureCard 
+          icon={faUsers as IconProp}
+          title="Community"
+          description="Join a community of tech enthusiasts, developers, and cybersecurity experts!"
+        />
+        <FeatureCard 
+          icon={faLaptopCode as IconProp}
+          title="Hands-on Learning"
+          description="Gain hands-on experience through workshops, hackathons, and projects!"
+        />
+        <FeatureCard 
+          icon={faHandshake as IconProp}
+          title="Industry Connections"
+          description="Connect with industry professionals, alumni, and employers through us!"
+        />
+        <FeatureCard 
+          icon={faTrophy as IconProp}
+          title="Growth Opportunities"
+          description="Develop leadership skills, build your portfolio, and prepare for a career!"
+        />
+      </div>
 
-        {/* Meeting Info Section */}
-        <div className="relative p-12 mb-20 bg-gradient-to-r from-black/50 via-black/30 to-black/50 rounded-xl border border-neutral-800/50 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-red-500/10 to-transparent opacity-50"></div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
-            <div className="text-left space-y-6">
-              <h2 className="text-2xl font-semibold text-white mb-6">Join Our Community</h2>
+      {/* Meeting Info Section */}
+      <div className="relative p-12 mb-20 bg-gradient-to-r from-black/50 via-black/30 to-black/50 rounded-xl border border-neutral-800/50 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-red-500/10 to-transparent opacity-50"></div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
+          <div className="text-left space-y-6">
+            <h2 className="text-2xl font-semibold text-white mb-6">Join Our Community</h2>
+            <p className="text-lg text-neutral-300 leading-relaxed">
+              Operating under the Collins College of Professional Studies, SJU ACM is moderated by Dr. Joan DeBello and is supported by Professors across the Computer Science & Cyber Security departments.
+            </p>
+            
+            <div className="space-y-4 bg-black/30 p-6 rounded-lg border border-neutral-800 backdrop-blur-sm">
               <p className="text-lg text-neutral-300 leading-relaxed">
-                Operating under the Collins College of Professional Studies, SJU ACM is moderated by Dr. Joan DeBello and is supported by Professors across the Computer Science & Cyber Security departments.
+                Our meetings are held on Thursdays during Common Hour (2:00 - 3:00 PM) in the Cyber Security Lab (Room 2-140A in the 2nd Floor of St. Augustine)
               </p>
               
-              <div className="space-y-4 bg-black/30 p-6 rounded-lg border border-neutral-800 backdrop-blur-sm">
-                <p className="text-lg text-neutral-300 leading-relaxed">
-                  Our meetings are held on Thursdays during Common Hour (2:00 - 3:00 PM) in the Cyber Security Lab (Room 2-140A in the 2nd Floor of St. Augustine)
-                </p>
-                
-                <p className="text-lg text-neutral-300 leading-relaxed font-medium">
-                  Our meetings are open to everyone, regardless of major or experience. We welcome everyone to join our community and share our love for technology!
-                </p>
-              </div>
+              <p className="text-lg text-neutral-300 leading-relaxed font-medium">
+                Our meetings are open to everyone, regardless of major or experience. We welcome everyone to join our community and share our love for technology!
+              </p>
             </div>
+          </div>
 
-            <div className="relative h-[400px] rounded-xl overflow-hidden group">
-              <Image
-                src={LabPic}
-                alt="SJU Cyber Security Lab"
-                fill
-                className="object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-            </div>
+          <div className="relative h-[400px] rounded-xl overflow-hidden group">
+            <Image
+              src={LabPic}
+              alt="SJU Cyber Security Lab"
+              fill
+              className="object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
           </div>
         </div>
+      </div>
 
-        {/* Social Media Section */}
-        <div className="relative p-6 md:p-12 bg-gradient-to-r from-black/50 via-black/30 to-black/50 rounded-xl border border-neutral-800/50">
-          <h2 className="text-2xl md:text-3xl font-semibold text-white mb-8 md:mb-12 relative">
-            Connect With Us
-            <div className="h-1 w-32 md:w-40 bg-red-500 mx-auto mt-4"></div>
-          </h2>
-          
-          <div className="flex flex-wrap justify-center gap-4 md:gap-8 relative">
-            <a href="https://github.com/SJUACM" target="_blank" rel="noreferrer" className="group flex flex-col items-center no-underline">
-              <div className="p-3 md:p-4 rounded-full bg-black/50 border border-neutral-800 group-hover:border-red-500 transition-colors">
-                <FontAwesomeIcon icon={faGithub as IconProp} className="text-2xl md:text-3xl text-neutral-300 group-hover:text-red-500 transition-all transform group-hover:-translate-y-1" />
-              </div>
-              <span className="mt-2 text-xs md:text-sm text-neutral-400 group-hover:text-red-500 transition-colors">GitHub</span>
-            </a>
+      {/* Social Links Section */}
+      <div className="bg-black/30 backdrop-blur-md border border-neutral-800 rounded-2xl p-6 md:p-8 mb-8">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
+          Connect With Us
+          <div className="h-1 w-20 bg-red-500 mx-auto mt-2"></div>
+        </h2>
 
-            <a href="https://www.linkedin.com/company/stjacm/posts/?feedView=all" target="_blank" rel="noreferrer" className="group flex flex-col items-center no-underline">
-              <div className="p-3 md:p-4 rounded-full bg-black/50 border border-neutral-800 group-hover:border-red-500 transition-colors">
-                <FontAwesomeIcon icon={faLinkedin as IconProp} className="text-2xl md:text-3xl text-neutral-300 group-hover:text-red-500 transition-all transform group-hover:-translate-y-1" />
-              </div>
-              <span className="mt-2 text-xs md:text-sm text-neutral-400 group-hover:text-red-500 transition-colors">LinkedIn</span>
-            </a>
+        <div className="grid grid-cols-3 md:grid-cols-5 gap-4 md:gap-8 justify-items-center">
+          {/* GitHub */}
+          <a href="https://github.com/SJUACM" target="_blank" rel="noreferrer" 
+             className="group flex flex-col items-center no-underline">
+            <div className="p-3 md:p-4 rounded-full bg-black/50 border border-neutral-800 
+                          group-hover:border-red-500 transition-all duration-300 
+                          group-hover:scale-110">
+              <FontAwesomeIcon icon={faGithub as IconProp} 
+                             className="text-2xl md:text-3xl text-neutral-300 
+                                        group-hover:text-red-500 transition-colors" />
+            </div>
+            <span className="mt-2 text-xs md:text-sm text-neutral-400 
+                           group-hover:text-red-500 transition-colors">GitHub</span>
+          </a>
 
-            <a href="https://discord.gg/Bcwm3e8m" target="_blank" rel="noreferrer" className="group flex flex-col items-center no-underline">
-              <div className="p-3 md:p-4 rounded-full bg-black/50 border border-neutral-800 group-hover:border-red-500 transition-colors">
-                <FontAwesomeIcon icon={faDiscord as IconProp} className="text-2xl md:text-3xl text-neutral-300 group-hover:text-red-500 transition-all transform group-hover:-translate-y-1" />
-              </div>
-              <span className="mt-2 text-xs md:text-sm text-neutral-400 group-hover:text-red-500 transition-colors">Discord</span>
-            </a>
+          {/* LinkedIn */}
+          <a href="https://www.linkedin.com/company/stjacm/posts/?feedView=all" 
+             target="_blank" rel="noreferrer" 
+             className="group flex flex-col items-center no-underline">
+            <div className="p-3 md:p-4 rounded-full bg-black/50 border border-neutral-800 
+                          group-hover:border-red-500 transition-all duration-300 
+                          group-hover:scale-110">
+              <FontAwesomeIcon icon={faLinkedin as IconProp} 
+                             className="text-2xl md:text-3xl text-neutral-300 
+                                        group-hover:text-red-500 transition-colors" />
+            </div>
+            <span className="mt-2 text-xs md:text-sm text-neutral-400 
+                           group-hover:text-red-500 transition-colors">LinkedIn</span>
+          </a>
 
-            <a href="https://www.instagram.com/stj.acm/" target="_blank" rel="noreferrer" className="group flex flex-col items-center no-underline">
-              <div className="p-3 md:p-4 rounded-full bg-black/50 border border-neutral-800 group-hover:border-red-500 transition-colors">
-                <FontAwesomeIcon icon={faInstagram as IconProp} className="text-2xl md:text-3xl text-neutral-300 group-hover:text-red-500 transition-all transform group-hover:-translate-y-1" />
-              </div>
-              <span className="mt-2 text-xs md:text-sm text-neutral-400 group-hover:text-red-500 transition-colors">Instagram</span>
-            </a>
+          {/* Discord */}
+          <a href="https://discord.gg/Bcwm3e8m" target="_blank" rel="noreferrer" 
+             className="group flex flex-col items-center no-underline">
+            <div className="p-3 md:p-4 rounded-full bg-black/50 border border-neutral-800 
+                          group-hover:border-red-500 transition-all duration-300 
+                          group-hover:scale-110">
+              <FontAwesomeIcon icon={faDiscord as IconProp} 
+                             className="text-2xl md:text-3xl text-neutral-300 
+                                        group-hover:text-red-500 transition-colors" />
+            </div>
+            <span className="mt-2 text-xs md:text-sm text-neutral-400 
+                           group-hover:text-red-500 transition-colors">Discord</span>
+          </a>
 
-            <a href="https://www.youtube.com/channel/UCuIcwbZDPnZYNQ0pFhmaNwQ" target="_blank" rel="noreferrer" className="group flex flex-col items-center no-underline">
-              <div className="p-3 md:p-4 rounded-full bg-black/50 border border-neutral-800 group-hover:border-red-500 transition-colors">
-                <FontAwesomeIcon icon={faYoutube as IconProp} className="text-2xl md:text-3xl text-neutral-300 group-hover:text-red-500 transition-all transform group-hover:-translate-y-1" />
-              </div>
-              <span className="mt-2 text-xs md:text-sm text-neutral-400 group-hover:text-red-500 transition-colors">YouTube</span>
-            </a>
-          </div>
+          {/* Instagram */}
+          <a href="https://www.instagram.com/stj.acm/" target="_blank" rel="noreferrer" 
+             className="group flex flex-col items-center no-underline">
+            <div className="p-3 md:p-4 rounded-full bg-black/50 border border-neutral-800 
+                          group-hover:border-red-500 transition-all duration-300 
+                          group-hover:scale-110">
+              <FontAwesomeIcon icon={faInstagram as IconProp} 
+                             className="text-2xl md:text-3xl text-neutral-300 
+                                        group-hover:text-red-500 transition-colors" />
+            </div>
+            <span className="mt-2 text-xs md:text-sm text-neutral-400 
+                           group-hover:text-red-500 transition-colors">Instagram</span>
+          </a>
+
+          {/* YouTube */}
+          <a href="https://www.youtube.com/channel/UCuIcwbZDPnZYNQ0pFhmaNwQ" 
+             target="_blank" rel="noreferrer" 
+             className="group flex flex-col items-center no-underline">
+            <div className="p-3 md:p-4 rounded-full bg-black/50 border border-neutral-800 
+                          group-hover:border-red-500 transition-all duration-300 
+                          group-hover:scale-110">
+              <FontAwesomeIcon icon={faYoutube as IconProp} 
+                             className="text-2xl md:text-3xl text-neutral-300 
+                                        group-hover:text-red-500 transition-colors" />
+            </div>
+            <span className="mt-2 text-xs md:text-sm text-neutral-400 
+                           group-hover:text-red-500 transition-colors">YouTube</span>
+          </a>
         </div>
       </div>
     </div>
