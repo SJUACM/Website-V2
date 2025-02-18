@@ -35,8 +35,9 @@ export default function Eboard() {
     <div className="mt-[-100px] md:mt-[-100px] text-center items-center justify-center max-w-7xl mx-auto px-4 md:px-8">
       <div className="p-4 md:p-8">
         <h1 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12">E-Board</h1>
-        {/* Current E-board section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-8 mb-12">
+        
+        {/* Desktop View - Keep existing 3D cards */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-8 mb-12">
           <EboardMember
             name="Tomas Santos Yciano"
             position="President"
@@ -102,106 +103,178 @@ export default function Eboard() {
           />
         </div>
 
-        {/* Past E-board section */}
-        <div className="mt-16 md:mt-24">
-          <h2 className="text-2xl md:text-3xl font-bold mb-8 md:mb-12">Past E-Board Members</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-8">
-            <PastEboardMember
-              name="Raymond Ramdat"
-              position="President"
-              year="2024"
-              image={Raymond}
-              linkedin="https://www.linkedin.com/in/raymondramdat/"
-            />
-            <PastEboardMember
-              name="Jake Enea"
-              position="Vice President"
-              year="2024"
-              image={Jake}
-              linkedin="https://www.linkedin.com/in/jakeenea/"
-              github="https://github.com/jakeenea51"
-            />
-            <PastEboardMember
-              name="Amrita Kaur"
-              position="Events Coordinator"
-              year="2024"
-              image={Amrita}
-              linkedin="https://www.linkedin.com/in/amrita-priya-kaur75/"
-            />
-            <PastEboardMember
-              name="Benjamin Hanim"
-              position="Committee Chair"
-              year="2024"
-              image={Benjamin}
-              linkedin="https://www.linkedin.com/in/benjamin-hanim/"
-              github="https://github.com/ben45123"
-            />
-            <PastEboardMember
-              name="Aqueena Alexander"
-              position="Social Media"
-              year="2024"
-              image={Aqueena}
-              linkedin="https://www.linkedin.com/in/aqueena-alexander/"
-            />
-            <PastEboardMember
-              name="Fairooz Bintye Ehsan"
-              position="Events Coordinator"
-              year="2024"
-              image={Fairooz}
-              linkedin="https://www.linkedin.com/in/fairooz-bintye-ehsan/"
-            />
-            <PastEboardMember
-              name="Ignacio Sanchez"
-              position="Committee Chair"
-              year="2023"
-              image={Ignacio}
-              linkedin="https://www.linkedin.com/in/ignacio-antequera/"
-              github="https://github.com/Ignacio-Antequera"
-            />
-            <PastEboardMember
-              name="Teuta Elezaj"
-              position="Vice President"
-              year="2023"
-              image={Teuta}
-              linkedin="https://www.linkedin.com/in/teutaelezaj/"
-              github="https://github.com/teutaelezaj"
-            />
-            <PastEboardMember
-              name="Katarina Kobetitsch"
-              position="Social Media"
-              year="2023"
-              image={Kat}
-              linkedin="https://www.linkedin.com/in/katarina-kobetitsch/"
-            />
-            <PastEboardMember
-              name="Faizan Ahmed"
-              position="President"
-              year="2022"
-              image={Faizan}
-              linkedin="https://www.linkedin.com/in/faizancodes/"
-              github="https://github.com/faizancodes"
-            />
-            <PastEboardMember
-              name="Thomas Latona"
-              position="Vice President"
-              year="2022"
-              image={Thomas}
-              linkedin="https://www.linkedin.com/in/thomaslatona/"
-            />
-            <PastEboardMember
-              name="Ava McNevin"
-              position="Committee Chair"
-              year="2022"
-              image={Ava}
-              linkedin="https://www.linkedin.com/in/ava-mcnevin/"
-            />
-            <PastEboardMember
-              name="Jade Deo"
-              position="Social Media"
-              year="2022"
-              image={Jade}
-              linkedin="https://www.linkedin.com/in/jadedeo/"
-            />
+        {/* Mobile View - New Design */}
+        <div className="md:hidden space-y-8">
+          <div className="grid grid-cols-1 gap-8">
+            {/* Current E-board section */}
+            <div className="space-y-8">
+              <MobileEboardMember
+                name="Tomas Santos Yciano"
+                position="President"
+                image={Tomas}
+                description="Launch Intern @ EY"
+                linkedin="https://www.linkedin.com/in/tjsy/"
+                github="https://github.com/tomassantos484"
+              />
+              <MobileEboardMember
+                name="David Rosoff"
+                position="Vice President"
+                image={David}
+                description="Global Threat Emulation @ Sony"
+                linkedin="https://www.linkedin.com/in/davidrosoff/"
+                github="https://github.com/ThePurpleTux"
+              />
+              <MobileEboardMember
+                name="Hinna Zeejah"
+                position="Information Officer"
+                image={Hinna}
+                description="Google Summer of Code' 24"
+                linkedin="https://www.linkedin.com/in/hinna-zeejah/"
+                github="https://github.com/HinnaZeejah"
+              />
+              <MobileEboardMember
+                name="Richard Perez"
+                position="Treasurer"
+                image={Richard}
+                description="Lead Instructor, All Star Code"
+                linkedin="https://www.linkedin.com/in/richard-perez-jr/"
+                github="https://github.com/richardp23"
+              />
+              <MobileEboardMember
+                name="Jennifer Venus"
+                position="Social Media Chair"
+                image={Jennifer}
+                description="Intern @ National Grid"
+                linkedin="https://www.linkedin.com/in/jennifervenus/"
+                github="https://github.com/jenniferVenus"
+              />
+              <MobileEboardMember
+                name="Gabriel Paredes"
+                position="Events Coordinator"
+                image={Jatsu}
+                description="Co-Captain of the STJ CyberStorm"
+                linkedin="https://www.linkedin.com/in/gpred/"
+                github="https://github.com/JatsuLC"
+              />
+              <MobileEboardMember
+                name="Geovani Tzul"
+                position="Committee Chair"
+                image={Geo}
+                description="SWE Fellow @ Headstarter"
+                linkedin="https://www.linkedin.com/in/geo-tzul/"
+                github="https://github.com/NYgeo"
+              />
+              <MobileEboardMember
+                name="Fahmid Zaman"
+                position="Committee Chair"
+                image={Fahmid}
+                description="Pursuing Security+ Certification"
+                linkedin="https://www.linkedin.com/in/fahmidzaman/"
+              />
+            </div>
+
+            {/* Past E-board section */}
+            <div className="mt-16">
+              <h2 className="text-2xl font-bold mb-8">Past E-Board Members</h2>
+              <div className="space-y-6">
+                <MobilePastEboardMember
+                  name="Raymond Ramdat"
+                  position="President"
+                  year="2024"
+                  image={Raymond}
+                  linkedin="https://www.linkedin.com/in/raymondramdat/"
+                />
+                <MobilePastEboardMember
+                  name="Jake Enea"
+                  position="Vice President"
+                  year="2024"
+                  image={Jake}
+                  linkedin="https://www.linkedin.com/in/jakeenea/"
+                  github="https://github.com/jakeenea51"
+                />
+                <MobilePastEboardMember
+                  name="Amrita Kaur"
+                  position="Events Coordinator"
+                  year="2024"
+                  image={Amrita}
+                  linkedin="https://www.linkedin.com/in/amrita-priya-kaur75/"
+                />
+                <MobilePastEboardMember
+                  name="Benjamin Hanim"
+                  position="Committee Chair"
+                  year="2024"
+                  image={Benjamin}
+                  linkedin="https://www.linkedin.com/in/benjamin-hanim/"
+                  github="https://github.com/ben45123"
+                />
+                <MobilePastEboardMember
+                  name="Aqueena Alexander"
+                  position="Social Media"
+                  year="2024"
+                  image={Aqueena}
+                  linkedin="https://www.linkedin.com/in/aqueena-alexander/"
+                />
+                <MobilePastEboardMember
+                  name="Fairooz Bintye Ehsan"
+                  position="Events Coordinator"
+                  year="2024"
+                  image={Fairooz}
+                  linkedin="https://www.linkedin.com/in/fairooz-bintye-ehsan/"
+                />
+                <MobilePastEboardMember
+                  name="Ignacio Sanchez"
+                  position="Committee Chair"
+                  year="2023"
+                  image={Ignacio}
+                  linkedin="https://www.linkedin.com/in/ignacio-antequera/"
+                  github="https://github.com/Ignacio-Antequera"
+                />
+                <MobilePastEboardMember
+                  name="Teuta Elezaj"
+                  position="Vice President"
+                  year="2023"
+                  image={Teuta}
+                  linkedin="https://www.linkedin.com/in/teutaelezaj/"
+                  github="https://github.com/teutaelezaj"
+                />
+                <MobilePastEboardMember
+                  name="Katarina Kobetitsch"
+                  position="Social Media"
+                  year="2023"
+                  image={Kat}
+                  linkedin="https://www.linkedin.com/in/katarina-kobetitsch/"
+                />
+                <MobilePastEboardMember
+                  name="Faizan Ahmed"
+                  position="President"
+                  year="2022"
+                  image={Faizan}
+                  linkedin="https://www.linkedin.com/in/faizancodes/"
+                  github="https://github.com/faizancodes"
+                />
+                <MobilePastEboardMember
+                  name="Thomas Latona"
+                  position="Vice President"
+                  year="2022"
+                  image={Thomas}
+                  linkedin="https://www.linkedin.com/in/thomaslatona/"
+                />
+                <MobilePastEboardMember
+                  name="Ava McNevin"
+                  position="Committee Chair"
+                  year="2022"
+                  image={Ava}
+                  linkedin="https://www.linkedin.com/in/ava-mcnevin/"
+                />
+                <MobilePastEboardMember
+                  name="Jade Deo"
+                  position="Social Media"
+                  year="2022"
+                  image={Jade}
+                  linkedin="https://www.linkedin.com/in/jadedeo/"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -354,5 +427,104 @@ export function PastEboardMember({
         </div>
       </CardBody>
     </CardContainer>
+  );
+}
+
+function MobileEboardMember({
+  name,
+  position,
+  image,
+  description,
+  linkedin,
+  github,
+}: {
+  name: string;
+  position: string;
+  image: StaticImageData;
+  description: string;
+  linkedin: string;
+  github?: string;
+}) {
+  return (
+    <div className="relative bg-black/20 backdrop-blur-md rounded-xl p-6 border border-white/10">
+      <div className="flex flex-col items-center">
+        <div className="relative w-32 h-32 mb-4">
+          <Image
+            src={image}
+            alt={name}
+            fill
+            className="object-cover rounded-full border-2 border-red-500/20"
+          />
+        </div>
+        
+        <h3 className="text-xl font-bold text-white mb-1">{name}</h3>
+        <span className="text-red-500 font-medium text-sm mb-2">{position}</span>
+        <p className="text-neutral-300 text-sm mb-4">{description}</p>
+        
+        <div className="flex space-x-4 mt-2">
+          <a href={linkedin} target="_blank" rel="noreferrer"
+             className="text-neutral-400 hover:text-red-500 transition-colors">
+            <FontAwesomeIcon icon={faLinkedin as IconProp} className="text-xl" />
+          </a>
+          {github && (
+            <a href={github} target="_blank" rel="noreferrer"
+               className="text-neutral-400 hover:text-red-500 transition-colors">
+              <FontAwesomeIcon icon={faGithub as IconProp} className="text-xl" />
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MobilePastEboardMember({
+  name,
+  position,
+  year,
+  image,
+  linkedin,
+  github,
+}: {
+  name: string;
+  position: string;
+  year: string;
+  image: StaticImageData;
+  linkedin: string;
+  github?: string;
+}) {
+  return (
+    <div className="flex items-center space-x-4 bg-black/10 backdrop-blur-sm rounded-lg p-4 border border-white/5">
+      <div className="relative w-16 h-16 flex-shrink-0">
+        <Image
+          src={image}
+          alt={name}
+          fill
+          className="object-cover rounded-full"
+        />
+      </div>
+      
+      <div className="flex-1">
+        <h3 className="text-lg font-medium text-white">{name}</h3>
+        <div className="flex items-center text-sm text-neutral-400 space-x-2">
+          <span>{position}</span>
+          <span>•</span>
+          <span>{year}</span>
+        </div>
+        
+        <div className="flex space-x-3 mt-2">
+          <a href={linkedin} target="_blank" rel="noreferrer"
+             className="text-neutral-400 hover:text-red-500 transition-colors">
+            <FontAwesomeIcon icon={faLinkedin as IconProp} className="text-sm" />
+          </a>
+          {github && (
+            <a href={github} target="_blank" rel="noreferrer"
+               className="text-neutral-400 hover:text-red-500 transition-colors">
+              <FontAwesomeIcon icon={faGithub as IconProp} className="text-sm" />
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
