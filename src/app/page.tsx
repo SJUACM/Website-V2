@@ -19,15 +19,33 @@ export default function Home() {
       </div>
 
       <div className="pt-24 md:pt-48 space-y-4 text-center w-full px-4 md:px-0">
-        <h1 className="text-3xl md:text-4xl font-semibold">
+        {/* Desktop Title */}
+        <h1 className="hidden md:block text-4xl font-semibold">
           St. John&apos;s University ACM Student Chapter
         </h1>
         
+        {/* Mobile Title */}
+        <h1 className="block md:hidden text-3xl font-semibold">
+          St. John&apos;s University
+        </h1>
+
         <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] md:before:h-[400px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] md:after:h-[280px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-red-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#de2307] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[340px] before:lg:h-[360px] text-4xl text-center"></div>
 
-        <h3 className="text-lg md:text-xl">
+        {/* Desktop Subtitle */}
+        <h3 className="hidden md:block text-xl">
           SJU&apos;s Premier Organization for Computer Science and Cyber Security
         </h3>
+
+        {/* Mobile Logo */}
+        <div className="block md:hidden mx-auto w-48 h-48 relative">
+          <Image
+            src="/images/SJU_ACM_Logo.png"
+            alt="ACM Logo"
+            fill
+            className="object-contain"
+            priority
+          />
+        </div>
 
         <div className="flex flex-row items-center justify-center pt-8">
           <button className="z-10 relative inline-flex h-12 md:h-14 w-[140px] md:w-[150px] overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
