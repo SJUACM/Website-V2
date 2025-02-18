@@ -83,15 +83,11 @@ export default function Blog() {
   }, []);
 
   return (
-    <div className="pt-0 md:pt-32 px-4 sm:px-8 max-w-7xl mx-auto">
-      <h1 className="text-4xl font-bold text-white text-center mb-16 md:mb-16">
-        Blog
-      </h1>
-      
-      {/* Mobile-optimized blog list with increased spacing */}
-      <div className="space-y-16 mb-16 md:hidden">
+    <div className="pt-4 md:pt-2 px-8 sm:px-8 max-w-7xl mx-auto">
+      {/* Mobile-optimized blog list with adjusted spacing */}
+      <div className="space-y-12 mb-16 md:hidden">
         {posts.map((post, index) => (
-          <div key={post.sys.id} className={`${index !== posts.length - 1 ? 'border-b border-neutral-800 pb-16' : ''}`}>
+          <div key={post.sys.id} className={`${index !== posts.length - 1 ? 'border-b border-neutral-800 pb-12' : ''}`}>
             <MobileBlogCard post={post} />
           </div>
         ))}
