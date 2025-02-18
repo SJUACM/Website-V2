@@ -66,7 +66,46 @@ export const youtubeChannels: Resource[] = [
     description: "Engaging cybersecurity and networking tutorials",
     link: "https://www.youtube.com/@NetworkChuck",
   },
-  // ... rest of the channels from the youtube-channels page
+  {
+    title: "freeCodeCamp",
+    description: "Comprehensive programming tutorials and courses",
+    link: "https://www.youtube.com/@freecodecamp",
+  },
+  {
+    title: "Fireship",
+    description: "Quick, practical web development tutorials and tech news",
+    link: "https://www.youtube.com/@Fireship",
+  },
+  {
+    title: "Traversy Media",
+    description: "Web development tutorials and project walkthroughs",
+    link: "https://www.youtube.com/@TraversyMedia",
+  },
+  {
+    title: "The Net Ninja",
+    description: "Detailed web development tutorials and courses",
+    link: "https://www.youtube.com/@NetNinja",
+  },
+  {
+    title: "Web Dev Simplified",
+    description: "Clear explanations of web development concepts",
+    link: "https://www.youtube.com/@WebDevSimplified",
+  },
+  {
+    title: "Kevin Powell",
+    description: "CSS tutorials and web design techniques",
+    link: "https://www.youtube.com/@KevinPowell",
+  },
+  {
+    title: "Computerphile",
+    description: "In-depth computer science concepts and theory",
+    link: "https://www.youtube.com/@Computerphile",
+  },
+  {
+    title: "ThePrimeagen",
+    description: "Advanced programming concepts and developer productivity",
+    link: "https://www.youtube.com/@ThePrimeagen",
+  }
 ];
 
 export const interviewResources: Resource[] = [

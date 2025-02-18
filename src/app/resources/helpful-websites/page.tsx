@@ -40,9 +40,8 @@ function ResourceCard({ resource }: { resource: Resource }) {
 
 export default function HelpfulWebsites() {
   return (
-    <div className="mt-[-100px] text-center items-center justify-center max-w-7xl mx-auto px-8">
+    <div className="text-center items-center justify-center max-w-7xl mx-auto px-8">
       <div className="p-8">
-        <h1 className="text-4xl font-bold mb-8 text-white">Helpful Websites</h1>
         <p className="text-xl text-neutral-300 max-w-3xl mx-auto mb-16">
           Explore these carefully curated websites to enhance your learning and development journey.
         </p>

@@ -4,61 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { CardBody, CardContainer, CardItem } from "../../components/3d-card";
-
-interface Resource {
-  title: string;
-  description: string;
-  link: string;
-  icon?: IconProp;
-}
-
-const youtubeChannels = [
-  {
-    title: "NetworkChuck",
-    description: "Engaging cybersecurity and networking tutorials. Perfect for beginners looking to start their cybersecurity journey.",
-    link: "https://www.youtube.com/@NetworkChuck",
-  },
-  {
-    title: "John Hammond",
-    description: "In-depth cybersecurity content, CTF walkthroughs, and malware analysis. Great for hands-on learning.",
-    link: "https://www.youtube.com/@_JohnHammond",
-  },
-  {
-    title: "Fireship",
-    description: "Quick, practical web development tutorials and tech news. Known for their '100 seconds' series explaining complex topics.",
-    link: "https://www.youtube.com/@Fireship",
-  },
-  {
-    title: "ThePrimeagen",
-    description: "Advanced programming concepts, vim tutorials, and software engineering career advice from a Netflix engineer.",
-    link: "https://www.youtube.com/@ThePrimeagen",
-  },
-  {
-    title: "Traversy Media",
-    description: "Comprehensive web development tutorials covering all major frameworks and technologies.",
-    link: "https://www.youtube.com/@TraversyMedia",
-  },
-  {
-    title: "David Bombal",
-    description: "Networking, cybersecurity, and ethical hacking tutorials. Great for certification prep and practical skills.",
-    link: "https://www.youtube.com/@davidbombal",
-  },
-  {
-    title: "Tech With Tim",
-    description: "Python programming tutorials, machine learning, and software development projects with practical examples.",
-    link: "https://www.youtube.com/@TechWithTim",
-  },
-  {
-    title: "Computerphile",
-    description: "Deep dives into computer science concepts, algorithms, and the theory behind modern computing.",
-    link: "https://www.youtube.com/@Computerphile",
-  },
-  {
-    title: "FreeCodeCamp",
-    description: "Full-length programming courses covering everything from web development to machine learning.",
-    link: "https://www.youtube.com/@freecodecamp",
-  }
-];
+import { youtubeChannels, Resource } from "@/app/resources/data";
 
 function ResourceCard({ resource }: { resource: Resource }) {
   return (
@@ -94,9 +40,8 @@ function ResourceCard({ resource }: { resource: Resource }) {
 
 export default function YoutubeChannels() {
   return (
-    <div className="mt-[-100px] text-center items-center justify-center max-w-7xl mx-auto px-8">
+    <div className="text-center items-center justify-center max-w-7xl mx-auto px-8">
       <div className="p-8">
-        <h1 className="text-4xl font-bold mb-8 text-white">YouTube Channels</h1>
         <p className="text-xl text-neutral-300 max-w-3xl mx-auto mb-16">
           A curated list of educational YouTube channels covering programming, cybersecurity, and computer science concepts. These channels offer high-quality content to supplement your learning.
         </p>

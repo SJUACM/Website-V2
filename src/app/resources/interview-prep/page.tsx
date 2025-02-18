@@ -101,9 +101,8 @@ function ResourceCard({ resource }: { resource: Resource }) {
 
 export default function InterviewPrep() {
   return (
-    <div className="mt-[-100px] text-center items-center justify-center max-w-7xl mx-auto px-8">
+    <div className="text-center items-center justify-center max-w-7xl mx-auto px-8">
       <div className="p-8">
-        <h1 className="text-4xl font-bold mb-8 text-white">Technical Interview Prep</h1>
         <p className="text-xl text-neutral-300 max-w-3xl mx-auto mb-16">
           Prepare for technical interviews with these carefully curated resources. From coding challenges to interview tips, we've got you covered.
         </p>
