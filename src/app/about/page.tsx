@@ -18,12 +18,12 @@ export default function About() {
   return (
     <div className="max-w-7xl mx-auto px-4 md:px-8">
       {/* Hero Section */}
-      <div className="text-center mb-8 md:mb-16">
-        <h1 className="text-3xl md:text-5xl font-bold mb-6 md:mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200">
+      <div className="text-center mb-16 md:mb-16">
+        <h1 className="text-3xl md:text-5xl font-bold mb-8 md:mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200">
           About Us
         </h1>
         
-        <div className="max-w-3xl mx-auto space-y-4 md:space-y-6 px-6 md:px-4">
+        <div className="max-w-3xl mx-auto space-y-6 md:space-y-6 px-6 md:px-4">
           <p className="text-base md:text-xl text-neutral-300 leading-relaxed">
             We are St. John's University's premier organization for Computer Science and Cyber Security. 
             We focus on providing students with hands-on experience, industry connections, and a supportive 
@@ -37,7 +37,7 @@ export default function About() {
       </div>
 
       {/* Features Section */}
-      <div className="mt-16 md:mt-12 mb-12 md:mb-20 max-w-6xl mx-auto">
+      <div className="mt-24 md:mt-12 mb-12 md:mb-20 max-w-6xl mx-auto">
         {/* Desktop View (3D Cards) - Hidden on mobile */}
         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 px-8">
           <FeatureCard 
@@ -63,9 +63,9 @@ export default function About() {
         </div>
 
         {/* Mobile View (Simple List) - Hidden on desktop */}
-        <div className="space-y-6 px-4 md:hidden">
-          <h2 className="text-2xl font-semibold text-white text-center mb-6">
-            What We Offer
+        <div className="space-y-8 px-4 md:hidden">
+          <h2 className="text-2xl font-semibold text-white text-center mb-8">
+            
           </h2>
           <FeatureItem 
             icon={faUsers as IconProp}
@@ -91,32 +91,36 @@ export default function About() {
       </div>
 
       {/* Meeting Info Section */}
-      <div className="relative p-12 mb-20 bg-gradient-to-r from-black/50 via-black/30 to-black/50 rounded-xl border border-neutral-800/50 overflow-hidden">
+      <div className="relative p-6 md:p-12 mb-12 md:mb-20">
+        {/* Desktop gradient background - hidden on mobile */}
+        <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/50 via-black/30 to-black/50 rounded-xl border border-neutral-800/50"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-red-500/10 to-transparent opacity-50"></div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
-          <div className="text-left space-y-6">
-            <h2 className="text-2xl font-semibold text-white mb-6">Join Our Community</h2>
-            <p className="text-lg text-neutral-300 leading-relaxed">
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center relative z-10">
+          <div className="space-y-4 md:space-y-6">
+            <h2 className="text-xl md:text-2xl font-semibold text-white mb-4 md:mb-6">Join Our Community</h2>
+            <p className="text-base md:text-lg text-neutral-300 leading-relaxed">
               Operating under the Collins College of Professional Studies, SJU ACM is moderated by Dr. Joan DeBello and is supported by Professors across the Computer Science & Cyber Security departments.
             </p>
             
-            <div className="space-y-4 bg-black/30 p-6 rounded-lg border border-neutral-800 backdrop-blur-sm">
-              <p className="text-lg text-neutral-300 leading-relaxed">
-                Our meetings are held on Thursdays during Common Hour (2:00 - 3:00 PM) in the Cyber Security Lab (Room 2-140A in the 2nd Floor of St. Augustine)
+            {/* Meeting info box - styled differently for mobile */}
+            <div className="space-y-4 md:bg-black/30 md:p-6 rounded-lg md:border md:border-neutral-800 md:backdrop-blur-sm">
+              <p className="text-base md:text-lg text-neutral-300 leading-relaxed">
+                Our meetings are held on Thursdays during Common Hour (2:00 - 3:00 PM) in the Cyber Security Lab (Room 2-140A in St. Augustine)
               </p>
               
-              <p className="text-lg text-neutral-300 leading-relaxed font-medium">
-                Our meetings are open to everyone, regardless of major or experience. We welcome everyone to join our community and share our love for technology!
+              <p className="text-base md:text-lg text-neutral-300 leading-relaxed font-medium">
+                Our meetings are open to everyone, regardless of major or experience. We welcome everyone to join our community!
               </p>
             </div>
           </div>
 
-          <div className="relative h-[400px] rounded-xl overflow-hidden group">
+          <div className="relative h-[300px] md:h-[400px] rounded-xl overflow-hidden group">
             <Image
               src={LabPic}
               alt="SJU Cyber Security Lab"
               fill
-              className="object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
@@ -125,21 +129,21 @@ export default function About() {
       </div>
 
       {/* Social Links Section */}
-      <div className="bg-black/30 backdrop-blur-md border border-neutral-800 rounded-2xl p-4 md:p-8 mb-8">
+      <div className="bg-transparent md:bg-black/30 md:backdrop-blur-md md:border md:border-neutral-800 rounded-2xl p-4 md:p-8 mb-8">
         <h2 className="text-xl md:text-3xl font-bold text-center mb-6 md:mb-8">
           Connect With Us
-          <div className="h-1 w-16 md:w-20 bg-red-500 mx-auto mt-2"></div>
+          <div className="h-1 w-12 md:w-20 bg-red-500 mx-auto mt-2"></div>
         </h2>
 
-        <div className="grid grid-cols-3 md:grid-cols-5 gap-3 md:gap-8 justify-items-center">
-          {/* GitHub */}
+        <div className="grid grid-cols-3 md:grid-cols-5 gap-4 md:gap-8 justify-items-center">
+          {/* Social media links with adjusted sizing for mobile */}
           <a href="https://github.com/SJUACM" target="_blank" rel="noreferrer" 
              className="group flex flex-col items-center no-underline">
-            <div className="p-2 md:p-4 rounded-full bg-black/50 border border-neutral-800 
+            <div className="p-2.5 md:p-4 rounded-full bg-black/50 border border-neutral-800 
                           group-hover:border-red-500 transition-all duration-300 
                           group-hover:scale-110">
               <FontAwesomeIcon icon={faGithub as IconProp} 
-                             className="text-xl md:text-3xl text-neutral-300 
+                             className="text-lg md:text-3xl text-neutral-300 
                                       group-hover:text-red-500 transition-colors" />
             </div>
             <span className="mt-1 md:mt-2 text-xs md:text-sm text-neutral-400 
@@ -150,11 +154,11 @@ export default function About() {
           <a href="https://www.linkedin.com/company/stjacm/posts/?feedView=all" 
              target="_blank" rel="noreferrer" 
              className="group flex flex-col items-center no-underline">
-            <div className="p-2 md:p-4 rounded-full bg-black/50 border border-neutral-800 
+            <div className="p-2.5 md:p-4 rounded-full bg-black/50 border border-neutral-800 
                           group-hover:border-red-500 transition-all duration-300 
                           group-hover:scale-110">
               <FontAwesomeIcon icon={faLinkedin as IconProp} 
-                             className="text-xl md:text-3xl text-neutral-300 
+                             className="text-lg md:text-3xl text-neutral-300 
                                       group-hover:text-red-500 transition-colors" />
             </div>
             <span className="mt-1 md:mt-2 text-xs md:text-sm text-neutral-400 
@@ -164,11 +168,11 @@ export default function About() {
           {/* Discord */}
           <a href="https://discord.gg/Bcwm3e8m" target="_blank" rel="noreferrer" 
              className="group flex flex-col items-center no-underline">
-            <div className="p-2 md:p-4 rounded-full bg-black/50 border border-neutral-800 
+            <div className="p-2.5 md:p-4 rounded-full bg-black/50 border border-neutral-800 
                           group-hover:border-red-500 transition-all duration-300 
                           group-hover:scale-110">
               <FontAwesomeIcon icon={faDiscord as IconProp} 
-                             className="text-xl md:text-3xl text-neutral-300 
+                             className="text-lg md:text-3xl text-neutral-300 
                                       group-hover:text-red-500 transition-colors" />
             </div>
             <span className="mt-1 md:mt-2 text-xs md:text-sm text-neutral-400 
@@ -178,11 +182,11 @@ export default function About() {
           {/* Instagram */}
           <a href="https://www.instagram.com/stj.acm/" target="_blank" rel="noreferrer" 
              className="group flex flex-col items-center no-underline">
-            <div className="p-2 md:p-4 rounded-full bg-black/50 border border-neutral-800 
+            <div className="p-2.5 md:p-4 rounded-full bg-black/50 border border-neutral-800 
                           group-hover:border-red-500 transition-all duration-300 
                           group-hover:scale-110">
               <FontAwesomeIcon icon={faInstagram as IconProp} 
-                             className="text-xl md:text-3xl text-neutral-300 
+                             className="text-lg md:text-3xl text-neutral-300 
                                       group-hover:text-red-500 transition-colors" />
             </div>
             <span className="mt-1 md:mt-2 text-xs md:text-sm text-neutral-400 
@@ -193,11 +197,11 @@ export default function About() {
           <a href="https://www.youtube.com/channel/UCuIcwbZDPnZYNQ0pFhmaNwQ" 
              target="_blank" rel="noreferrer" 
              className="group flex flex-col items-center no-underline">
-            <div className="p-2 md:p-4 rounded-full bg-black/50 border border-neutral-800 
+            <div className="p-2.5 md:p-4 rounded-full bg-black/50 border border-neutral-800 
                           group-hover:border-red-500 transition-all duration-300 
                           group-hover:scale-110">
               <FontAwesomeIcon icon={faYoutube as IconProp} 
-                             className="text-xl md:text-3xl text-neutral-300 
+                             className="text-lg md:text-3xl text-neutral-300 
                                       group-hover:text-red-500 transition-colors" />
             </div>
             <span className="mt-1 md:mt-2 text-xs md:text-sm text-neutral-400 
