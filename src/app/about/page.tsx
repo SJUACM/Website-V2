@@ -16,18 +16,18 @@ import LabPic from "../../../public/images/ctf24.jpg";
 
 export default function About() {
   return (
-    <div className="mt-[-100px] text-center items-center justify-center max-w-7xl mx-auto px-8">
-      <div className="p-8">
+    <div className="mt-[-50px] md:mt-[-100px] text-center items-center justify-center max-w-7xl mx-auto px-4 md:px-8">
+      <div className="p-4 md:p-8">
         {/* Hero Section */}
-        <div className="mb-12">
-          <h1 className="text-4xl font-bold mb-8 text-white">About</h1>
+        <div className="mb-8 md:mb-12">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 md:mb-8 text-white">About</h1>
           <div className="max-w-3xl mx-auto">
-            <p className="text-xl text-neutral-300 leading-relaxed mb-6">
+            <p className="text-lg md:text-xl text-neutral-300 leading-relaxed mb-4 md:mb-6">
               We are St. John's University's premier organization for Computer Science and Cyber Security. 
               We focus on providing students with hands-on experience, industry connections, and a supportive 
               community of tech enthusiasts.
             </p>
-            <p className="text-xl text-neutral-300 leading-relaxed">
+            <p className="text-lg md:text-xl text-neutral-300 leading-relaxed">
               We aim to enhance the experience of STJ tech students by providing them with a platform to learn, share, and collaborate through our labs and presentations.
             </p>
           </div>
@@ -92,46 +92,46 @@ export default function About() {
         </div>
 
         {/* Social Media Section */}
-        <div className="relative p-12 bg-gradient-to-r from-black/50 via-black/30 to-black/50 rounded-xl border border-neutral-800/50">
-          <h2 className="text-3xl font-semibold text-white mb-12 relative">
+        <div className="relative p-6 md:p-12 bg-gradient-to-r from-black/50 via-black/30 to-black/50 rounded-xl border border-neutral-800/50">
+          <h2 className="text-2xl md:text-3xl font-semibold text-white mb-8 md:mb-12 relative">
             Connect With Us
-            <div className="h-1 w-40 bg-red-500 mx-auto mt-4"></div>
+            <div className="h-1 w-32 md:w-40 bg-red-500 mx-auto mt-4"></div>
           </h2>
           
-          <div className="flex justify-center gap-8 relative">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-8 relative">
             <a href="https://github.com/SJUACM" target="_blank" rel="noreferrer" className="group flex flex-col items-center no-underline">
-              <div className="p-4 rounded-full bg-black/50 border border-neutral-800 group-hover:border-red-500 transition-colors">
-                <FontAwesomeIcon icon={faGithub as IconProp} className="text-3xl text-neutral-300 group-hover:text-red-500 transition-all transform group-hover:-translate-y-1" />
+              <div className="p-3 md:p-4 rounded-full bg-black/50 border border-neutral-800 group-hover:border-red-500 transition-colors">
+                <FontAwesomeIcon icon={faGithub as IconProp} className="text-2xl md:text-3xl text-neutral-300 group-hover:text-red-500 transition-all transform group-hover:-translate-y-1" />
               </div>
-              <span className="mt-2 text-sm text-neutral-400 group-hover:text-red-500 transition-colors">GitHub</span>
+              <span className="mt-2 text-xs md:text-sm text-neutral-400 group-hover:text-red-500 transition-colors">GitHub</span>
             </a>
 
             <a href="https://www.linkedin.com/company/stjacm/posts/?feedView=all" target="_blank" rel="noreferrer" className="group flex flex-col items-center no-underline">
-              <div className="p-4 rounded-full bg-black/50 border border-neutral-800 group-hover:border-red-500 transition-colors">
-                <FontAwesomeIcon icon={faLinkedin as IconProp} className="text-3xl text-neutral-300 group-hover:text-red-500 transition-all transform group-hover:-translate-y-1" />
+              <div className="p-3 md:p-4 rounded-full bg-black/50 border border-neutral-800 group-hover:border-red-500 transition-colors">
+                <FontAwesomeIcon icon={faLinkedin as IconProp} className="text-2xl md:text-3xl text-neutral-300 group-hover:text-red-500 transition-all transform group-hover:-translate-y-1" />
               </div>
-              <span className="mt-2 text-sm text-neutral-400 group-hover:text-red-500 transition-colors">LinkedIn</span>
+              <span className="mt-2 text-xs md:text-sm text-neutral-400 group-hover:text-red-500 transition-colors">LinkedIn</span>
             </a>
 
             <a href="https://discord.gg/Bcwm3e8m" target="_blank" rel="noreferrer" className="group flex flex-col items-center no-underline">
-              <div className="p-4 rounded-full bg-black/50 border border-neutral-800 group-hover:border-red-500 transition-colors">
-                <FontAwesomeIcon icon={faDiscord as IconProp} className="text-3xl text-neutral-300 group-hover:text-red-500 transition-all transform group-hover:-translate-y-1" />
+              <div className="p-3 md:p-4 rounded-full bg-black/50 border border-neutral-800 group-hover:border-red-500 transition-colors">
+                <FontAwesomeIcon icon={faDiscord as IconProp} className="text-2xl md:text-3xl text-neutral-300 group-hover:text-red-500 transition-all transform group-hover:-translate-y-1" />
               </div>
-              <span className="mt-2 text-sm text-neutral-400 group-hover:text-red-500 transition-colors">Discord</span>
+              <span className="mt-2 text-xs md:text-sm text-neutral-400 group-hover:text-red-500 transition-colors">Discord</span>
             </a>
 
             <a href="https://www.instagram.com/stj.acm/" target="_blank" rel="noreferrer" className="group flex flex-col items-center no-underline">
-              <div className="p-4 rounded-full bg-black/50 border border-neutral-800 group-hover:border-red-500 transition-colors">
-                <FontAwesomeIcon icon={faInstagram as IconProp} className="text-3xl text-neutral-300 group-hover:text-red-500 transition-all transform group-hover:-translate-y-1" />
+              <div className="p-3 md:p-4 rounded-full bg-black/50 border border-neutral-800 group-hover:border-red-500 transition-colors">
+                <FontAwesomeIcon icon={faInstagram as IconProp} className="text-2xl md:text-3xl text-neutral-300 group-hover:text-red-500 transition-all transform group-hover:-translate-y-1" />
               </div>
-              <span className="mt-2 text-sm text-neutral-400 group-hover:text-red-500 transition-colors">Instagram</span>
+              <span className="mt-2 text-xs md:text-sm text-neutral-400 group-hover:text-red-500 transition-colors">Instagram</span>
             </a>
 
             <a href="https://www.youtube.com/channel/UCuIcwbZDPnZYNQ0pFhmaNwQ" target="_blank" rel="noreferrer" className="group flex flex-col items-center no-underline">
-              <div className="p-4 rounded-full bg-black/50 border border-neutral-800 group-hover:border-red-500 transition-colors">
-                <FontAwesomeIcon icon={faYoutube as IconProp} className="text-3xl text-neutral-300 group-hover:text-red-500 transition-all transform group-hover:-translate-y-1" />
+              <div className="p-3 md:p-4 rounded-full bg-black/50 border border-neutral-800 group-hover:border-red-500 transition-colors">
+                <FontAwesomeIcon icon={faYoutube as IconProp} className="text-2xl md:text-3xl text-neutral-300 group-hover:text-red-500 transition-all transform group-hover:-translate-y-1" />
               </div>
-              <span className="mt-2 text-sm text-neutral-400 group-hover:text-red-500 transition-colors">YouTube</span>
+              <span className="mt-2 text-xs md:text-sm text-neutral-400 group-hover:text-red-500 transition-colors">YouTube</span>
             </a>
           </div>
         </div>
