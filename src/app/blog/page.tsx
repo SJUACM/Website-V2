@@ -128,7 +128,7 @@ function MobileBlogCard({ post }: { post: BlogPost }) {
           </h2>
           
           <div className="flex items-center text-sm text-neutral-400 mb-4">
-            <span>{new Date(post.fields.date).toLocaleDateString()}</span>
+            <span>{new Date(post.fields.publishDate).toLocaleDateString()}</span>
             {post.fields.author && (
               <>
                 <span className="mx-2">•</span>
