@@ -73,37 +73,82 @@ function BlogCard({ post }: { post: BlogPost }) {
 
 export default function Blog() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchPosts() {
-      try {
-        const allPosts = await getAllPosts();
-        setPosts(allPosts);
-      } catch (error) {
-        console.error("Error fetching posts:", error);
-      } finally {
-        setLoading(false);
-      }
+      const fetchedPosts = await getAllPosts();
+      setPosts(fetchedPosts);
     }
-
     fetchPosts();
   }, []);
 
-  if (loading) {
-    return <div className="text-center mt-8">Loading...</div>;
-  }
-
   return (
-    <div className="mt-[-100px] text-center items-center justify-center max-w-7xl mx-auto px-8">
-      <div className="p-8">
-        <h1 className="text-4xl font-bold mb-8 text-white">Blog</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {posts.map((post) => (
-            <BlogCard key={post.sys.id} post={post} />
-          ))}
-        </div>
+    <div className="pt-32 px-4 sm:px-8 max-w-7xl mx-auto">
+      <h1 className="text-4xl font-bold text-white text-center mb-16">
+        Blog
+      </h1>
+      
+      {/* Mobile-optimized blog list with increased spacing */}
+      <div className="space-y-16 mb-16 md:hidden">
+        {posts.map((post, index) => (
+          <div key={post.sys.id} className={`${index !== posts.length - 1 ? 'border-b border-neutral-800 pb-16' : ''}`}>
+            <MobileBlogCard post={post} />
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop 3D cards grid */}
+      <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.map((post) => (
+          <BlogCard key={post.sys.id} post={post} />
+        ))}
       </div>
     </div>
+  );
+}
+
+function MobileBlogCard({ post }: { post: BlogPost }) {
+  return (
+    <Link href={`/blog/${post.fields.slug}`}>
+      <div className="bg-black/40 border border-neutral-800 rounded-lg overflow-hidden">
+        {post.fields.coverImage && (
+          <div className="aspect-video relative">
+            <Image
+              src={`https:${post.fields.coverImage.fields.file.url}`}
+              alt={post.fields.coverImage.fields.title || post.fields.title}
+              fill
+              className="object-cover"
+            />
+          </div>
+        )}
+        
+        <div className="p-6">
+          <h2 className="text-xl font-bold text-white mb-3">
+            {post.fields.title}
+          </h2>
+          
+          <div className="flex items-center text-sm text-neutral-400 mb-4">
+            <span>{new Date(post.fields.date).toLocaleDateString()}</span>
+            {post.fields.author && (
+              <>
+                <span className="mx-2">•</span>
+                <span>{post.fields.author}</span>
+              </>
+            )}
+          </div>
+          
+          <p className="text-sm text-neutral-300 line-clamp-3 mb-6">
+            {post.fields.excerpt}
+          </p>
+          
+          <span className="text-red-500 text-sm font-medium inline-flex items-center">
+            Read More 
+            <svg className="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </div>
+    </Link>
   );
 }
