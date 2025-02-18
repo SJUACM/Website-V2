@@ -83,8 +83,8 @@ export default function Blog() {
   }, []);
 
   return (
-    <div className="pt-32 px-4 sm:px-8 max-w-7xl mx-auto">
-      <h1 className="text-4xl font-bold text-white text-center mb-16">
+    <div className="pt-0 md:pt-32 px-4 sm:px-8 max-w-7xl mx-auto">
+      <h1 className="text-4xl font-bold text-white text-center mb-16 md:mb-16">
         Blog
       </h1>
       
