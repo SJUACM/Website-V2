@@ -595,35 +595,31 @@ function MobilePastEboardMember({
   github?: string;
 }) {
   return (
-    <div className="flex items-center space-x-4 bg-black/10 backdrop-blur-sm rounded-lg p-4 border border-white/5">
-      <div className="relative w-16 h-16 flex-shrink-0">
+    <div className="bg-black/20 relative group/card dark:hover:shadow-2xl dark:hover:shadow-red-500/[0.1] dark:border-white/[0.2] border-black/[0.1] w-full rounded-xl p-6 border">
+      <div className="flex flex-col items-center">
         <Image
           src={image}
+          height="120"
+          width="120"
+          className="rounded-full object-cover mb-4"
           alt={name}
-          fill
-          className="object-cover rounded-full"
         />
-      </div>
-      
-      <div className="flex-1">
-        <h3 className="text-lg font-medium text-white">{name}</h3>
-        <div className="flex items-center text-sm text-neutral-400 space-x-2">
-          <span>{position}</span>
-          <span>•</span>
-          <span>{year}</span>
-        </div>
-        
-        <div className="flex space-x-3 mt-2">
-          <a href={linkedin} target="_blank" rel="noreferrer"
-             className="text-neutral-400 hover:text-red-500 transition-colors">
-            <FontAwesomeIcon icon={faLinkedin as IconProp} className="text-sm" />
-          </a>
-          {github && (
-            <a href={github} target="_blank" rel="noreferrer"
-               className="text-neutral-400 hover:text-red-500 transition-colors">
-              <FontAwesomeIcon icon={faGithub as IconProp} className="text-sm" />
+        <div className="text-center">
+          <h3 className="text-xl font-bold text-white mb-1">{name}</h3>
+          <p className="text-neutral-300 mb-1">{position}</p>
+          <p className="text-neutral-400 text-sm mb-4">{year}</p>
+          <div className="flex items-center justify-center gap-4">
+            <a href={linkedin} target="_blank" rel="noreferrer"
+               className="text-neutral-400 hover:text-blue-500 transition-colors">
+              <FontAwesomeIcon icon={faLinkedin as IconProp} className="text-xl" />
             </a>
-          )}
+            {github && (
+              <a href={github} target="_blank" rel="noreferrer"
+                 className="text-neutral-400 hover:text-red-500 transition-colors">
+                <FontAwesomeIcon icon={faGithub as IconProp} className="text-xl" />
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </div>
