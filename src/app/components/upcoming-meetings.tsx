@@ -58,13 +58,15 @@ export default function UpcomingMeetings() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="relative h-[400px] rounded-2xl overflow-hidden group"
+            className="relative aspect-[4/3] md:aspect-[3/2] rounded-2xl overflow-hidden group"
           >
             <Image
               src={`https:${nextMeeting.fields.image.fields.file.url}`}
               alt={nextMeeting.fields.title}
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className="object-contain bg-black/40"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
           </motion.div>
