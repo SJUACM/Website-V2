@@ -13,31 +13,58 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import LabPic from "../../../public/images/ctf24.jpg";
+import { motion } from "framer-motion";
 
 export default function About() {
   return (
-    <div className="max-w-7xl mx-auto px-4 md:px-8">
-      {/* Hero Section */}
-      <div className="text-center mb-16 md:mb-16">
-        <h1 className="text-3xl md:text-5xl font-bold mb-8 md:mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200">
-          About Us
-        </h1>
-        
-        <div className="max-w-3xl mx-auto space-y-6 md:space-y-6 px-6 md:px-4">
-          <p className="text-base md:text-xl text-neutral-300 leading-relaxed">
+    <div className="max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 gap-12 items-center px-6 py-12">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="space-y-8 text-center max-w-3xl mx-auto"
+        >
+          <p className="text-neutral-300 text-lg leading-relaxed">
             We are St. John's University's premier organization for Computer Science and Cyber Security. 
             We focus on providing students with hands-on experience, industry connections, and a supportive 
             community of tech enthusiasts.
           </p>
-          <p className="text-base md:text-xl text-neutral-300 leading-relaxed">
+          <p className="text-neutral-300 text-lg leading-relaxed">
             We aim to enhance the experience of STJ tech students by providing them with a platform to learn, 
             share, and collaborate through our labs and presentations.
           </p>
+        </motion.div>
+
+        <div className="space-y-8 px-4 md:hidden">
+          <h2 className="text-2xl font-semibold text-white text-center mb-8">
+            {/* Empty heading removed */}
+          </h2>
+          <FeatureItem 
+            icon={faUsers as IconProp}
+            title="Community"
+            description="Join a community of tech enthusiasts, developers, and cybersecurity experts!"
+          />
+          <FeatureItem 
+            icon={faLaptopCode as IconProp}
+            title="Hands-on Learning"
+            description="Gain hands-on experience through workshops, hackathons, and projects!"
+          />
+          <FeatureItem 
+            icon={faHandshake as IconProp}
+            title="Industry Connections"
+            description="Connect with industry professionals, alumni, and employers through us!"
+          />
+          <FeatureItem 
+            icon={faTrophy as IconProp}
+            title="Growth Opportunities"
+            description="Develop leadership skills, build your portfolio, and prepare for a career!"
+          />
         </div>
       </div>
 
       {/* Features Section */}
-      <div className="mt-24 md:mt-12 mb-12 md:mb-20 max-w-6xl mx-auto">
+      <div className="mt-12 md:mt-8 mb-12 md:mb-20 max-w-6xl mx-auto">
         {/* Desktop View (3D Cards) - Hidden on mobile */}
         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 px-8">
           <FeatureCard 
@@ -56,33 +83,6 @@ export default function About() {
             description="Connect with industry professionals, alumni, and employers through us!"
           />
           <FeatureCard 
-            icon={faTrophy as IconProp}
-            title="Growth Opportunities"
-            description="Develop leadership skills, build your portfolio, and prepare for a career!"
-          />
-        </div>
-
-        {/* Mobile View (Simple List) - Hidden on desktop */}
-        <div className="space-y-8 px-4 md:hidden">
-          <h2 className="text-2xl font-semibold text-white text-center mb-8">
-            
-          </h2>
-          <FeatureItem 
-            icon={faUsers as IconProp}
-            title="Community"
-            description="Join a community of tech enthusiasts, developers, and cybersecurity experts!"
-          />
-          <FeatureItem 
-            icon={faLaptopCode as IconProp}
-            title="Hands-on Learning"
-            description="Gain hands-on experience through workshops, hackathons, and projects!"
-          />
-          <FeatureItem 
-            icon={faHandshake as IconProp}
-            title="Industry Connections"
-            description="Connect with industry professionals, alumni, and employers through us!"
-          />
-          <FeatureItem 
             icon={faTrophy as IconProp}
             title="Growth Opportunities"
             description="Develop leadership skills, build your portfolio, and prepare for a career!"
