@@ -34,10 +34,8 @@ export default function Eboard() {
   return (
     <div className="mt-[-100px] md:mt-[-100px] text-center items-center justify-center max-w-7xl mx-auto px-4 md:px-8">
       <div className="p-4 md:p-8">
-        <h1 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12">E-Board</h1>
-        
-        {/* Desktop View - Keep existing 3D cards */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-8 mb-12">
+        {/* Current E-board - Desktop View */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-8 mb-12 md:mt-16">
           <EboardMember
             name="Tomas Santos Yciano"
             position="President"
@@ -103,8 +101,111 @@ export default function Eboard() {
           />
         </div>
 
-        {/* Mobile View - New Design */}
-        <div className="md:hidden space-y-8">
+        {/* Past E-board - Desktop View */}
+        <div className="hidden md:block mt-32">
+          <h2 className="text-3xl font-bold mb-16">Past E-Board Members</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-8">
+            <EboardMember
+              name="Raymond Ramdat"
+              position="President"
+              image={Raymond}
+              description="2024"
+              linkedin="https://www.linkedin.com/in/raymondramdat/"
+            />
+            <EboardMember
+              name="Jake Enea"
+              position="Vice President"
+              image={Jake}
+              description="2024"
+              linkedin="https://www.linkedin.com/in/jakeenea/"
+              github="https://github.com/jakeenea51"
+            />
+            <EboardMember
+              name="Amrita Kaur"
+              position="Events Coordinator"
+              image={Amrita}
+              description="2024"
+              linkedin="https://www.linkedin.com/in/amrita-priya-kaur75/"
+            />
+            <EboardMember
+              name="Benjamin Hanim"
+              position="Committee Chair"
+              image={Benjamin}
+              description="2024"
+              linkedin="https://www.linkedin.com/in/benjamin-hanim/"
+              github="https://github.com/ben45123"
+            />
+            <EboardMember
+              name="Aqueena Alexander"
+              position="Social Media"
+              image={Aqueena}
+              description="2024"
+              linkedin="https://www.linkedin.com/in/aqueena-alexander/"
+            />
+            <EboardMember
+              name="Fairooz Bintye Ehsan"
+              position="Events Coordinator"
+              image={Fairooz}
+              description="2024"
+              linkedin="https://www.linkedin.com/in/fairooz-bintye-ehsan/"
+            />
+            <EboardMember
+              name="Ignacio Sanchez"
+              position="Committee Chair"
+              image={Ignacio}
+              description="2023"
+              linkedin="https://www.linkedin.com/in/ignacio-antequera/"
+              github="https://github.com/Ignacio-Antequera"
+            />
+            <EboardMember
+              name="Teuta Elezaj"
+              position="Vice President"
+              image={Teuta}
+              description="2023"
+              linkedin="https://www.linkedin.com/in/teutaelezaj/"
+              github="https://github.com/teutaelezaj"
+            />
+            <EboardMember
+              name="Katarina Kobetitsch"
+              position="Social Media"
+              image={Kat}
+              description="2023"
+              linkedin="https://www.linkedin.com/in/katarina-kobetitsch/"
+            />
+            <EboardMember
+              name="Faizan Ahmed"
+              position="President"
+              image={Faizan}
+              description="2022"
+              linkedin="https://www.linkedin.com/in/faizancodes/"
+              github="https://github.com/faizancodes"
+            />
+            <EboardMember
+              name="Thomas Latona"
+              position="Vice President"
+              image={Thomas}
+              description="2022"
+              linkedin="https://www.linkedin.com/in/thomaslatona/"
+            />
+            <EboardMember
+              name="Ava McNevin"
+              position="Committee Chair"
+              image={Ava}
+              description="2022"
+              linkedin="https://www.linkedin.com/in/ava-mcnevin/"
+            />
+            <EboardMember
+              name="Jade Deo"
+              position="Social Media"
+              image={Jade}
+              description="2022"
+              linkedin="https://www.linkedin.com/in/jadedeo/"
+            />
+          </div>
+        </div>
+
+        {/* Mobile View - Adjusted spacing */}
+        <div className="md:hidden space-y-8 mt-24">
           <div className="grid grid-cols-1 gap-8">
             {/* Current E-board section */}
             <div className="space-y-8">
