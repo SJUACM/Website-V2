@@ -97,13 +97,6 @@ export default function UpcomingMeetings() {
                 {typeof nextMeeting.fields.location === 'object' ? 'TBA' : nextMeeting.fields.location || 'TBA'}
               </p>
             </div>
-
-            <Link href="/meetings" className="inline-block pt-2">
-              <button className="px-6 py-3 rounded-full bg-red-500 text-white text-sm font-medium 
-                             hover:bg-red-600 transition-all duration-200">
-                View All Meetings
-              </button>
-            </Link>
           </motion.div>
         </div>
       </div>
