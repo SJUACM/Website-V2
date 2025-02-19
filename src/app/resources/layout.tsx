@@ -1,14 +1,15 @@
+"use client";
+
 import React from "react";
 import { Navbar } from "../components/navbar";
 import styles from '../styles/customFont.module.css'
 
-export default function Layout({
-  children,
-  params,
-}: Readonly<{
+type LayoutProps = {
   children: React.ReactNode;
   params: { section?: string };
-}>) {
+};
+
+export default function Layout({ children, params }: LayoutProps) {
   const getTitle = () => {
     switch (params.section) {
       case 'interview-prep':
