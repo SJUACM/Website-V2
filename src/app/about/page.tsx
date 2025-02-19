@@ -26,7 +26,7 @@ export default function About() {
           className="space-y-8 text-center max-w-3xl mx-auto"
         >
           <p className="text-neutral-300 text-lg leading-relaxed">
-            We are St. John's University's premier organization for Computer Science and Cyber Security. 
+            We are St. John&apos;s University&apos;s premier organization for Computer Science and Cyber Security. 
             We focus on providing students with hands-on experience, industry connections, and a supportive 
             community of tech enthusiasts.
           </p>

@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="text-xl font-bold text-red-500">STJ ACM</h3>
             <p className="text-neutral-400 text-sm">
-              St. John's University's Association for Computing Machinery.
+              St. John&apos;s University&apos;s Association for Computing Machinery.
             </p>
           </div>
 
