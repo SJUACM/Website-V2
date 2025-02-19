@@ -48,8 +48,8 @@ export const products = [
     imagePath: "/images/eyPic1.jpg",
   },
   {
-    title: "SJU ABET",
-    imagePath: "/images/abet_event.jpg",
+    title: "SWE Interview Prep",
+    imagePath: "/images/sweInterviewPrep.jpg",
   },
 
   // Second Row - Slides right to left
@@ -58,8 +58,8 @@ export const products = [
     imagePath: "/images/aiHackathon6.jpg",
   },
   {
-    title: "Fall Kickoff 2023",
-    imagePath: "/images/fallKickOff23.jpg",
+    title: "Lab Pic 2",
+    imagePath: "/images/lab_pic2.jpg",
   },
   {
     title: "Headstarter x SJU ACM Hackathon",
@@ -101,10 +101,7 @@ export const products = [
   //   title: "Lab Pic 2",
   //   imagePath: "/images/lab_pic2.jpg",
   // },
-  // {
-  //   title: "SWE Interview Prep",
-  //   imagePath: "/images/sweInterviewPrep.jpg",
-  // },
+  // 
   // {
   //   title: "Lab Pic 9",
   //   imagePath: "/images/lab_pic9.jpg",
