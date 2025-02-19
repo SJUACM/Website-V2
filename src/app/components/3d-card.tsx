@@ -1,7 +1,6 @@
 "use client";
 
 import { cn } from "../utils/cn";
-//import Image from "next/image";
 import React, {
   createContext,
   useState,
@@ -9,6 +8,7 @@ import React, {
   useRef,
   useEffect,
 } from "react";
+import { LinkProps } from 'next/link';
 
 const MouseEnterContext = createContext<
   [boolean, React.Dispatch<React.SetStateAction<boolean>>] | undefined
@@ -95,26 +95,26 @@ export const CardBody = ({
   );
 };
 
-type CardItemProps = {
-  as?: React.ElementType;
-  children: React.ReactNode;
-  className?: string;
-  translateX?: number | string;
-  translateY?: number | string;
-  translateZ?: number | string;
-  rotateX?: number | string;
-  rotateY?: number | string;
-  rotateZ?: number | string;
-  href?: string;
-  target?: string;
-};
-
 export const CardItem = ({
   as: Tag = "div",
   children,
   className,
-  ...props
-}: CardItemProps) => {
+  translateZ,
+  ...rest
+}: {
+  as?: React.ElementType;
+  children: React.ReactNode;
+  className?: string;
+  translateZ?: number | string;
+  translateX?: number | string;
+  translateY?: number | string;
+  rotateX?: number | string;
+  rotateY?: number | string;
+  rotateZ?: number | string;
+  style?: React.CSSProperties;
+  href?: LinkProps['href'];
+  target?: string;
+}) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isMouseEntered] = useMouseEnter();
 
@@ -125,9 +125,9 @@ export const CardItem = ({
   const handleAnimations = () => {
     if (!ref.current) return;
     if (isMouseEntered) {
-      ref.current.style.transform = `translateX(${props.translateX}px) translateY(${props.translateY}px) translateZ(${props.translateZ}px) rotateX(${props.rotateX}deg) rotateY(${props.rotateY}deg) rotateZ(${props.rotateZ}deg)`;
+      ref.current.style.transform = `translateZ(${translateZ}px)`;
     } else {
-      ref.current.style.transform = `translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`;
+      ref.current.style.transform = `translateZ(0px)`;
     }
   };
 
@@ -135,7 +135,7 @@ export const CardItem = ({
     <Tag
       ref={ref}
       className={cn("w-fit transition duration-200 ease-linear", className)}
-      {...props}
+      {...rest}
     >
       {children}
     </Tag>

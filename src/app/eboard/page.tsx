@@ -29,352 +29,357 @@ import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
-// Move member data to a separate data file if you have it in page.tsx
-
 export default function Eboard() {
   return (
-    <div className="mt-[-100px] md:mt-[-100px] text-center items-center justify-center max-w-7xl mx-auto px-4 md:px-8">
-      <div className="p-4 md:p-8">
-        {/* Current E-board - Desktop View */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-8 mb-12 md:mt-16">
-          <EboardMember
-            name="Tomas Santos Yciano"
-            position="President"
-            image={Tomas}
-            description="Launch Intern @ EY"
-            linkedin="https://www.linkedin.com/in/tjsy/"
-            github="https://github.com/tomassantos484"
-          />
-          <EboardMember
-            name="David Rosoff"
-            position="Vice President"
-            image={David}
-            description="Global Threat Emulation @ Sony"
-            linkedin="https://www.linkedin.com/in/davidrosoff/"
-            github="https://github.com/ThePurpleTux"
-          />
-          <EboardMember
-            name="Hinna Zeejah"
-            position="Information Officer"
-            image={Hinna}
-            description="Google Summer of Code' 24"
-            linkedin="https://www.linkedin.com/in/hinna-zeejah/"
-            github="https://github.com/HinnaZeejah"
-          />
-          <EboardMember
-            name="Richard Perez"
-            position="Treasurer"
-            image={Richard}
-            description="Lead Instructor, All Star Code"
-            linkedin="https://www.linkedin.com/in/richard-perez-jr/"
-            github="https://github.com/richardp23"
-          />
-          <EboardMember
-            name="Jennifer Venus"
-            position="Social Media Chair"
-            image={Jennifer}
-            description="Intern @ National Grid"
-            linkedin="https://www.linkedin.com/in/jennifervenus/"
-            github="https://github.com/jenniferVenus"
-          />
-          <EboardMember
-            name="Gabriel Paredes"
-            position="Events Coordinator"
-            image={Jatsu}
-            description="Co-Captain of the STJ CyberStorm"
-            linkedin="https://www.linkedin.com/in/gpred/"
-            github="https://github.com/JatsuLC"
-          />
-          <EboardMember
-            name="Geovani Tzul"
-            position="Committee Chair"
-            image={Geo}
-            description="SWE Fellow @ Headstarter"
-            linkedin="https://www.linkedin.com/in/geo-tzul/"
-            github="https://github.com/NYgeo"
-          />
-          <EboardMember
-            name="Fahmid Zaman"
-            position="Committee Chair"
-            image={Fahmid}
-            description="Pursuing Security+ Certification"
-            linkedin="https://www.linkedin.com/in/fahmidzaman/"
-          />
-        </div>
-
-        {/* Past E-board - Desktop View */}
-        <div className="hidden md:block mt-32">
-          <h2 className="text-3xl font-bold mb-16">Past E-Board Members</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-8">
+    <div className="min-h-screen">
+      <div className="mt-[-100px] md:mt-[-100px] text-center items-center justify-center max-w-7xl mx-auto px-4 md:px-8">
+        <div className="p-4 md:p-8">
+          {/* Current E-board - Desktop View */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-8 mb-12 md:mt-16">
             <EboardMember
-              name="Raymond Ramdat"
+              name="Tomas Santos Yciano"
               position="President"
-              image={Raymond}
-              description="2024"
-              linkedin="https://www.linkedin.com/in/raymondramdat/"
+              image={Tomas}
+              description="Launch Intern @ EY"
+              linkedin="https://www.linkedin.com/in/tjsy/"
+              github="https://github.com/tomassantos484"
             />
             <EboardMember
-              name="Jake Enea"
+              name="David Rosoff"
               position="Vice President"
-              image={Jake}
-              description="2024"
-              linkedin="https://www.linkedin.com/in/jakeenea/"
-              github="https://github.com/jakeenea51"
+              image={David}
+              description="Global Threat Emulation @ Sony"
+              linkedin="https://www.linkedin.com/in/davidrosoff/"
+              github="https://github.com/ThePurpleTux"
             />
             <EboardMember
-              name="Amrita Kaur"
+              name="Hinna Zeejah"
+              position="Information Officer"
+              image={Hinna}
+              description="Google Summer of Code' 24"
+              linkedin="https://www.linkedin.com/in/hinna-zeejah/"
+              github="https://github.com/HinnaZeejah"
+            />
+            <EboardMember
+              name="Richard Perez"
+              position="Treasurer"
+              image={Richard}
+              description="Lead Instructor, All Star Code"
+              linkedin="https://www.linkedin.com/in/richard-perez-jr/"
+              github="https://github.com/richardp23"
+            />
+            <EboardMember
+              name="Jennifer Venus"
+              position="Social Media Chair"
+              image={Jennifer}
+              description="Intern @ National Grid"
+              linkedin="https://www.linkedin.com/in/jennifervenus/"
+              github="https://github.com/jenniferVenus"
+            />
+            <EboardMember
+              name="Gabriel Paredes"
               position="Events Coordinator"
-              image={Amrita}
-              description="2024"
-              linkedin="https://www.linkedin.com/in/amrita-priya-kaur75/"
+              image={Jatsu}
+              description="Co-Captain of the STJ CyberStorm"
+              linkedin="https://www.linkedin.com/in/gpred/"
+              github="https://github.com/JatsuLC"
             />
             <EboardMember
-              name="Benjamin Hanim"
+              name="Geovani Tzul"
               position="Committee Chair"
-              image={Benjamin}
-              description="2024"
-              linkedin="https://www.linkedin.com/in/benjamin-hanim/"
-              github="https://github.com/ben45123"
+              image={Geo}
+              description="SWE Fellow @ Headstarter"
+              linkedin="https://www.linkedin.com/in/geo-tzul/"
+              github="https://github.com/NYgeo"
             />
             <EboardMember
-              name="Aqueena Alexander"
-              position="Social Media"
-              image={Aqueena}
-              description="2024"
-              linkedin="https://www.linkedin.com/in/aqueena-alexander/"
-            />
-            <EboardMember
-              name="Fairooz Bintye Ehsan"
-              position="Events Coordinator"
-              image={Fairooz}
-              description="2024"
-              linkedin="https://www.linkedin.com/in/fairooz-bintye-ehsan/"
-            />
-            <EboardMember
-              name="Ignacio Sanchez"
+              name="Fahmid Zaman"
               position="Committee Chair"
-              image={Ignacio}
-              description="2023"
-              linkedin="https://www.linkedin.com/in/ignacio-antequera/"
-              github="https://github.com/Ignacio-Antequera"
-            />
-            <EboardMember
-              name="Teuta Elezaj"
-              position="Vice President"
-              image={Teuta}
-              description="2023"
-              linkedin="https://www.linkedin.com/in/teutaelezaj/"
-              github="https://github.com/teutaelezaj"
-            />
-            <EboardMember
-              name="Katarina Kobetitsch"
-              position="Social Media"
-              image={Kat}
-              description="2023"
-              linkedin="https://www.linkedin.com/in/katarina-kobetitsch/"
-            />
-            <EboardMember
-              name="Faizan Ahmed"
-              position="President"
-              image={Faizan}
-              description="2022"
-              linkedin="https://www.linkedin.com/in/faizancodes/"
-              github="https://github.com/faizancodes"
-            />
-            <EboardMember
-              name="Thomas Latona"
-              position="Vice President"
-              image={Thomas}
-              description="2022"
-              linkedin="https://www.linkedin.com/in/thomaslatona/"
-            />
-            <EboardMember
-              name="Ava McNevin"
-              position="Committee Chair"
-              image={Ava}
-              description="2022"
-              linkedin="https://www.linkedin.com/in/ava-mcnevin/"
-            />
-            <EboardMember
-              name="Jade Deo"
-              position="Social Media"
-              image={Jade}
-              description="2022"
-              linkedin="https://www.linkedin.com/in/jadedeo/"
+              image={Fahmid}
+              description="Pursuing Security+ Certification"
+              linkedin="https://www.linkedin.com/in/fahmidzaman/"
             />
           </div>
-        </div>
 
-        {/* Mobile View - Adjusted spacing */}
-        <div className="md:hidden space-y-8 mt-24">
-          <div className="grid grid-cols-1 gap-8">
-            {/* Current E-board section */}
-            <div className="space-y-8">
-              <MobileEboardMember
-                name="Tomas Santos Yciano"
+          {/* Past E-board - Desktop View */}
+          <div className="hidden md:block">
+            <h2 className="text-3xl font-bold text-center mb-12">Past E-Board Members</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {/* 2024 */}
+              <PastEboardMember
+                name="Raymond Ramdat"
                 position="President"
-                image={Tomas}
-                description="Launch Intern @ EY"
-                linkedin="https://www.linkedin.com/in/tjsy/"
-                github="https://github.com/tomassantos484"
+                year="2024"
+                image={Raymond}
+                linkedin="https://www.linkedin.com/in/raymondramdat/"
               />
-              <MobileEboardMember
-                name="David Rosoff"
+              <PastEboardMember
+                name="Jake Enea"
                 position="Vice President"
-                image={David}
-                description="Global Threat Emulation @ Sony"
-                linkedin="https://www.linkedin.com/in/davidrosoff/"
-                github="https://github.com/ThePurpleTux"
+                year="2024"
+                image={Jake}
+                linkedin="https://www.linkedin.com/in/jakeenea/"
+                github="https://github.com/jakeenea51"
               />
-              <MobileEboardMember
-                name="Hinna Zeejah"
-                position="Information Officer"
-                image={Hinna}
-                description="Google Summer of Code' 24"
-                linkedin="https://www.linkedin.com/in/hinna-zeejah/"
-                github="https://github.com/HinnaZeejah"
-              />
-              <MobileEboardMember
-                name="Richard Perez"
-                position="Treasurer"
-                image={Richard}
-                description="Lead Instructor, All Star Code"
-                linkedin="https://www.linkedin.com/in/richard-perez-jr/"
-                github="https://github.com/richardp23"
-              />
-              <MobileEboardMember
-                name="Jennifer Venus"
-                position="Social Media Chair"
-                image={Jennifer}
-                description="Intern @ National Grid"
-                linkedin="https://www.linkedin.com/in/jennifervenus/"
-                github="https://github.com/jenniferVenus"
-              />
-              <MobileEboardMember
-                name="Gabriel Paredes"
+              <PastEboardMember
+                name="Amrita Kaur"
                 position="Events Coordinator"
-                image={Jatsu}
-                description="Co-Captain of the STJ CyberStorm"
-                linkedin="https://www.linkedin.com/in/gpred/"
-                github="https://github.com/JatsuLC"
+                year="2024"
+                image={Amrita}
+                linkedin="https://www.linkedin.com/in/amrita-priya-kaur75/"
               />
-              <MobileEboardMember
-                name="Geovani Tzul"
+              <PastEboardMember
+                name="Benjamin Hanim"
                 position="Committee Chair"
-                image={Geo}
-                description="SWE Fellow @ Headstarter"
-                linkedin="https://www.linkedin.com/in/geo-tzul/"
-                github="https://github.com/NYgeo"
+                year="2024"
+                image={Benjamin}
+                linkedin="https://www.linkedin.com/in/benjamin-hanim/"
+                github="https://github.com/ben45123"
               />
-              <MobileEboardMember
-                name="Fahmid Zaman"
+              <PastEboardMember
+                name="Aqueena Alexander"
+                position="Social Media"
+                year="2024"
+                image={Aqueena}
+                linkedin="https://www.linkedin.com/in/aqueena-alexander/"
+              />
+              <PastEboardMember
+                name="Fairooz Bintye Ehsan"
+                position="Events Coordinator"
+                year="2024"
+                image={Fairooz}
+                linkedin="https://www.linkedin.com/in/fairooz-bintye-ehsan/"
+              />
+
+              {/* 2023 */}
+              <PastEboardMember
+                name="Ignacio Sanchez"
                 position="Committee Chair"
-                image={Fahmid}
-                description="Pursuing Security+ Certification"
-                linkedin="https://www.linkedin.com/in/fahmidzaman/"
+                year="2023"
+                image={Ignacio}
+                linkedin="https://www.linkedin.com/in/ignacio-antequera/"
+                github="https://github.com/Ignacio-Antequera"
+              />
+              <PastEboardMember
+                name="Teuta Elezaj"
+                position="Vice President"
+                year="2023"
+                image={Teuta}
+                linkedin="https://www.linkedin.com/in/teutaelezaj/"
+                github="https://github.com/teutaelezaj"
+              />
+              <PastEboardMember
+                name="Katarina Kobetitsch"
+                position="Social Media"
+                year="2023"
+                image={Kat}
+                linkedin="https://www.linkedin.com/in/katarina-kobetitsch/"
+              />
+
+              {/* 2022 */}
+              <PastEboardMember
+                name="Faizan Ahmed"
+                position="President"
+                year="2022"
+                image={Faizan}
+                linkedin="https://www.linkedin.com/in/faizancodes/"
+                github="https://github.com/faizancodes"
+              />
+              <PastEboardMember
+                name="Thomas Latona"
+                position="Vice President"
+                year="2022"
+                image={Thomas}
+                linkedin="https://www.linkedin.com/in/thomaslatona/"
+              />
+              <PastEboardMember
+                name="Ava McNevin"
+                position="Committee Chair"
+                year="2022"
+                image={Ava}
+                linkedin="https://www.linkedin.com/in/ava-mcnevin/"
+              />
+              <PastEboardMember
+                name="Jade Deo"
+                position="Social Media"
+                year="2022"
+                image={Jade}
+                linkedin="https://www.linkedin.com/in/jadedeo/"
               />
             </div>
+          </div>
 
-            {/* Past E-board section */}
-            <div className="mt-16">
-              <h2 className="text-2xl font-bold mb-8">Past E-Board Members</h2>
-              <div className="space-y-6">
-                <MobilePastEboardMember
-                  name="Raymond Ramdat"
+          {/* Mobile View - Adjusted spacing */}
+          <div className="md:hidden space-y-8 mt-24">
+            <div className="grid grid-cols-1 gap-8">
+              {/* Current E-board section */}
+              <div className="space-y-8">
+                <MobileEboardMember
+                  name="Tomas Santos Yciano"
                   position="President"
-                  year="2024"
-                  image={Raymond}
-                  linkedin="https://www.linkedin.com/in/raymondramdat/"
+                  image={Tomas}
+                  description="Launch Intern @ EY"
+                  linkedin="https://www.linkedin.com/in/tjsy/"
+                  github="https://github.com/tomassantos484"
                 />
-                <MobilePastEboardMember
-                  name="Jake Enea"
+                <MobileEboardMember
+                  name="David Rosoff"
                   position="Vice President"
-                  year="2024"
-                  image={Jake}
-                  linkedin="https://www.linkedin.com/in/jakeenea/"
-                  github="https://github.com/jakeenea51"
+                  image={David}
+                  description="Global Threat Emulation @ Sony"
+                  linkedin="https://www.linkedin.com/in/davidrosoff/"
+                  github="https://github.com/ThePurpleTux"
                 />
-                <MobilePastEboardMember
-                  name="Amrita Kaur"
+                <MobileEboardMember
+                  name="Hinna Zeejah"
+                  position="Information Officer"
+                  image={Hinna}
+                  description="Google Summer of Code' 24"
+                  linkedin="https://www.linkedin.com/in/hinna-zeejah/"
+                  github="https://github.com/HinnaZeejah"
+                />
+                <MobileEboardMember
+                  name="Richard Perez"
+                  position="Treasurer"
+                  image={Richard}
+                  description="Lead Instructor, All Star Code"
+                  linkedin="https://www.linkedin.com/in/richard-perez-jr/"
+                  github="https://github.com/richardp23"
+                />
+                <MobileEboardMember
+                  name="Jennifer Venus"
+                  position="Social Media Chair"
+                  image={Jennifer}
+                  description="Intern @ National Grid"
+                  linkedin="https://www.linkedin.com/in/jennifervenus/"
+                  github="https://github.com/jenniferVenus"
+                />
+                <MobileEboardMember
+                  name="Gabriel Paredes"
                   position="Events Coordinator"
-                  year="2024"
-                  image={Amrita}
-                  linkedin="https://www.linkedin.com/in/amrita-priya-kaur75/"
+                  image={Jatsu}
+                  description="Co-Captain of the STJ CyberStorm"
+                  linkedin="https://www.linkedin.com/in/gpred/"
+                  github="https://github.com/JatsuLC"
                 />
-                <MobilePastEboardMember
-                  name="Benjamin Hanim"
+                <MobileEboardMember
+                  name="Geovani Tzul"
                   position="Committee Chair"
-                  year="2024"
-                  image={Benjamin}
-                  linkedin="https://www.linkedin.com/in/benjamin-hanim/"
-                  github="https://github.com/ben45123"
+                  image={Geo}
+                  description="SWE Fellow @ Headstarter"
+                  linkedin="https://www.linkedin.com/in/geo-tzul/"
+                  github="https://github.com/NYgeo"
                 />
-                <MobilePastEboardMember
-                  name="Aqueena Alexander"
-                  position="Social Media"
-                  year="2024"
-                  image={Aqueena}
-                  linkedin="https://www.linkedin.com/in/aqueena-alexander/"
-                />
-                <MobilePastEboardMember
-                  name="Fairooz Bintye Ehsan"
-                  position="Events Coordinator"
-                  year="2024"
-                  image={Fairooz}
-                  linkedin="https://www.linkedin.com/in/fairooz-bintye-ehsan/"
-                />
-                <MobilePastEboardMember
-                  name="Ignacio Sanchez"
+                <MobileEboardMember
+                  name="Fahmid Zaman"
                   position="Committee Chair"
-                  year="2023"
-                  image={Ignacio}
-                  linkedin="https://www.linkedin.com/in/ignacio-antequera/"
-                  github="https://github.com/Ignacio-Antequera"
+                  image={Fahmid}
+                  description="Pursuing Security+ Certification"
+                  linkedin="https://www.linkedin.com/in/fahmidzaman/"
                 />
-                <MobilePastEboardMember
-                  name="Teuta Elezaj"
-                  position="Vice President"
-                  year="2023"
-                  image={Teuta}
-                  linkedin="https://www.linkedin.com/in/teutaelezaj/"
-                  github="https://github.com/teutaelezaj"
-                />
-                <MobilePastEboardMember
-                  name="Katarina Kobetitsch"
-                  position="Social Media"
-                  year="2023"
-                  image={Kat}
-                  linkedin="https://www.linkedin.com/in/katarina-kobetitsch/"
-                />
-                <MobilePastEboardMember
-                  name="Faizan Ahmed"
-                  position="President"
-                  year="2022"
-                  image={Faizan}
-                  linkedin="https://www.linkedin.com/in/faizancodes/"
-                  github="https://github.com/faizancodes"
-                />
-                <MobilePastEboardMember
-                  name="Thomas Latona"
-                  position="Vice President"
-                  year="2022"
-                  image={Thomas}
-                  linkedin="https://www.linkedin.com/in/thomaslatona/"
-                />
-                <MobilePastEboardMember
-                  name="Ava McNevin"
-                  position="Committee Chair"
-                  year="2022"
-                  image={Ava}
-                  linkedin="https://www.linkedin.com/in/ava-mcnevin/"
-                />
-                <MobilePastEboardMember
-                  name="Jade Deo"
-                  position="Social Media"
-                  year="2022"
-                  image={Jade}
-                  linkedin="https://www.linkedin.com/in/jadedeo/"
-                />
+              </div>
+
+              {/* Past E-board section */}
+              <div className="mt-16">
+                <h2 className="text-2xl font-bold mb-8">Past E-Board Members</h2>
+                <div className="space-y-6">
+                  <MobilePastEboardMember
+                    name="Raymond Ramdat"
+                    position="President"
+                    year="2024"
+                    image={Raymond}
+                    linkedin="https://www.linkedin.com/in/raymondramdat/"
+                  />
+                  <MobilePastEboardMember
+                    name="Jake Enea"
+                    position="Vice President"
+                    year="2024"
+                    image={Jake}
+                    linkedin="https://www.linkedin.com/in/jakeenea/"
+                    github="https://github.com/jakeenea51"
+                  />
+                  <MobilePastEboardMember
+                    name="Amrita Kaur"
+                    position="Events Coordinator"
+                    year="2024"
+                    image={Amrita}
+                    linkedin="https://www.linkedin.com/in/amrita-priya-kaur75/"
+                  />
+                  <MobilePastEboardMember
+                    name="Benjamin Hanim"
+                    position="Committee Chair"
+                    year="2024"
+                    image={Benjamin}
+                    linkedin="https://www.linkedin.com/in/benjamin-hanim/"
+                    github="https://github.com/ben45123"
+                  />
+                  <MobilePastEboardMember
+                    name="Aqueena Alexander"
+                    position="Social Media"
+                    year="2024"
+                    image={Aqueena}
+                    linkedin="https://www.linkedin.com/in/aqueena-alexander/"
+                  />
+                  <MobilePastEboardMember
+                    name="Fairooz Bintye Ehsan"
+                    position="Events Coordinator"
+                    year="2024"
+                    image={Fairooz}
+                    linkedin="https://www.linkedin.com/in/fairooz-bintye-ehsan/"
+                  />
+                  <MobilePastEboardMember
+                    name="Ignacio Sanchez"
+                    position="Committee Chair"
+                    year="2023"
+                    image={Ignacio}
+                    linkedin="https://www.linkedin.com/in/ignacio-antequera/"
+                    github="https://github.com/Ignacio-Antequera"
+                  />
+                  <MobilePastEboardMember
+                    name="Teuta Elezaj"
+                    position="Vice President"
+                    year="2023"
+                    image={Teuta}
+                    linkedin="https://www.linkedin.com/in/teutaelezaj/"
+                    github="https://github.com/teutaelezaj"
+                  />
+                  <MobilePastEboardMember
+                    name="Katarina Kobetitsch"
+                    position="Social Media"
+                    year="2023"
+                    image={Kat}
+                    linkedin="https://www.linkedin.com/in/katarina-kobetitsch/"
+                  />
+                  <MobilePastEboardMember
+                    name="Faizan Ahmed"
+                    position="President"
+                    year="2022"
+                    image={Faizan}
+                    linkedin="https://www.linkedin.com/in/faizancodes/"
+                    github="https://github.com/faizancodes"
+                  />
+                  <MobilePastEboardMember
+                    name="Thomas Latona"
+                    position="Vice President"
+                    year="2022"
+                    image={Thomas}
+                    linkedin="https://www.linkedin.com/in/thomaslatona/"
+                  />
+                  <MobilePastEboardMember
+                    name="Ava McNevin"
+                    position="Committee Chair"
+                    year="2022"
+                    image={Ava}
+                    linkedin="https://www.linkedin.com/in/ava-mcnevin/"
+                  />
+                  <MobilePastEboardMember
+                    name="Jade Deo"
+                    position="Social Media"
+                    year="2022"
+                    image={Jade}
+                    linkedin="https://www.linkedin.com/in/jadedeo/"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -458,7 +463,7 @@ function EboardMember({
   );
 }
 
-export function PastEboardMember({
+function PastEboardMember({
   name,
   position,
   year,
