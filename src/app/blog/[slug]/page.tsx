@@ -7,22 +7,20 @@ import Image from "next/image";
 import { BLOCKS } from '@contentful/rich-text-types';
 import { Options } from '@contentful/rich-text-react-renderer';
 
-export default function BlogPost({ 
-  params 
-}: { 
-  params: Promise<{ slug: string }> | { slug: string } 
-}) {
-  // Unwrap params using React.use()
-  const unwrappedParams = React.use(params as Promise<{ slug: string }>);
-  const { slug } = unwrappedParams;
-  
+interface PageProps {
+  params: {
+    slug: string;
+  };
+}
+
+export default function BlogPost({ params }: PageProps) {
+  const { slug } = params;
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
 
   const renderOptions: Options = {
     renderNode: {
       [BLOCKS.EMBEDDED_ASSET]: (node) => {
-
         const { url, title, width, height } = node.data.target.fields.file;
         return (
           <div className="my-8">
