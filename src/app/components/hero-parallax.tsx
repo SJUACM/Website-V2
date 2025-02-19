@@ -231,6 +231,7 @@ export const ProductCard = ({ product, translateX }: ProductCardProps) => {
           src={product.imagePath}
           alt={product.title}
           fill
+          unoptimized
           className="object-cover object-left-top absolute h-full w-full inset-0"
         />
       </div>
@@ -241,3 +242,4 @@ export const ProductCard = ({ product, translateX }: ProductCardProps) => {
     </motion.div>
   );
 };
+
