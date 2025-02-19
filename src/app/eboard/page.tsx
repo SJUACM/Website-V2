@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import type { EboardMember } from "../types/eboard";
 import { CardBody, CardContainer, CardItem } from "../components/3d-card";
 import Image from "next/image";
 import { StaticImageData } from "next/image";
@@ -385,7 +384,7 @@ export default function Eboard() {
   );
 }
 
-export function EboardMember({
+function EboardMember({
   name,
   position,
   image,
