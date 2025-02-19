@@ -6,12 +6,14 @@ import styles from '../styles/customFont.module.css'
 
 type LayoutProps = {
   children: React.ReactNode;
-  params: { section?: string };
+  params: Promise<{ section?: string }> | { section?: string };
 };
 
 export default function Layout({ children, params }: LayoutProps) {
+  const section = 'then' in params ? undefined : params.section;
+  
   const getTitle = () => {
-    switch (params.section) {
+    switch (section) {
       case 'interview-prep':
         return 'Interview Prep';
       case 'helpful-websites':
