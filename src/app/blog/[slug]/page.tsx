@@ -7,14 +7,13 @@ import Image from "next/image";
 import { BLOCKS } from '@contentful/rich-text-types';
 import { Options } from '@contentful/rich-text-react-renderer';
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
+type PageProps = {
+  params: Promise<{ slug: string }>;
+};
 
-export default function BlogPost({ params }: PageProps) {
-  const { slug } = params;
+export default async function BlogPost({ params }: PageProps) {
+  const resolvedParams = await params;
+  const { slug } = resolvedParams;
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
 
