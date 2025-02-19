@@ -9,7 +9,13 @@ export function Navbar({ className }: { className?: string }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="fixed top-0 left-0 right-0 flex justify-center pt-6 z-50">
+    <div 
+      className={cn(
+        "fixed top-0 left-0 right-0 flex justify-center pt-6 z-50",
+        className
+      )}
+      suppressHydrationWarning
+    >
       <div
         className={cn(
           "flex items-center justify-between bg-black/40 backdrop-blur-md border border-white/[0.1] rounded-full px-6 md:px-8 py-3 md:py-4 w-[90%] md:w-[900px] mx-auto",

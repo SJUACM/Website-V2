@@ -18,7 +18,10 @@ const comfortaa = Comfortaa({
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-between p-4 md:p-24">
+    <main 
+      className="flex flex-col items-center justify-between p-4 md:p-24"
+      suppressHydrationWarning
+    >
       <div className="z-50 w-full max-w-5xl items-center justify-between font-poppins text-sm lg:flex">
         <div className="flex h-24 w-full justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
           <Navbar />
