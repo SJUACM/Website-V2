@@ -41,7 +41,7 @@ export default function Home() {
         <div className="block md:hidden mx-auto w-48 h-48 relative">
           <Image
             src="/images/SJU_ACM_Logo.png"
-            alt="ACM Logo"
+            alt="STJ ACM Logo"
             fill
             className="object-contain"
             priority
