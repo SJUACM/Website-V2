@@ -49,7 +49,7 @@ export const products = [
 
   // Second Row - Slides right to left
   {
-    title: "Headstarter x SJU ACM AI Hackathon",
+    title: "Headstarter x STJ ACM AI Hackathon",
     imagePath: "/images/aiHackathon6.jpg",
   },
   {
