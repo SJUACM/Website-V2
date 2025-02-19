@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { motion } from "framer-motion";
 import { FeaturesSection } from "./components/features-section";
 import { MeetingInfo } from "./components/meeting-info";
