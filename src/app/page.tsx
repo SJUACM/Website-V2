@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import { BackgroundBeams } from "./components/background-beam";
 import { Navbar } from "./components/navbar";

@@ -1,6 +1,7 @@
 "use client";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub, faLinkedin, faDiscord, faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedin, faDiscord, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 export default function Footer() {

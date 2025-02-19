@@ -5,6 +5,7 @@ import { getPostBySlug } from "@/lib/contentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Image from "next/image";
 import { BLOCKS } from '@contentful/rich-text-types';
+import { Options } from '@contentful/rich-text-react-renderer';
 
 export default function BlogPost({ 
   params 
@@ -18,9 +19,10 @@ export default function BlogPost({
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const renderOptions = {
+  const renderOptions: Options = {
     renderNode: {
-      [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
+      [BLOCKS.EMBEDDED_ASSET]: (node) => {
+
         const { url, title, width, height } = node.data.target.fields.file;
         return (
           <div className="my-8">

@@ -4,7 +4,6 @@ import { BlogPost, getAllPosts } from "@/lib/contentful";
 import Link from "next/link";
 import { CardBody, CardContainer, CardItem } from "../components/3d-card";
 import Image from "next/image";
-import { PageTitle } from "@/app/components/page-title";
 
 function BlogCard({ post }: { post: BlogPost }) {
   return (

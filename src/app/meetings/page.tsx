@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { useEffect, useState } from "react";
 import Meeting from "../components/meeting";
 import { Meeting as MeetingType, getAllMeetings } from "@/lib/contentful";

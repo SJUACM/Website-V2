@@ -1,14 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { CardBody, CardContainer, CardItem } from "./3d-card";
 import Image from "next/image";
-import Link from "next/link";
 import { Meeting as MeetingType, getUpcomingMeetings } from "@/lib/contentful";
 
 export default function UpcomingMeetings() {
   const [nextMeeting, setNextMeeting] = useState<MeetingType | null>(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchNextMeeting() {
@@ -17,15 +14,13 @@ export default function UpcomingMeetings() {
         setNextMeeting(allMeetings[0]);
       } catch (error) {
         console.error("Error fetching meetings:", error);
-      } finally {
-        setLoading(false);
       }
     }
     fetchNextMeeting();
   }, []);
 
   if (!nextMeeting) {
-    return null;
+    return <div className="text-center mt-8">Loading...</div>;
   }
 
   const meetingDate = new Date(nextMeeting.fields.date);

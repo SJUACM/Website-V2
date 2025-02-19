@@ -1,4 +1,5 @@
 import { createClient, EntrySkeletonType } from 'contentful';
+import { Document } from '@contentful/rich-text-types';
 
 export interface BlogPost extends EntrySkeletonType {
   sys: {
@@ -7,7 +8,7 @@ export interface BlogPost extends EntrySkeletonType {
   fields: {
     title: string;
     slug: string;
-    content: any;
+    content: Document;
     excerpt: string;
     author: string;
     publishDate: string;
@@ -85,11 +86,13 @@ export async function getAllPosts(): Promise<BlogPost[]> {
 
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   try {
-    const response = await client.getEntries<BlogPost>({
+    const query = {
       content_type: 'blogPost',
-      'fields.slug': slug,
+      'fields.slug[match]': slug,
       limit: 1,
-    });
+    } as const;
+    
+    const response = await client.getEntries<BlogPost>(query);
     
     if (!response.items.length) return null;
     

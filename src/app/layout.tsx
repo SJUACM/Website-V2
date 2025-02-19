@@ -1,3 +1,4 @@
+import React from "react";
 import type { Metadata } from "next";
 import { Comfortaa } from "next/font/google";
 import "./globals.css";

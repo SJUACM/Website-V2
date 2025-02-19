@@ -1,7 +1,7 @@
+import React from "react";
 import { CardBody, CardContainer, CardItem } from "../components/3d-card";
 import Image from "next/image";
 import Link from "next/link";
-import { StaticImageData } from "next/image";
 
 interface MeetingProps {
   title: string;

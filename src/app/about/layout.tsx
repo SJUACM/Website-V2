@@ -1,3 +1,4 @@
+import React from "react";
 import { Navbar } from "../components/navbar";
 import PageTransition from "@/components/page-transition";
 import styles from '../styles/customFont.module.css'
