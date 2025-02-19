@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
+import type { EboardMember } from "../types/eboard";
 import { CardBody, CardContainer, CardItem } from "../components/3d-card";
 import Image from "next/image";
-import Link from "next/link";
 import { StaticImageData } from "next/image";
 import Tomas from "../../../public/images/eboard/tomas.png";
 import Hinna from "../../../public/images/eboard/hinna.png";
@@ -29,6 +29,8 @@ import Jade from "../../../public/images/eboard/jade.png";
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+
+// Move member data to a separate data file if you have it in page.tsx
 
 export default function Eboard() {
   return (
