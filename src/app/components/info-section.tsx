@@ -1,4 +1,5 @@
-"use client";
+'use client'
+
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,13 +19,16 @@ export default function InfoSection() {
               Expanding knowledge beyond the classroom
             </h2>
             <p className="text-neutral-300 text-lg">
-              We provide the necessary materials to help you succeed in a future career in tech! 
-              Gain hands-on experience through our interactive labs and workshops
+              We provide the necessary materials to help you succeed in a future
+              career in tech! Gain hands-on experience through our interactive
+              labs and workshops
             </p>
             <div className="pt-4">
               <Link href="/meetings">
-                <button className="px-8 py-4 rounded-full bg-red-500 text-white font-medium 
-                                 hover:bg-red-600 transition-colors duration-200">
+                <button
+                  className="px-8 py-4 rounded-full bg-red-500 text-white font-medium 
+                                 hover:bg-red-600 transition-colors duration-200"
+                >
                   View our Past Meetings
                 </button>
               </Link>
@@ -49,4 +53,4 @@ export default function InfoSection() {
       </div>
     </div>
   );
-} 
+}

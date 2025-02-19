@@ -1,11 +1,7 @@
-"use client";
+'use client'
+
 import React from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useSpring
-} from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Image from "next/image";
 
 interface Product {
@@ -36,7 +32,7 @@ export const products = [
     imagePath: "/images/aiHackathon1.jpg",
   },
   {
-    title: "SAP Office Hours", 
+    title: "SAP Office Hours",
     imagePath: "/images/sap_office.jpg",
   },
   {
@@ -150,8 +146,8 @@ export const HeroParallax = ({ products }: HeroParallaxProps) => {
   );
 
   return (
-    <div 
-      ref={ref} 
+    <div
+      ref={ref}
       className="h-[400vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header />
@@ -166,7 +162,7 @@ export const HeroParallax = ({ products }: HeroParallaxProps) => {
       >
         <motion.div className="overflow-x-auto scrollbar-hide pb-8 -mx-4 px-4">
           <div className="flex flex-row-reverse space-x-reverse space-x-20 min-w-max px-20">
-            {firstRow.map((product) => (
+            {firstRow.map(product => (
               <ProductCard
                 key={product.title}
                 product={product}
@@ -177,7 +173,7 @@ export const HeroParallax = ({ products }: HeroParallaxProps) => {
         </motion.div>
         <motion.div className="overflow-x-auto scrollbar-hide pb-8 -mx-4 px-4">
           <div className="flex flex-row space-x-20 min-w-max px-20">
-            {secondRow.map((product) => (
+            {secondRow.map(product => (
               <ProductCard
                 key={product.title}
                 product={product}
@@ -188,7 +184,7 @@ export const HeroParallax = ({ products }: HeroParallaxProps) => {
         </motion.div>
         <motion.div className="overflow-x-auto scrollbar-hide pb-8 -mx-4 px-4">
           <div className="flex flex-row-reverse space-x-reverse space-x-20 min-w-max px-20">
-            {thirdRow.map((product) => (
+            {thirdRow.map(product => (
               <ProductCard
                 key={product.title}
                 product={product}

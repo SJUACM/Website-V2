@@ -30,18 +30,19 @@ export default function LeadershipSection() {
             className="space-y-8"
           >
             <h3 className="text-red-500 font-bold">LEADERSHIP</h3>
-            <h2 className="text-4xl font-bold">
-              Meet our E-Board
-            </h2>
+            <h2 className="text-4xl font-bold">Meet our E-Board</h2>
             <p className="text-neutral-300 text-lg">
-              Our Executive Board consists of students who are passionate and experienced in numerous areas 
-              across Computer Science & Cyber Security. We yearn to inspire and uplift our members in order to secure 
-              a successful career in tech!
+              Our Executive Board consists of students who are passionate and
+              experienced in numerous areas across Computer Science & Cyber
+              Security. We yearn to inspire and uplift our members in order to
+              secure a successful career in tech!
             </p>
             <div className="pt-4">
               <Link href="/eboard">
-                <button className="px-8 py-4 rounded-full bg-red-500 text-white font-medium 
-                               hover:bg-red-600 transition-colors duration-200">
+                <button
+                  className="px-8 py-4 rounded-full bg-red-500 text-white font-medium 
+                               hover:bg-red-600 transition-colors duration-200"
+                >
                   View our E-Board Members
                 </button>
               </Link>
@@ -51,4 +52,4 @@ export default function LeadershipSection() {
       </div>
     </div>
   );
-} 
+}

@@ -1,5 +1,5 @@
-import { createClient, EntrySkeletonType } from 'contentful';
-import { Document } from '@contentful/rich-text-types';
+import { createClient, EntrySkeletonType } from "contentful";
+import { Document } from "@contentful/rich-text-types";
 
 export interface BlogPost extends EntrySkeletonType {
   sys: {
@@ -51,9 +51,12 @@ export interface Meeting extends EntrySkeletonType {
   };
 }
 
-if (!process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID || !process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN) {
+if (
+  !process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID ||
+  !process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
+) {
   throw new Error(
-    'Missing required environment variables: NEXT_PUBLIC_CONTENTFUL_SPACE_ID or NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN'
+    "Missing required environment variables: NEXT_PUBLIC_CONTENTFUL_SPACE_ID or NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN"
   );
 }
 
@@ -64,22 +67,22 @@ const client = createClient({
 
 export async function getAllPosts(): Promise<BlogPost[]> {
   try {
-    console.log('Fetching posts with:', {
+    console.log("Fetching posts with:", {
       spaceId: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
-      hasAccessToken: !!process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
+      hasAccessToken: !!process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,
     });
-    
+
     const response = await client.getEntries<BlogPost>({
-      content_type: 'blogPost',
-      order: ['-sys.createdAt'],
+      content_type: "blogPost",
+      order: ["-sys.createdAt"],
     });
-    
+
     return response.items.map(item => ({
       ...item,
-      contentTypeId: 'blogPost'
+      contentTypeId: "blogPost",
     }));
   } catch (error) {
-    console.error('Contentful error:', error);
+    console.error("Contentful error:", error);
     return [];
   }
 }
@@ -87,21 +90,21 @@ export async function getAllPosts(): Promise<BlogPost[]> {
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   try {
     const query = {
-      content_type: 'blogPost',
-      'fields.slug[match]': slug,
+      content_type: "blogPost",
+      "fields.slug[match]": slug,
       limit: 1,
     } as const;
-    
+
     const response = await client.getEntries<BlogPost>(query);
-    
+
     if (!response.items.length) return null;
-    
+
     return {
       ...response.items[0],
-      contentTypeId: 'blogPost'
+      contentTypeId: "blogPost",
     };
   } catch (error) {
-    console.error('Error fetching post:', error);
+    console.error("Error fetching post:", error);
     return null;
   }
 }
@@ -109,16 +112,16 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
 export async function getAllMeetings(): Promise<Meeting[]> {
   try {
     const response = await client.getEntries<Meeting>({
-      content_type: 'meeting',
-      order: ['-sys.createdAt'],
+      content_type: "meeting",
+      order: ["-sys.createdAt"],
     });
-    
+
     return response.items.map(item => ({
       ...item,
-      contentTypeId: 'meeting'
+      contentTypeId: "meeting",
     }));
   } catch (error) {
-    console.error('Contentful error:', error);
+    console.error("Contentful error:", error);
     return [];
   }
 }
@@ -126,16 +129,16 @@ export async function getAllMeetings(): Promise<Meeting[]> {
 export async function getUpcomingMeetings(): Promise<Meeting[]> {
   try {
     const response = await client.getEntries<Meeting>({
-      content_type: 'upcomingMeeting',
-      order: ['-sys.createdAt'],
+      content_type: "upcomingMeeting",
+      order: ["-sys.createdAt"],
     });
-    
+
     return response.items.map(item => ({
       ...item,
-      contentTypeId: 'upcomingMeeting'
+      contentTypeId: "upcomingMeeting",
     }));
   } catch (error) {
-    console.error('Contentful error:', error);
+    console.error("Contentful error:", error);
     return [];
   }
 }

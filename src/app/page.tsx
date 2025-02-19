@@ -1,6 +1,3 @@
-"use client";
-
-import React from "react";
 import Image from "next/image";
 import { BackgroundBeams } from "./components/background-beam";
 import { Navbar } from "./components/navbar";
@@ -9,7 +6,7 @@ import UpcomingMeetings from "./components/upcoming-meetings";
 import InfoSection from "./components/info-section";
 import LeadershipSection from "./components/leadership-section";
 import ResourcesSection from "./components/resources-section";
-import styles from './styles/customFont.module.css'
+import styles from "./styles/customFont.module.css";
 import { Comfortaa } from "next/font/google";
 
 const comfortaa = Comfortaa({
@@ -19,7 +16,7 @@ const comfortaa = Comfortaa({
 
 export default function Home() {
   return (
-    <main 
+    <main
       className="flex flex-col items-center justify-between p-4 md:p-24"
       suppressHydrationWarning
     >
@@ -51,7 +48,8 @@ export default function Home() {
 
         {/* Desktop Subtitle */}
         <h3 className="hidden md:block text-xl">
-          STJ&apos;s Premier Organization for Computer Science and Cyber Security
+          STJ&apos;s Premier Organization for Computer Science and Cyber
+          Security
         </h3>
 
         {/* Mobile Logo */}
@@ -82,27 +80,27 @@ export default function Home() {
       </div>
 
       <BackgroundBeams />
-      
+
       <div className="w-full overflow-hidden">
         <Parallax />
       </div>
-      
+
       <div className="py-12 md:py-20 w-full">
         <UpcomingMeetings />
       </div>
-      
+
       <div className="py-12 md:py-20 w-full">
         <InfoSection />
       </div>
-      
+
       <div className="py-12 md:py-20 w-full">
         <LeadershipSection />
       </div>
-      
+
       <div className="py-12 md:py-20 w-full">
         <ResourcesSection />
       </div>
-      
+
       <div className="pb-20 md:pb-40"></div>
     </main>
   );

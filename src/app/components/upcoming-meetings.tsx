@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -24,14 +25,14 @@ export default function UpcomingMeetings() {
   }
 
   const meetingDate = new Date(nextMeeting.fields.date);
-  const formattedDate = meetingDate.toLocaleDateString('en-US', {
-    weekday: 'long',
-    month: 'long',
-    day: 'numeric'
+  const formattedDate = meetingDate.toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
   });
-  const formattedTime = meetingDate.toLocaleTimeString('en-US', {
-    hour: '2-digit',
-    minute: '2-digit'
+  const formattedTime = meetingDate.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
   });
 
   return (
@@ -43,7 +44,9 @@ export default function UpcomingMeetings() {
           transition={{ duration: 0.8 }}
           className="text-center mb-32"
         >
-          <h3 className="text-red-500 font-bold text-sm tracking-wider mb-3">UPCOMING EVENT</h3>
+          <h3 className="text-red-500 font-bold text-sm tracking-wider mb-3">
+            UPCOMING EVENT
+          </h3>
           <h2 className="text-4xl font-bold mb-4">Next Meeting</h2>
           <div className="w-16 h-0.5 bg-red-500 mx-auto"></div>
         </motion.div>
@@ -72,24 +75,34 @@ export default function UpcomingMeetings() {
             transition={{ duration: 0.8 }}
             className="space-y-6"
           >
-            <h3 className="text-3xl font-bold text-white">{nextMeeting.fields.title}</h3>
-            <p className="text-neutral-300 text-base leading-relaxed">{nextMeeting.fields.description}</p>
+            <h3 className="text-3xl font-bold text-white">
+              {nextMeeting.fields.title}
+            </h3>
+            <p className="text-neutral-300 text-base leading-relaxed">
+              {nextMeeting.fields.description}
+            </p>
 
             <div className="grid grid-cols-2 gap-4 pt-2">
               <div className="bg-black/20 p-4 rounded-xl backdrop-blur-sm">
                 <p className="text-red-500 font-medium mb-1 text-xs">DATE</p>
-                <p className="text-white text-sm font-medium">{formattedDate}</p>
+                <p className="text-white text-sm font-medium">
+                  {formattedDate}
+                </p>
               </div>
               <div className="bg-black/20 p-4 rounded-xl backdrop-blur-sm">
                 <p className="text-red-500 font-medium mb-1 text-xs">TIME</p>
-                <p className="text-white text-sm font-medium">{formattedTime}</p>
+                <p className="text-white text-sm font-medium">
+                  {formattedTime}
+                </p>
               </div>
             </div>
 
             <div className="bg-black/20 p-4 rounded-xl backdrop-blur-sm">
               <p className="text-red-500 font-medium mb-1 text-xs">LOCATION</p>
               <p className="text-white text-sm font-medium">
-                {typeof nextMeeting.fields.meetingLocation === 'object' ? 'TBA' : nextMeeting.fields.meetingLocation || 'TBA'}
+                {typeof nextMeeting.fields.meetingLocation === "object"
+                  ? "TBA"
+                  : nextMeeting.fields.meetingLocation || "TBA"}
               </p>
             </div>
           </motion.div>

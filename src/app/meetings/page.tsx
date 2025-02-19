@@ -1,54 +1,13 @@
-"use client";
-import React from "react";
-import { useEffect, useState } from "react";
-import Meeting from "../components/meeting";
-import { Meeting as MeetingType, getAllMeetings } from "@/lib/contentful";
+import { getAllMeetings } from "@/lib/contentful";
+import MeetingsList from "./components/meetings-list";
 
-export default function MeetingsPage() {
-  const [meetings, setMeetings] = useState<MeetingType[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchMeetings() {
-      try {
-        const allMeetings = await getAllMeetings();
-        setMeetings(allMeetings);
-      } catch (error) {
-        console.error("Error fetching meetings:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchMeetings();
-  }, []);
-
-  if (loading) {
-    return <div className="text-center mt-8">Loading...</div>;
-  }
+export default async function MeetingsPage() {
+  const meetings = await getAllMeetings();
 
   return (
     <div className="text-center items-center justify-center max-w-7xl mx-auto px-8">
       <div className="p-4 md:p-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {meetings.map((meeting) => (
-            <Meeting
-              key={meeting.sys.id}
-              title={meeting.fields.title}
-              date={new Date(meeting.fields.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                timeZone: 'UTC'
-              })}
-              image={`https:${meeting.fields.image.fields.file.url}`}
-              description={meeting.fields.description}
-              meetingLocation={meeting.fields.meetingLocation}
-              slides={meeting.fields.slides}
-              recording={meeting.fields.recording}
-            />
-          ))}
-        </div>
+        <MeetingsList meetings={meetings} />
       </div>
     </div>
   );

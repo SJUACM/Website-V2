@@ -15,4 +15,4 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default PageTransition; 
+export default PageTransition;

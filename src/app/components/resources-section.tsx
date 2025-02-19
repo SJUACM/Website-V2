@@ -1,5 +1,5 @@
-"use client";
-import React from "react";
+'use client'
+
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,17 +16,18 @@ export default function ResourcesSection() {
             className="space-y-8"
           >
             <h3 className="text-red-500 font-bold">DEVELOPMENT</h3>
-            <h2 className="text-4xl font-bold">
-              Check out our Resources
-            </h2>
+            <h2 className="text-4xl font-bold">Check out our Resources</h2>
             <p className="text-neutral-300 text-lg">
-              Our curated list of resources will help set you up to become a more well rounded candidate for top tech companies! 
-              Pick up the skills you need to succeed in your future career
+              Our curated list of resources will help set you up to become a
+              more well rounded candidate for top tech companies! Pick up the
+              skills you need to succeed in your future career
             </p>
             <div className="pt-4">
               <Link href="/resources">
-                <button className="px-8 py-4 rounded-full bg-red-500 text-white font-medium 
-                               hover:bg-red-600 transition-colors duration-200">
+                <button
+                  className="px-8 py-4 rounded-full bg-red-500 text-white font-medium 
+                               hover:bg-red-600 transition-colors duration-200"
+                >
                   View our Resources
                 </button>
               </Link>
@@ -51,4 +52,4 @@ export default function ResourcesSection() {
       </div>
     </div>
   );
-} 
+}

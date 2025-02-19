@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -9,7 +10,7 @@ export function Navbar({ className }: { className?: string }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div 
+    <div
       className={cn(
         "fixed top-0 left-0 right-0 flex justify-center pt-6 z-50",
         className

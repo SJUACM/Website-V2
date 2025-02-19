@@ -1,8 +1,3 @@
-"use client";
-import React from "react";
-import { CardBody, CardContainer, CardItem } from "../components/3d-card";
-import Image from "next/image";
-import Link from "next/link";
 import { StaticImageData } from "next/image";
 import Tomas from "../../../public/images/eboard/tomas.png";
 import Hinna from "../../../public/images/eboard/hinna.png";
@@ -25,10 +20,22 @@ import Faizan from "../../../public/images/eboard/faizan.png";
 import Thomas from "../../../public/images/eboard/thomas.png";
 import Ava from "../../../public/images/eboard/ava.png";
 import Jade from "../../../public/images/eboard/jade.png";
+import { MobileEboardMember } from "./components/MobileEboardMember";
+import { MobilePastEboardMember } from "./components/MobilePastEboardMember";
+import { EboardMember } from "./components/EboardMember";
 
-import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+interface EboardMemberProps {
+  name: string;
+  position: string;
+  image: StaticImageData;
+  description: string;
+  linkedin: string;
+  github?: string;
+}
+
+interface PastEboardMemberProps extends Omit<EboardMemberProps, "description"> {
+  year: string;
+}
 
 export default function Eboard() {
   return (
@@ -376,249 +383,6 @@ export default function Eboard() {
                 />
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export function EboardMember({
-  name,
-  position,
-  image,
-  description,
-  linkedin,
-  github,
-}: {
-  name: string;
-  position: string;
-  image: StaticImageData;
-  description: string;
-  linkedin: string;
-  github?: string;
-}) {
-  return (
-    <CardContainer className="inter-var">
-      <CardBody
-        className={`bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.3] border-black/[0.1] w-full sm:w-[280px] min-h-[580px] sm:min-h-0 sm:h-[400px] rounded-xl p-6 md:p-4 border`}
-      >
-        <div className="flex flex-col h-full">
-          <CardItem
-            translateZ="50"
-            className="text-2xl md:text-lg font-bold text-neutral-600 dark:text-white mb-4 md:mb-2"
-          >
-            {name}
-          </CardItem>
-          <CardItem translateZ="100" className="w-full mt-2">
-            <Image
-              src={image}
-              height="1000"
-              width="1000"
-              className="h-[260px] md:h-[200px] w-full object-cover rounded-xl group-hover/card:shadow-xl"
-              alt={name}
-            />
-          </CardItem>
-          <CardItem
-            as="p"
-            translateZ="60"
-            className="text-neutral-300 text-xl md:text-md mt-4 md:mt-3"
-          >
-            {position}
-          </CardItem>
-          <CardItem
-            as="p"
-            translateZ="60"
-            className="text-neutral-400 text-lg md:text-sm mt-2 md:mt-1"
-          >
-            {description}
-          </CardItem>
-          <CardItem translateZ="40" className="mt-auto pt-6 md:pt-4">
-            <div className="flex items-center justify-start gap-6 md:gap-4 pb-2 md:pb-0">
-              <a href={linkedin} target="_blank" rel="noreferrer">
-                <FontAwesomeIcon
-                  icon={faLinkedin as IconProp}
-                  className="text-2xl md:text-xl text-neutral-300 hover:text-blue-500 transition-colors"
-                />
-              </a>
-              {github && (
-                <a href={github} target="_blank" rel="noreferrer">
-                  <FontAwesomeIcon
-                    icon={faGithub as IconProp}
-                    className="text-2xl md:text-xl text-neutral-300 hover:text-purple-500 transition-colors"
-                  />
-                </a>
-              )}
-            </div>
-          </CardItem>
-        </div>
-      </CardBody>
-    </CardContainer>
-  );
-}
-
-export function PastEboardMember({
-  name,
-  position,
-  year,
-  image,
-  linkedin,
-  github,
-}: {
-  name: string;
-  position: string;
-  year: string;
-  image: StaticImageData;
-  linkedin: string;
-  github?: string;
-}) {
-  return (
-    <CardContainer className="inter-var">
-      <CardBody
-        className={`bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.3] border-black/[0.1] w-full sm:w-[280px] min-h-[580px] sm:min-h-0 sm:h-[400px] rounded-xl p-6 md:p-4 border`}
-      >
-        <div className="flex flex-col h-full">
-          <CardItem
-            translateZ="50"
-            className="text-2xl md:text-lg font-bold text-neutral-600 dark:text-white mb-4 md:mb-2"
-          >
-            {name}
-          </CardItem>
-          <CardItem translateZ="100" className="w-full mt-2">
-            <Image
-              src={image}
-              height="1000"
-              width="1000"
-              className="h-[260px] md:h-[200px] w-full object-cover rounded-xl group-hover/card:shadow-xl"
-              alt={name}
-            />
-          </CardItem>
-          <CardItem
-            as="p"
-            translateZ="60"
-            className="text-neutral-300 text-xl md:text-md mt-4 md:mt-3"
-          >
-            {position}
-          </CardItem>
-          <CardItem
-            as="p"
-            translateZ="60"
-            className="text-neutral-400 text-lg md:text-sm mt-2 md:mt-1"
-          >
-            {year}
-          </CardItem>
-          <CardItem translateZ="40" className="mt-auto pt-6 md:pt-4">
-            <div className="flex items-center justify-start gap-6 md:gap-4 pb-2 md:pb-0">
-              <a href={linkedin} target="_blank" rel="noreferrer">
-                <FontAwesomeIcon
-                  icon={faLinkedin as IconProp}
-                  className="text-2xl md:text-xl text-neutral-300 hover:text-blue-500 transition-colors"
-                />
-              </a>
-              {github && (
-                <a href={github} target="_blank" rel="noreferrer">
-                  <FontAwesomeIcon
-                    icon={faGithub as IconProp}
-                    className="text-2xl md:text-xl text-neutral-300 hover:text-purple-500 transition-colors"
-                  />
-                </a>
-              )}
-            </div>
-          </CardItem>
-        </div>
-      </CardBody>
-    </CardContainer>
-  );
-}
-
-function MobileEboardMember({
-  name,
-  position,
-  image,
-  description,
-  linkedin,
-  github,
-}: {
-  name: string;
-  position: string;
-  image: StaticImageData;
-  description: string;
-  linkedin: string;
-  github?: string;
-}) {
-  return (
-    <div className="relative bg-black/20 backdrop-blur-md rounded-xl p-6 border border-white/10">
-      <div className="flex flex-col items-center">
-        <div className="relative w-32 h-32 mb-4">
-          <Image
-            src={image}
-            alt={name}
-            fill
-            className="object-cover rounded-full border-2 border-red-500/20"
-          />
-        </div>
-        
-        <h3 className="text-xl font-bold text-white mb-1">{name}</h3>
-        <span className="text-red-500 font-medium text-sm mb-2">{position}</span>
-        <p className="text-neutral-300 text-sm mb-4">{description}</p>
-        
-        <div className="flex space-x-4 mt-2">
-          <a href={linkedin} target="_blank" rel="noreferrer"
-             className="text-neutral-400 hover:text-red-500 transition-colors">
-            <FontAwesomeIcon icon={faLinkedin as IconProp} className="text-xl" />
-          </a>
-          {github && (
-            <a href={github} target="_blank" rel="noreferrer"
-               className="text-neutral-400 hover:text-red-500 transition-colors">
-              <FontAwesomeIcon icon={faGithub as IconProp} className="text-xl" />
-            </a>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function MobilePastEboardMember({
-  name,
-  position,
-  year,
-  image,
-  linkedin,
-  github,
-}: {
-  name: string;
-  position: string;
-  year: string;
-  image: StaticImageData;
-  linkedin: string;
-  github?: string;
-}) {
-  return (
-    <div className="bg-black/20 relative group/card dark:hover:shadow-2xl dark:hover:shadow-red-500/[0.1] dark:border-white/[0.2] border-black/[0.1] w-full rounded-xl p-6 border">
-      <div className="flex flex-col items-center">
-        <Image
-          src={image}
-          height="120"
-          width="120"
-          className="rounded-full object-cover mb-4"
-          alt={name}
-        />
-        <div className="text-center">
-          <h3 className="text-xl font-bold text-white mb-1">{name}</h3>
-          <p className="text-neutral-300 mb-1">{position}</p>
-          <p className="text-neutral-400 text-sm mb-4">{year}</p>
-          <div className="flex items-center justify-center gap-4">
-            <a href={linkedin} target="_blank" rel="noreferrer"
-               className="text-neutral-400 hover:text-blue-500 transition-colors">
-              <FontAwesomeIcon icon={faLinkedin as IconProp} className="text-xl" />
-            </a>
-            {github && (
-              <a href={github} target="_blank" rel="noreferrer"
-                 className="text-neutral-400 hover:text-red-500 transition-colors">
-                <FontAwesomeIcon icon={faGithub as IconProp} className="text-xl" />
-              </a>
-            )}
           </div>
         </div>
       </div>

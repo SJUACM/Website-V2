@@ -1,8 +1,7 @@
-import React from "react";
 import type { Metadata } from "next";
 import { Comfortaa } from "next/font/google";
 import "./globals.css";
-import Footer from './components/footer'
+import Footer from "./components/footer";
 
 const comfortaa = Comfortaa({
   subsets: ["latin"],

@@ -1,10 +1,15 @@
-"use client";
-import React from "react";
+'use client'
+
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { interviewResources, helpfulWebsites, youtubeChannels, Resource } from "./data";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import {
+  interviewResources,
+  helpfulWebsites,
+  youtubeChannels,
+  Resource,
+} from "./data";
 
 function ResourceCard({ resource }: { resource: Resource }) {
   return (
@@ -15,15 +20,21 @@ function ResourceCard({ resource }: { resource: Resource }) {
       viewport={{ once: true }}
       className="group relative"
     >
-      <div className="relative bg-gradient-to-br from-neutral-900/50 to-black/50 
+      <div
+        className="relative bg-gradient-to-br from-neutral-900/50 to-black/50 
                     backdrop-blur-sm rounded-xl overflow-hidden border border-neutral-800/50
                     transition-all duration-300 hover:border-red-500/50 hover:shadow-lg 
-                    hover:shadow-red-500/10">
-        <div className="absolute inset-0 bg-gradient-to-br from-red-500/0 to-red-500/0 
-                      group-hover:from-red-500/10 group-hover:to-transparent transition-all duration-300" />
+                    hover:shadow-red-500/10"
+      >
+        <div
+          className="absolute inset-0 bg-gradient-to-br from-red-500/0 to-red-500/0 
+                      group-hover:from-red-500/10 group-hover:to-transparent transition-all duration-300"
+        />
         <div className="relative p-6 h-full">
-          <h3 className="text-xl font-bold text-white text-center mb-3 group-hover:text-red-500 
-                       transition-colors duration-300">
+          <h3
+            className="text-xl font-bold text-white text-center mb-3 group-hover:text-red-500 
+                       transition-colors duration-300"
+          >
             {resource.title}
           </h3>
           <p className="text-neutral-300 text-sm mb-8 leading-relaxed text-center">
@@ -64,7 +75,7 @@ function SectionTitle({ title }: { title: string }) {
 export default function Resources() {
   return (
     <div className="min-h-screen">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -72,9 +83,10 @@ export default function Resources() {
       >
         <div className="text-center max-w-3xl mx-auto mb-24">
           <p className="text-lg text-neutral-300 leading-relaxed">
-            STJ ACM provides a collection of tools and materials to help students develop their skills. 
-            Whether you&apos;re preparing for interviews, expanding your knowledge, or looking for expert insights, 
-            these resources will support your learning journey.
+            STJ ACM provides a collection of tools and materials to help
+            students develop their skills. Whether you&apos;re preparing for
+            interviews, expanding your knowledge, or looking for expert
+            insights, these resources will support your learning journey.
           </p>
         </div>
 
