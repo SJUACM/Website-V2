@@ -34,7 +34,7 @@ export default function Home() {
 
         {/* Desktop Subtitle */}
         <h3 className="hidden md:block text-xl">
-          SJU&apos;s Premier Organization for Computer Science and Cyber Security
+          STJ&apos;s Premier Organization for Computer Science and Cyber Security
         </h3>
 
         {/* Mobile Logo */}

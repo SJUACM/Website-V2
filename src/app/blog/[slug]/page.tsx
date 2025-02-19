@@ -6,8 +6,15 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Image from "next/image";
 import { BLOCKS } from '@contentful/rich-text-types';
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default function BlogPost({ 
+  params 
+}: { 
+  params: Promise<{ slug: string }> | { slug: string } 
+}) {
+  // Unwrap params using React.use()
+  const unwrappedParams = React.use(params as Promise<{ slug: string }>);
+  const { slug } = unwrappedParams;
+  
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
 

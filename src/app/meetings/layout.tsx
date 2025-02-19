@@ -8,7 +8,10 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="flex flex-col items-center justify-between p-4 md:p-24">
+    <main 
+      className="flex flex-col items-center justify-between p-4 md:p-24"
+      suppressHydrationWarning
+    >
       <div className="z-50 w-full max-w-5xl items-center justify-between font-poppins text-sm lg:flex">
         <div className="flex h-12 w-full justify-center lg:static lg:size-auto">
           <Navbar />

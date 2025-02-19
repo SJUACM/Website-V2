@@ -35,92 +35,74 @@ export default function Parallax() {
 export const products = [
   {
     title: "Headstarter x SJU ACM AI Hackathon",
-    link: "https://www.facebook.com/events/12107000000000000/",
     thumbnail: AIHackathon1,
   },
   {
     title: "SAP Office Hours",
-    link: "https://www.sap.com/community/groups/office-hours/",
     thumbnail: SAPOffice,
   },
   {
     title: "Kickoff 2022",
-    link: "https://www.facebook.com/events/12107000000000000/",
     thumbnail: Kickoff22,
   },
   {
     title: "EY Office Visit",
-    link: "https://www.ey.com/",
     thumbnail: EYPic,
   },
   {
     title: "SJU ABET",
-    link: "https://abet.sju.edu/",
     thumbnail: AbetEvent,
   },
   {
     title: "Headstarter x SJU ACM AI Hackathon",
-    link: "https://www.facebook.com/events/12107000000000000/",
     thumbnail: AIHackathon2,
   },
   {
     title: "Fall Kickoff 2023",
-    link: "https://www.facebook.com/events/12107000000000000/",
     thumbnail: FallKickOff23,
   },
   {
     title: "Headstarter x SJU ACM Hackathon",
-    link: "https://www.facebook.com/events/12107000000000000/",
     thumbnail: HSHackathon,
   },
   {
     title: "Intro to Web Dev",
-    link: "https://www.facebook.com/events/12107000000000000/",
     thumbnail: IntroToWebDev,
   },
   {
     title: "Python Malware Development",
-    link: "https://www.facebook.com/events/12107000000000000/",
     thumbnail: PythonMalware,
   },
   {
     title: "Research Meeting",
-    link: "https://www.facebook.com/events/12107000000000000/",
     thumbnail: ResearchMeeting,
   },
   {
     title: "Reverse Engineering",
-    link: "https://www.facebook.com/events/12107000000000000/",
     thumbnail: revEng,
   },
   {
     title: "SAP",
-    link: "https://www.facebook.com/events/12107000000000000/",
     thumbnail: SAPPic2,
   },
   {
     title: "Spring 2024 Kickoff",
-    link: "https://www.facebook.com/events/12107000000000000/",
     thumbnail: Spring2024Kickoff,
   },
   {
     title: "Lab Pic 1",
-    link: "https://www.facebook.com/events/12107000000000000/",
     thumbnail: LabPic1,
   },
   {
     title: "Lab Pic 2",
-    link: "https://www.facebook.com/events/12107000000000000/",
     thumbnail: LabPic2,
   },
   {
     title: "SWE Interview Prep",
-    link: "https://www.facebook.com/events/12107000000000000/",
     thumbnail: SWEInterviewPrep,
   },
   {
     title: "Lab Pic 9",
-    link: "https://www.facebook.com/events/12107000000000000/",
     thumbnail: LabPic9,
   },
 ];
@@ -130,7 +112,6 @@ export const HeroParallax = ({
 }: {
   products: {
     title: string;
-    link: string;
     thumbnail: StaticImageData;
   }[];
 }) => {
@@ -236,7 +217,6 @@ export const ProductCard = ({
 }: {
   product: {
     title: string;
-    link: string;
     thumbnail: StaticImageData;
   };
   translate: MotionValue<number>;
@@ -252,10 +232,7 @@ export const ProductCard = ({
       key={product.title}
       className="group/product h-96 w-[30rem] relative flex-shrink-0"
     >
-      <Link
-        href={product.link}
-        className="block group-hover/product:shadow-2xl "
-      >
+      <div className="block group-hover/product:shadow-2xl">
         <Image
           src={product.thumbnail}
           height="600"
@@ -263,7 +240,7 @@ export const ProductCard = ({
           className="object-cover object-left-top absolute h-full w-full inset-0"
           alt={product.title}
         />
-      </Link>
+      </div>
       <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
       <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">
         {product.title}

@@ -3,21 +3,25 @@ import Image from "next/image";
 import Link from "next/link";
 import { StaticImageData } from "next/image";
 
+interface MeetingProps {
+  title: string;
+  date: string;
+  image: string;
+  description: string;
+  meetingLocation?: string;
+  slides?: string;
+  recording?: string;
+}
+
 export default function Meeting({
   title,
   date,
   image,
   description,
+  meetingLocation,
   slides,
   recording,
-}: {
-  title: string;
-  date: string;
-  image: string | StaticImageData;
-  description: string;
-  slides?: string;
-  recording?: string;
-}) {
+}: MeetingProps) {
   return (
     <CardContainer className="inter-var">
       <CardBody
@@ -52,6 +56,12 @@ export default function Meeting({
         >
           {description}
         </CardItem>
+        {meetingLocation && (
+          <div className="mt-4">
+            <span className="text-neutral-400">Location: </span>
+            <span className="text-neutral-200">{meetingLocation}</span>
+          </div>
+        )}
         <div className="absolute bottom-8 left-8 right-8 flex justify-left space-x-4 items-center">
           {slides && (
             <CardItem

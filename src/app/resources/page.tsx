@@ -74,7 +74,7 @@ export default function Resources() {
         <div className="text-center max-w-3xl mx-auto mb-24">
           <p className="text-lg text-neutral-300 leading-relaxed">
             STJ ACM provides a collection of tools and materials to help students develop their skills. 
-            Whether you're preparing for interviews, expanding your knowledge, or looking for expert insights, 
+            Whether you&apos;re preparing for interviews, expanding your knowledge, or looking for expert insights, 
             these resources will support your learning journey.
           </p>
         </div>

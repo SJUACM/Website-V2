@@ -94,7 +94,7 @@ export default function UpcomingMeetings() {
             <div className="bg-black/20 p-4 rounded-xl backdrop-blur-sm">
               <p className="text-red-500 font-medium mb-1 text-xs">LOCATION</p>
               <p className="text-white text-sm font-medium">
-                {typeof nextMeeting.fields.location === 'object' ? 'TBA' : nextMeeting.fields.location || 'TBA'}
+                {typeof nextMeeting.fields.meetingLocation === 'object' ? 'TBA' : nextMeeting.fields.meetingLocation || 'TBA'}
               </p>
             </div>
           </motion.div>

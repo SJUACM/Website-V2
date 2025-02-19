@@ -37,10 +37,12 @@ export default function MeetingsPage() {
               date={new Date(meeting.fields.date).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
-                day: 'numeric'
+                day: 'numeric',
+                timeZone: 'UTC'
               })}
               image={`https:${meeting.fields.image.fields.file.url}`}
               description={meeting.fields.description}
+              meetingLocation={meeting.fields.meetingLocation}
               slides={meeting.fields.slides}
               recording={meeting.fields.recording}
             />
