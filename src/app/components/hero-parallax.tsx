@@ -8,102 +8,83 @@ import {
   MotionValue,
 } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import { StaticImageData } from "next/image";
-import AbetEvent from "../../../public/images/abet_event.jpg";
-import AIHackathon1 from "../../../public/images/aiHackathon1.jpg";
-import AIHackathon2 from "../../../public/images/aiHackathon6.jpg";
-import EYPic from "../../../public/images/eyPic1.jpg";
-import FallKickOff23 from "../../../public/images/fallKickOff23.jpg";
-import SAPOffice from "../../../public/images/sap_office.jpg";
-import Kickoff22 from "../../../public/images/kickoff22.jpg";
-import HSHackathon from "../../../public/images/hs_hackathon.jpg";
-import IntroToWebDev from "../../../public/images/introWebDev.jpg";
-import PythonMalware from "../../../public/images/PythonMalwareDevPic.jpg";
-import ResearchMeeting from "../../../public/images/research.jpg";
-import SWEInterviewPrep from "../../../public/images/sweInterviewPrep.jpg";
-import revEng from "../../../public/images/revEng.jpg";
-import SAPPic2 from "../../../public/images/sapPic2.jpg";
-import Spring2024Kickoff from "../../../public/images/spring2024Kickoff.jpg";
-import LabPic1 from "../../../public/images/lab_pic1.jpg";
-import LabPic2 from "../../../public/images/lab_pic2.jpg";
-import LabPic9 from "../../../public/images/lab_pic9.jpg";
 
 export default function Parallax() {
   return <HeroParallax products={products} />;
 }
+
 export const products = [
   {
     title: "Headstarter x SJU ACM AI Hackathon",
-    thumbnail: AIHackathon1,
+    imagePath: "/images/aiHackathon1.jpg",
   },
   {
     title: "SAP Office Hours",
-    thumbnail: SAPOffice,
+    imagePath: "/images/sap_office.jpg",
   },
   {
     title: "Kickoff 2022",
-    thumbnail: Kickoff22,
+    imagePath: "/images/kickoff22.jpg",
   },
   {
     title: "EY Office Visit",
-    thumbnail: EYPic,
+    imagePath: "/images/eyPic1.jpg",
   },
   {
     title: "SJU ABET",
-    thumbnail: AbetEvent,
+    imagePath: "/images/abet_event.jpg",
   },
   {
     title: "Headstarter x SJU ACM AI Hackathon",
-    thumbnail: AIHackathon2,
+    imagePath: "/images/aiHackathon6.jpg",
   },
   {
     title: "Fall Kickoff 2023",
-    thumbnail: FallKickOff23,
+    imagePath: "/images/fallKickOff23.jpg",
   },
   {
     title: "Headstarter x SJU ACM Hackathon",
-    thumbnail: HSHackathon,
+    imagePath: "/images/hs_hackathon.jpg",
   },
   {
     title: "Intro to Web Dev",
-    thumbnail: IntroToWebDev,
+    imagePath: "/images/introWebDev.jpg",
   },
   {
     title: "Python Malware Development",
-    thumbnail: PythonMalware,
+    imagePath: "/images/PythonMalwareDevPic.jpg",
   },
   {
     title: "Research Meeting",
-    thumbnail: ResearchMeeting,
+    imagePath: "/images/research.jpg",
   },
   {
     title: "Reverse Engineering",
-    thumbnail: revEng,
+    imagePath: "/images/revEng.jpg",
   },
   {
     title: "SAP",
-    thumbnail: SAPPic2,
+    imagePath: "/images/sapPic2.jpg",
   },
   {
     title: "Spring 2024 Kickoff",
-    thumbnail: Spring2024Kickoff,
+    imagePath: "/images/spring2024Kickoff.jpg",
   },
   {
     title: "Lab Pic 1",
-    thumbnail: LabPic1,
+    imagePath: "/images/lab_pic1.jpg",
   },
   {
     title: "Lab Pic 2",
-    thumbnail: LabPic2,
+    imagePath: "/images/lab_pic2.jpg",
   },
   {
     title: "SWE Interview Prep",
-    thumbnail: SWEInterviewPrep,
+    imagePath: "/images/sweInterviewPrep.jpg",
   },
   {
     title: "Lab Pic 9",
-    thumbnail: LabPic9,
+    imagePath: "/images/lab_pic9.jpg",
   },
 ];
 
@@ -112,7 +93,7 @@ export const HeroParallax = ({
 }: {
   products: {
     title: string;
-    thumbnail: StaticImageData;
+    imagePath: string;
   }[];
 }) => {
   const firstRow = products.slice(0, 5);
@@ -217,7 +198,7 @@ export const ProductCard = ({
 }: {
   product: {
     title: string;
-    thumbnail: StaticImageData;
+    imagePath: string;
   };
   translate: MotionValue<number>;
 }) => {
@@ -234,11 +215,10 @@ export const ProductCard = ({
     >
       <div className="block group-hover/product:shadow-2xl">
         <Image
-          src={product.thumbnail}
-          height="600"
-          width="600"
-          className="object-cover object-left-top absolute h-full w-full inset-0"
+          src={product.imagePath}
           alt={product.title}
+          fill
+          className="object-cover object-left-top absolute h-full w-full inset-0"
         />
       </div>
       <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
