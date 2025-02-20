@@ -112,7 +112,7 @@ export const HeroParallax = ({ products }: HeroParallaxProps) => {
   return (
     <div
       ref={ref}
-      className="h-[140vh] md:h-[230vh] py-16 md:py-28 overflow-hidden antialiased relative flex flex-col self-auto"
+      className="h-[300vh] md:h-[230vh] py-16 md:py-28 overflow-hidden antialiased relative flex flex-col self-auto"
     >
       <Header />
       <motion.div
@@ -161,8 +161,11 @@ export const HeroParallax = ({ products }: HeroParallaxProps) => {
 
 export const Header = () => {
   return (
-    <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full  left-0 top-0">
-      <h1 className="text-2xl md:text-7xl font-bold dark:text-white">
+    <div className="max-w-7xl relative mx-auto py-80 md:py-60 px-4 w-full left-0 top-0">
+      <h1 className="text-2xl md:text-7xl font-bold dark:text-white hidden md:block">
+        Your community for <br /> all things Tech
+      </h1>
+      <h1 className="text-2xl md:text-7xl font-bold dark:text-white md:hidden mt-40">
         Your community for <br /> all things Tech
       </h1>
       <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
