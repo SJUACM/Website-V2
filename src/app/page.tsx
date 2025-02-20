@@ -71,7 +71,7 @@ export default function Home() {
         <Parallax />
       </div>
 
-      <div className="py-0 md:py-24 w-full">
+      <div className="-mt-64 md:mt-0 py-4 md:py-24 w-full">
         <UpcomingMeetings />
       </div>
 
