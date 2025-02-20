@@ -112,42 +112,42 @@ export const HeroParallax = ({ products }: HeroParallaxProps) => {
   return (
     <div
       ref={ref}
-      className="h-[220vh] py-24 overflow-hidden antialiased relative flex flex-col self-auto"
+      className="h-[140vh] md:h-[230vh] py-16 md:py-28 overflow-hidden antialiased relative flex flex-col self-auto"
     >
       <Header />
       <motion.div
         style={{ opacity }}
         className="sticky top-0 flex flex-col items-center justify-center"
       >
-        <motion.div className="flex flex-col gap-16">
-          <motion.div className="flex flex-row gap-4">
+        <motion.div className="flex flex-col gap-8 md:gap-16">
+          <motion.div className="flex flex-row gap-2 md:gap-4">
             {firstRow.map((product) => (
               <motion.div
                 key={product.title}
                 style={{ x: translateX }}
-                className="group relative h-96 w-[30rem] overflow-hidden rounded-lg"
+                className="group relative h-48 md:h-96 w-[15rem] md:w-[30rem] overflow-hidden rounded-lg"
               >
                 <ProductCard product={product} />
               </motion.div>
             ))}
           </motion.div>
-          <motion.div className="flex flex-row gap-4">
+          <motion.div className="flex flex-row gap-2 md:gap-4">
             {secondRow.map((product) => (
               <motion.div
                 key={product.title}
                 style={{ x: translateXReverse }}
-                className="group relative h-96 w-[30rem] overflow-hidden rounded-lg"
+                className="group relative h-48 md:h-96 w-[15rem] md:w-[30rem] overflow-hidden rounded-lg"
               >
                 <ProductCard product={product} />
               </motion.div>
             ))}
           </motion.div>
-          <motion.div className="flex flex-row gap-4">
+          <motion.div className="flex flex-row gap-2 md:gap-4">
             {thirdRow.map((product) => (
               <motion.div
                 key={product.title}
                 style={{ x: translateX }}
-                className="group relative h-96 w-[30rem] overflow-hidden rounded-lg"
+                className="group relative h-48 md:h-96 w-[15rem] md:w-[30rem] overflow-hidden rounded-lg"
               >
                 <ProductCard product={product} />
               </motion.div>

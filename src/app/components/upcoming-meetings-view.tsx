@@ -30,7 +30,7 @@ export function UpcomingMeetingsView({
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-32"
+          className="text-center mb-16 md:mb-32"
         >
           <h3 className="text-red-500 font-bold text-sm tracking-wider mb-3">
             UPCOMING EVENT

@@ -85,19 +85,19 @@ export default function Home() {
         <Parallax />
       </div>
 
-      <div className="py-12 md:py-20 w-full">
+      <div className="py-0 md:py-24 w-full">
         <UpcomingMeetings />
       </div>
 
-      <div className="py-12 md:py-20 w-full">
+      <div className="py-14 md:py-24 w-full">
         <InfoSection />
       </div>
 
-      <div className="py-12 md:py-20 w-full">
+      <div className="py-14 md:py-24 w-full">
         <LeadershipSection />
       </div>
 
-      <div className="py-12 md:py-20 w-full">
+      <div className="py-14 md:py-24 w-full">
         <ResourcesSection />
       </div>
 
