@@ -112,7 +112,7 @@ export const HeroParallax = ({ products }: HeroParallaxProps) => {
   return (
     <div
       ref={ref}
-      className="h-[250vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto"
+      className="h-[220vh] py-24 overflow-hidden antialiased relative flex flex-col self-auto"
     >
       <Header />
       <motion.div
