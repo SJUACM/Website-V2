@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 
 interface Product {
@@ -10,14 +10,6 @@ interface Product {
 
 interface HeroParallaxProps {
   products: Product[];
-}
-
-interface ProductCardProps {
-  product: {
-    title: string;
-    imagePath: string;
-  };
-  translateX: number;
 }
 
 export default function Parallax() {
@@ -113,81 +105,54 @@ export const HeroParallax = ({ products }: HeroParallaxProps) => {
     offset: ["start start", "end start"],
   });
 
-  const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
-
-  // Create all the animations using useSpring
-  const translateX = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, 1000]),
-    springConfig
-  );
-  const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, -1000]),
-    springConfig
-  );
-  const rotateX = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [15, 0]),
-    springConfig
-  );
-  const opacity = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),
-    springConfig
-  );
-  const rotateZ = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [20, 0]),
-    springConfig
-  );
-  const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
-    springConfig
-  );
+  const translateX = useTransform(scrollYProgress, [0, 1], [0, -1000]);
+  const translateXReverse = useTransform(scrollYProgress, [0, 1], [0, 1000]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.9, 1], [1, 1, 1, 0]);
 
   return (
     <div
       ref={ref}
-      className="h-[400vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-[300vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto"
     >
       <Header />
       <motion.div
-        style={{
-          rotateX,
-          rotateZ,
-          translateY,
-          opacity,
-        }}
-        className="space-y-40 mt-20"
+        style={{ opacity }}
+        className="sticky top-0 flex flex-col items-center justify-center"
       >
-        <motion.div className="overflow-x-auto scrollbar-hide pb-8 -mx-4 px-4">
-          <div className="flex flex-row-reverse space-x-reverse space-x-20 min-w-max px-20">
-            {firstRow.map(product => (
-              <ProductCard
+        <motion.div className="flex flex-col gap-16">
+          <motion.div className="flex flex-row gap-4">
+            {firstRow.map((product) => (
+              <motion.div
                 key={product.title}
-                product={product}
-                translateX={translateX.get()}
-              />
+                style={{ x: translateX }}
+                className="group relative h-96 w-[30rem] overflow-hidden rounded-lg"
+              >
+                <ProductCard product={product} />
+              </motion.div>
             ))}
-          </div>
-        </motion.div>
-        <motion.div className="overflow-x-auto scrollbar-hide pb-8 -mx-4 px-4">
-          <div className="flex flex-row space-x-20 min-w-max px-20">
-            {secondRow.map(product => (
-              <ProductCard
+          </motion.div>
+          <motion.div className="flex flex-row gap-4">
+            {secondRow.map((product) => (
+              <motion.div
                 key={product.title}
-                product={product}
-                translateX={translateXReverse.get()}
-              />
+                style={{ x: translateXReverse }}
+                className="group relative h-96 w-[30rem] overflow-hidden rounded-lg"
+              >
+                <ProductCard product={product} />
+              </motion.div>
             ))}
-          </div>
-        </motion.div>
-        <motion.div className="overflow-x-auto scrollbar-hide pb-8 -mx-4 px-4">
-          <div className="flex flex-row-reverse space-x-reverse space-x-20 min-w-max px-20">
-            {thirdRow.map(product => (
-              <ProductCard
+          </motion.div>
+          <motion.div className="flex flex-row gap-4">
+            {thirdRow.map((product) => (
+              <motion.div
                 key={product.title}
-                product={product}
-                translateX={translateX.get()}
-              />
+                style={{ x: translateX }}
+                className="group relative h-96 w-[30rem] overflow-hidden rounded-lg"
+              >
+                <ProductCard product={product} />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
       </motion.div>
     </div>
@@ -208,29 +173,19 @@ export const Header = () => {
   );
 };
 
-export const ProductCard = ({ product, translateX }: ProductCardProps) => {
-  const x = useSpring(translateX);
-
+const ProductCard = ({ product }: { product: Product }) => {
   return (
-    <motion.div
-      style={{ x }}
-      whileHover={{ y: -20 }}
-      key={product.title}
-      className="group/product h-96 w-[30rem] relative flex-shrink-0"
-    >
-      <div className="block group-hover/product:shadow-2xl">
-        <Image
-          src={product.imagePath}
-          alt={product.title}
-          fill
-          unoptimized
-          className="object-cover object-left-top absolute h-full w-full inset-0"
-        />
+    <>
+      <Image
+        src={product.imagePath}
+        alt={product.title}
+        fill
+        className="object-cover object-left-top absolute inset-0 h-full w-full transition-transform duration-500 group-hover:scale-105"
+      />
+      <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
+      <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <h2 className="text-white text-lg font-semibold">{product.title}</h2>
       </div>
-      <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
-      <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">
-        {product.title}
-      </h2>
-    </motion.div>
+    </>
   );
 };
