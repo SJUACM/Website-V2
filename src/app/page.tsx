@@ -75,19 +75,19 @@ export default function Home() {
         <UpcomingMeetings />
       </div>
 
-      <div className="py-14 md:py-24 w-full">
+      <div className="py-4 md:py-24 w-full">
         <InfoSection />
       </div>
 
-      <div className="py-14 md:py-24 w-full">
+      <div className="py-4 md:py-24 w-full">
         <LeadershipSection />
       </div>
 
-      <div className="py-14 md:py-24 w-full">
+      <div className="py-4 md:py-24 w-full">
         <ResourcesSection />
       </div>
 
-      <div className="pb-20 md:pb-40"></div>
+      <div className="pb-10 md:pb-40"></div>
     </main>
   );
 }
