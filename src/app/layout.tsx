@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import { Comfortaa } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/footer";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+
+// Initialize FontAwesome configuration
+config.autoAddCss = false; // Disable auto CSS injection as we import the CSS file above
 
 const comfortaa = Comfortaa({
   subsets: ["latin"],
