@@ -103,7 +103,7 @@ export const products = [
   // },
   // 
   // {
-  //   title: "Lab Pic 9",
+  //   title: "Lab Pic Over 9000",
   //   imagePath: "/images/lab_pic9.jpg",
   // },
 ];
