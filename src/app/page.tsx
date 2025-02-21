@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 import { BackgroundBeams } from "./components/background-beam";
 import { Navbar } from "./components/navbar";
@@ -7,12 +8,6 @@ import InfoSection from "./components/info-section";
 import LeadershipSection from "./components/leadership-section";
 import ResourcesSection from "./components/resources-section";
 import styles from "./styles/customFont.module.css";
-import { Comfortaa } from "next/font/google";
-
-const comfortaa = Comfortaa({
-  subsets: ["latin"],
-  weight: "400",
-});
 
 export default function Home() {
   return (
@@ -71,7 +66,7 @@ export default function Home() {
         <Parallax />
       </div>
 
-      <div className="-mt-64 md:mt-0 py-2 md:py-16 w-full">
+      <div className="py-2 md:py-16 w-full">
         <UpcomingMeetings />
       </div>
 

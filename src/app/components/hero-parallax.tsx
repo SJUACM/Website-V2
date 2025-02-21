@@ -1,6 +1,11 @@
 "use client";
 import React from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useSpring
+} from "framer-motion";
 import Image from "next/image";
 
 interface Product {
@@ -10,6 +15,14 @@ interface Product {
 
 interface HeroParallaxProps {
   products: Product[];
+}
+
+interface ProductCardProps {
+  product: {
+    title: string;
+    imagePath: string;
+  };
+  translateX: number;
 }
 
 export default function Parallax() {
@@ -23,7 +36,7 @@ export const products = [
     imagePath: "/images/aiHackathon1.jpg",
   },
   {
-    title: "SAP Office Hours",
+    title: "SAP Office Hours", 
     imagePath: "/images/sap_office.jpg",
   },
   {
@@ -41,7 +54,7 @@ export const products = [
 
   // Second Row - Slides right to left
   {
-    title: "Headstarter x STJ ACM AI Hackathon",
+    title: "Headstarter x SJU ACM AI Hackathon",
     imagePath: "/images/aiHackathon6.jpg",
   },
   {
@@ -88,7 +101,7 @@ export const products = [
   //   title: "Lab Pic 2",
   //   imagePath: "/images/lab_pic2.jpg",
   // },
-  //
+  // 
   // {
   //   title: "Lab Pic 9",
   //   imagePath: "/images/lab_pic9.jpg",
@@ -105,54 +118,81 @@ export const HeroParallax = ({ products }: HeroParallaxProps) => {
     offset: ["start start", "end start"],
   });
 
-  const translateX = useTransform(scrollYProgress, [0, 1], [0, -1000]);
-  const translateXReverse = useTransform(scrollYProgress, [0, 1], [0, 1000]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.9, 1], [1, 1, 1, 0]);
+  const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
+
+  // Create all the animations using useSpring
+  const translateX = useSpring(
+    useTransform(scrollYProgress, [0, 1], [0, 1000]),
+    springConfig
+  );
+  const translateXReverse = useSpring(
+    useTransform(scrollYProgress, [0, 1], [0, -1000]),
+    springConfig
+  );
+  const rotateX = useSpring(
+    useTransform(scrollYProgress, [0, 0.2], [15, 0]),
+    springConfig
+  );
+  const opacity = useSpring(
+    useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),
+    springConfig
+  );
+  const rotateZ = useSpring(
+    useTransform(scrollYProgress, [0, 0.2], [20, 0]),
+    springConfig
+  );
+  const translateY = useSpring(
+    useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
+    springConfig
+  );
 
   return (
-    <div
-      ref={ref}
-      className="h-[250vh] md:h-[230vh] py-16 md:py-28 overflow-hidden antialiased relative flex flex-col self-auto"
+    <div 
+      ref={ref} 
+      className="h-[350vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header />
       <motion.div
-        style={{ opacity }}
-        className="sticky top-0 flex flex-col items-center justify-center"
+        style={{
+          rotateX,
+          rotateZ,
+          translateY,
+          opacity,
+        }}
+        className="space-y-24 mt-20"
       >
-        <motion.div className="flex flex-col gap-8 md:gap-16">
-          <motion.div className="flex flex-row gap-2 md:gap-4">
+        <motion.div className="overflow-x-auto scrollbar-hide pb-8 -mx-4 px-4">
+          <div className="flex flex-row-reverse space-x-reverse space-x-20 min-w-max px-20">
             {firstRow.map((product) => (
-              <motion.div
+              <ProductCard
                 key={product.title}
-                style={{ x: translateX }}
-                className="group relative h-48 md:h-96 w-[15rem] md:w-[30rem] overflow-hidden rounded-lg"
-              >
-                <ProductCard product={product} />
-              </motion.div>
+                product={product}
+                translateX={translateX.get()}
+              />
             ))}
-          </motion.div>
-          <motion.div className="flex flex-row gap-2 md:gap-4">
+          </div>
+        </motion.div>
+        <motion.div className="overflow-x-auto scrollbar-hide pb-8 -mx-4 px-4">
+          <div className="flex flex-row space-x-20 min-w-max px-20">
             {secondRow.map((product) => (
-              <motion.div
+              <ProductCard
                 key={product.title}
-                style={{ x: translateXReverse }}
-                className="group relative h-48 md:h-96 w-[15rem] md:w-[30rem] overflow-hidden rounded-lg"
-              >
-                <ProductCard product={product} />
-              </motion.div>
+                product={product}
+                translateX={translateXReverse.get()}
+              />
             ))}
-          </motion.div>
-          <motion.div className="flex flex-row gap-2 md:gap-4">
+          </div>
+        </motion.div>
+        <motion.div className="overflow-x-auto scrollbar-hide pb-8 -mx-4 px-4">
+          <div className="flex flex-row-reverse space-x-reverse space-x-20 min-w-max px-20">
             {thirdRow.map((product) => (
-              <motion.div
+              <ProductCard
                 key={product.title}
-                style={{ x: translateX }}
-                className="group relative h-48 md:h-96 w-[15rem] md:w-[30rem] overflow-hidden rounded-lg"
-              >
-                <ProductCard product={product} />
-              </motion.div>
+                product={product}
+                translateX={translateX.get()}
+              />
             ))}
-          </motion.div>
+          </div>
         </motion.div>
       </motion.div>
     </div>
@@ -161,11 +201,8 @@ export const HeroParallax = ({ products }: HeroParallaxProps) => {
 
 export const Header = () => {
   return (
-    <div className="max-w-7xl relative mx-auto py-80 md:py-60 px-4 w-full left-0 top-0">
-      <h1 className="text-2xl md:text-7xl font-bold dark:text-white hidden md:block">
-        Your community for <br /> all things Tech
-      </h1>
-      <h1 className="text-2xl md:text-7xl font-bold dark:text-white md:hidden mt-40">
+    <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full  left-0 top-0">
+      <h1 className="text-2xl md:text-7xl font-bold dark:text-white">
         Your community for <br /> all things Tech
       </h1>
       <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
@@ -176,19 +213,29 @@ export const Header = () => {
   );
 };
 
-const ProductCard = ({ product }: { product: Product }) => {
+export const ProductCard = ({ product, translateX }: ProductCardProps) => {
+  const x = useSpring(translateX);
+
   return (
-    <>
-      <Image
-        src={product.imagePath}
-        alt={product.title}
-        fill
-        className="object-cover object-left-top absolute inset-0 h-full w-full transition-transform duration-500 group-hover:scale-105"
-      />
-      <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
-      <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <h2 className="text-white text-lg font-semibold">{product.title}</h2>
+    <motion.div
+      style={{ x }}
+      whileHover={{ y: -20 }}
+      key={product.title}
+      className="group/product h-72 w-[24rem] relative flex-shrink-0"
+    >
+      <div className="block group-hover/product:shadow-2xl">
+        <Image
+          src={product.imagePath}
+          alt={product.title}
+          fill
+          unoptimized
+          className="object-cover object-left-top absolute h-full w-full inset-0"
+        />
       </div>
-    </>
+      <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
+      <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">
+        {product.title}
+      </h2>
+    </motion.div>
   );
 };
