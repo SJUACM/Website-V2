@@ -1,3 +1,4 @@
+import React from "react";
 import Meeting from "../../components/meeting";
 import { Meeting as MeetingType } from "@/lib/contentful";
 
