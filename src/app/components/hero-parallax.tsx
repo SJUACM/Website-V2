@@ -96,7 +96,7 @@ export const products = [
     imagePath: "/images/lab_pic1.jpg",
   },
 
-  // // Extra images not currently used in parallax, may use in the future
+  // // Extra images not currently used in parallax, may (or may not) use in the future
   // {
   //   title: "Lab Pic 2",
   //   imagePath: "/images/lab_pic2.jpg",
