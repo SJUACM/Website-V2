@@ -10,6 +10,7 @@ import {
   youtubeChannels,
   Resource,
 } from "./data";
+import styles from "../styles/customFont.module.css";
 
 function ResourceCard({ resource }: { resource: Resource }) {
   return (
@@ -66,7 +67,9 @@ function SectionTitle({ title }: { title: string }) {
       viewport={{ once: true }}
       className="relative mb-16 text-center"
     >
-      <h2 className="text-3xl font-bold text-white mb-4">{title}</h2>
+      <h2 className={`text-3xl font-bold text-white mb-4 ${styles.customFont}`}>
+        {title}
+      </h2>
       <div className="h-1 w-20 bg-red-500 mx-auto rounded-full" />
     </motion.div>
   );
