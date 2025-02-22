@@ -15,7 +15,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   }
 
   return (
-    <div className="mt-[-100px] max-w-4xl mx-auto px-8">
+    <div className="max-w-4xl mx-auto px-4">
       <BlogContent post={post} />
     </div>
   );
