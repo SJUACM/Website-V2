@@ -25,11 +25,12 @@ interface ProductCardProps {
   translateX: number;
 }
 
-export default function Parallax() {
+export default function Parallax({ products }: HeroParallaxProps) {
   return <HeroParallax products={products} />;
 }
 
-export const products = [
+// Keep this as a fallback in case the Contentful data is not available
+export const fallbackProducts = [
   // First Row - Slides left to right
   {
     title: "Headstarter x SJU ACM AI Hackathon",
@@ -109,9 +110,12 @@ export const products = [
 ];
 
 export const HeroParallax = ({ products }: HeroParallaxProps) => {
-  const firstRow = products.slice(0, 5);
-  const secondRow = products.slice(5, 10);
-  const thirdRow = products.slice(10, 15);
+  // Use products from props, or fallback to the hardcoded products if empty
+  const productsToUse = products && products.length > 0 ? products : fallbackProducts;
+  
+  const firstRow = productsToUse.slice(0, 5);
+  const secondRow = productsToUse.slice(5, 10);
+  const thirdRow = productsToUse.slice(10, 15);
   const ref = React.useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,

@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { BackgroundBeams } from "./components/background-beam";
 import { Navbar } from "./components/navbar";
-import Parallax from "./components/hero-parallax";
+import ParallaxWrapper from "./components/hero-parallax-wrapper";
 import UpcomingMeetings from "./components/upcoming-meetings";
 import InfoSection from "./components/info-section";
 import LeadershipSection from "./components/leadership-section";
@@ -63,7 +63,7 @@ export default function Home() {
       <BackgroundBeams />
 
       <div className="w-full overflow-hidden">
-        <Parallax />
+        <ParallaxWrapper />
       </div>
 
       <div className="py-2 md:py-16 w-full">

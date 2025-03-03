@@ -51,6 +51,23 @@ export interface Meeting extends EntrySkeletonType {
   };
 }
 
+export interface ParallaxBanner extends EntrySkeletonType {
+  sys: {
+    id: string;
+  };
+  fields: {
+    title: string;
+    image: {
+      fields: {
+        file: {
+          url: string;
+        };
+        title: string;
+      };
+    };
+  };
+}
+
 if (
   !process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID ||
   !process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
@@ -136,6 +153,23 @@ export async function getUpcomingMeetings(): Promise<Meeting[]> {
     return response.items.map(item => ({
       ...item,
       contentTypeId: "upcomingMeeting",
+    }));
+  } catch (error) {
+    console.error("Contentful error:", error);
+    return [];
+  }
+}
+
+export async function getParallaxBanners(): Promise<ParallaxBanner[]> {
+  try {
+    const response = await client.getEntries<ParallaxBanner>({
+      content_type: "parallaxBanner",
+      order: ["-sys.createdAt"],
+    });
+
+    return response.items.map(item => ({
+      ...item,
+      contentTypeId: "parallaxBanner",
     }));
   } catch (error) {
     console.error("Contentful error:", error);
