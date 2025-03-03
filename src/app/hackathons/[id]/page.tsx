@@ -1,26 +1,33 @@
-"use client";
 import React from "react";
-import { motion } from "framer-motion";
 import { hackathons, upcomingHackathons } from "../../data/hackathons";
 import styles from "../../styles/customFont.module.css";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
 
-// Remove the custom PageProps type and use a simpler approach
-export default function HackathonPage({ 
-  params 
-}: { 
-  params: { id: string } 
-}) {
-  // Find the hackathon from both past and upcoming lists
-  const id = params.id;
-  const hackathon = [...hackathons, ...upcomingHackathons].find(h => h.id === id);
+// Generate metadata for the page
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+  const hackathon = [...hackathons, ...upcomingHackathons].find(h => h.id === params.id);
+  
+  if (!hackathon) {
+    return {
+      title: "Hackathon Not Found",
+    };
+  }
+  
+  return {
+    title: `${hackathon.title} | STJ ACM`,
+    description: hackathon.description,
+  };
+}
+
+export default function HackathonPage({ params }: { params: { id: string } }) {
+  const hackathon = [...hackathons, ...upcomingHackathons].find(h => h.id === params.id);
   
   if (!hackathon) {
     notFound();
   }
 
-  // Fix the type issue by checking if the property exists
   const isUpcoming = 'isUpcoming' in hackathon && Boolean(hackathon.isUpcoming);
 
   return (
@@ -46,11 +53,7 @@ export default function HackathonPage({
           )}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        <div>
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
             <h1 className={`text-3xl md:text-4xl font-bold ${styles.customFont}`}>
               {hackathon.title}
@@ -149,7 +152,7 @@ export default function HackathonPage({
               </>
             )}
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );
