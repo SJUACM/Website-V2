@@ -1,5 +1,15 @@
+// Define the Hackathon type
+export interface Hackathon {
+  id: string;
+  title: string;
+  date: string;
+  description: string;
+  imagePath: string;
+  isUpcoming?: boolean;
+}
+
 // Hackathon data
-export const hackathons = [
+export const hackathons: Hackathon[] = [
   {
     id: "ai-hackathon-2024",
     title: "AI Hackathon",
@@ -17,7 +27,7 @@ export const hackathons = [
 ];
 
 // Upcoming hackathons
-export const upcomingHackathons = [
+export const upcomingHackathons: Hackathon[] = [
   {
     id: "ai-hackathon-2025",
     title: "AI Hackathon",
