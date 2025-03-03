@@ -73,6 +73,7 @@ export function Navbar({ className }: { className?: string }) {
           <NavLink href="/meetings" text="Meetings" />
           <NavLink href="/eboard" text="E-Board" />
           <NavLink href="/resources" text="Resources" />
+          <NavLink href="/hackathons" text="Hackathons" />
           <NavLink href="/blog" text="Blog" />
         </div>
 

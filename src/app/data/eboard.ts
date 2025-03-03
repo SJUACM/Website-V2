@@ -57,14 +57,6 @@ export const currentEboard: EboardMemberData[] = [
     github: "https://github.com/HinnaZeejah",
   },
   {
-    name: "Richard Perez",
-    position: "Treasurer",
-    image: Richard,
-    description: "Lead Instructor, All Star Code",
-    linkedin: "https://www.linkedin.com/in/richard-perez-jr/",
-    github: "https://github.com/richardp23",
-  },
-  {
     name: "Jennifer Venus",
     position: "Social Media Chair",
     image: Jennifer,
@@ -98,6 +90,15 @@ export const currentEboard: EboardMemberData[] = [
 ];
 
 export const pastEboard: EboardMemberData[] = [
+  {
+    name: "Richard Perez Jr.",
+    position: "Treasurer",
+    image: Richard,
+    description: "2025",
+    linkedin: "https://www.linkedin.com/in/richard-perez-jr/",
+    github: "https://github.com/richardp23",
+    year: "2025",
+  },
   {
     name: "Raymond Ramdat",
     position: "President",
