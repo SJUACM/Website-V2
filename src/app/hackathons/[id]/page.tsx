@@ -6,12 +6,12 @@ import styles from "../../styles/customFont.module.css";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-// Fix the params type - it's not a Promise
-type PageProps = {
-  params: { id: string };
-};
-
-export default function HackathonPage({ params }: PageProps) {
+// Remove the custom PageProps type and use a simpler approach
+export default function HackathonPage({ 
+  params 
+}: { 
+  params: { id: string } 
+}) {
   // Find the hackathon from both past and upcoming lists
   const id = params.id;
   const hackathon = [...hackathons, ...upcomingHackathons].find(h => h.id === id);
