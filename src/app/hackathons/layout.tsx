@@ -31,4 +31,4 @@ export default function Layout({
       </PageTransition>
     </main>
   );
-} 
+}

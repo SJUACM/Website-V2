@@ -41,7 +41,9 @@ export function BlogContent({ post }: BlogContentProps) {
           />
         </div>
       )}
-      <h1 className="text-4xl font-bold mb-4 text-center">{post.fields.title}</h1>
+      <h1 className="text-4xl font-bold mb-4 text-center">
+        {post.fields.title}
+      </h1>
       <div className="flex justify-between text-neutral-400 mb-8">
         <span>{post.fields.author}</span>
         <span>{new Date(post.fields.publishDate).toLocaleDateString()}</span>

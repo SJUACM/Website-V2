@@ -1,11 +1,6 @@
 "use client";
 import React from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useSpring
-} from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Image from "next/image";
 
 interface Product {
@@ -37,7 +32,7 @@ export const fallbackProducts = [
     imagePath: "/images/aiHackathon1.jpg",
   },
   {
-    title: "SAP Office Hours", 
+    title: "SAP Office Hours",
     imagePath: "/images/sap_office.jpg",
   },
   {
@@ -102,7 +97,7 @@ export const fallbackProducts = [
   //   title: "Lab Pic 2",
   //   imagePath: "/images/lab_pic2.jpg",
   // },
-  // 
+  //
   // {
   //   title: "Lab Pic Over 9000",
   //   imagePath: "/images/lab_pic9.jpg",
@@ -111,8 +106,9 @@ export const fallbackProducts = [
 
 export const HeroParallax = ({ products }: HeroParallaxProps) => {
   // Use products from props, or fallback to the hardcoded products if empty
-  const productsToUse = products && products.length > 0 ? products : fallbackProducts;
-  
+  const productsToUse =
+    products && products.length > 0 ? products : fallbackProducts;
+
   const firstRow = productsToUse.slice(0, 5);
   const secondRow = productsToUse.slice(5, 10);
   const thirdRow = productsToUse.slice(10, 15);
@@ -151,8 +147,8 @@ export const HeroParallax = ({ products }: HeroParallaxProps) => {
   );
 
   return (
-    <div 
-      ref={ref} 
+    <div
+      ref={ref}
       className="h-[350vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header />
@@ -167,7 +163,7 @@ export const HeroParallax = ({ products }: HeroParallaxProps) => {
       >
         <motion.div className="overflow-x-auto scrollbar-hide pb-8 -mx-4 px-4">
           <div className="flex flex-row-reverse space-x-reverse space-x-20 min-w-max px-20">
-            {firstRow.map((product) => (
+            {firstRow.map(product => (
               <ProductCard
                 key={product.title}
                 product={product}
@@ -178,7 +174,7 @@ export const HeroParallax = ({ products }: HeroParallaxProps) => {
         </motion.div>
         <motion.div className="overflow-x-auto scrollbar-hide pb-8 -mx-4 px-4">
           <div className="flex flex-row space-x-20 min-w-max px-20">
-            {secondRow.map((product) => (
+            {secondRow.map(product => (
               <ProductCard
                 key={product.title}
                 product={product}
@@ -189,7 +185,7 @@ export const HeroParallax = ({ products }: HeroParallaxProps) => {
         </motion.div>
         <motion.div className="overflow-x-auto scrollbar-hide pb-8 -mx-4 px-4">
           <div className="flex flex-row-reverse space-x-reverse space-x-20 min-w-max px-20">
-            {thirdRow.map((product) => (
+            {thirdRow.map(product => (
               <ProductCard
                 key={product.title}
                 product={product}

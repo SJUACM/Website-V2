@@ -34,11 +34,14 @@ export default function Home() {
             />
           </div>
           <div className="space-y-4">
-            <h1 className={`text-4xl md:text-5xl font-bold ${styles.customFont}`}>
+            <h1
+              className={`text-4xl md:text-5xl font-bold ${styles.customFont}`}
+            >
               ACM Student Chapter
             </h1>
             <h3 className="text-lg md:text-xl">
-              STJ&apos;s Premier Organization for Computer Science and Cyber Security
+              STJ&apos;s Premier Organization for Computer Science and Cyber
+              Security
             </h3>
             <div className="flex flex-row items-center justify-center pt-4">
               <button className="z-10 relative inline-flex h-12 md:h-14 w-[140px] md:w-[150px] overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">

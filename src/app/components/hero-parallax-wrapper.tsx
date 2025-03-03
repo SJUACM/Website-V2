@@ -3,7 +3,7 @@ import Parallax from "./hero-parallax";
 
 export default async function ParallaxWrapper() {
   const parallaxBanners = await getParallaxBanners();
-  
+
   // Transform contentful data to the format expected by the Parallax component
   const products = parallaxBanners.map(banner => ({
     title: banner.fields.title,
@@ -11,4 +11,4 @@ export default async function ParallaxWrapper() {
   }));
 
   return <Parallax products={products} />;
-} 
+}

@@ -17,7 +17,9 @@ export default function Eboard() {
 
         {/* Past E-board - Desktop View */}
         <div className="hidden md:block mt-32">
-          <h2 className={`text-4xl font-semibold ${styles.customFont}`}>Past E-Board Members</h2>
+          <h2 className={`text-4xl font-semibold ${styles.customFont}`}>
+            Past E-Board Members
+          </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-8">
             {pastEboard.map(member => (
               <EboardMember key={member.name} {...member} />
