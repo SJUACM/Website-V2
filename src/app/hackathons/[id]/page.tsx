@@ -21,14 +21,17 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   };
 }
 
-// Simple function to get hackathon by ID
-function getHackathonById(id: string) {
-  return [...hackathons, ...upcomingHackathons].find(h => h.id === id) || null;
+// Replace the any type with a proper interface
+interface HackathonPageProps {
+  params: {
+    id: string;
+  };
 }
 
-export default function HackathonPage(props: { params: { id: string } }) {
-  const { id } = props.params;
-  const hackathon = getHackathonById(id);
+export default async function HackathonPage({ params }: HackathonPageProps) {
+  const id = params.id;
+  const allHackathons = [...hackathons, ...upcomingHackathons];
+  const hackathon = allHackathons.find(h => h.id === id);
   
   if (!hackathon) {
     notFound();
