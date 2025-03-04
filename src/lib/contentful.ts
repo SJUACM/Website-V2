@@ -68,6 +68,30 @@ export interface ParallaxBanner extends EntrySkeletonType {
   };
 }
 
+export interface EboardMember extends EntrySkeletonType {
+  sys: {
+    id: string;
+  };
+  contentTypeId: string;
+  fields: {
+    name: string;
+    position: string;
+    description: string;
+    linkedin: string;
+    github?: string;
+    year?: string;
+    image: {
+      fields: {
+        file: {
+          url: string;
+        };
+        title: string;
+      };
+    };
+    memberType: 'current' | 'past';
+  };
+}
+
 if (
   !process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID ||
   !process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
@@ -170,6 +194,42 @@ export async function getParallaxBanners(): Promise<ParallaxBanner[]> {
     return response.items.map(item => ({
       ...item,
       contentTypeId: "parallaxBanner",
+    }));
+  } catch (error) {
+    console.error("Contentful error:", error);
+    return [];
+  }
+}
+
+export async function getCurrentEboardMembers(): Promise<EboardMember[]> {
+  try {
+    const response = await client.getEntries<EboardMember>({
+      content_type: "eboardMember",
+      'fields.memberType': 'current',
+      order: ["sys.createdAt"],
+    } as any);
+
+    return response.items.map(item => ({
+      ...item,
+      contentTypeId: "eboardMember",
+    }));
+  } catch (error) {
+    console.error("Contentful error:", error);
+    return [];
+  }
+}
+
+export async function getPastEboardMembers(): Promise<EboardMember[]> {
+  try {
+    const response = await client.getEntries<EboardMember>({
+      content_type: "eboardMember",
+      'fields.memberType': 'past',
+      order: ["sys.createdAt"],
+    } as any);
+
+    return response.items.map(item => ({
+      ...item,
+      contentTypeId: "eboardMember",
     }));
   } catch (error) {
     console.error("Contentful error:", error);

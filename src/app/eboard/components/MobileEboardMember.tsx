@@ -7,7 +7,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 interface MobileEboardMemberProps {
   name: string;
   position: string;
-  image: StaticImageData;
+  image: StaticImageData | string;
   description: string;
   linkedin: string;
   github?: string;
@@ -21,12 +21,15 @@ export function MobileEboardMember({
   linkedin,
   github,
 }: MobileEboardMemberProps) {
+  // Handle both StaticImageData and Contentful image URL
+  const imageUrl = typeof image === 'string' ? image : image;
+  
   return (
     <div className="relative bg-black/20 backdrop-blur-md rounded-xl p-6 border border-white/10">
       <div className="flex flex-col items-center">
         <div className="relative w-32 h-32 mb-4">
           <Image
-            src={image}
+            src={imageUrl}
             alt={`${name} - ${position}`}
             fill
             className="object-cover rounded-full border-2 border-red-500/20"

@@ -8,7 +8,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 interface EboardMemberProps {
   name: string;
   position: string;
-  image: StaticImageData;
+  image: StaticImageData | string;
   description: string;
   linkedin: string;
   github?: string;
@@ -22,6 +22,9 @@ export function EboardMember({
   linkedin,
   github,
 }: EboardMemberProps) {
+  // Handle both StaticImageData and Contentful image URL
+  const imageUrl = typeof image === 'string' ? image : image;
+
   return (
     <CardContainer className="inter-var">
       <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.3] border-black/[0.1] w-full sm:w-[280px] min-h-[580px] sm:min-h-0 sm:h-[400px] rounded-xl p-6 md:p-4 border">
@@ -34,7 +37,7 @@ export function EboardMember({
           </CardItem>
           <CardItem translateZ="100" className="w-full mt-2">
             <Image
-              src={image}
+              src={imageUrl}
               height={1000}
               width={1000}
               className="h-[260px] md:h-[200px] w-full object-cover rounded-xl group-hover/card:shadow-xl"
