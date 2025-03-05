@@ -16,7 +16,9 @@
   }
 }
 
-html, body {
+/* Apply overflow-x: hidden to all pages except the home page */
+html:not(.home-page), 
+body:not(.home-page-body) {
   overflow-x: hidden;
   position: relative;
   width: 100%;

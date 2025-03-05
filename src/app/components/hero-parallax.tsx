@@ -149,7 +149,7 @@ export const HeroParallax = ({ products }: HeroParallaxProps) => {
   return (
     <div
       ref={ref}
-      className="h-[350vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-[350vh] py-40 overflow-visible antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header />
       <motion.div
@@ -161,7 +161,7 @@ export const HeroParallax = ({ products }: HeroParallaxProps) => {
         }}
         className="space-y-24 mt-20"
       >
-        <motion.div className="overflow-x-auto scrollbar-hide pb-8 -mx-4 px-4">
+        <motion.div className="overflow-visible scrollbar-hide pb-8 -mx-4 px-4">
           <div className="flex flex-row-reverse space-x-reverse space-x-20 min-w-max px-20">
             {firstRow.map(product => (
               <ProductCard
@@ -172,7 +172,7 @@ export const HeroParallax = ({ products }: HeroParallaxProps) => {
             ))}
           </div>
         </motion.div>
-        <motion.div className="overflow-x-auto scrollbar-hide pb-8 -mx-4 px-4">
+        <motion.div className="overflow-visible scrollbar-hide pb-8 -mx-4 px-4">
           <div className="flex flex-row space-x-20 min-w-max px-20">
             {secondRow.map(product => (
               <ProductCard
@@ -183,7 +183,7 @@ export const HeroParallax = ({ products }: HeroParallaxProps) => {
             ))}
           </div>
         </motion.div>
-        <motion.div className="overflow-x-auto scrollbar-hide pb-8 -mx-4 px-4">
+        <motion.div className="overflow-visible scrollbar-hide pb-8 -mx-4 px-4">
           <div className="flex flex-row-reverse space-x-reverse space-x-20 min-w-max px-20">
             {thirdRow.map(product => (
               <ProductCard
