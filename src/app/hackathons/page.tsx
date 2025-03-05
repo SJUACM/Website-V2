@@ -30,9 +30,9 @@ export default function Hackathons() {
           >
             Upcoming Hackathons
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto">
             {upcomingHackathons.map(hackathon => (
-              <Link href={`/hackathons/${hackathon.id}`} key={hackathon.id}>
+              <Link href={`/hackathons/${hackathon.id}`} key={hackathon.id} className="w-full md:w-auto md:max-w-2xl">
                 <HackathonCard {...hackathon} />
               </Link>
             ))}
