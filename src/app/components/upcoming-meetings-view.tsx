@@ -3,7 +3,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { Meeting as MeetingType } from "@/lib/contentful";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDownload, faLocationDot, faCalendarAlt, faClock } from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 interface UpcomingMeetingsViewProps {
   nextMeeting: MeetingType;
@@ -22,6 +26,16 @@ export function UpcomingMeetingsView({
     hour: "2-digit",
     minute: "2-digit",
   });
+
+  // Get slides URL if available - check both fields
+  let slidesUrl = null;
+  if (nextMeeting.fields.slidesUrl) {
+    // Use the direct URL if available
+    slidesUrl = nextMeeting.fields.slidesUrl;
+  } else if (nextMeeting.fields.slides) {
+    // Fall back to the media asset if available
+    slidesUrl = `https:${nextMeeting.fields.slides.fields.file.url}`;
+  }
 
   return (
     <div className="relative w-full">
@@ -72,13 +86,19 @@ export function UpcomingMeetingsView({
 
             <div className="grid grid-cols-2 gap-4 pt-2">
               <div className="bg-black/20 p-4 rounded-xl backdrop-blur-sm">
-                <p className="text-red-500 font-medium mb-1 text-xs">DATE</p>
+                <p className="text-red-500 font-medium mb-1 text-xs flex items-center gap-2">
+                  <FontAwesomeIcon icon={faCalendarAlt as IconProp} className="text-xs" />
+                  DATE
+                </p>
                 <p className="text-white text-sm font-medium">
                   {formattedDate}
                 </p>
               </div>
               <div className="bg-black/20 p-4 rounded-xl backdrop-blur-sm">
-                <p className="text-red-500 font-medium mb-1 text-xs">TIME</p>
+                <p className="text-red-500 font-medium mb-1 text-xs flex items-center gap-2">
+                  <FontAwesomeIcon icon={faClock as IconProp} className="text-xs" />
+                  TIME
+                </p>
                 <p className="text-white text-sm font-medium">
                   {formattedTime}
                 </p>
@@ -86,13 +106,27 @@ export function UpcomingMeetingsView({
             </div>
 
             <div className="bg-black/20 p-4 rounded-xl backdrop-blur-sm">
-              <p className="text-red-500 font-medium mb-1 text-xs">LOCATION</p>
+              <p className="text-red-500 font-medium mb-1 text-xs flex items-center gap-2">
+                <FontAwesomeIcon icon={faLocationDot as IconProp} className="text-xs" />
+                LOCATION
+              </p>
               <p className="text-white text-sm font-medium">
                 {typeof nextMeeting.fields.meetingLocation === "object"
                   ? "TBA"
                   : nextMeeting.fields.meetingLocation || "TBA"}
               </p>
             </div>
+
+            {slidesUrl && (
+              <Link 
+                href={slidesUrl} 
+                target="_blank"
+                className="inline-block mt-4 bg-red-500 hover:bg-red-600 transition-colors text-white py-2 px-4 rounded-lg text-sm font-medium flex items-center gap-2 w-fit"
+              >
+                <FontAwesomeIcon icon={faDownload as IconProp} className="text-xs" />
+                Download Slides
+              </Link>
+            )}
           </motion.div>
         </div>
       </div>
