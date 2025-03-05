@@ -164,10 +164,16 @@ export async function getAllMeetings(): Promise<Meeting[]> {
   try {
     const response = await client.getEntries<Meeting>({
       content_type: "meeting",
-      order: ["-sys.createdAt"],
+      order: ["-fields.date"] as any,
     });
 
-    return response.items.map(item => ({
+    const sortedMeetings = response.items.sort((a, b) => {
+      const dateA = new Date(a.fields.date).getTime();
+      const dateB = new Date(b.fields.date).getTime();
+      return dateB - dateA;
+    });
+
+    return sortedMeetings.map(item => ({
       ...item,
       contentTypeId: "meeting",
     }));
