@@ -8,7 +8,7 @@ interface MeetingsListProps {
 
 export default function MeetingsList({ meetings }: MeetingsListProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 overflow-hidden w-full">
       {meetings.map(meeting => {
         // Process slides data - check both slides and slidesUrl fields
         let slides;

@@ -25,10 +25,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning className={comfortaa.className}>
-        {children}
-        <Footer />
+    <html lang="en" suppressHydrationWarning className="overflow-x-hidden">
+      <body suppressHydrationWarning className={`${comfortaa.className} overflow-x-hidden max-w-[100vw]`}>
+        <div className="overflow-x-hidden">
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );
