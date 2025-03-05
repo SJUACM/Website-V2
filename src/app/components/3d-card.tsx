@@ -25,9 +25,28 @@ export const CardContainer = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMouseEntered, setIsMouseEntered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if the device is mobile on component mount and window resize
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768); // 768px is a common breakpoint for mobile devices
+    };
+    
+    // Check initially
+    checkIfMobile();
+    
+    // Add event listener for window resize
+    window.addEventListener('resize', checkIfMobile);
+    
+    // Clean up
+    return () => {
+      window.removeEventListener('resize', checkIfMobile);
+    };
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || isMobile) return;
     const { left, top, width, height } =
       containerRef.current.getBoundingClientRect();
     const x = (e.clientX - left - width / 2) / 25;
@@ -36,6 +55,7 @@ export const CardContainer = ({
   };
 
   const handleMouseEnter = () => {
+    if (isMobile) return;
     setIsMouseEntered(true);
     if (!containerRef.current) return;
   };
@@ -53,7 +73,7 @@ export const CardContainer = ({
           containerClassName
         )}
         style={{
-          perspective: "1000px",
+          perspective: isMobile ? "none" : "1000px",
         }}
       >
         <div
@@ -63,10 +83,11 @@ export const CardContainer = ({
           onMouseLeave={handleMouseLeave}
           className={cn(
             "flex items-center justify-center relative transition-all duration-200 ease-linear",
+            isMobile ? "transform-none" : "",
             className
           )}
           style={{
-            transformStyle: "preserve-3d",
+            transformStyle: isMobile ? "flat" : "preserve-3d",
           }}
         >
           {children}
@@ -123,6 +144,21 @@ export const CardItem = ({
 }: CardItemProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isMouseEntered] = useMouseEnter();
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if the device is mobile
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkIfMobile);
+    };
+  }, []);
 
   useEffect(() => {
     handleAnimations();
@@ -130,7 +166,7 @@ export const CardItem = ({
 
   const handleAnimations = () => {
     if (!ref.current) return;
-    if (isMouseEntered) {
+    if (isMouseEntered && !isMobile) {
       ref.current.style.transform = `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
     } else {
       ref.current.style.transform = `translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`;
