@@ -103,6 +103,37 @@ export interface EboardMember extends EntrySkeletonType {
   };
 }
 
+export interface Hackathon extends EntrySkeletonType {
+  sys: {
+    id: string;
+  };
+  contentTypeId: string;
+  fields: {
+    title: string;
+    slug?: string;
+    description: string;
+    startDate?: string; // ISO date string
+    endDate?: string;   // ISO date string
+    status?: 'ongoing' | 'upcoming' | 'past';
+    registrationLink?: string;
+    details?: Document; // Rich text for detailed content
+    image: {
+      fields: {
+        file: {
+          url: string;
+          details?: {
+            image?: {
+              width: number;
+              height: number;
+            };
+          };
+        };
+        title: string;
+      };
+    };
+  };
+}
+
 if (
   !process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID ||
   !process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
@@ -267,6 +298,90 @@ export async function addParallaxBanner(title: string, imageUrl: string, link?: 
     return null;
   } catch (error) {
     console.error("Error adding parallax banner:", error);
+    return null;
+  }
+}
+
+export async function getAllHackathons(): Promise<Hackathon[]> {
+  try {
+    console.log("Fetching all hackathons");
+    
+    const response = await client.getEntries<Hackathon>({
+      content_type: "hackathon",
+      order: ["-fields.startDate"] as any,
+    });
+
+    console.log(`Found ${response.items.length} hackathons`);
+    
+    if (response.items.length > 0) {
+      console.log("Hackathon slugs:", response.items.map(item => item.fields.slug));
+    }
+
+    return response.items.map(item => ({
+      ...item,
+      contentTypeId: "hackathon",
+    }));
+  } catch (error) {
+    console.error("Contentful error:", error);
+    return [];
+  }
+}
+
+export async function getHackathonsByStatus(status: 'ongoing' | 'upcoming' | 'past'): Promise<Hackathon[]> {
+  try {
+    // Since the status field might not exist, get all hackathons and filter manually
+    const response = await client.getEntries<Hackathon>({
+      content_type: "hackathon",
+      // Don't filter by status since it might not exist
+      limit: 100,
+    } as any);
+
+    // Filter manually based on status
+    const filteredItems = response.items.filter(item => {
+      // If status field doesn't exist, treat as 'upcoming' by default
+      const itemStatus = item.fields.status || 'upcoming';
+      return itemStatus === status;
+    });
+
+    return filteredItems.map(item => ({
+      ...item,
+      contentTypeId: "hackathon",
+    }));
+  } catch (error) {
+    console.error("Contentful error:", error);
+    return [];
+  }
+}
+
+export async function getHackathonBySlug(slug: string): Promise<Hackathon | null> {
+  try {
+    console.log(`Fetching hackathon with slug: ${slug}`);
+    
+    // Temporarily use a different approach - get all hackathons and find by ID
+    const response = await client.getEntries<Hackathon>({
+      content_type: "hackathon",
+      // Don't filter by slug since it doesn't exist
+      limit: 100,
+    } as any);
+
+    console.log(`Found ${response.items.length} hackathons total`);
+    
+    // For debugging, log all available fields
+    if (response.items.length > 0) {
+      console.log('Available fields:', Object.keys(response.items[0].fields));
+    }
+    
+    // Try to find the hackathon by ID instead of slug
+    const hackathon = response.items.find(item => item.sys.id === slug);
+    
+    if (!hackathon) return null;
+
+    return {
+      ...hackathon,
+      contentTypeId: "hackathon",
+    };
+  } catch (error) {
+    console.error("Error fetching hackathon:", error);
     return null;
   }
 }
