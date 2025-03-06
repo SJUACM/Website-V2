@@ -30,15 +30,16 @@ export default function RootLayout({
     <html 
       lang="en" 
       suppressHydrationWarning 
-      className={isHomePage ? "home-page" : "overflow-x-hidden"}
+      className={`${isHomePage ? "home-page" : "overflow-x-hidden"} dark`}
     >
       <head>
         <title>SJU ACM Website</title>
         <meta name="description" content="SJU ACM Website" />
+        <meta name="color-scheme" content="dark" />
       </head>
       <body 
         suppressHydrationWarning 
-        className={`${comfortaa.className} ${isHomePage ? "home-page-body" : "overflow-x-hidden max-w-[100vw]"}`}
+        className={`${comfortaa.className} ${isHomePage ? "home-page-body" : "overflow-x-hidden max-w-[100vw]"} bg-black text-white`}
       >
         <div className={isHomePage ? "" : "overflow-x-hidden"}>
           {children}
