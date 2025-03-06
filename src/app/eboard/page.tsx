@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "../styles/customFont.module.css";
 import { MobileEboardMember } from "./components/MobileEboardMember";
 import { MobilePastEboardMember } from "./components/MobilePastEboardMember";

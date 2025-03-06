@@ -5,10 +5,9 @@ import HackathonDetail from "../../components/hackathon-detail";
 
 export const revalidate = 3600; // Revalidate every hour
 
-interface HackathonPageProps {
-  params: {
-    slug: string;
-  };
+interface PageProps {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
 export async function generateStaticParams() {
@@ -23,10 +22,8 @@ export async function generateStaticParams() {
   }
 }
 
-export default async function HackathonPage({ params }: HackathonPageProps) {
-  // Await params before destructuring to fix the warning
-  const resolvedParams = await Promise.resolve(params);
-  const { slug } = resolvedParams;
+export default async function HackathonPage({ params }: PageProps) {
+  const { slug } = await params;
   
   console.log(`Page requested for slug: ${slug}`);
   

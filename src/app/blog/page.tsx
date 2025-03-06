@@ -1,3 +1,4 @@
+import React from "react";
 import { getAllPosts } from "@/lib/contentful";
 import { BlogCard } from "./components/BlogCard";
 import { MobileBlogCard } from "./components/MobileBlogCard";
