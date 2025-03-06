@@ -1,11 +1,13 @@
 "use client";
 
+import React from "react";
 import { Comfortaa } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/footer";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { usePathname } from "next/navigation";
+import { Analytics } from "@vercel/analytics/react";
 
 // Initialize FontAwesome configuration
 config.autoAddCss = false; // Disable auto CSS injection as we import the CSS file above
@@ -41,6 +43,7 @@ export default function RootLayout({
         <div className={isHomePage ? "" : "overflow-x-hidden"}>
           {children}
           <Footer />
+          <Analytics />
         </div>
       </body>
     </html>
