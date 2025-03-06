@@ -1,23 +1,59 @@
 import React from "react";
 import Link from "next/link";
-import { hackathons, upcomingHackathons} from "../data/hackathons";
 import styles from "../styles/customFont.module.css";
+import { Hackathon } from "../../lib/contentful";
+import { formatDateRange } from "../../lib/utils";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 
 interface HackathonDetailProps {
-  hackathonId: string;
+  hackathon: Hackathon;
 }
 
-export default function HackathonDetail({ hackathonId }: HackathonDetailProps) {
-  // Find the hackathon in either the past or upcoming hackathons arrays
-  const hackathon =
-    hackathons.find(h => h.id === hackathonId) ||
-    upcomingHackathons.find(h => h.id === hackathonId);
+export default function HackathonDetail({ hackathon }: HackathonDetailProps) {
+  const imageUrl = hackathon.fields.image?.fields.file.url || '';
+  
+  // Handle missing date fields
+  const formattedDate = hackathon.fields.startDate && hackathon.fields.endDate
+    ? formatDateRange(hackathon.fields.startDate, hackathon.fields.endDate)
+    : 'Date TBD';
+    
+  // Default to 'upcoming' if status is missing
+  const status = hackathon.fields.status || 'upcoming';
 
-  if (!hackathon) {
-    return <div>Hackathon not found</div>;
-  }
-
-  const isUpcoming = hackathon.isUpcoming || false;
+  // Rich text options for rendering the details
+  const options = {
+    renderNode: {
+      [BLOCKS.PARAGRAPH]: (node: any, children: React.ReactNode) => (
+        <p className="mb-4">{children}</p>
+      ),
+      [BLOCKS.HEADING_2]: (node: any, children: React.ReactNode) => (
+        <h2 className="text-2xl font-bold mt-8 mb-4">{children}</h2>
+      ),
+      [BLOCKS.HEADING_3]: (node: any, children: React.ReactNode) => (
+        <h3 className="text-xl font-bold mt-6 mb-3">{children}</h3>
+      ),
+      [BLOCKS.UL_LIST]: (node: any, children: React.ReactNode) => (
+        <ul className="list-disc pl-6 mb-4 space-y-2">{children}</ul>
+      ),
+      [BLOCKS.OL_LIST]: (node: any, children: React.ReactNode) => (
+        <ol className="list-decimal pl-6 mb-4 space-y-2">{children}</ol>
+      ),
+      [BLOCKS.LIST_ITEM]: (node: any, children: React.ReactNode) => (
+        <li>{children}</li>
+      ),
+      [INLINES.HYPERLINK]: (node: any, children: React.ReactNode) => (
+        <a 
+          href={node.data.uri} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-red-400 hover:text-red-500 underline"
+        >
+          {children}
+        </a>
+      ),
+    },
+  };
 
   return (
     <div className="max-w-4xl mx-auto px-4 md:px-8">
@@ -47,11 +83,13 @@ export default function HackathonDetail({ hackathonId }: HackathonDetailProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10" />
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${hackathon.imagePath})` }}
+            style={{ backgroundImage: `url(https:${imageUrl})` }}
           />
-          {isUpcoming && (
-            <div className="absolute top-4 right-4 z-20 bg-red-600 text-white text-sm font-bold px-4 py-2 rounded-full">
-              Upcoming
+          {status !== 'past' && (
+            <div className={`absolute top-4 right-4 z-20 ${
+              status === 'ongoing' ? 'bg-green-600' : 'bg-red-600'
+            } text-white text-sm font-bold px-4 py-2 rounded-full`}>
+              {status === 'ongoing' ? 'Ongoing' : 'Upcoming'}
             </div>
           )}
         </div>
@@ -61,160 +99,60 @@ export default function HackathonDetail({ hackathonId }: HackathonDetailProps) {
             <h1
               className={`text-3xl md:text-4xl font-bold ${styles.customFont}`}
             >
-              {hackathon.title}
+              {hackathon.fields.title}
             </h1>
             <span className="mt-2 md:mt-0 text-red-400 bg-red-950/30 px-4 py-2 rounded-full">
-              {hackathon.date}
+              {formattedDate}
             </span>
           </div>
 
           <div className="prose prose-invert max-w-none">
-            <p className="text-lg">{hackathon.description}</p>
+            <p className="text-lg mb-8">{hackathon.fields.description}</p>
 
-            {isUpcoming ? (
-              <UpcomingHackathonContent hackathonId={hackathonId} />
-            ) : (
-              <PastHackathonContent hackathonId={hackathonId} />
+            {/* Registration button for upcoming hackathons */}
+            {status === 'upcoming' && hackathon.fields.registrationLink && (
+              <div className="my-8">
+                <a
+                  href={hackathon.fields.registrationLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg inline-block transition-colors"
+                >
+                  Register Now
+                </a>
+              </div>
             )}
+
+            {/* Rich text content */}
+            {hackathon.fields.details ? (
+              <div className="mt-8">
+                {documentToReactComponents(hackathon.fields.details, options)}
+              </div>
+            ) : (
+              <div className="mt-8">
+                <h2 className="text-2xl font-bold mt-8 mb-4">Event Details</h2>
+                <p>More details about this hackathon will be available soon.</p>
+              </div>
+            )}
+
+            {/* Discord link */}
+            <div className="mt-12 pt-8 border-t border-neutral-800">
+              <h3 className="text-xl font-bold mb-4">Get Involved</h3>
+              <p className="mb-4">
+                Join our Discord server to connect with other participants and stay updated on our events.
+              </p>
+              <a
+                href="https://discord.gg/8EJVY5Hq"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg inline-block transition-colors"
+              >
+                Join Our Discord
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  );
-}
-
-function PastHackathonContent({ hackathonId }: { hackathonId: string }) {
-  // Content specific to past hackathons
-  if (hackathonId === "web-dev-hackathon-2023") {
-    return (
-      <>
-        <h2>Event Highlights</h2>
-        <p>
-          Our Fall 2023 Web Development Hackathon brought together students from
-          various majors to build web applications addressing real-world
-          problems. Participants used modern frameworks like React, Next.js, and
-          various backend technologies.
-        </p>
-        <p>
-          The event provided valuable hands-on experience and networking
-          opportunities for all participants.
-        </p>
-      </>
-    );
-  } else if (hackathonId === "ai-hackathon-2024") {
-    return (
-      <>
-        <h2>Event Highlights</h2>
-        <p>
-          Our Spring 2024 AI Hackathon was a tremendous success, with over 60
-          participants forming 12 teams to develop innovative AI solutions. The
-          event was sponsored by Headstarter and featured mentors from leading
-          tech companies.
-        </p>
-
-        <h2>Winning Projects</h2>
-        <ul>
-          <li>
-            <strong>First Place:</strong> Codetionary, an AI-powered Discord Bot that
-            helps users learn coding concepts
-          </li>
-        </ul>
-
-        <p>
-          We look forward to hosting more AI-focused events in the future. Stay
-          tuned for our upcoming AI Hackathon in Spring 2025!
-        </p>
-      </>
-    );
-  }
-
-  // Default content for other past hackathons
-  return (
-    <>
-      <h2>Event Highlights</h2>
-      <p>
-        This hackathon brought together students from various disciplines to
-        develop innovative solutions. Participants had the opportunity to work
-        with cutting-edge technologies and receive mentorship.
-      </p>
-
-      <h2>Winning Projects</h2>
-      <p>Information about winning projects will be updated soon.</p>
-    </>
-  );
-}
-
-function UpcomingHackathonContent({ hackathonId }: { hackathonId: string }) {
-  // Content specific to upcoming hackathons
-  if (hackathonId === "ai-hackathon-2025") {
-    return (
-      <>
-        <h2>Event Details</h2>
-        <ul>
-          <li>
-            <strong>Date:</strong> April 2025 (Exact dates TBA)
-          </li>
-          <li>
-            <strong>Location:</strong> St. John&apos;s University, Queens Campus
-          </li>
-          <li>
-            <strong>Theme:</strong> Artificial Intelligence & Machine Learning
-          </li>
-        </ul>
-
-        <h2>What to Expect</h2>
-        <p>
-          Our AI Hackathon will bring together students from various disciplines
-          to develop innovative AI solutions. Participants will have the
-          opportunity to work with cutting-edge AI technologies, receive
-          mentorship from industry professionals, and compete for prizes.
-        </p>
-
-        <h2>Registration</h2>
-        <p>
-          Registration will open in early 2025. Join our Discord server to be
-          notified when registration begins.
-        </p>
-
-        <div className="mt-8">
-          <a
-            href="https://discord.gg/8EJVY5Hq"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg inline-block transition-colors"
-          >
-            Join Our Discord
-          </a>
-        </div>
-      </>
-    );
-  }
-
-  // Default content for other upcoming hackathons
-  return (
-    <>
-      <h2>Event Details</h2>
-      <p>
-        More details about this upcoming hackathon will be announced soon. Stay
-        tuned!
-      </p>
-
-      <h2>Registration</h2>
-      <p>
-        Registration information will be available closer to the event date.
-        Join our Discord server to be notified.
-      </p>
-
-      <div className="mt-8">
-        <a
-          href="https://discord.gg/8EJVY5Hq"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg inline-block transition-colors"
-        >
-          Join Our Discord
-        </a>
-      </div>
-    </>
   );
 }
