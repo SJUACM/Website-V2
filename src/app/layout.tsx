@@ -35,13 +35,14 @@ export default function RootLayout({
       <head>
         <title>SJU ACM Website</title>
         <meta name="description" content="SJU ACM Website" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
         <meta name="color-scheme" content="dark" />
       </head>
       <body 
         suppressHydrationWarning 
-        className={`${comfortaa.className} ${isHomePage ? "home-page-body" : "overflow-x-hidden max-w-[100vw]"} bg-black text-white`}
+        className={`${comfortaa.className} ${isHomePage ? "home-page-body" : "overflow-x-hidden max-w-[100vw]"} bg-black text-white min-h-screen flex flex-col`}
       >
-        <div className={isHomePage ? "" : "overflow-x-hidden"}>
+        <div className={`${isHomePage ? "" : "overflow-x-hidden"} flex-grow flex flex-col`}>
           {children}
           <Footer />
           <Analytics />
