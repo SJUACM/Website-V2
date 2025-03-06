@@ -12,7 +12,7 @@ export interface Hackathon {
 export const hackathons: Hackathon[] = [
   {
     id: "ai-hackathon-2024",
-    title: "AI Hackathon",
+    title: "2024 ACM x Headstarter AI Hackathon",
     date: "Spring 2024",
     description:
       "A collaboration with Headstarter focused on AI applications. Students built innovative projects using various AI technologies.",

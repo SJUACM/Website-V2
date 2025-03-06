@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { hackathons, upcomingHackathons, Hackathon } from "../data/hackathons";
+import { hackathons, upcomingHackathons} from "../data/hackathons";
 import styles from "../styles/customFont.module.css";
 
 interface HackathonDetailProps {
@@ -95,21 +95,6 @@ function PastHackathonContent({ hackathonId }: { hackathonId: string }) {
           problems. Participants used modern frameworks like React, Next.js, and
           various backend technologies.
         </p>
-
-        <h2>Winning Projects</h2>
-        <ul>
-          <li>
-            <strong>First Place:</strong> Community resource sharing platform
-          </li>
-          <li>
-            <strong>Second Place:</strong> Student study group matching
-            application
-          </li>
-          <li>
-            <strong>Third Place:</strong> Campus event discovery tool
-          </li>
-        </ul>
-
         <p>
           The event provided valuable hands-on experience and networking
           opportunities for all participants.
@@ -121,7 +106,7 @@ function PastHackathonContent({ hackathonId }: { hackathonId: string }) {
       <>
         <h2>Event Highlights</h2>
         <p>
-          Our Spring 2024 AI Hackathon was a tremendous success, with over 50
+          Our Spring 2024 AI Hackathon was a tremendous success, with over 60
           participants forming 12 teams to develop innovative AI solutions. The
           event was sponsored by Headstarter and featured mentors from leading
           tech companies.
@@ -130,16 +115,8 @@ function PastHackathonContent({ hackathonId }: { hackathonId: string }) {
         <h2>Winning Projects</h2>
         <ul>
           <li>
-            <strong>First Place:</strong> AI-powered accessibility tool for
-            visually impaired users
-          </li>
-          <li>
-            <strong>Second Place:</strong> Natural language processing
-            application for medical records
-          </li>
-          <li>
-            <strong>Third Place:</strong> Machine learning model for predicting
-            student success
+            <strong>First Place:</strong> Codetionary, an AI-powered Discord Bot that
+            helps users learn coding concepts
           </li>
         </ul>
 
