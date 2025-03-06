@@ -23,7 +23,7 @@ export default function Home() {
 
       <div className="pt-24 md:pt-24 space-y-4 text-center w-full px-4 md:px-0 max-w-7xl mx-auto">
         {/* Title Structure for both Mobile and Desktop */}
-        <div className="flex flex-col items-center justify-center min-h-[40vh] md:min-h-[50vh] space-y-4">
+        <div className="flex flex-col items-center justify-center min-h-[30vh] md:min-h-[40vh] space-y-4 mb-8">
           <div className="w-[150px] md:w-[180px] mb-2">
             <Image
               src="/images/sjulogo.png"
@@ -39,11 +39,11 @@ export default function Home() {
             >
               ACM Student Chapter
             </h1>
-            <h3 className="text-lg md:text-xl">
+            <h3 className="text-lg md:text-xl mt-2">
               STJ&apos;s Premier Organization for Computer Science and Cyber
               Security
             </h3>
-            <div className="flex flex-row items-center justify-center pt-4">
+            <div className="flex flex-row items-center justify-center pt-6">
               <button className="z-10 relative inline-flex h-12 md:h-14 w-[140px] md:w-[150px] overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
                 <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
                 <span className="inline-flex h-full w-full items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
@@ -69,19 +69,19 @@ export default function Home() {
         <ParallaxWrapper />
       </div>
 
-      <div className="py-2 md:py-16 w-full px-4 md:px-24">
+      <div className="py-2 md:py-8 w-full px-4 md:px-24 -mt-[30vh]">
         <UpcomingMeetings />
       </div>
 
-      <div className="py-2 md:py-16 w-full px-4 md:px-24">
+      <div className="py-2 md:py-8 w-full px-4 md:px-24">
         <InfoSection />
       </div>
 
-      <div className="py-2 md:py-16 w-full px-4 md:px-24">
+      <div className="py-2 md:py-8 w-full px-4 md:px-24">
         <LeadershipSection />
       </div>
 
-      <div className="py-2 md:py-16 w-full px-4 md:px-24">
+      <div className="py-2 md:py-8 w-full px-4 md:px-24">
         <ResourcesSection />
       </div>
 
