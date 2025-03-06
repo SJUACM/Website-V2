@@ -149,7 +149,7 @@ export const HeroParallax = ({ products }: HeroParallaxProps) => {
   return (
     <div
       ref={ref}
-      className="h-[350vh] py-40 overflow-visible antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-[350vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header />
       <motion.div
@@ -161,62 +161,39 @@ export const HeroParallax = ({ products }: HeroParallaxProps) => {
         }}
         className="space-y-24 mt-20"
       >
-        <div className="relative">
-          <motion.div className="overflow-x-auto scrollbar-hide pb-8 -mx-4 px-4 cursor-grab">
-            <div className="flex flex-row-reverse space-x-reverse space-x-20 min-w-max px-20">
-              {firstRow.map(product => (
-                <ProductCard
-                  key={product.title}
-                  product={product}
-                  translateX={0}
-                />
-              ))}
-            </div>
-          </motion.div>
-          <div className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hidden md:flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
+        <motion.div className="overflow-x-auto custom-scrollbar pb-8 -mx-4 px-4">
+          <div className="flex flex-row-reverse space-x-reverse space-x-20 min-w-max px-20">
+            {firstRow.map(product => (
+              <ProductCard
+                key={product.title}
+                product={product}
+                translateX={translateX.get()}
+              />
+            ))}
           </div>
-        </div>
-        
-        <div className="relative">
-          <motion.div className="overflow-x-auto scrollbar-hide pb-8 -mx-4 px-4 cursor-grab">
-            <div className="flex flex-row space-x-20 min-w-max px-20">
-              {secondRow.map(product => (
-                <ProductCard
-                  key={product.title}
-                  product={product}
-                  translateX={0}
-                />
-              ))}
-            </div>
-          </motion.div>
-          <div className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hidden md:flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
+        </motion.div>
+        <motion.div className="overflow-x-auto custom-scrollbar pb-8 -mx-4 px-4">
+          <div className="flex flex-row space-x-20 min-w-max px-20">
+            {secondRow.map(product => (
+              <ProductCard
+                key={product.title}
+                product={product}
+                translateX={translateXReverse.get()}
+              />
+            ))}
           </div>
-        </div>
-        
-        <div className="relative">
-          <motion.div className="overflow-x-auto scrollbar-hide pb-8 -mx-4 px-4 cursor-grab">
-            <div className="flex flex-row-reverse space-x-reverse space-x-20 min-w-max px-20">
-              {thirdRow.map(product => (
-                <ProductCard
-                  key={product.title}
-                  product={product}
-                  translateX={0}
-                />
-              ))}
-            </div>
-          </motion.div>
-          <div className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hidden md:flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
+        </motion.div>
+        <motion.div className="overflow-x-auto custom-scrollbar pb-8 -mx-4 px-4">
+          <div className="flex flex-row-reverse space-x-reverse space-x-20 min-w-max px-20">
+            {thirdRow.map(product => (
+              <ProductCard
+                key={product.title}
+                product={product}
+                translateX={translateX.get()}
+              />
+            ))}
           </div>
-        </div>
+        </motion.div>
       </motion.div>
     </div>
   );
@@ -237,8 +214,11 @@ export const Header = () => {
 };
 
 export const ProductCard = ({ product, translateX }: ProductCardProps) => {
+  const x = useSpring(translateX);
+
   return (
     <motion.div
+      style={{ x }}
       whileHover={{ y: -20 }}
       key={product.title}
       className="group/product h-72 w-[24rem] relative flex-shrink-0"
