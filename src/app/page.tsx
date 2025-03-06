@@ -12,10 +12,10 @@ import styles from "./styles/customFont.module.css";
 export default function Home() {
   return (
     <main
-      className="flex flex-col items-center justify-between p-4 md:p-24"
+      className="flex flex-col items-center justify-between p-0 md:p-0 overflow-hidden"
       suppressHydrationWarning
     >
-      <div className="z-50 w-full max-w-5xl items-center justify-between font-poppins text-sm lg:flex">
+      <div className="z-50 w-full max-w-5xl items-center justify-between font-poppins text-sm lg:flex p-4 md:p-24">
         <div className="flex h-24 w-full justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
           <Navbar />
         </div>
@@ -65,23 +65,23 @@ export default function Home() {
 
       <BackgroundBeams />
 
-      <div className="w-full overflow-hidden">
+      <div className="w-screen overflow-hidden left-0 right-0 -ml-[calc(50vw-50%)]">
         <ParallaxWrapper />
       </div>
 
-      <div className="py-2 md:py-16 w-full">
+      <div className="py-2 md:py-16 w-full px-4 md:px-24">
         <UpcomingMeetings />
       </div>
 
-      <div className="py-2 md:py-16 w-full">
+      <div className="py-2 md:py-16 w-full px-4 md:px-24">
         <InfoSection />
       </div>
 
-      <div className="py-2 md:py-16 w-full">
+      <div className="py-2 md:py-16 w-full px-4 md:px-24">
         <LeadershipSection />
       </div>
 
-      <div className="py-2 md:py-16 w-full">
+      <div className="py-2 md:py-16 w-full px-4 md:px-24">
         <ResourcesSection />
       </div>
 

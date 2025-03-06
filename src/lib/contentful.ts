@@ -75,6 +75,7 @@ export interface ParallaxBanner extends EntrySkeletonType {
         title: string;
       };
     };
+    link?: string;
   };
 }
 
@@ -250,5 +251,22 @@ export async function getPastEboardMembers(): Promise<EboardMember[]> {
   } catch (error) {
     console.error("Contentful error:", error);
     return [];
+  }
+}
+
+export async function addParallaxBanner(title: string, imageUrl: string, link?: string): Promise<ParallaxBanner | null> {
+  try {
+    // This function requires management token with write access
+    // You would need to implement this with the Contentful Management API
+    // For now, this is just a placeholder to show how it could be done
+    console.log("To add a new parallax banner, use the Contentful web interface or implement the Management API");
+    console.log("Title:", title);
+    console.log("Image URL:", imageUrl);
+    console.log("Link:", link);
+    
+    return null;
+  } catch (error) {
+    console.error("Error adding parallax banner:", error);
+    return null;
   }
 }
