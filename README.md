@@ -1,36 +1,125 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SJU ACM Website V2.0 🚀
 
-## Getting Started
+The official website for St. John's University's Association for Computing Machinery (ACM) Chapter. This new version brings significant improvements in design, performance, and user experience.
 
-First, run the development server:
+## ✨ New Features & Improvements
 
+- **Interactive Parallax Gallery** - Dynamic scrolling showcase of events and activities
+- **Real-time Content Management** - Integration with Contentful CMS for easy updates
+- **Responsive Design** - Optimized for all devices with mobile-first approach
+- **Dark Mode by Default** - Modern, eye-friendly design
+- **Improved Performance** - Built with Next.js 15 for optimal loading speeds
+- **Type Safety** - Full TypeScript implementation
+- **Custom Animations** - Smooth page transitions and hover effects
+- **Dynamic Routing** - Individual pages for hackathons and events
+- **SEO Optimization** - Built-in metadata management
+- **Vercel Analytics** - Built-in analytics for tracking website performance
+
+## 🛠️ Tech Stack
+
+### Frontend
+- Next.js 15
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- React (18+)
+
+### Backend & Services
+- Contentful CMS
+- Vercel (Hosting & Analytics)
+
+## 🔥 Key Sections
+
+- **Home** - Interactive parallax gallery showcasing events
+- **About** - Club information and mission statement
+- **Meetings** - Upcoming and past meeting information
+- **Resources** - Educational materials and links
+- **Hackathons** - Dynamic pages for each hackathon event
+- **E-Board** - Current and past executive board members
+- **Blog** - Technical articles and club updates
+
+## 🚀 Getting Started
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/SJUACM/Website-V2.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up environment variables:
+```env
+NEXT_PUBLIC_CONTENTFUL_SPACE_ID=your_space_id
+NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN=your_access_token
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+4. Run the development server:
+```bash
+npm run dev
+```
 
-## Learn More
+## 📱 Mobile-First Approach
 
-To learn more about Next.js, take a look at the following resources:
+- Responsive navigation with mobile menu
+- Touch-friendly interactions
+- Optimized images and content layout
+- Custom scrollbar for better mobile experience
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔄 Content Management
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+All dynamic content is managed through Contentful CMS:
+- Events and Hackathons
+- E-Board Members
+- Blog Posts
+- Resources
 
-## Deploy on Vercel
+## 🎨 Design Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Custom scrollbar styling
+- Gradient backgrounds
+- Interactive hover effects
+- Smooth page transitions
+- Responsive image galleries
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 📈 Performance Optimizations
+
+- Image optimization with Next.js
+- CSS optimization with Tailwind
+- Route prefetching
+- Static page generation where possible
+- Dynamic imports for code splitting
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a pull request
+
+## 📝 License
+
+This project is licensed under the MIT License.
+
+## 👥 Contributors
+
+### Current Development Team
+- **Tomas Santos Yciano** - Current President of ACM (2024 - Present)
+  - Lead Developer & Project Manager
+- **Hinna Zeejah** - Current Information Officer of ACM (2024 - Present)
+  - Frontend Developer & Content Manager
+
+### Original Project
+- **Faizan Ahmend** - Co-Founder @ Headstarter, former President of ACM (2021-2022)
+  - Initial Website Development & Design
+
+## 🔗 Links
+
+- [Live Website](https://sjuacm.org)
+- [Official ACM Website](https://www.acm.org)
+
+---
+Built with ❤️ by SJU ACM
