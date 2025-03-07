@@ -22,8 +22,8 @@ export function formatDateRange(startDate: string, endDate: string): string {
   const start = new Date(startDate);
   const end = new Date(endDate);
   
-  // If same day
-  if (start.toDateString() === end.toDateString()) {
+  // If dates are exactly the same (same day event)
+  if (start.getTime() === end.getTime()) {
     return new Intl.DateTimeFormat('en-US', { 
       month: 'short', 
       day: 'numeric', 
