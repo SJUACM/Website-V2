@@ -1,4 +1,4 @@
-# SJU ACM Website V2.0 🚀
+# STJ ACM Website V2.0 🚀
 
 The official website for St. John's University's Association for Computing Machinery (ACM) Chapter. This new version brings significant improvements in design, performance, and user experience.
 
@@ -122,4 +122,4 @@ This project is licensed under the MIT License.
 - [Official ACM Website](https://www.acm.org)
 
 ---
-Built with ❤️ by SJU ACM
+Built with ❤️ by STJ ACM
