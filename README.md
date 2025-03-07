@@ -113,7 +113,7 @@ This project is licensed under the MIT License.
   - Frontend Developer & Content Manager
 
 ### Original Project
-- **Faizan Ahmend** - Co-Founder @ Headstarter, former President of ACM (2021-2022)
+- **Faizan Ahmed** - Co-Founder @ Headstarter, former President of ACM (2021-2022)
   - Initial Website Development & Design
 
 ## 🔗 Links
