@@ -85,7 +85,7 @@ export function UpcomingMeetingsView({
             </p>
 
             <div className="grid grid-cols-2 gap-4 pt-2">
-              <div className="bg-black/20 p-4 rounded-xl backdrop-blur-sm">
+              <div className="bg-black/20 p-4 rounded-xl backdrop-blur-sm border border-white/10">
                 <p className="text-red-500 font-medium mb-1 text-xs flex items-center gap-2">
                   <FontAwesomeIcon icon={faCalendarAlt as IconProp} className="text-xs" />
                   DATE
@@ -94,7 +94,7 @@ export function UpcomingMeetingsView({
                   {formattedDate}
                 </p>
               </div>
-              <div className="bg-black/20 p-4 rounded-xl backdrop-blur-sm">
+              <div className="bg-black/20 p-4 rounded-xl backdrop-blur-sm border border-white/10">
                 <p className="text-red-500 font-medium mb-1 text-xs flex items-center gap-2">
                   <FontAwesomeIcon icon={faClock as IconProp} className="text-xs" />
                   TIME
@@ -105,7 +105,7 @@ export function UpcomingMeetingsView({
               </div>
             </div>
 
-            <div className="bg-black/20 p-4 rounded-xl backdrop-blur-sm">
+            <div className="bg-black/20 p-4 rounded-xl backdrop-blur-sm border border-white/10">
               <p className="text-red-500 font-medium mb-1 text-xs flex items-center gap-2">
                 <FontAwesomeIcon icon={faLocationDot as IconProp} className="text-xs" />
                 LOCATION

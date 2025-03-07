@@ -108,10 +108,11 @@ export const CardBody = ({
   return (
     <div
       className={cn(
-        "h-96 w-96 [transform-style:preserve-3d] [&>*]:[transform-style:preserve-3d] overflow-hidden",
+        "h-96 w-96 [transform-style:preserve-3d] [&>*]:[transform-style:preserve-3d] overflow-hidden relative",
         className
       )}
     >
+      <div className="absolute inset-0 border border-white/[0.2] rounded-xl pointer-events-none"></div>
       {children}
     </div>
   );

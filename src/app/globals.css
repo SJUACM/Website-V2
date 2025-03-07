@@ -3,17 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+  --container-padding: max(1rem, min(2vw, 2rem));
+  --header-height: 4rem;
+  --content-width: min(100%, 1440px);
 }
 
 /* Apply overflow-x: hidden to all pages except the home page */
@@ -24,6 +19,13 @@ body:not(.home-page-body) {
   width: 100%;
 }
 
+html, body {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -32,6 +34,14 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
 }
 
 @layer utilities {
@@ -61,5 +71,46 @@ body {
   
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background-color: rgba(220, 38, 38, 0.7);
+  }
+
+  /* Responsive container */
+  .container-fluid {
+    width: 100%;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--content-width);
+  }
+
+  /* Safe area utilities for notched devices */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .safe-left {
+    padding-left: env(safe-area-inset-left);
+  }
+  
+  .safe-right {
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+/* Media query for touch devices */
+@media (hover: none) {
+  .hover-only {
+    display: none;
+  }
+}
+
+/* Media query for desktop devices */
+@media (hover: hover) {
+  .touch-only {
+    display: none;
   }
 }
