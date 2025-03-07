@@ -26,38 +26,30 @@ export default function Meeting({
   recording,
 }: MeetingProps) {
   // Determine if slides is a string URL or an object with file details
-  const slidesUrl = typeof slides === 'string' ? slides : slides?.url;
-  
+  const slidesUrl = typeof slides === "string" ? slides : slides?.url;
+
   // Determine if it's a Google Drive or external URL
-  const isExternalUrl = slidesUrl && (
-    slidesUrl.includes('drive.google.com') || 
-    slidesUrl.includes('docs.google.com') ||
-    !slidesUrl.startsWith('https://images.ctfassets.net')
-  );
-  
+  const isExternalUrl =
+    slidesUrl &&
+    (slidesUrl.includes("drive.google.com") ||
+      slidesUrl.includes("docs.google.com") ||
+      !slidesUrl.startsWith("https://images.ctfassets.net"));
+
   // Customize button text based on URL type
-  const slidesButtonText = isExternalUrl ? 'View Slides' : 'Download Slides';
+  const slidesButtonText = isExternalUrl ? "View Slides" : "Download Slides";
 
   return (
     <CardContainer className="inter-var">
-      <CardBody
-        className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[24rem] rounded-xl p-8 h-auto min-h-[42rem] flex flex-col"
-      >
+      <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[24rem] rounded-xl p-8 h-auto min-h-[42rem] flex flex-col">
         {/* Title - Fixed height container */}
-        <CardItem
-          translateZ="50"
-          className="h-[4rem] mb-4"
-        >
+        <CardItem translateZ="50" className="h-[4rem] mb-4">
           <h3 className="text-xl font-bold text-neutral-600 dark:text-white line-clamp-2">
             {title}
           </h3>
         </CardItem>
 
         {/* Image - Fixed height container */}
-        <CardItem 
-          translateZ="100" 
-          className="w-full h-[15rem] relative"
-        >
+        <CardItem translateZ="100" className="w-full h-[15rem] relative">
           <Image
             src={image}
             fill
@@ -96,17 +88,17 @@ export default function Meeting({
         )}
 
         {/* Buttons - Fixed position at bottom */}
-        <CardItem
-          translateZ="60"
-          className="flex flex-wrap gap-4 mt-4"
-        >
+        <CardItem translateZ="60" className="flex flex-wrap gap-4 mt-4">
           {slidesUrl && (
             <Link
               href={slidesUrl}
               target="_blank"
               className="py-2 px-4 rounded-xl text-xs font-normal dark:text-white border border-white/20 hover:bg-white/10 transition-colors flex items-center gap-2"
             >
-              <FontAwesomeIcon icon={faDownload as IconProp} className="text-xs" />
+              <FontAwesomeIcon
+                icon={faDownload as IconProp}
+                className="text-xs"
+              />
               {slidesButtonText}
             </Link>
           )}

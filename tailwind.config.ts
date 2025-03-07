@@ -14,12 +14,12 @@ const config: Config = {
   darkMode: "class",
   theme: {
     screens: {
-      'xs': '375px',
-      'sm': '640px',
-      'md': '768px',
-      'lg': '1024px',
-      'xl': '1280px',
-      '2xl': '1536px',
+      xs: "375px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
     },
     extend: {
       typography: {
@@ -78,17 +78,17 @@ const config: Config = {
         "fluid-12": "clamp(3.5rem, 3rem + 2.5vw, 5rem)",
       },
       maxWidth: {
-        'xxs': '16rem',
-        'screen-3xl': '1920px',
+        xxs: "16rem",
+        "screen-3xl": "1920px",
       },
       minHeight: {
-        'screen-75': '75vh',
-        'screen-50': '50vh',
+        "screen-75": "75vh",
+        "screen-50": "50vh",
       },
       zIndex: {
-        '-1': '-1',
-        '60': '60',
-        '70': '70',
+        "-1": "-1",
+        "60": "60",
+        "70": "70",
       },
     },
   },

@@ -22,8 +22,8 @@ export function MobilePastEboardMember({
   github,
 }: MobilePastEboardMemberProps) {
   // Handle both StaticImageData and Contentful image URL
-  const imageUrl = typeof image === 'string' ? image : image;
-  
+  const imageUrl = typeof image === "string" ? image : image;
+
   return (
     <div className="bg-black/20 relative group/card dark:hover:shadow-2xl dark:hover:shadow-red-500/[0.1] dark:border-white/[0.2] border-black/[0.1] w-full rounded-xl p-6 border">
       <div className="flex flex-col items-center">

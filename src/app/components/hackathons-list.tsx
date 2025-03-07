@@ -6,6 +6,7 @@ import styles from "../styles/customFont.module.css";
 import Link from "next/link";
 import { Hackathon } from "../../lib/contentful";
 import { formatDateRange } from "../../lib/utils";
+import { SOCIAL_LINKS } from "../utils/constants";
 
 interface HackathonsListProps {
   ongoingHackathons: Hackathon[];
@@ -46,9 +47,15 @@ export default function HackathonsList({
             <div className="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto">
               {ongoingHackathons.map(hackathon => {
                 const url = `/hackathons/${hackathon.sys.id}`;
-                console.log(`Generated URL for ${hackathon.fields.title}: ${url}`);
+                console.log(
+                  `Generated URL for ${hackathon.fields.title}: ${url}`
+                );
                 return (
-                  <Link href={url} key={hackathon.sys.id} className="w-full md:w-auto md:max-w-2xl">
+                  <Link
+                    href={url}
+                    key={hackathon.sys.id}
+                    className="w-full md:w-auto md:max-w-2xl"
+                  >
                     <HackathonCard hackathon={hackathon} status="ongoing" />
                   </Link>
                 );
@@ -68,9 +75,15 @@ export default function HackathonsList({
             <div className="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto">
               {upcomingHackathons.map(hackathon => {
                 const url = `/hackathons/${hackathon.sys.id}`;
-                console.log(`Generated URL for ${hackathon.fields.title}: ${url}`);
+                console.log(
+                  `Generated URL for ${hackathon.fields.title}: ${url}`
+                );
                 return (
-                  <Link href={url} key={hackathon.sys.id} className="w-full md:w-auto md:max-w-2xl">
+                  <Link
+                    href={url}
+                    key={hackathon.sys.id}
+                    className="w-full md:w-auto md:max-w-2xl"
+                  >
                     <HackathonCard hackathon={hackathon} status="upcoming" />
                   </Link>
                 );
@@ -90,7 +103,9 @@ export default function HackathonsList({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
               {pastHackathons.map(hackathon => {
                 const url = `/hackathons/${hackathon.sys.id}`;
-                console.log(`Generated URL for ${hackathon.fields.title}: ${url}`);
+                console.log(
+                  `Generated URL for ${hackathon.fields.title}: ${url}`
+                );
                 return (
                   <Link href={url} key={hackathon.sys.id}>
                     <HackathonCard hackathon={hackathon} status="past" />
@@ -114,7 +129,7 @@ export default function HackathonsList({
           </p>
           <div className="flex flex-col md:flex-row gap-4 mt-8">
             <a
-              href="https://discord.gg/X5Qkx4hbNe"
+              href={SOCIAL_LINKS.DISCORD}
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg text-center transition-colors"
@@ -133,15 +148,16 @@ function HackathonCard({
   status,
 }: {
   hackathon: Hackathon;
-  status: 'ongoing' | 'upcoming' | 'past';
+  status: "ongoing" | "upcoming" | "past";
 }) {
-  const imageUrl = hackathon.fields.image?.fields.file.url || '';
-  
+  const imageUrl = hackathon.fields.image?.fields.file.url || "";
+
   // Handle missing date fields
-  const formattedDate = hackathon.fields.startDate && hackathon.fields.endDate
-    ? formatDateRange(hackathon.fields.startDate, hackathon.fields.endDate)
-    : 'Date TBD';
-  
+  const formattedDate =
+    hackathon.fields.startDate && hackathon.fields.endDate
+      ? formatDateRange(hackathon.fields.startDate, hackathon.fields.endDate)
+      : "Date TBD";
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -152,18 +168,20 @@ function HackathonCard({
     >
       <div
         className={`relative bg-gradient-to-br from-neutral-900/50 to-black/50 backdrop-blur-sm rounded-xl overflow-hidden border ${
-          status === 'ongoing' 
-            ? "border-green-500/50" 
-            : status === 'upcoming' 
-              ? "border-red-500/50" 
+          status === "ongoing"
+            ? "border-green-500/50"
+            : status === "upcoming"
+              ? "border-red-500/50"
               : "border-neutral-800/50"
         } transition-all duration-300 hover:border-red-500/50 hover:shadow-lg hover:shadow-red-500/10`}
       >
-        {status !== 'past' && (
-          <div className={`absolute top-4 right-4 z-20 ${
-            status === 'ongoing' ? 'bg-green-600' : 'bg-red-600'
-          } text-white text-xs font-bold px-3 py-1 rounded-full`}>
-            {status === 'ongoing' ? 'Ongoing' : 'Upcoming'}
+        {status !== "past" && (
+          <div
+            className={`absolute top-4 right-4 z-20 ${
+              status === "ongoing" ? "bg-green-600" : "bg-red-600"
+            } text-white text-xs font-bold px-3 py-1 rounded-full`}
+          >
+            {status === "ongoing" ? "Ongoing" : "Upcoming"}
           </div>
         )}
         <div className="absolute inset-0 bg-gradient-to-br from-red-500/0 to-red-500/0 group-hover:from-red-500/10 group-hover:to-transparent transition-all duration-300" />
@@ -207,4 +225,4 @@ function HackathonCard({
       </div>
     </motion.div>
   );
-} 
+}

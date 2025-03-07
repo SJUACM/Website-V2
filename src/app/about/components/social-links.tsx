@@ -7,6 +7,7 @@ import {
   faInstagram,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
+import { SOCIAL_LINKS } from "../../utils/constants";
 
 interface SocialLinkProps {
   href: string;
@@ -46,27 +47,27 @@ function SocialLink({ href, icon, label }: SocialLinkProps) {
 export function SocialLinks() {
   const socialLinks = [
     {
-      href: "https://github.com/SJUACM",
+      href: SOCIAL_LINKS.GITHUB,
       icon: faGithub,
       label: "GitHub",
     },
     {
-      href: "https://www.linkedin.com/company/stjacm/posts/?feedView=all",
+      href: SOCIAL_LINKS.LINKEDIN,
       icon: faLinkedin,
       label: "LinkedIn",
     },
     {
-      href: "https://discord.gg/Bcwm3e8m",
+      href: SOCIAL_LINKS.DISCORD,
       icon: faDiscord,
       label: "Discord",
     },
     {
-      href: "https://www.instagram.com/stj.acm/",
+      href: SOCIAL_LINKS.INSTAGRAM,
       icon: faInstagram,
       label: "Instagram",
     },
     {
-      href: "https://www.youtube.com/channel/UCuIcwbZDPnZYNQ0pFhmaNwQ",
+      href: SOCIAL_LINKS.YOUTUBE,
       icon: faYoutube,
       label: "YouTube",
     },

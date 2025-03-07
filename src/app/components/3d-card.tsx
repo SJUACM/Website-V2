@@ -32,16 +32,16 @@ export const CardContainer = ({
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 768); // 768px is a common breakpoint for mobile devices
     };
-    
+
     // Check initially
     checkIfMobile();
-    
+
     // Add event listener for window resize
-    window.addEventListener('resize', checkIfMobile);
-    
+    window.addEventListener("resize", checkIfMobile);
+
     // Clean up
     return () => {
-      window.removeEventListener('resize', checkIfMobile);
+      window.removeEventListener("resize", checkIfMobile);
     };
   }, []);
 
@@ -153,12 +153,12 @@ export const CardItem = ({
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkIfMobile();
-    window.addEventListener('resize', checkIfMobile);
-    
+    window.addEventListener("resize", checkIfMobile);
+
     return () => {
-      window.removeEventListener('resize', checkIfMobile);
+      window.removeEventListener("resize", checkIfMobile);
     };
   }, []);
 

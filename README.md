@@ -18,6 +18,7 @@ The official website for St. John's University's Association for Computing Machi
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - Next.js 15
 - TypeScript
 - Tailwind CSS
@@ -25,6 +26,7 @@ The official website for St. John's University's Association for Computing Machi
 - React (18+)
 
 ### Backend & Services
+
 - Contentful CMS
 - Vercel (Hosting & Analytics)
 
@@ -41,22 +43,26 @@ The official website for St. John's University's Association for Computing Machi
 ## 🚀 Getting Started
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/SJUACM/Website-V2.git
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Set up environment variables:
+
 ```env
 NEXT_PUBLIC_CONTENTFUL_SPACE_ID=your_space_id
 NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN=your_access_token
 ```
 
 4. Run the development server:
+
 ```bash
 npm run dev
 ```
@@ -71,6 +77,7 @@ npm run dev
 ## 🔄 Content Management
 
 All dynamic content is managed through Contentful CMS:
+
 - Events and Hackathons
 - E-Board Members
 - Blog Posts
@@ -107,12 +114,14 @@ This project is licensed under the MIT License.
 ## 👥 Contributors
 
 ### Current Development Team
+
 - **Tomas Santos Yciano** - Current President of ACM (2024 - Present)
   - Lead Developer & Project Manager
 - **Hinna Zeejah** - Current Information Officer of ACM (2024 - Present)
   - Frontend Developer & Content Manager
 
 ### Original Project
+
 - **Faizan Ahmed** - Co-Founder @ Headstarter, former President of ACM (2021-2022)
   - Initial Website Development & Design
 
@@ -122,4 +131,5 @@ This project is licensed under the MIT License.
 - [Official ACM Website](https://www.acm.org)
 
 ---
+
 Built with ❤️ by STJ ACM

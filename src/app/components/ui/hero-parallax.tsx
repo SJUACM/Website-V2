@@ -1,6 +1,12 @@
 "use client";
 import React from "react";
-import { motion, useScroll, useTransform, useSpring, MotionValue } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+  MotionValue,
+} from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,11 +16,7 @@ interface Product {
   thumbnail: string;
 }
 
-export const HeroParallax = ({
-  products,
-}: {
-  products: Product[];
-}) => {
+export const HeroParallax = ({ products }: { products: Product[] }) => {
   const firstRow = products.slice(0, 5);
   const secondRow = products.slice(5, 10);
   const thirdRow = products.slice(10, 15);
@@ -69,7 +71,7 @@ export const HeroParallax = ({
       >
         <div className="w-full overflow-hidden">
           <motion.div className="flex flex-row space-x-20 min-w-max ml-0">
-            {firstRow.map((product) => (
+            {firstRow.map(product => (
               <ProductCard
                 product={product}
                 translate={translateX}
@@ -78,10 +80,10 @@ export const HeroParallax = ({
             ))}
           </motion.div>
         </div>
-        
+
         <div className="w-full overflow-hidden">
           <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 min-w-max ml-0">
-            {secondRow.map((product) => (
+            {secondRow.map(product => (
               <ProductCard
                 product={product}
                 translate={translateXReverse}
@@ -90,10 +92,10 @@ export const HeroParallax = ({
             ))}
           </motion.div>
         </div>
-        
+
         <div className="w-full overflow-hidden">
           <motion.div className="flex flex-row space-x-20 min-w-max ml-0">
-            {thirdRow.map((product) => (
+            {thirdRow.map(product => (
               <ProductCard
                 product={product}
                 translate={translateX}
@@ -162,4 +164,4 @@ export const ProductCard = ({
       )}
     </motion.div>
   );
-}; 
+};

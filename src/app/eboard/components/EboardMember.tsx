@@ -26,26 +26,20 @@ export function EboardMember({
   github,
 }: EboardMemberProps) {
   // Handle both StaticImageData and Contentful image URL
-  const imageUrl = typeof image === 'string' ? image : image;
+  const imageUrl = typeof image === "string" ? image : image;
 
   return (
     <CardContainer className="inter-var">
       <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.3] border-black/[0.1] w-full sm:w-[280px] h-auto rounded-xl p-6 md:p-4 border flex flex-col">
         {/* Name - Fixed height with line clamp */}
-        <CardItem
-          translateZ="50"
-          className="h-[3rem] mb-2"
-        >
+        <CardItem translateZ="50" className="h-[3rem] mb-2">
           <h3 className="text-2xl md:text-lg font-bold text-neutral-600 dark:text-white line-clamp-2">
             {name}
           </h3>
         </CardItem>
 
         {/* Image - Fixed height */}
-        <CardItem 
-          translateZ="100" 
-          className="w-full h-[200px] relative"
-        >
+        <CardItem translateZ="100" className="w-full h-[200px] relative">
           <Image
             src={imageUrl}
             fill
@@ -75,10 +69,7 @@ export function EboardMember({
         </CardItem>
 
         {/* Social Links - Fixed height */}
-        <CardItem 
-          translateZ="40" 
-          className="h-[3rem] flex items-center"
-        >
+        <CardItem translateZ="40" className="h-[3rem] flex items-center">
           <div className="flex items-center gap-6 md:gap-4">
             <a
               href={linkedin}

@@ -19,7 +19,7 @@ export default function MeetingsList({ meetings }: MeetingsListProps) {
           // Fall back to the media asset if available
           slides = `https:${meeting.fields.slides.fields.file.url}`;
         }
-        
+
         return (
           <Meeting
             key={meeting.sys.id}

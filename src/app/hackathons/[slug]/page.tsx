@@ -17,18 +17,18 @@ export async function generateStaticParams() {
       slug: hackathon.sys.id,
     }));
   } catch (error) {
-    console.error('Error generating static params:', error);
+    console.error("Error generating static params:", error);
     return [];
   }
 }
 
 export default async function HackathonPage({ params }: PageProps) {
   const { slug } = await params;
-  
+
   console.log(`Page requested for slug: ${slug}`);
-  
+
   const hackathon = await getHackathonBySlug(slug);
-  
+
   console.log(`Hackathon found: ${!!hackathon}`);
 
   if (!hackathon) {
@@ -37,4 +37,4 @@ export default async function HackathonPage({ params }: PageProps) {
   }
 
   return <HackathonDetail hackathon={hackathon} />;
-} 
+}

@@ -1,6 +1,6 @@
-import { NextResponse } from 'next/server';
-import { getAllHackathons } from '../../../lib/contentful';
-import { createClient } from 'contentful';
+import { NextResponse } from "next/server";
+import { getAllHackathons } from "../../../lib/contentful";
+import { createClient } from "contentful";
 
 export async function GET() {
   try {
@@ -9,13 +9,13 @@ export async function GET() {
       space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID as string,
       accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN as string,
     });
-    
+
     // Get the hackathon content type
-    const contentType = await client.getContentType('hackathon');
-    
+    const contentType = await client.getContentType("hackathon");
+
     // Get all hackathons
     const hackathons = await getAllHackathons();
-    
+
     return NextResponse.json({
       success: true,
       contentType: {
@@ -36,10 +36,13 @@ export async function GET() {
       })),
     });
   } catch (error) {
-    console.error('Error testing Contentful:', error);
-    return NextResponse.json({
-      success: false,
-      error: error instanceof Error ? error.message : 'Unknown error',
-    }, { status: 500 });
+    console.error("Error testing Contentful:", error);
+    return NextResponse.json(
+      {
+        success: false,
+        error: error instanceof Error ? error.message : "Unknown error",
+      },
+      { status: 500 }
+    );
   }
-} 
+}

@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import React, { ReactNode } from 'react';
-import { useResponsive, useBreakpoint } from '../hooks/useResponsive';
-import { breakpoints } from '../utils/responsive';
+import React, { ReactNode } from "react";
+import { useResponsive, useBreakpoint } from "../hooks/useResponsive";
+import { breakpoints } from "../utils/responsive";
 
 type Breakpoint = keyof typeof breakpoints;
 
@@ -30,35 +30,34 @@ export function Responsive({
   showAbove,
   showBelow,
   between,
-  className = '',
+  className = "",
 }: ResponsiveProps) {
   const { isMobile, isTablet, isDesktop, width } = useResponsive();
 
   // Determine if content should be shown based on device type
-  const showBasedOnDevice = 
-    (isMobile && showOnMobile) || 
-    (isTablet && showOnTablet) || 
+  const showBasedOnDevice =
+    (isMobile && showOnMobile) ||
+    (isTablet && showOnTablet) ||
     (isDesktop && showOnDesktop);
 
   // Determine if content should be shown based on breakpoint
   let showBasedOnBreakpoint = true;
-  
+
   if (breakpoint) {
     showBasedOnBreakpoint = width >= breakpoints[breakpoint];
   }
-  
+
   if (showAbove) {
     showBasedOnBreakpoint = width >= breakpoints[showAbove];
   }
-  
+
   if (showBelow) {
     showBasedOnBreakpoint = width < breakpoints[showBelow];
   }
-  
+
   if (between && between.length === 2) {
-    showBasedOnBreakpoint = 
-      width >= breakpoints[between[0]] && 
-      width < breakpoints[between[1]];
+    showBasedOnBreakpoint =
+      width >= breakpoints[between[0]] && width < breakpoints[between[1]];
   }
 
   // Only render if all conditions are met
@@ -72,9 +71,20 @@ export function Responsive({
 /**
  * Component that only renders on mobile devices
  */
-export function Mobile({ children, className = '' }: { children: ReactNode; className?: string }) {
+export function Mobile({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
-    <Responsive showOnMobile showOnTablet={false} showOnDesktop={false} className={className}>
+    <Responsive
+      showOnMobile
+      showOnTablet={false}
+      showOnDesktop={false}
+      className={className}
+    >
       {children}
     </Responsive>
   );
@@ -83,9 +93,20 @@ export function Mobile({ children, className = '' }: { children: ReactNode; clas
 /**
  * Component that only renders on tablet devices
  */
-export function Tablet({ children, className = '' }: { children: ReactNode; className?: string }) {
+export function Tablet({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
-    <Responsive showOnMobile={false} showOnTablet showOnDesktop={false} className={className}>
+    <Responsive
+      showOnMobile={false}
+      showOnTablet
+      showOnDesktop={false}
+      className={className}
+    >
       {children}
     </Responsive>
   );
@@ -94,9 +115,20 @@ export function Tablet({ children, className = '' }: { children: ReactNode; clas
 /**
  * Component that only renders on desktop devices
  */
-export function Desktop({ children, className = '' }: { children: ReactNode; className?: string }) {
+export function Desktop({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
-    <Responsive showOnMobile={false} showOnTablet={false} showOnDesktop className={className}>
+    <Responsive
+      showOnMobile={false}
+      showOnTablet={false}
+      showOnDesktop
+      className={className}
+    >
       {children}
     </Responsive>
   );
@@ -105,9 +137,20 @@ export function Desktop({ children, className = '' }: { children: ReactNode; cla
 /**
  * Component that renders on tablet and desktop devices
  */
-export function TabletAndAbove({ children, className = '' }: { children: ReactNode; className?: string }) {
+export function TabletAndAbove({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
-    <Responsive showOnMobile={false} showOnTablet showOnDesktop className={className}>
+    <Responsive
+      showOnMobile={false}
+      showOnTablet
+      showOnDesktop
+      className={className}
+    >
       {children}
     </Responsive>
   );
@@ -116,10 +159,21 @@ export function TabletAndAbove({ children, className = '' }: { children: ReactNo
 /**
  * Component that renders on mobile and tablet devices
  */
-export function MobileAndTablet({ children, className = '' }: { children: ReactNode; className?: string }) {
+export function MobileAndTablet({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
-    <Responsive showOnMobile showOnTablet showOnDesktop={false} className={className}>
+    <Responsive
+      showOnMobile
+      showOnTablet
+      showOnDesktop={false}
+      className={className}
+    >
       {children}
     </Responsive>
   );
-} 
+}

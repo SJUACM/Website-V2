@@ -3,7 +3,10 @@ import styles from "../styles/customFont.module.css";
 import { MobileEboardMember } from "./components/MobileEboardMember";
 import { MobilePastEboardMember } from "./components/MobilePastEboardMember";
 import { EboardMember } from "./components/EboardMember";
-import { getCurrentEboardMembers, getPastEboardMembers } from "../../lib/contentful";
+import {
+  getCurrentEboardMembers,
+  getPastEboardMembers,
+} from "../../lib/contentful";
 
 export default async function Eboard() {
   // Fetch eboard members from Contentful
@@ -23,11 +26,11 @@ export default async function Eboard() {
   const pastEboardData = pastEboard.map(member => ({
     name: member.fields.name,
     position: member.fields.position,
-    description: member.fields.description || '',
+    description: member.fields.description || "",
     image: `https:${member.fields.image.fields.file.url}`,
     linkedin: member.fields.linkedin,
     github: member.fields.github,
-    year: member.fields.year || '',
+    year: member.fields.year || "",
   }));
 
   return (

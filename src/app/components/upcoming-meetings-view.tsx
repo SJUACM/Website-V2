@@ -6,7 +6,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { Meeting as MeetingType } from "@/lib/contentful";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload, faLocationDot, faCalendarAlt, faClock } from "@fortawesome/free-solid-svg-icons";
+import {
+  faDownload,
+  faLocationDot,
+  faCalendarAlt,
+  faClock,
+} from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 interface UpcomingMeetingsViewProps {
@@ -87,7 +92,10 @@ export function UpcomingMeetingsView({
             <div className="grid grid-cols-2 gap-4 pt-2">
               <div className="bg-black/20 p-4 rounded-xl backdrop-blur-sm border border-white/10">
                 <p className="text-red-500 font-medium mb-1 text-xs flex items-center gap-2">
-                  <FontAwesomeIcon icon={faCalendarAlt as IconProp} className="text-xs" />
+                  <FontAwesomeIcon
+                    icon={faCalendarAlt as IconProp}
+                    className="text-xs"
+                  />
                   DATE
                 </p>
                 <p className="text-white text-sm font-medium">
@@ -96,7 +104,10 @@ export function UpcomingMeetingsView({
               </div>
               <div className="bg-black/20 p-4 rounded-xl backdrop-blur-sm border border-white/10">
                 <p className="text-red-500 font-medium mb-1 text-xs flex items-center gap-2">
-                  <FontAwesomeIcon icon={faClock as IconProp} className="text-xs" />
+                  <FontAwesomeIcon
+                    icon={faClock as IconProp}
+                    className="text-xs"
+                  />
                   TIME
                 </p>
                 <p className="text-white text-sm font-medium">
@@ -107,7 +118,10 @@ export function UpcomingMeetingsView({
 
             <div className="bg-black/20 p-4 rounded-xl backdrop-blur-sm border border-white/10">
               <p className="text-red-500 font-medium mb-1 text-xs flex items-center gap-2">
-                <FontAwesomeIcon icon={faLocationDot as IconProp} className="text-xs" />
+                <FontAwesomeIcon
+                  icon={faLocationDot as IconProp}
+                  className="text-xs"
+                />
                 LOCATION
               </p>
               <p className="text-white text-sm font-medium">
@@ -118,12 +132,15 @@ export function UpcomingMeetingsView({
             </div>
 
             {slidesUrl && (
-              <Link 
-                href={slidesUrl} 
+              <Link
+                href={slidesUrl}
                 target="_blank"
                 className="inline-block mt-4 bg-red-500 hover:bg-red-600 transition-colors text-white py-2 px-4 rounded-lg text-sm font-medium flex items-center gap-2 w-fit"
               >
-                <FontAwesomeIcon icon={faDownload as IconProp} className="text-xs" />
+                <FontAwesomeIcon
+                  icon={faDownload as IconProp}
+                  className="text-xs"
+                />
                 Download Slides
               </Link>
             )}

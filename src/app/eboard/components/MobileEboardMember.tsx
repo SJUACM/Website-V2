@@ -22,8 +22,8 @@ export function MobileEboardMember({
   github,
 }: MobileEboardMemberProps) {
   // Handle both StaticImageData and Contentful image URL
-  const imageUrl = typeof image === 'string' ? image : image;
-  
+  const imageUrl = typeof image === "string" ? image : image;
+
   return (
     <div className="relative bg-black/20 backdrop-blur-md rounded-xl p-6 border border-white/10">
       <div className="flex flex-col items-center">

@@ -6,6 +6,7 @@ import {
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { SOCIAL_LINKS } from "../utils/constants";
 
 export default function Footer() {
   return (
@@ -14,7 +15,9 @@ export default function Footer() {
         <div className="grid grid-cols-2 xs:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {/* About Section */}
           <div className="space-y-3 md:space-y-4">
-            <h3 className="text-lg xs:text-xl font-bold text-red-500">STJ ACM</h3>
+            <h3 className="text-lg xs:text-xl font-bold text-red-500">
+              STJ ACM
+            </h3>
             <p className="text-neutral-400 text-xs xs:text-sm">
               St. John&apos;s University&apos;s Association for Computing
               Machinery.
@@ -23,7 +26,9 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-3 md:space-y-4">
-            <h3 className="text-lg xs:text-xl font-bold text-red-500">Quick Links</h3>
+            <h3 className="text-lg xs:text-xl font-bold text-red-500">
+              Quick Links
+            </h3>
             <ul className="space-y-1.5 xs:space-y-2">
               <li>
                 <a
@@ -54,7 +59,9 @@ export default function Footer() {
 
           {/* Resources */}
           <div className="space-y-3 md:space-y-4">
-            <h3 className="text-lg xs:text-xl font-bold text-red-500">Resources</h3>
+            <h3 className="text-lg xs:text-xl font-bold text-red-500">
+              Resources
+            </h3>
             <ul className="space-y-1.5 xs:space-y-2">
               <li>
                 <a
@@ -85,10 +92,12 @@ export default function Footer() {
 
           {/* Social Links */}
           <div className="space-y-3 md:space-y-4">
-            <h3 className="text-lg xs:text-xl font-bold text-red-500">Connect</h3>
+            <h3 className="text-lg xs:text-xl font-bold text-red-500">
+              Connect
+            </h3>
             <div className="flex space-x-4">
               <a
-                href="https://github.com/SJUACM"
+                href={SOCIAL_LINKS.GITHUB}
                 target="_blank"
                 rel="noreferrer"
                 className="text-neutral-400 hover:text-red-500 transition-colors"
@@ -100,7 +109,7 @@ export default function Footer() {
                 />
               </a>
               <a
-                href="https://www.linkedin.com/company/stjacm"
+                href={SOCIAL_LINKS.LINKEDIN}
                 target="_blank"
                 rel="noreferrer"
                 className="text-neutral-400 hover:text-red-500 transition-colors"
@@ -112,7 +121,7 @@ export default function Footer() {
                 />
               </a>
               <a
-                href="https://discord.gg/X5Qkx4hbNe"
+                href={SOCIAL_LINKS.DISCORD}
                 target="_blank"
                 rel="noreferrer"
                 className="text-neutral-400 hover:text-red-500 transition-colors"
@@ -124,7 +133,7 @@ export default function Footer() {
                 />
               </a>
               <a
-                href="https://www.instagram.com/stj.acm/"
+                href={SOCIAL_LINKS.INSTAGRAM}
                 target="_blank"
                 rel="noreferrer"
                 className="text-neutral-400 hover:text-red-500 transition-colors"

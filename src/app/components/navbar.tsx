@@ -15,7 +15,7 @@ export function Navbar({ className }: { className?: string }) {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -24,13 +24,13 @@ export function Navbar({ className }: { className?: string }) {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
-      if (isMenuOpen && !target.closest('.navbar-container')) {
+      if (isMenuOpen && !target.closest(".navbar-container")) {
         setIsMenuOpen(false);
       }
     };
 
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
   }, [isMenuOpen]);
 
   return (
@@ -64,7 +64,7 @@ export function Navbar({ className }: { className?: string }) {
         {/* Mobile Menu Button */}
         <button
           className="md:hidden text-white p-1.5 xs:p-2 hover:bg-white/10 rounded-full transition-colors"
-          onClick={(e) => {
+          onClick={e => {
             e.stopPropagation();
             setIsMenuOpen(!isMenuOpen);
           }}
