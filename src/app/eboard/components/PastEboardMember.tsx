@@ -60,7 +60,7 @@ export function PastEboardMember({
               <a
                 href={linkedin}
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer noopener"
                 aria-label={`${name}'s LinkedIn profile`}
               >
                 <FontAwesomeIcon
@@ -72,7 +72,7 @@ export function PastEboardMember({
                 <a
                   href={github}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noreferrer noopener"
                   aria-label={`${name}'s GitHub profile`}
                 >
                   <FontAwesomeIcon

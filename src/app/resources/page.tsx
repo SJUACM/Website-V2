@@ -45,7 +45,7 @@ function ResourceCard({ resource }: { resource: Resource }) {
             <a
               href={resource.link}
               target="_blank"
-              rel="noreferrer"
+              rel="noreferrer noopener"
               className="text-neutral-400 hover:text-red-500 transition-all duration-300
                        transform group-hover:scale-110"
             >

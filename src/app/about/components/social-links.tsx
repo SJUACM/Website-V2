@@ -20,7 +20,7 @@ function SocialLink({ href, icon, label }: SocialLinkProps) {
     <a
       href={href}
       target="_blank"
-      rel="noreferrer"
+      rel="noreferrer noopener"
       className="group flex flex-col items-center no-underline"
     >
       <div

@@ -7,6 +7,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { SOCIAL_LINKS } from "../utils/constants";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -31,28 +32,28 @@ export default function Footer() {
             </h3>
             <ul className="space-y-1.5 xs:space-y-2">
               <li>
-                <a
+                <Link
                   href="/about"
                   className="text-neutral-400 hover:text-red-500 text-xs xs:text-sm transition-colors"
                 >
                   About
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/meetings"
                   className="text-neutral-400 hover:text-red-500 text-xs xs:text-sm transition-colors"
                 >
                   Meetings
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/resources"
                   className="text-neutral-400 hover:text-red-500 text-xs xs:text-sm transition-colors"
                 >
                   Resources
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -64,28 +65,28 @@ export default function Footer() {
             </h3>
             <ul className="space-y-1.5 xs:space-y-2">
               <li>
-                <a
+                <Link
                   href="/resources#interview-prep"
                   className="text-neutral-400 hover:text-red-500 text-xs xs:text-sm transition-colors"
                 >
                   Interview Prep
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/resources#helpful-websites"
                   className="text-neutral-400 hover:text-red-500 text-xs xs:text-sm transition-colors"
                 >
                   Helpful Websites
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/resources#youtube-channels"
                   className="text-neutral-400 hover:text-red-500 text-xs xs:text-sm transition-colors"
                 >
                   YouTube Channels
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -99,7 +100,7 @@ export default function Footer() {
               <a
                 href={SOCIAL_LINKS.GITHUB}
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer noopener"
                 className="text-neutral-400 hover:text-red-500 transition-colors"
                 aria-label="GitHub"
               >
@@ -111,7 +112,7 @@ export default function Footer() {
               <a
                 href={SOCIAL_LINKS.LINKEDIN}
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer noopener"
                 className="text-neutral-400 hover:text-red-500 transition-colors"
                 aria-label="LinkedIn"
               >
@@ -123,7 +124,7 @@ export default function Footer() {
               <a
                 href={SOCIAL_LINKS.DISCORD}
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer noopener"
                 className="text-neutral-400 hover:text-red-500 transition-colors"
                 aria-label="Discord"
               >
@@ -135,7 +136,7 @@ export default function Footer() {
               <a
                 href={SOCIAL_LINKS.INSTAGRAM}
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer noopener"
                 className="text-neutral-400 hover:text-red-500 transition-colors"
                 aria-label="Instagram"
               >

@@ -44,7 +44,7 @@ export function MobilePastEboardMember({
             <a
               href={linkedin}
               target="_blank"
-              rel="noreferrer"
+              rel="noreferrer noopener"
               className="text-neutral-400 hover:text-blue-500 transition-colors"
               aria-label={`${name}'s LinkedIn profile`}
             >
@@ -57,7 +57,7 @@ export function MobilePastEboardMember({
               <a
                 href={github}
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer noopener"
                 className="text-neutral-400 hover:text-red-500 transition-colors"
                 aria-label={`${name}'s GitHub profile`}
               >

@@ -74,7 +74,7 @@ export function EboardMember({
             <a
               href={linkedin}
               target="_blank"
-              rel="noreferrer"
+              rel="noreferrer noopener"
               aria-label={`${name}'s LinkedIn profile`}
             >
               <FontAwesomeIcon
@@ -86,7 +86,7 @@ export function EboardMember({
               <a
                 href={github}
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer noopener"
                 aria-label={`${name}'s GitHub profile`}
               >
                 <FontAwesomeIcon
