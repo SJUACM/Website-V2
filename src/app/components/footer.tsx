@@ -112,7 +112,7 @@ export default function Footer() {
                 />
               </a>
               <a
-                href="https://discord.gg/Bcwm3e8m"
+                href="https://discord.gg/X5Qkx4hbNe"
                 target="_blank"
                 rel="noreferrer"
                 className="text-neutral-400 hover:text-red-500 transition-colors"

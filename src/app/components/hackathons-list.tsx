@@ -114,7 +114,7 @@ export default function HackathonsList({
           </p>
           <div className="flex flex-col md:flex-row gap-4 mt-8">
             <a
-              href="https://discord.gg/8EJVY5Hq"
+              href="https://discord.gg/X5Qkx4hbNe"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg text-center transition-colors"

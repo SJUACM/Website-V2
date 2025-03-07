@@ -142,7 +142,7 @@ export default function HackathonDetail({ hackathon }: HackathonDetailProps) {
                 Join our Discord server to connect with other participants and stay updated on our events.
               </p>
               <a
-                href="https://discord.gg/8EJVY5Hq"
+                href="https://discord.gg/X5Qkx4hbNe"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg inline-block transition-colors"
