@@ -51,14 +51,15 @@ export function Navbar({ className }: { className?: string }) {
       >
         {/* Logo */}
         <Link href="/" className="flex items-center">
-          <Image
-            src={Logo}
-            alt="SJU ACM Logo"
-            width={40}
-            height={40}
-            className="w-8 h-8 xs:w-9 xs:h-9 md:w-10 md:h-10 hover:opacity-90 transition-opacity"
-            priority
-          />
+          <div className="w-9 h-9 xs:w-10 xs:h-10 md:w-11 md:h-11 relative">
+            <Image
+              src={Logo}
+              alt="SJU ACM Logo"
+              fill
+              className="object-contain hover:opacity-90 transition-opacity"
+              priority
+            />
+          </div>
         </Link>
 
         {/* Mobile Menu Button */}
@@ -99,7 +100,7 @@ export function Navbar({ className }: { className?: string }) {
         <div
           className={`${
             isMenuOpen ? "flex" : "hidden"
-          } md:flex absolute md:relative top-full left-0 right-0 md:top-auto md:left-auto md:right-auto flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 lg:space-x-10 bg-black/80 md:bg-transparent backdrop-blur-md md:backdrop-blur-none p-6 md:p-0 mt-4 md:mt-0 rounded-2xl md:rounded-none mx-4 md:mx-0 border border-white/10 md:border-none transition-transform duration-300 origin-top ${
+          } md:flex absolute md:relative top-full left-0 right-0 md:top-auto md:left-auto md:right-auto flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 lg:space-x-10 bg-black/90 md:bg-transparent backdrop-blur-md md:backdrop-blur-none p-6 md:p-0 mt-4 md:mt-0 rounded-2xl md:rounded-none mx-4 md:mx-0 border border-white/20 md:border-none transition-transform duration-300 origin-top ${
             isMenuOpen ? "scale-y-100 opacity-100" : "scale-y-95 opacity-0"
           } md:scale-y-100 md:opacity-100`}
         >
