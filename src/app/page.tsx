@@ -72,7 +72,7 @@ export default function Home() {
         <ParallaxWrapper />
       </div>
 
-      <div className="container-fluid py-2 md:py-8 -mt-[20vh] xs:-mt-[25vh] md:-mt-[30vh]">
+      <div className="container-fluid py-2 md:py-8 md:-mt-[30vh]">
         <UpcomingMeetings />
       </div>
 
