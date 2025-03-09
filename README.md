@@ -57,8 +57,8 @@ npm install
 3. Set up environment variables:
 
 ```env
-NEXT_PUBLIC_CONTENTFUL_SPACE_ID=your_space_id
-NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN=your_access_token
+CONTENTFUL_SPACE_ID=your_space_id
+CONTENTFUL_ACCESS_TOKEN=your_access_token
 ```
 
 4. Run the development server:

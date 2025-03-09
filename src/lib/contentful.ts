@@ -134,25 +134,22 @@ export interface Hackathon extends EntrySkeletonType {
   };
 }
 
-if (
-  !process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID ||
-  !process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
-) {
+if (!process.env.CONTENTFUL_SPACE_ID || !process.env.CONTENTFUL_ACCESS_TOKEN) {
   throw new Error(
-    "Missing required environment variables: NEXT_PUBLIC_CONTENTFUL_SPACE_ID or NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN"
+    "Missing required environment variables: CONTENTFUL_SPACE_ID or CONTENTFUL_ACCESS_TOKEN"
   );
 }
 
 const client = createClient({
-  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID as string,
-  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN as string,
+  space: process.env.CONTENTFUL_SPACE_ID as string,
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string,
 });
 
 export async function getAllPosts(): Promise<BlogPost[]> {
   try {
     console.log("Fetching posts with:", {
-      spaceId: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
-      hasAccessToken: !!process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,
+      spaceId: process.env.CONTENTFUL_SPACE_ID,
+      hasAccessToken: !!process.env.CONTENTFUL_ACCESS_TOKEN,
     });
 
     const response = await client.getEntries<BlogPost>({

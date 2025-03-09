@@ -47,9 +47,6 @@ export default function HackathonsList({
             <div className="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto">
               {ongoingHackathons.map(hackathon => {
                 const url = `/hackathons/${hackathon.sys.id}`;
-                console.log(
-                  `Generated URL for ${hackathon.fields.title}: ${url}`
-                );
                 return (
                   <Link
                     href={url}
@@ -75,9 +72,6 @@ export default function HackathonsList({
             <div className="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto">
               {upcomingHackathons.map(hackathon => {
                 const url = `/hackathons/${hackathon.sys.id}`;
-                console.log(
-                  `Generated URL for ${hackathon.fields.title}: ${url}`
-                );
                 return (
                   <Link
                     href={url}
@@ -103,9 +97,6 @@ export default function HackathonsList({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
               {pastHackathons.map(hackathon => {
                 const url = `/hackathons/${hackathon.sys.id}`;
-                console.log(
-                  `Generated URL for ${hackathon.fields.title}: ${url}`
-                );
                 return (
                   <Link href={url} key={hackathon.sys.id}>
                     <HackathonCard hackathon={hackathon} status="past" />
