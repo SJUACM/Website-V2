@@ -2,7 +2,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["images.ctfassets.net"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.ctfassets.net",
+        pathname: "/**",
+      },
+    ],
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60,
   },
