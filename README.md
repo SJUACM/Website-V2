@@ -127,7 +127,7 @@ This project is licensed under the MIT License.
 
 ## 🔗 Links
 
-- [Live Website](https://sjuacm.org)
+- [Live Website](https://sjuacm.com)
 - [Official ACM Website](https://www.acm.org)
 
 ---
