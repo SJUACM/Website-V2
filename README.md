@@ -115,14 +115,14 @@ This project is licensed under the MIT License.
 
 ### Current Development Team
 
-- **Tomas Santos Yciano** - Current President of ACM (2024 - Present)
+- [**Tomas Santos Yciano**](https://github.com/tomassantos484) - Current President of ACM (2024 - Present)
   - Lead Developer & Project Manager
-- **Hinna Zeejah** - Current Information Officer of ACM (2024 - Present)
+- [**Hinna Zeejah**](https://github.com/hinnazeejah) - Current Information Officer of ACM (2024 - Present)
   - Frontend Developer & Content Manager
 
 ### Original Project
 
-- **Faizan Ahmed** - Co-Founder @ Headstarter, former President of ACM (2021-2022)
+- [**Faizan Ahmed**](https://github.com/faizancodes) - Co-Founder @ Headstarter, former President of ACM (2021-2022)
   - Initial Website Development & Design
 
 ## 🔗 Links
