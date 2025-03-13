@@ -1,4 +1,4 @@
-import { createClient, EntrySkeletonType } from "contentful";
+import { createClient, EntrySkeletonType, ContentfulClientApi } from "contentful";
 import { Document } from "@contentful/rich-text-types";
 
 export interface BlogPost extends EntrySkeletonType {
@@ -134,16 +134,27 @@ export interface Hackathon extends EntrySkeletonType {
   };
 }
 
-if (!process.env.CONTENTFUL_SPACE_ID || !process.env.CONTENTFUL_ACCESS_TOKEN) {
-  throw new Error(
-    "Missing required environment variables: CONTENTFUL_SPACE_ID or CONTENTFUL_ACCESS_TOKEN"
-  );
+// Create a more resilient client initialization
+let client: ContentfulClientApi<undefined>;
+try {
+  if (!process.env.CONTENTFUL_SPACE_ID || !process.env.CONTENTFUL_ACCESS_TOKEN) {
+    console.warn(
+      "Warning: Missing Contentful environment variables. Using fallback data where available."
+    );
+    // We'll still create a client, but it will fail gracefully when used
+  }
+  
+  client = createClient({
+    space: process.env.CONTENTFUL_SPACE_ID || "fallback-space-id",
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || "fallback-access-token",
+  });
+} catch (error) {
+  console.error("Error initializing Contentful client:", error);
+  // Create a dummy client that returns empty data
+  client = {
+    getEntries: async () => ({ items: [] }),
+  } as unknown as ContentfulClientApi<undefined>;
 }
-
-const client = createClient({
-  space: process.env.CONTENTFUL_SPACE_ID as string,
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string,
-});
 
 export async function getAllPosts(): Promise<BlogPost[]> {
   try {
