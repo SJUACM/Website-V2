@@ -40,9 +40,14 @@ export default function Meeting({
   // Customize button text based on URL type
   const slidesButtonText = isExternalUrl ? "View Slides" : "Download Slides";
   
-  // Ensure resourcesUrl has proper protocol
+  // Ensure resourcesUrl has proper protocol - using simple string operations
   const formattedResourcesUrl = resourcesUrl ? 
     (resourcesUrl.startsWith('http') ? resourcesUrl : `https://${resourcesUrl}`) : 
+    null;
+
+  // Ensure recording URL has proper protocol if needed
+  const formattedRecordingUrl = recording ? 
+    (recording.startsWith('http') ? recording : `https://${recording}`) : 
     null;
 
   return (
@@ -116,9 +121,9 @@ export default function Meeting({
               {slidesButtonText}
             </Link>
           )}
-          {recording && (
+          {formattedRecordingUrl && (
             <Link
-              href={recording}
+              href={formattedRecordingUrl}
               target="_blank"
               className="px-4 py-2 rounded-lg bg-neutral-800 hover:bg-black dark:bg-white dark:hover:bg-neutral-200 dark:text-black text-white text-xs font-bold flex items-center gap-2 transition-colors"
             >
