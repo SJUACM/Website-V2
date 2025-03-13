@@ -33,8 +33,8 @@ export default function RootLayout({
       className={`${isHomePage ? "home-page" : "overflow-x-hidden"} dark`}
     >
       <head>
-        <title>SJU ACM Website</title>
-        <meta name="description" content="SJU ACM Website" />
+        <title>STJ ACM Website</title>
+        <meta name="description" content="STJ ACM Website" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover"
