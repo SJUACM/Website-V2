@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "../utils/cn";
-import Logo from "../../../public/images/SJU_ACM_Logo.png";
 
 export function Navbar({ className }: { className?: string }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -53,7 +52,7 @@ export function Navbar({ className }: { className?: string }) {
         <Link href="/" className="flex items-center">
           <div className="w-9 h-9 xs:w-10 xs:h-10 md:w-11 md:h-11 relative">
             <Image
-              src={Logo}
+              src="/images/SJU_ACM_Logo.png"
               alt="SJU ACM Logo"
               fill
               className="object-contain hover:opacity-90 transition-opacity"

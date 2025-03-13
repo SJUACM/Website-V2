@@ -1,5 +1,5 @@
+import React from "react";
 import Image from "next/image";
-import LabPic from "../../../../public/images/ctf24.jpg";
 
 export function MeetingInfo() {
   return (
@@ -35,7 +35,7 @@ export function MeetingInfo() {
 
         <div className="relative h-[300px] md:h-[400px] rounded-xl overflow-hidden group">
           <Image
-            src={LabPic}
+            src="/images/ctf24.jpg"
             alt="SJU Cyber Security Lab"
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"
