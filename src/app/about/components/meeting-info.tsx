@@ -5,11 +5,26 @@ import { getLandingPageGraphicByTitle } from "@/lib/contentful";
 async function MeetingInfoImage() {
   try {
     const imageData = await getLandingPageGraphicByTitle("Cyber Lab Image");
-    const imageUrl = imageData?.fields?.image?.fields?.file?.url || "/images/ctf24.jpg";
+    
+    let imageUrl = "/images/ctf24.jpg"; // Default fallback
+    
+    // Check both image and graphic fields
+    if (imageData?.fields?.image?.fields?.file?.url) {
+      imageUrl = imageData.fields.image.fields.file.url;
+      console.log("Found cyber lab image URL in image field:", imageUrl);
+    } else if (imageData?.fields?.graphic?.fields?.file?.url) {
+      imageUrl = imageData.fields.graphic.fields.file.url;
+      console.log("Found cyber lab image URL in graphic field:", imageUrl);
+    }
+    
+    // Handle different URL formats
+    if (imageUrl && !imageUrl.startsWith("http") && !imageUrl.startsWith("/")) {
+      imageUrl = `https:${imageUrl}`;
+    }
     
     return (
       <Image
-        src={imageUrl.startsWith("/") ? imageUrl : `https:${imageUrl}`}
+        src={imageUrl}
         alt="SJU Cyber Security Lab"
         fill
         unoptimized

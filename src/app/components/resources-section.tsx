@@ -9,11 +9,26 @@ import { getLandingPageGraphicByTitle } from "@/lib/contentful";
 async function DevelopmentGraphic() {
   try {
     const graphicData = await getLandingPageGraphicByTitle("Development Graphic");
-    const graphicUrl = graphicData?.fields?.image?.fields?.file?.url || "/images/resources-graphic.png";
+    
+    let graphicUrl = "/images/resources-graphic.png"; // Default fallback
+    
+    // Check both image and graphic fields
+    if (graphicData?.fields?.image?.fields?.file?.url) {
+      graphicUrl = graphicData.fields.image.fields.file.url;
+      console.log("Found development graphic URL in image field:", graphicUrl);
+    } else if (graphicData?.fields?.graphic?.fields?.file?.url) {
+      graphicUrl = graphicData.fields.graphic.fields.file.url;
+      console.log("Found development graphic URL in graphic field:", graphicUrl);
+    }
+    
+    // Handle different URL formats
+    if (graphicUrl && !graphicUrl.startsWith("http") && !graphicUrl.startsWith("/")) {
+      graphicUrl = `https:${graphicUrl}`;
+    }
     
     return (
       <Image
-        src={graphicUrl.startsWith("/") ? graphicUrl : `https:${graphicUrl}`}
+        src={graphicUrl}
         alt="Development Graphic"
         width={600}
         height={600}

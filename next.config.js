@@ -8,6 +8,16 @@ const nextConfig = {
         hostname: "images.ctfassets.net",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "downloads.ctfassets.net",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "assets.ctfassets.net",
+        pathname: "/**",
+      },
     ],
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60,

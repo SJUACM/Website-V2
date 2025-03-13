@@ -142,7 +142,23 @@ export interface LandingPageGraphic extends EntrySkeletonType {
   fields: {
     title: string;
     description?: string;
-    image: {
+    // The image can be in either of these fields
+    image?: {
+      fields: {
+        file: {
+          url: string;
+          details?: {
+            image?: {
+              width: number;
+              height: number;
+            };
+          };
+        };
+        title: string;
+      };
+    };
+    // Some entries use 'graphic' instead of 'image'
+    graphic?: {
       fields: {
         file: {
           url: string;
@@ -161,18 +177,35 @@ export interface LandingPageGraphic extends EntrySkeletonType {
 
 // Create a more resilient client initialization
 let client: ContentfulClientApi<undefined>;
+
+// Log environment variables for debugging
+console.log("Contentful Environment Variables:", {
+  spaceId: process.env.CONTENTFUL_SPACE_ID || "Not set",
+  accessTokenLength: process.env.CONTENTFUL_ACCESS_TOKEN ? process.env.CONTENTFUL_ACCESS_TOKEN.length : 0,
+});
+
 try {
+  // Check if environment variables are available
   if (!process.env.CONTENTFUL_SPACE_ID || !process.env.CONTENTFUL_ACCESS_TOKEN) {
     console.warn(
       "Warning: Missing Contentful environment variables. Using fallback data where available."
     );
-    // We'll still create a client, but it will fail gracefully when used
+  }
+  
+  // Create the client with explicit values (not relying on fallbacks)
+  const spaceId = process.env.CONTENTFUL_SPACE_ID;
+  const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
+  
+  if (!spaceId || !accessToken) {
+    throw new Error("Contentful credentials are missing");
   }
   
   client = createClient({
-    space: process.env.CONTENTFUL_SPACE_ID || "fallback-space-id",
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || "fallback-access-token",
+    space: spaceId,
+    accessToken: accessToken,
   });
+  
+  console.log("Contentful client initialized successfully");
 } catch (error) {
   console.error("Error initializing Contentful client:", error);
   // Create a dummy client that returns empty data
@@ -434,18 +467,64 @@ export async function getHackathonBySlug(
 
 export async function getLandingPageGraphicByTitle(title: string): Promise<LandingPageGraphic | null> {
   try {
+    console.log(`Fetching landing page graphic with title: "${title}"`);
+    
+    // Verify client and credentials before making the request
+    if (!process.env.CONTENTFUL_SPACE_ID || !process.env.CONTENTFUL_ACCESS_TOKEN) {
+      console.error("Contentful credentials missing when fetching graphic:", title);
+      return null;
+    }
+    
     const response = await client.getEntries<LandingPageGraphic>({
       content_type: "landingPageGraphics",
       'fields.title': title,
       limit: 1,
     } as any);
 
-    if (!response.items.length) return null;
+    console.log(`Found ${response.items.length} items for "${title}"`);
+    
+    if (!response.items.length) {
+      console.log(`No graphic found with title "${title}", returning null`);
+      return null;
+    }
 
-    return {
-      ...response.items[0],
+    const item = response.items[0] as unknown as LandingPageGraphic;
+    
+    // Check if the image is under 'graphic' field instead of 'image'
+    const hasGraphicField = !!item.fields?.graphic;
+    const hasImageField = !!item.fields?.image;
+    let imageUrl = null;
+    
+    // Check image field first
+    if (hasImageField && item.fields.image?.fields?.file?.url) {
+      imageUrl = item.fields.image.fields.file.url;
+      console.log(`Found ${title} URL in image field:`, imageUrl);
+    } 
+    // Then check graphic field
+    else if (hasGraphicField && item.fields.graphic?.fields?.file?.url) {
+      imageUrl = item.fields.graphic.fields.file.url;
+      console.log(`Found ${title} URL in graphic field:`, imageUrl);
+    }
+    
+    console.log(`Graphic found for "${title}":`, {
+      id: item.sys.id,
+      hasImage: hasImageField,
+      hasGraphic: hasGraphicField,
+      imageUrl: imageUrl || "No URL",
+      fields: Object.keys(item.fields || {})
+    });
+
+    // Create a modified item with the image field properly set if it's under 'graphic'
+    const modifiedItem = {
+      ...item,
+      fields: {
+        ...item.fields,
+        image: item.fields.image || (hasGraphicField ? item.fields.graphic : undefined)
+      },
       contentTypeId: "landingPageGraphics",
     };
+
+    return modifiedItem;
   } catch (error) {
     console.error(`Error fetching landing page graphic "${title}":`, error);
     return null;

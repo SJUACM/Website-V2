@@ -13,12 +13,31 @@ import { getLandingPageGraphicByTitle } from "@/lib/contentful";
 
 async function UniversityLogo() {
   try {
+    console.log("Fetching university logo...");
     const logoData = await getLandingPageGraphicByTitle("St. John's University Logo");
-    const logoUrl = logoData?.fields?.image?.fields?.file?.url || "/images/sjulogo.png";
+    console.log("University logo data received:", logoData);
+    
+    let logoUrl = "/images/sjulogo.png"; // Default fallback
+    
+    // Check both image and graphic fields
+    if (logoData?.fields?.image?.fields?.file?.url) {
+      logoUrl = logoData.fields.image.fields.file.url;
+      console.log("Found university logo URL in image field:", logoUrl);
+    } else if (logoData?.fields?.graphic?.fields?.file?.url) {
+      logoUrl = logoData.fields.graphic.fields.file.url;
+      console.log("Found university logo URL in graphic field:", logoUrl);
+    }
+    
+    // Handle different URL formats
+    if (logoUrl && !logoUrl.startsWith("http") && !logoUrl.startsWith("/")) {
+      logoUrl = `https:${logoUrl}`;
+    }
+    
+    console.log("Final university logo URL:", logoUrl);
     
     return (
       <Image
-        src={logoUrl.startsWith("/") ? logoUrl : `https:${logoUrl}`}
+        src={logoUrl}
         alt="St. John's University Logo"
         width={180}
         height={180}

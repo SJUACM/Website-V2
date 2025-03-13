@@ -8,11 +8,26 @@ import { getLandingPageGraphicByTitle } from "@/lib/contentful";
 async function LeadershipGraphic() {
   try {
     const graphicData = await getLandingPageGraphicByTitle("Leadership Graphic");
-    const graphicUrl = graphicData?.fields?.image?.fields?.file?.url || "/images/eboard-graphic.png";
+    
+    let graphicUrl = "/images/eboard-graphic.png"; // Default fallback
+    
+    // Check both image and graphic fields
+    if (graphicData?.fields?.image?.fields?.file?.url) {
+      graphicUrl = graphicData.fields.image.fields.file.url;
+      console.log("Found leadership graphic URL in image field:", graphicUrl);
+    } else if (graphicData?.fields?.graphic?.fields?.file?.url) {
+      graphicUrl = graphicData.fields.graphic.fields.file.url;
+      console.log("Found leadership graphic URL in graphic field:", graphicUrl);
+    }
+    
+    // Handle different URL formats
+    if (graphicUrl && !graphicUrl.startsWith("http") && !graphicUrl.startsWith("/")) {
+      graphicUrl = `https:${graphicUrl}`;
+    }
     
     return (
       <Image
-        src={graphicUrl.startsWith("/") ? graphicUrl : `https:${graphicUrl}`}
+        src={graphicUrl}
         alt="Leadership Graphic"
         width={600}
         height={600}
