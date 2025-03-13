@@ -1,42 +1,51 @@
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+/**
+ * Format a date string to a readable format
+ * @param dateString ISO date string
+ * @returns Formatted date string
+ */
+export function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  return new Intl.DateTimeFormat('en-US', { 
+    month: 'short', 
+    day: 'numeric', 
+    year: 'numeric' 
+  }).format(date);
 }
 
 /**
- * Formats a date range into a human-readable string
+ * Format a date range to a readable format
+ * @param startDate ISO date string
+ * @param endDate ISO date string
+ * @returns Formatted date range string
  */
-export function formatDateRange(
-  startDate: string | Date,
-  endDate: string | Date
-): string {
+export function formatDateRange(startDate: string, endDate: string): string {
   const start = new Date(startDate);
   const end = new Date(endDate);
-
-  const startMonth = start.toLocaleString("default", { month: "short" });
-  const endMonth = end.toLocaleString("default", { month: "short" });
-  const startDay = start.getDate();
-  const endDay = end.getDate();
-  const startYear = start.getFullYear();
-  const endYear = end.getFullYear();
-
-  // Same day
+  
+  // If dates are exactly the same (same day event)
   if (start.getTime() === end.getTime()) {
-    return `${startMonth} ${startDay}, ${startYear}`;
+    return new Intl.DateTimeFormat('en-US', { 
+      month: 'short', 
+      day: 'numeric', 
+      year: 'numeric' 
+    }).format(start);
   }
-
-  // Same month and year
-  if (startMonth === endMonth && startYear === endYear) {
-    return `${startMonth} ${startDay}-${endDay}, ${startYear}`;
+  
+  // If same month and year
+  if (start.getMonth() === end.getMonth() && start.getFullYear() === end.getFullYear()) {
+    return `${new Intl.DateTimeFormat('en-US', { month: 'short' }).format(start)} ${start.getDate()}-${end.getDate()}, ${start.getFullYear()}`;
   }
-
-  // Same year, different month
-  if (startYear === endYear) {
-    return `${startMonth} ${startDay} - ${endMonth} ${endDay}, ${startYear}`;
-  }
-
-  // Different years
-  return `${startMonth} ${startDay}, ${startYear} - ${endMonth} ${endDay}, ${endYear}`;
+  
+  // Different months
+  return `${new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric' }).format(start)} - ${new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).format(end)}`;
 }
+
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+/**
+ * Utility for conditionally joining CSS class names together
+ */
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+} 
