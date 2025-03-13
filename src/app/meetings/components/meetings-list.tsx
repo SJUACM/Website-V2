@@ -35,6 +35,7 @@ export default function MeetingsList({ meetings }: MeetingsListProps) {
             meetingLocation={meeting.fields.meetingLocation}
             slides={slides}
             recording={meeting.fields.recording}
+            resourcesUrl={meeting.fields.resourcesUrl}
           />
         );
       })}

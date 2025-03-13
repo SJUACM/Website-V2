@@ -58,6 +58,7 @@ export interface Meeting extends EntrySkeletonType {
     };
     slidesUrl?: string;
     recording?: string;
+    resourcesUrl?: string;
   };
 }
 

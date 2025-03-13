@@ -11,6 +11,7 @@ import {
   faLocationDot,
   faCalendarAlt,
   faClock,
+  faLink,
 } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
@@ -41,6 +42,14 @@ export function UpcomingMeetingsView({
     // Fall back to the media asset if available
     slidesUrl = `https:${nextMeeting.fields.slides.fields.file.url}`;
   }
+
+  // Get resources URL if available
+  const resourcesUrl = nextMeeting.fields.resourcesUrl || null;
+  
+  // Ensure resourcesUrl has proper protocol
+  const formattedResourcesUrl = resourcesUrl ? 
+    (resourcesUrl.startsWith('http') ? resourcesUrl : `https://${resourcesUrl}`) : 
+    null;
 
   return (
     <div className="relative w-full">
@@ -131,19 +140,35 @@ export function UpcomingMeetingsView({
               </p>
             </div>
 
-            {slidesUrl && (
-              <Link
-                href={slidesUrl}
-                target="_blank"
-                className="inline-block mt-4 bg-red-500 hover:bg-red-600 transition-colors text-white py-2 px-4 rounded-lg text-sm font-medium flex items-center gap-2 w-fit"
-              >
-                <FontAwesomeIcon
-                  icon={faDownload as IconProp}
-                  className="text-xs"
-                />
-                Download Slides
-              </Link>
-            )}
+            <div className="flex flex-wrap gap-4 mt-4">
+              {slidesUrl && (
+                <Link
+                  href={slidesUrl}
+                  target="_blank"
+                  className="bg-red-500 hover:bg-red-600 transition-colors text-white py-2 px-4 rounded-lg text-sm font-medium flex items-center gap-2"
+                >
+                  <FontAwesomeIcon
+                    icon={faDownload as IconProp}
+                    className="text-xs"
+                  />
+                  Download Slides
+                </Link>
+              )}
+              
+              {formattedResourcesUrl && (
+                <Link
+                  href={formattedResourcesUrl}
+                  target="_blank"
+                  className="bg-red-500 hover:bg-red-600 transition-colors text-white py-2 px-4 rounded-lg text-sm font-medium flex items-center gap-2"
+                >
+                  <FontAwesomeIcon
+                    icon={faLink as IconProp}
+                    className="text-xs"
+                  />
+                  Resources
+                </Link>
+              )}
+            </div>
           </motion.div>
         </div>
       </div>

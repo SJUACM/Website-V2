@@ -3,7 +3,7 @@ import { CardBody, CardContainer, CardItem } from "../components/3d-card";
 import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload, faPlay } from "@fortawesome/free-solid-svg-icons";
+import { faDownload, faPlay, faLink } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 interface MeetingProps {
@@ -14,6 +14,7 @@ interface MeetingProps {
   meetingLocation?: string;
   slides?: string | { url: string; fileName: string; title: string };
   recording?: string;
+  resourcesUrl?: string;
 }
 
 export default function Meeting({
@@ -24,6 +25,7 @@ export default function Meeting({
   meetingLocation,
   slides,
   recording,
+  resourcesUrl,
 }: MeetingProps) {
   // Determine if slides is a string URL or an object with file details
   const slidesUrl = typeof slides === "string" ? slides : slides?.url;
@@ -37,6 +39,11 @@ export default function Meeting({
 
   // Customize button text based on URL type
   const slidesButtonText = isExternalUrl ? "View Slides" : "Download Slides";
+  
+  // Ensure resourcesUrl has proper protocol
+  const formattedResourcesUrl = resourcesUrl ? 
+    (resourcesUrl.startsWith('http') ? resourcesUrl : `https://${resourcesUrl}`) : 
+    null;
 
   return (
     <CardContainer className="inter-var w-full">
@@ -117,6 +124,19 @@ export default function Meeting({
             >
               <FontAwesomeIcon icon={faPlay as IconProp} className="text-xs" />
               Watch Recording
+            </Link>
+          )}
+          {formattedResourcesUrl && (
+            <Link
+              href={formattedResourcesUrl}
+              target="_blank"
+              className="py-2 px-4 rounded-lg text-xs font-medium bg-red-500 hover:bg-red-600 text-white transition-colors flex items-center gap-2"
+            >
+              <FontAwesomeIcon
+                icon={faLink as IconProp}
+                className="text-xs"
+              />
+              Resources
             </Link>
           )}
         </CardItem>
