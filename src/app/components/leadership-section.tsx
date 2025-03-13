@@ -3,54 +3,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { getLandingPageGraphicByTitle } from "@/lib/contentful";
 
-async function LeadershipGraphic() {
-  try {
-    const graphicData = await getLandingPageGraphicByTitle("Leadership Graphic");
-    
-    let graphicUrl = "/images/eboard-graphic.png"; // Default fallback
-    
-    // Check both image and graphic fields
-    if (graphicData?.fields?.image?.fields?.file?.url) {
-      graphicUrl = graphicData.fields.image.fields.file.url;
-      console.log("Found leadership graphic URL in image field:", graphicUrl);
-    } else if (graphicData?.fields?.graphic?.fields?.file?.url) {
-      graphicUrl = graphicData.fields.graphic.fields.file.url;
-      console.log("Found leadership graphic URL in graphic field:", graphicUrl);
-    }
-    
-    // Handle different URL formats
-    if (graphicUrl && !graphicUrl.startsWith("http") && !graphicUrl.startsWith("/")) {
-      graphicUrl = `https:${graphicUrl}`;
-    }
-    
-    return (
-      <Image
-        src={graphicUrl}
-        alt="Leadership Graphic"
-        width={600}
-        height={600}
-        unoptimized
-        className="object-contain"
-      />
-    );
-  } catch (error) {
-    console.error("Error loading leadership graphic:", error);
-    return (
-      <Image
-        src="/images/eboard-graphic.png"
-        alt="Leadership Graphic"
-        width={600}
-        height={600}
-        unoptimized
-        className="object-contain"
-      />
-    );
-  }
-}
-
-export default function LeadershipSection() {
+// Client component that receives the image URL as a prop
+export function LeadershipSectionClient({ graphicUrl }: { graphicUrl: string }) {
   return (
     <div className="py-24 relative">
       <div className="max-w-5xl mx-auto px-6">
@@ -61,11 +16,14 @@ export default function LeadershipSection() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <React.Suspense fallback={
-              <div className="w-full h-[400px] bg-black/20 rounded-md animate-pulse"></div>
-            }>
-              <LeadershipGraphic />
-            </React.Suspense>
+            <Image
+              src={graphicUrl}
+              alt="Leadership Graphic"
+              width={600}
+              height={600}
+              unoptimized
+              className="object-contain"
+            />
           </motion.div>
 
           <motion.div
@@ -98,3 +56,6 @@ export default function LeadershipSection() {
     </div>
   );
 }
+
+// Default export is the client component for backward compatibility
+export default LeadershipSectionClient;

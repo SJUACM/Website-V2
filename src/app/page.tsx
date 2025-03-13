@@ -4,9 +4,9 @@ import { BackgroundBeams } from "./components/background-beam";
 import { Navbar } from "./components/navbar";
 import ParallaxWrapper from "./components/hero-parallax-wrapper";
 import UpcomingMeetings from "./components/upcoming-meetings";
-import InfoSection from "./components/info-section";
-import LeadershipSection from "./components/leadership-section";
-import ResourcesSection from "./components/resources-section";
+import InfoSectionWrapper from "./components/info-section-wrapper";
+import LeadershipSectionWrapper from "./components/leadership-section-wrapper";
+import ResourcesSectionWrapper from "./components/resources-section-wrapper";
 import styles from "./styles/customFont.module.css";
 import { SOCIAL_LINKS } from "./utils/constants";
 import { getLandingPageGraphicByTitle } from "@/lib/contentful";
@@ -126,15 +126,15 @@ export default function Home() {
       </div>
 
       <div className="container-fluid py-2 md:py-8">
-        <InfoSection />
+        <InfoSectionWrapper />
       </div>
 
       <div className="container-fluid py-2 md:py-8">
-        <LeadershipSection />
+        <LeadershipSectionWrapper />
       </div>
 
       <div className="container-fluid py-2 md:py-8">
-        <ResourcesSection />
+        <ResourcesSectionWrapper />
       </div>
 
       <div className="pb-2 md:pb-8 safe-bottom"></div>

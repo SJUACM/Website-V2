@@ -178,25 +178,13 @@ export interface LandingPageGraphic extends EntrySkeletonType {
 // Create a more resilient client initialization
 let client: ContentfulClientApi<undefined>;
 
-// Log environment variables for debugging
-console.log("Contentful Environment Variables:", {
-  spaceId: process.env.CONTENTFUL_SPACE_ID || "Not set",
-  accessTokenLength: process.env.CONTENTFUL_ACCESS_TOKEN ? process.env.CONTENTFUL_ACCESS_TOKEN.length : 0,
-});
-
 try {
-  // Check if environment variables are available
-  if (!process.env.CONTENTFUL_SPACE_ID || !process.env.CONTENTFUL_ACCESS_TOKEN) {
-    console.warn(
-      "Warning: Missing Contentful environment variables. Using fallback data where available."
-    );
-  }
-  
-  // Create the client with explicit values (not relying on fallbacks)
+  // Server-side initialization with direct environment variables
   const spaceId = process.env.CONTENTFUL_SPACE_ID;
   const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
   
   if (!spaceId || !accessToken) {
+    console.warn("Warning: Missing Contentful environment variables. Using fallback data where available.");
     throw new Error("Contentful credentials are missing");
   }
   
@@ -470,7 +458,10 @@ export async function getLandingPageGraphicByTitle(title: string): Promise<Landi
     console.log(`Fetching landing page graphic with title: "${title}"`);
     
     // Verify client and credentials before making the request
-    if (!process.env.CONTENTFUL_SPACE_ID || !process.env.CONTENTFUL_ACCESS_TOKEN) {
+    const spaceId = process.env.CONTENTFUL_SPACE_ID;
+    const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
+    
+    if (!spaceId || !accessToken) {
       console.error("Contentful credentials missing when fetching graphic:", title);
       return null;
     }
@@ -479,7 +470,7 @@ export async function getLandingPageGraphicByTitle(title: string): Promise<Landi
       content_type: "landingPageGraphics",
       'fields.title': title,
       limit: 1,
-    } as any);
+    } as any); // Type assertion needed due to Contentful types limitation
 
     console.log(`Found ${response.items.length} items for "${title}"`);
     
@@ -506,14 +497,6 @@ export async function getLandingPageGraphicByTitle(title: string): Promise<Landi
       console.log(`Found ${title} URL in graphic field:`, imageUrl);
     }
     
-    console.log(`Graphic found for "${title}":`, {
-      id: item.sys.id,
-      hasImage: hasImageField,
-      hasGraphic: hasGraphicField,
-      imageUrl: imageUrl || "No URL",
-      fields: Object.keys(item.fields || {})
-    });
-
     // Create a modified item with the image field properly set if it's under 'graphic'
     const modifiedItem = {
       ...item,

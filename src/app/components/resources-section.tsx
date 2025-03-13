@@ -4,54 +4,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { getLandingPageGraphicByTitle } from "@/lib/contentful";
 
-async function DevelopmentGraphic() {
-  try {
-    const graphicData = await getLandingPageGraphicByTitle("Development Graphic");
-    
-    let graphicUrl = "/images/resources-graphic.png"; // Default fallback
-    
-    // Check both image and graphic fields
-    if (graphicData?.fields?.image?.fields?.file?.url) {
-      graphicUrl = graphicData.fields.image.fields.file.url;
-      console.log("Found development graphic URL in image field:", graphicUrl);
-    } else if (graphicData?.fields?.graphic?.fields?.file?.url) {
-      graphicUrl = graphicData.fields.graphic.fields.file.url;
-      console.log("Found development graphic URL in graphic field:", graphicUrl);
-    }
-    
-    // Handle different URL formats
-    if (graphicUrl && !graphicUrl.startsWith("http") && !graphicUrl.startsWith("/")) {
-      graphicUrl = `https:${graphicUrl}`;
-    }
-    
-    return (
-      <Image
-        src={graphicUrl}
-        alt="Development Graphic"
-        width={600}
-        height={600}
-        unoptimized
-        className="object-contain"
-      />
-    );
-  } catch (error) {
-    console.error("Error loading development graphic:", error);
-    return (
-      <Image
-        src="/images/resources-graphic.png"
-        alt="Development Graphic"
-        width={600}
-        height={600}
-        unoptimized
-        className="object-contain"
-      />
-    );
-  }
-}
-
-export default function ResourcesSection() {
+// Client component that receives the image URL as a prop
+export function ResourcesSectionClient({ graphicUrl }: { graphicUrl: string }) {
   return (
     <div className="py-24 relative">
       <div className="max-w-5xl mx-auto px-6">
@@ -87,14 +42,20 @@ export default function ResourcesSection() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <React.Suspense fallback={
-              <div className="w-full h-[400px] bg-black/20 rounded-md animate-pulse"></div>
-            }>
-              <DevelopmentGraphic />
-            </React.Suspense>
+            <Image
+              src={graphicUrl}
+              alt="Development Graphic"
+              width={600}
+              height={600}
+              unoptimized
+              className="object-contain"
+            />
           </motion.div>
         </div>
       </div>
     </div>
   );
 }
+
+// Default export is the client component for backward compatibility
+export default ResourcesSectionClient;
