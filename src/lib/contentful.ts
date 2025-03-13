@@ -134,6 +134,31 @@ export interface Hackathon extends EntrySkeletonType {
   };
 }
 
+export interface LandingPageGraphic extends EntrySkeletonType {
+  sys: {
+    id: string;
+  };
+  contentTypeId: string;
+  fields: {
+    title: string;
+    description?: string;
+    image: {
+      fields: {
+        file: {
+          url: string;
+          details?: {
+            image?: {
+              width: number;
+              height: number;
+            };
+          };
+        };
+        title: string;
+      };
+    };
+  };
+}
+
 // Create a more resilient client initialization
 let client: ContentfulClientApi<undefined>;
 try {
@@ -404,5 +429,42 @@ export async function getHackathonBySlug(
   } catch (error) {
     console.error("Error fetching hackathon:", error);
     return null;
+  }
+}
+
+export async function getLandingPageGraphicByTitle(title: string): Promise<LandingPageGraphic | null> {
+  try {
+    const response = await client.getEntries<LandingPageGraphic>({
+      content_type: "landingPageGraphics",
+      'fields.title': title,
+      limit: 1,
+    } as any);
+
+    if (!response.items.length) return null;
+
+    return {
+      ...response.items[0],
+      contentTypeId: "landingPageGraphics",
+    };
+  } catch (error) {
+    console.error(`Error fetching landing page graphic "${title}":`, error);
+    return null;
+  }
+}
+
+export async function getAllLandingPageGraphics(): Promise<LandingPageGraphic[]> {
+  try {
+    const response = await client.getEntries<LandingPageGraphic>({
+      content_type: "landingPageGraphics",
+      order: ["sys.createdAt"],
+    });
+
+    return response.items.map(item => ({
+      ...item,
+      contentTypeId: "landingPageGraphics",
+    }));
+  } catch (error) {
+    console.error("Error fetching landing page graphics:", error);
+    return [];
   }
 }

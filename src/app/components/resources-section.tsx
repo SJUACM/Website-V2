@@ -1,8 +1,40 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { getLandingPageGraphicByTitle } from "@/lib/contentful";
+
+async function DevelopmentGraphic() {
+  try {
+    const graphicData = await getLandingPageGraphicByTitle("Development Graphic");
+    const graphicUrl = graphicData?.fields?.image?.fields?.file?.url || "/images/resources-graphic.png";
+    
+    return (
+      <Image
+        src={graphicUrl.startsWith("/") ? graphicUrl : `https:${graphicUrl}`}
+        alt="Development Graphic"
+        width={600}
+        height={600}
+        unoptimized
+        className="object-contain"
+      />
+    );
+  } catch (error) {
+    console.error("Error loading development graphic:", error);
+    return (
+      <Image
+        src="/images/resources-graphic.png"
+        alt="Development Graphic"
+        width={600}
+        height={600}
+        unoptimized
+        className="object-contain"
+      />
+    );
+  }
+}
 
 export default function ResourcesSection() {
   return (
@@ -40,13 +72,11 @@ export default function ResourcesSection() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <Image
-              src="/images/resources-graphic.png"
-              alt="Resources Graphic"
-              width={600}
-              height={600}
-              className="object-contain"
-            />
+            <React.Suspense fallback={
+              <div className="w-full h-[400px] bg-black/20 rounded-md animate-pulse"></div>
+            }>
+              <DevelopmentGraphic />
+            </React.Suspense>
           </motion.div>
         </div>
       </div>

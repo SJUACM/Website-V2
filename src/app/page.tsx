@@ -9,6 +9,39 @@ import LeadershipSection from "./components/leadership-section";
 import ResourcesSection from "./components/resources-section";
 import styles from "./styles/customFont.module.css";
 import { SOCIAL_LINKS } from "./utils/constants";
+import { getLandingPageGraphicByTitle } from "@/lib/contentful";
+
+async function UniversityLogo() {
+  try {
+    const logoData = await getLandingPageGraphicByTitle("St. John's University Logo");
+    const logoUrl = logoData?.fields?.image?.fields?.file?.url || "/images/sjulogo.png";
+    
+    return (
+      <Image
+        src={logoUrl.startsWith("/") ? logoUrl : `https:${logoUrl}`}
+        alt="St. John's University Logo"
+        width={180}
+        height={180}
+        unoptimized
+        className="w-full h-auto"
+        priority
+      />
+    );
+  } catch (error) {
+    console.error("Error loading university logo:", error);
+    return (
+      <Image
+        src="/images/sjulogo.png"
+        alt="St. John's University Logo"
+        width={180}
+        height={180}
+        unoptimized
+        className="w-full h-auto"
+        priority
+      />
+    );
+  }
+}
 
 export default function Home() {
   return (
@@ -26,14 +59,11 @@ export default function Home() {
         {/* Title Structure for both Mobile and Desktop */}
         <div className="flex flex-col items-center justify-center min-h-[25vh] xs:min-h-[30vh] md:min-h-[40vh] space-y-4 mb-6 md:mb-8">
           <div className="w-[120px] xs:w-[150px] md:w-[180px] mb-2">
-            <Image
-              src="/images/sjulogo.png"
-              alt="St. John's University Logo"
-              width={180}
-              height={180}
-              className="w-full h-auto"
-              priority
-            />
+            <React.Suspense fallback={
+              <div className="w-full h-[120px] xs:h-[150px] md:h-[180px] bg-black/20 rounded-md animate-pulse"></div>
+            }>
+              <UniversityLogo />
+            </React.Suspense>
           </div>
           <div className="space-y-3 md:space-y-4">
             <h1

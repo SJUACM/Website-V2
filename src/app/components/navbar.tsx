@@ -4,6 +4,41 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "../utils/cn";
+import { getLandingPageGraphicByTitle } from "@/lib/contentful";
+
+export async function NavbarLogo() {
+  try {
+    const logoData = await getLandingPageGraphicByTitle("STJ ACM Nav Bar");
+    const logoUrl = logoData?.fields?.image?.fields?.file?.url || "/images/SJU_ACM_Logo.png";
+    
+    return (
+      <div className="w-9 h-9 xs:w-10 xs:h-10 md:w-11 md:h-11 relative">
+        <Image
+          src={logoUrl.startsWith("/") ? logoUrl : `https:${logoUrl}`}
+          alt="SJU ACM Logo"
+          fill
+          unoptimized
+          className="object-contain hover:opacity-90 transition-opacity"
+          priority
+        />
+      </div>
+    );
+  } catch (error) {
+    console.error("Error loading navbar logo:", error);
+    return (
+      <div className="w-9 h-9 xs:w-10 xs:h-10 md:w-11 md:h-11 relative">
+        <Image
+          src="/images/SJU_ACM_Logo.png"
+          alt="SJU ACM Logo"
+          fill
+          unoptimized
+          className="object-contain hover:opacity-90 transition-opacity"
+          priority
+        />
+      </div>
+    );
+  }
+}
 
 export function Navbar({ className }: { className?: string }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,15 +85,11 @@ export function Navbar({ className }: { className?: string }) {
       >
         {/* Logo */}
         <Link href="/" className="flex items-center">
-          <div className="w-9 h-9 xs:w-10 xs:h-10 md:w-11 md:h-11 relative">
-            <Image
-              src="/images/SJU_ACM_Logo.png"
-              alt="SJU ACM Logo"
-              fill
-              className="object-contain hover:opacity-90 transition-opacity"
-              priority
-            />
-          </div>
+          <React.Suspense fallback={
+            <div className="w-9 h-9 xs:w-10 xs:h-10 md:w-11 md:h-11 relative bg-black/20 rounded-full animate-pulse"></div>
+          }>
+            <NavbarLogo />
+          </React.Suspense>
         </Link>
 
         {/* Mobile Menu Button */}

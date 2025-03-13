@@ -1,5 +1,36 @@
 import React from "react";
 import Image from "next/image";
+import { getLandingPageGraphicByTitle } from "@/lib/contentful";
+
+async function MeetingInfoImage() {
+  try {
+    const imageData = await getLandingPageGraphicByTitle("Cyber Lab Image");
+    const imageUrl = imageData?.fields?.image?.fields?.file?.url || "/images/ctf24.jpg";
+    
+    return (
+      <Image
+        src={imageUrl.startsWith("/") ? imageUrl : `https:${imageUrl}`}
+        alt="SJU Cyber Security Lab"
+        fill
+        unoptimized
+        className="object-cover transition-transform duration-300 group-hover:scale-105"
+        priority
+      />
+    );
+  } catch (error) {
+    console.error("Error loading meeting info image:", error);
+    return (
+      <Image
+        src="/images/ctf24.jpg"
+        alt="SJU Cyber Security Lab"
+        fill
+        unoptimized
+        className="object-cover transition-transform duration-300 group-hover:scale-105"
+        priority
+      />
+    );
+  }
+}
 
 export function MeetingInfo() {
   return (
@@ -34,13 +65,11 @@ export function MeetingInfo() {
         </div>
 
         <div className="relative h-[300px] md:h-[400px] rounded-xl overflow-hidden group">
-          <Image
-            src="/images/ctf24.jpg"
-            alt="SJU Cyber Security Lab"
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
-            priority
-          />
+          <React.Suspense fallback={
+            <div className="w-full h-full bg-black/20 rounded-md animate-pulse"></div>
+          }>
+            <MeetingInfoImage />
+          </React.Suspense>
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
         </div>
       </div>

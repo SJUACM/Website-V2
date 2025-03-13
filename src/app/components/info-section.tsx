@@ -1,8 +1,40 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { getLandingPageGraphicByTitle } from "@/lib/contentful";
+
+async function ExpandingKnowledgeGraphic() {
+  try {
+    const graphicData = await getLandingPageGraphicByTitle("Expanding Knowledge Graphic");
+    const graphicUrl = graphicData?.fields?.image?.fields?.file?.url || "/images/acm-graphic.png";
+    
+    return (
+      <Image
+        src={graphicUrl.startsWith("/") ? graphicUrl : `https:${graphicUrl}`}
+        alt="Expanding Knowledge Graphic"
+        width={600}
+        height={600}
+        unoptimized
+        className="object-contain"
+      />
+    );
+  } catch (error) {
+    console.error("Error loading expanding knowledge graphic:", error);
+    return (
+      <Image
+        src="/images/acm-graphic.png"
+        alt="Expanding Knowledge Graphic"
+        width={600}
+        height={600}
+        unoptimized
+        className="object-contain"
+      />
+    );
+  }
+}
 
 export default function InfoSection() {
   return (
@@ -41,13 +73,11 @@ export default function InfoSection() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <Image
-              src="/images/acm-graphic.png"
-              alt="ACM Graphic"
-              width={600}
-              height={600}
-              className="object-contain"
-            />
+            <React.Suspense fallback={
+              <div className="w-full h-[400px] bg-black/20 rounded-md animate-pulse"></div>
+            }>
+              <ExpandingKnowledgeGraphic />
+            </React.Suspense>
           </motion.div>
         </div>
       </div>

@@ -1,7 +1,39 @@
 "use client";
+import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { getLandingPageGraphicByTitle } from "@/lib/contentful";
+
+async function LeadershipGraphic() {
+  try {
+    const graphicData = await getLandingPageGraphicByTitle("Leadership Graphic");
+    const graphicUrl = graphicData?.fields?.image?.fields?.file?.url || "/images/eboard-graphic.png";
+    
+    return (
+      <Image
+        src={graphicUrl.startsWith("/") ? graphicUrl : `https:${graphicUrl}`}
+        alt="Leadership Graphic"
+        width={600}
+        height={600}
+        unoptimized
+        className="object-contain"
+      />
+    );
+  } catch (error) {
+    console.error("Error loading leadership graphic:", error);
+    return (
+      <Image
+        src="/images/eboard-graphic.png"
+        alt="Leadership Graphic"
+        width={600}
+        height={600}
+        unoptimized
+        className="object-contain"
+      />
+    );
+  }
+}
 
 export default function LeadershipSection() {
   return (
@@ -14,13 +46,11 @@ export default function LeadershipSection() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <Image
-              src="/images/eboard-graphic.png"
-              alt="E-Board Graphic"
-              width={600}
-              height={600}
-              className="object-contain"
-            />
+            <React.Suspense fallback={
+              <div className="w-full h-[400px] bg-black/20 rounded-md animate-pulse"></div>
+            }>
+              <LeadershipGraphic />
+            </React.Suspense>
           </motion.div>
 
           <motion.div
