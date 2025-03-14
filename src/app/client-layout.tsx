@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { PostHogProvider } from "./providers/posthog-provider";
 
 // Define the type for our custom window properties
 interface CustomWindow extends Window {
@@ -39,10 +40,12 @@ export default function ClientLayout({
   }, []);
 
   return (
-    <div
-      className={`${isHomePage ? "home-page-body" : "overflow-x-hidden max-w-[100vw]"} flex-grow flex flex-col`}
-    >
-      {children}
-    </div>
+    <PostHogProvider>
+      <div
+        className={`${isHomePage ? "home-page-body" : "overflow-x-hidden max-w-[100vw]"} flex-grow flex flex-col`}
+      >
+        {children}
+      </div>
+    </PostHogProvider>
   );
 } 
