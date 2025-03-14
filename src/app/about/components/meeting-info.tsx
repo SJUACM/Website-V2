@@ -1,51 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import { getLandingPageGraphicByTitle } from "@/lib/contentful";
-
-async function MeetingInfoImage() {
-  try {
-    const imageData = await getLandingPageGraphicByTitle("Cyber Lab Image");
-
-    let imageUrl = "/images/ctf24.jpg"; // Default fallback
-
-    // Check both image and graphic fields
-    if (imageData?.fields?.image?.fields?.file?.url) {
-      imageUrl = imageData.fields.image.fields.file.url;
-      console.log("Found cyber lab image URL in image field:", imageUrl);
-    } else if (imageData?.fields?.graphic?.fields?.file?.url) {
-      imageUrl = imageData.fields.graphic.fields.file.url;
-      console.log("Found cyber lab image URL in graphic field:", imageUrl);
-    }
-
-    // Handle different URL formats
-    if (imageUrl && !imageUrl.startsWith("http") && !imageUrl.startsWith("/")) {
-      imageUrl = `https:${imageUrl}`;
-    }
-
-    return (
-      <Image
-        src={imageUrl}
-        alt="SJU Cyber Security Lab"
-        fill
-        unoptimized
-        className="object-cover transition-transform duration-300 group-hover:scale-105"
-        priority
-      />
-    );
-  } catch (error) {
-    console.error("Error loading meeting info image:", error);
-    return (
-      <Image
-        src="/images/ctf24.jpg"
-        alt="SJU Cyber Security Lab"
-        fill
-        unoptimized
-        className="object-cover transition-transform duration-300 group-hover:scale-105"
-        priority
-      />
-    );
-  }
-}
 
 export function MeetingInfo() {
   return (
@@ -85,7 +39,14 @@ export function MeetingInfo() {
               <div className="w-full h-full bg-black/20 rounded-md animate-pulse"></div>
             }
           >
-            <MeetingInfoImage />
+            <Image
+              src="/images/acm-lab.png"
+              alt="SJU Cyber Security Lab"
+              fill
+              unoptimized
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              priority
+            />
           </React.Suspense>
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
         </div>

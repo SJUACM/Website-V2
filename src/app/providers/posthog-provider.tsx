@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import posthog from "posthog-js";
 import { PostHogProvider as OriginalPostHogProvider } from "posthog-js/react";
 import { usePathname, useSearchParams } from "next/navigation";
 
-export function PostHogProvider({ children }: { children: React.ReactNode }) {
+// Create a separate component for analytics tracking
+function PostHogAnalytics() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -45,8 +46,20 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
     }
   }, [pathname, searchParams]);
 
+  return null;
+}
+
+// Fallback component when Suspense is triggered
+function PostHogAnalyticsFallback() {
+  return null; // Empty fallback to avoid UI flicker
+}
+
+export function PostHogProvider({ children }: { children: React.ReactNode }) {
   return (
     <OriginalPostHogProvider client={posthog}>
+      <Suspense fallback={<PostHogAnalyticsFallback />}>
+        <PostHogAnalytics />
+      </Suspense>
       {children}
     </OriginalPostHogProvider>
   );
