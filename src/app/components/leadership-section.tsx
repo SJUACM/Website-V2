@@ -5,11 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTrackedButton } from "../hooks/useTrackedButton";
 // Client component that receives the image URL as a prop
-export function LeadershipSectionClient({
-  graphicUrl,
-}: {
-  graphicUrl: string;
-}) {
+export function LeadershipSectionClient() {
   const { createClickHandler } = useTrackedButton();
 
   return (
@@ -23,7 +19,7 @@ export function LeadershipSectionClient({
             className="relative"
           >
             <Image
-              src={graphicUrl}
+              src="/images/eboard-graphic.png"
               alt="Leadership Graphic"
               width={600}
               height={600}

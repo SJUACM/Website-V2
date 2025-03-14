@@ -4,66 +4,11 @@ import { BackgroundBeams } from "./components/background-beam";
 import { Navbar } from "./components/navbar";
 import ParallaxWrapper from "./components/hero-parallax-wrapper";
 import UpcomingMeetings from "./components/upcoming-meetings";
-import InfoSectionWrapper from "./components/info-section-wrapper";
-import LeadershipSectionWrapper from "./components/leadership-section-wrapper";
-import ResourcesSectionWrapper from "./components/resources-section-wrapper";
 import styles from "./styles/customFont.module.css";
-import { getLandingPageGraphicByTitle } from "@/lib/contentful";
 import { DiscordButton } from "./components/discord-button";
-
-async function UniversityLogo() {
-  try {
-    console.log("Fetching university logo...");
-    const logoData = await getLandingPageGraphicByTitle(
-      "St. John's University Logo"
-    );
-    console.log("University logo data received:", logoData);
-
-    let logoUrl = "/images/sjulogo.png"; // Default fallback
-
-    // Check both image and graphic fields
-    if (logoData?.fields?.image?.fields?.file?.url) {
-      logoUrl = logoData.fields.image.fields.file.url;
-      console.log("Found university logo URL in image field:", logoUrl);
-    } else if (logoData?.fields?.graphic?.fields?.file?.url) {
-      logoUrl = logoData.fields.graphic.fields.file.url;
-      console.log("Found university logo URL in graphic field:", logoUrl);
-    }
-
-    // Handle different URL formats
-    if (logoUrl && !logoUrl.startsWith("http") && !logoUrl.startsWith("/")) {
-      logoUrl = `https:${logoUrl}`;
-    }
-
-    console.log("Final university logo URL:", logoUrl);
-
-    return (
-      <Image
-        src={logoUrl}
-        alt="St. John's University Logo"
-        width={180}
-        height={180}
-        unoptimized
-        className="w-full h-auto"
-        priority
-      />
-    );
-  } catch (error) {
-    console.error("Error loading university logo:", error);
-    return (
-      <Image
-        src="/images/sjulogo.png"
-        alt="St. John's University Logo"
-        width={180}
-        height={180}
-        unoptimized
-        className="w-full h-auto"
-        priority
-      />
-    );
-  }
-}
-
+import InfoSectionClient from "./components/info-section";
+import LeadershipSectionClient from "./components/leadership-section";
+import ResourcesSectionClient from "./components/resources-section";
 export default function Home() {
   return (
     <main
@@ -85,7 +30,15 @@ export default function Home() {
                 <div className="w-full h-[120px] xs:h-[150px] md:h-[180px] bg-black/20 rounded-md animate-pulse"></div>
               }
             >
-              <UniversityLogo />
+              <Image
+                src="/images/sjulogo.png"
+                alt="St. John's University Logo"
+                width={180}
+                height={180}
+                unoptimized
+                className="w-full h-auto"
+                priority
+              />
             </React.Suspense>
           </div>
           <div className="space-y-3 md:space-y-4">
@@ -118,15 +71,15 @@ export default function Home() {
       </div>
 
       <div className="container-fluid py-2 md:py-8">
-        <InfoSectionWrapper />
+        <InfoSectionClient />
       </div>
 
       <div className="container-fluid py-2 md:py-8">
-        <LeadershipSectionWrapper />
+        <LeadershipSectionClient />
       </div>
 
       <div className="container-fluid py-2 md:py-8">
-        <ResourcesSectionWrapper />
+        <ResourcesSectionClient />
       </div>
 
       <div className="pb-2 md:pb-8 safe-bottom"></div>

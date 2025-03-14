@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useTrackedButton } from "../hooks/useTrackedButton";
 
 // Client component that receives the image URL as a prop
-export function ResourcesSectionClient({ graphicUrl }: { graphicUrl: string }) {
+export function ResourcesSectionClient() {
   const { createClickHandler } = useTrackedButton();
 
   return (
@@ -50,7 +50,7 @@ export function ResourcesSectionClient({ graphicUrl }: { graphicUrl: string }) {
             className="relative"
           >
             <Image
-              src={graphicUrl}
+              src="/images/resources-graphic.png"
               alt="Development Graphic"
               width={600}
               height={600}

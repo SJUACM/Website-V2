@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useTrackedButton } from "../hooks/useTrackedButton";
 
 // Client component that receives the image URL as a prop
-export function InfoSectionClient({ graphicUrl }: { graphicUrl: string }) {
+export function InfoSectionClient() {
   const { createClickHandler } = useTrackedButton();
 
   return (
@@ -51,7 +51,7 @@ export function InfoSectionClient({ graphicUrl }: { graphicUrl: string }) {
             className="relative"
           >
             <Image
-              src={graphicUrl}
+              src="/images/acm-graphic.png"
               alt="Expanding Knowledge Graphic"
               width={600}
               height={600}
