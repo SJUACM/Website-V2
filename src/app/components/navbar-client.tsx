@@ -6,7 +6,13 @@ import Image from "next/image";
 import { cn } from "../utils/cn";
 import { NavLink } from "./nav-link";
 
-export function NavbarClient({ logoUrl, className }: { logoUrl: string, className?: string }) {
+export function NavbarClient({
+  logoUrl,
+  className,
+}: {
+  logoUrl: string;
+  className?: string;
+}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -118,4 +124,4 @@ export function NavbarClient({ logoUrl, className }: { logoUrl: string, classNam
       </div>
     </div>
   );
-} 
+}

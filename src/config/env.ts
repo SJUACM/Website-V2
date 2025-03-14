@@ -5,9 +5,9 @@ const logger = new Logger("Config:Env");
 
 // Schema for environment variables
 const envSchema = z.object({
-    CONTENTFUL_SPACE_ID: z.string(),
-    CONTENTFUL_ACCESS_TOKEN: z.string(),
-    NODE_ENV: z.string(),
+  CONTENTFUL_SPACE_ID: z.string(),
+  CONTENTFUL_ACCESS_TOKEN: z.string(),
+  NODE_ENV: z.string(),
 });
 
 // Function to validate environment variables
@@ -17,7 +17,7 @@ const validateEnv = () => {
     const env = {
       CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
       CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN,
-      NODE_ENV: process.env.NODE_ENV || "development"
+      NODE_ENV: process.env.NODE_ENV || "development",
     };
     logger.debug("Environment variables", {
       hasSpaceId: !!env.CONTENTFUL_SPACE_ID,

@@ -46,7 +46,7 @@ export default async function Blog() {
     );
   } catch (error) {
     console.error("Error fetching blog posts:", error);
-    
+
     // Return a fallback UI in case of error
     return (
       <div className="pt-4 md:pt-2 px-8 sm:px-8 max-w-7xl mx-auto min-h-[50vh] flex items-center justify-center">

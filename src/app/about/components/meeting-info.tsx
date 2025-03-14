@@ -5,9 +5,9 @@ import { getLandingPageGraphicByTitle } from "@/lib/contentful";
 async function MeetingInfoImage() {
   try {
     const imageData = await getLandingPageGraphicByTitle("Cyber Lab Image");
-    
+
     let imageUrl = "/images/ctf24.jpg"; // Default fallback
-    
+
     // Check both image and graphic fields
     if (imageData?.fields?.image?.fields?.file?.url) {
       imageUrl = imageData.fields.image.fields.file.url;
@@ -16,12 +16,12 @@ async function MeetingInfoImage() {
       imageUrl = imageData.fields.graphic.fields.file.url;
       console.log("Found cyber lab image URL in graphic field:", imageUrl);
     }
-    
+
     // Handle different URL formats
     if (imageUrl && !imageUrl.startsWith("http") && !imageUrl.startsWith("/")) {
       imageUrl = `https:${imageUrl}`;
     }
-    
+
     return (
       <Image
         src={imageUrl}
@@ -80,9 +80,11 @@ export function MeetingInfo() {
         </div>
 
         <div className="relative h-[300px] md:h-[400px] rounded-xl overflow-hidden group">
-          <React.Suspense fallback={
-            <div className="w-full h-full bg-black/20 rounded-md animate-pulse"></div>
-          }>
+          <React.Suspense
+            fallback={
+              <div className="w-full h-full bg-black/20 rounded-md animate-pulse"></div>
+            }
+          >
             <MeetingInfoImage />
           </React.Suspense>
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>

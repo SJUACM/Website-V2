@@ -45,11 +45,13 @@ export function UpcomingMeetingsView({
 
   // Get resources URL if available
   const resourcesUrl = nextMeeting.fields.resourcesUrl || null;
-  
+
   // Ensure resourcesUrl has proper protocol - using simple string operations
-  const formattedResourcesUrl = resourcesUrl ? 
-    (resourcesUrl.startsWith('http') ? resourcesUrl : `https://${resourcesUrl}`) : 
-    null;
+  const formattedResourcesUrl = resourcesUrl
+    ? resourcesUrl.startsWith("http")
+      ? resourcesUrl
+      : `https://${resourcesUrl}`
+    : null;
 
   return (
     <div className="relative w-full">
@@ -154,7 +156,7 @@ export function UpcomingMeetingsView({
                   Download Slides
                 </Link>
               )}
-              
+
               {formattedResourcesUrl && (
                 <Link
                   href={formattedResourcesUrl}

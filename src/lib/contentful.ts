@@ -1,6 +1,10 @@
-import { createClient, EntrySkeletonType, ContentfulClientApi } from "contentful";
+import {
+  createClient,
+  EntrySkeletonType,
+  ContentfulClientApi,
+} from "contentful";
 import { Document } from "@contentful/rich-text-types";
-import { env } from "@/config/env"; 
+import { env } from "@/config/env";
 
 export interface BlogPost extends EntrySkeletonType {
   sys: {
@@ -187,21 +191,23 @@ try {
       "Warning: Missing Contentful environment variables. Using fallback data where available."
     );
   }
-  
+
   // Create the client with explicit values (not relying on fallbacks)
   const spaceId = env.CONTENTFUL_SPACE_ID;
   const accessToken = env.CONTENTFUL_ACCESS_TOKEN;
-  
+
   if (!spaceId || !accessToken) {
-    console.warn("Warning: Missing Contentful environment variables. Using fallback data where available.");
+    console.warn(
+      "Warning: Missing Contentful environment variables. Using fallback data where available."
+    );
     throw new Error("Contentful credentials are missing");
   }
-  
+
   client = createClient({
     space: spaceId,
     accessToken: accessToken,
   });
-  
+
   console.log("Contentful client initialized successfully");
 } catch (error) {
   console.error("Error initializing Contentful client:", error);
@@ -462,53 +468,60 @@ export async function getHackathonBySlug(
   }
 }
 
-export async function getLandingPageGraphicByTitle(title: string): Promise<LandingPageGraphic | null> {
+export async function getLandingPageGraphicByTitle(
+  title: string
+): Promise<LandingPageGraphic | null> {
   try {
     console.log(`Fetching landing page graphic with title: "${title}"`);
-    
+
     // Verify client and credentials before making the request
     if (!env.CONTENTFUL_SPACE_ID || !env.CONTENTFUL_ACCESS_TOKEN) {
-      console.error("Contentful credentials missing when fetching graphic:", title);
+      console.error(
+        "Contentful credentials missing when fetching graphic:",
+        title
+      );
       return null;
     }
-    
+
     const response = await client.getEntries<LandingPageGraphic>({
       content_type: "landingPageGraphics",
-      'fields.title': title,
+      "fields.title": title,
       limit: 1,
     } as any); // Type assertion needed due to Contentful types limitation
 
     console.log(`Found ${response.items.length} items for "${title}"`);
-    
+
     if (!response.items.length) {
       console.log(`No graphic found with title "${title}", returning null`);
       return null;
     }
 
     const item = response.items[0] as unknown as LandingPageGraphic;
-    
+
     // Check if the image is under 'graphic' field instead of 'image'
     const hasGraphicField = !!item.fields?.graphic;
     const hasImageField = !!item.fields?.image;
     let imageUrl = null;
-    
+
     // Check image field first
     if (hasImageField && item.fields.image?.fields?.file?.url) {
       imageUrl = item.fields.image.fields.file.url;
       console.log(`Found ${title} URL in image field:`, imageUrl);
-    } 
+    }
     // Then check graphic field
     else if (hasGraphicField && item.fields.graphic?.fields?.file?.url) {
       imageUrl = item.fields.graphic.fields.file.url;
       console.log(`Found ${title} URL in graphic field:`, imageUrl);
     }
-    
+
     // Create a modified item with the image field properly set if it's under 'graphic'
     const modifiedItem = {
       ...item,
       fields: {
         ...item.fields,
-        image: item.fields.image || (hasGraphicField ? item.fields.graphic : undefined)
+        image:
+          item.fields.image ||
+          (hasGraphicField ? item.fields.graphic : undefined),
       },
       contentTypeId: "landingPageGraphics",
     };
@@ -520,7 +533,9 @@ export async function getLandingPageGraphicByTitle(title: string): Promise<Landi
   }
 }
 
-export async function getAllLandingPageGraphics(): Promise<LandingPageGraphic[]> {
+export async function getAllLandingPageGraphics(): Promise<
+  LandingPageGraphic[]
+> {
   try {
     const response = await client.getEntries<LandingPageGraphic>({
       content_type: "landingPageGraphics",

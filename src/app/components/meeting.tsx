@@ -39,16 +39,20 @@ export default function Meeting({
 
   // Customize button text based on URL type
   const slidesButtonText = isExternalUrl ? "View Slides" : "Download Slides";
-  
+
   // Ensure resourcesUrl has proper protocol - using simple string operations
-  const formattedResourcesUrl = resourcesUrl ? 
-    (resourcesUrl.startsWith('http') ? resourcesUrl : `https://${resourcesUrl}`) : 
-    null;
+  const formattedResourcesUrl = resourcesUrl
+    ? resourcesUrl.startsWith("http")
+      ? resourcesUrl
+      : `https://${resourcesUrl}`
+    : null;
 
   // Ensure recording URL has proper protocol if needed
-  const formattedRecordingUrl = recording ? 
-    (recording.startsWith('http') ? recording : `https://${recording}`) : 
-    null;
+  const formattedRecordingUrl = recording
+    ? recording.startsWith("http")
+      ? recording
+      : `https://${recording}`
+    : null;
 
   return (
     <CardContainer className="inter-var w-full">
@@ -137,10 +141,7 @@ export default function Meeting({
               target="_blank"
               className="py-2 px-4 rounded-lg text-xs font-medium bg-red-500 hover:bg-red-600 text-white transition-colors flex items-center gap-2"
             >
-              <FontAwesomeIcon
-                icon={faLink as IconProp}
-                className="text-xs"
-              />
+              <FontAwesomeIcon icon={faLink as IconProp} className="text-xs" />
               Resources
             </Link>
           )}

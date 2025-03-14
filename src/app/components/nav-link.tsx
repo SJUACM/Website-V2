@@ -13,4 +13,4 @@ export function NavLink({ href, text }: { href: string; text: string }) {
       <span className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-red-500 group-hover:w-8 transition-all duration-200 ease-out -translate-x-1/2 group-hover:opacity-100" />
     </Link>
   );
-} 
+}

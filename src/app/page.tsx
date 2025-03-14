@@ -14,11 +14,13 @@ import { getLandingPageGraphicByTitle } from "@/lib/contentful";
 async function UniversityLogo() {
   try {
     console.log("Fetching university logo...");
-    const logoData = await getLandingPageGraphicByTitle("St. John's University Logo");
+    const logoData = await getLandingPageGraphicByTitle(
+      "St. John's University Logo"
+    );
     console.log("University logo data received:", logoData);
-    
+
     let logoUrl = "/images/sjulogo.png"; // Default fallback
-    
+
     // Check both image and graphic fields
     if (logoData?.fields?.image?.fields?.file?.url) {
       logoUrl = logoData.fields.image.fields.file.url;
@@ -27,14 +29,14 @@ async function UniversityLogo() {
       logoUrl = logoData.fields.graphic.fields.file.url;
       console.log("Found university logo URL in graphic field:", logoUrl);
     }
-    
+
     // Handle different URL formats
     if (logoUrl && !logoUrl.startsWith("http") && !logoUrl.startsWith("/")) {
       logoUrl = `https:${logoUrl}`;
     }
-    
+
     console.log("Final university logo URL:", logoUrl);
-    
+
     return (
       <Image
         src={logoUrl}
@@ -78,9 +80,11 @@ export default function Home() {
         {/* Title Structure for both Mobile and Desktop */}
         <div className="flex flex-col items-center justify-center min-h-[25vh] xs:min-h-[30vh] md:min-h-[40vh] space-y-4 mb-6 md:mb-8">
           <div className="w-[120px] xs:w-[150px] md:w-[180px] mb-2">
-            <React.Suspense fallback={
-              <div className="w-full h-[120px] xs:h-[150px] md:h-[180px] bg-black/20 rounded-md animate-pulse"></div>
-            }>
+            <React.Suspense
+              fallback={
+                <div className="w-full h-[120px] xs:h-[150px] md:h-[180px] bg-black/20 rounded-md animate-pulse"></div>
+              }
+            >
               <UniversityLogo />
             </React.Suspense>
           </div>

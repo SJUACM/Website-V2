@@ -5,7 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 // Client component that receives the image URL as a prop
-export function LeadershipSectionClient({ graphicUrl }: { graphicUrl: string }) {
+export function LeadershipSectionClient({
+  graphicUrl,
+}: {
+  graphicUrl: string;
+}) {
   return (
     <div className="py-24 relative">
       <div className="max-w-5xl mx-auto px-6">
