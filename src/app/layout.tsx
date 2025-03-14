@@ -5,7 +5,7 @@ import Footer from "./components/footer";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { Analytics } from "@vercel/analytics/react";
-import ClientLayout from "./client-layout";
+import { PostHogProvider } from "./providers/posthog-provider";
 
 // Initialize FontAwesome configuration
 config.autoAddCss = false; // Disable auto CSS injection as we import the CSS file above
@@ -35,19 +35,16 @@ export default function RootLayout({
           content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover"
         />
         <meta name="color-scheme" content="dark" />
-        {/* Add environment variables as meta tags for client-side access */}
-        <meta name="contentful-space-id" content={process.env.CONTENTFUL_SPACE_ID || ""} />
-        <meta name="contentful-access-token" content={process.env.CONTENTFUL_ACCESS_TOKEN || ""} />
       </head>
       <body
         suppressHydrationWarning
         className={`${comfortaa.className} bg-black text-white min-h-screen flex flex-col`}
       >
-        <ClientLayout>
+        <PostHogProvider>
           {children}
           <Footer />
           <Analytics />
-        </ClientLayout>
+        </PostHogProvider>
       </body>
     </html>
   );

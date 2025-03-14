@@ -1,5 +1,6 @@
 import { createClient, EntrySkeletonType, ContentfulClientApi } from "contentful";
 import { Document } from "@contentful/rich-text-types";
+import { env } from "@/config/env"; 
 
 export interface BlogPost extends EntrySkeletonType {
   sys: {
@@ -180,9 +181,16 @@ export interface LandingPageGraphic extends EntrySkeletonType {
 let client: ContentfulClientApi<undefined>;
 
 try {
-  // Server-side initialization with direct environment variables
-  const spaceId = process.env.CONTENTFUL_SPACE_ID;
-  const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
+  // Check if environment variables are available
+  if (!env.CONTENTFUL_SPACE_ID || !env.CONTENTFUL_ACCESS_TOKEN) {
+    console.warn(
+      "Warning: Missing Contentful environment variables. Using fallback data where available."
+    );
+  }
+  
+  // Create the client with explicit values (not relying on fallbacks)
+  const spaceId = env.CONTENTFUL_SPACE_ID;
+  const accessToken = env.CONTENTFUL_ACCESS_TOKEN;
   
   if (!spaceId || !accessToken) {
     console.warn("Warning: Missing Contentful environment variables. Using fallback data where available.");
@@ -206,8 +214,8 @@ try {
 export async function getAllPosts(): Promise<BlogPost[]> {
   try {
     console.log("Fetching posts with:", {
-      spaceId: process.env.CONTENTFUL_SPACE_ID,
-      hasAccessToken: !!process.env.CONTENTFUL_ACCESS_TOKEN,
+      spaceId: env.CONTENTFUL_SPACE_ID,
+      hasAccessToken: !!env.CONTENTFUL_ACCESS_TOKEN,
     });
 
     const response = await client.getEntries<BlogPost>({
@@ -459,10 +467,7 @@ export async function getLandingPageGraphicByTitle(title: string): Promise<Landi
     console.log(`Fetching landing page graphic with title: "${title}"`);
     
     // Verify client and credentials before making the request
-    const spaceId = process.env.CONTENTFUL_SPACE_ID;
-    const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
-    
-    if (!spaceId || !accessToken) {
+    if (!env.CONTENTFUL_SPACE_ID || !env.CONTENTFUL_ACCESS_TOKEN) {
       console.error("Contentful credentials missing when fetching graphic:", title);
       return null;
     }
