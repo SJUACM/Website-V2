@@ -1,10 +1,21 @@
+"use client";
+
 import { BlogPost } from "@/lib/contentful";
 import Image from "next/image";
 import Link from "next/link";
+import { useTrackedButton } from "@/app/hooks/useTrackedButton";
 
 export function MobileBlogCard({ post }: { post: BlogPost }) {
+  const { createClickHandler } = useTrackedButton();
   return (
-    <Link href={`/blog/${post.fields.slug}`}>
+    <Link
+      href={`/blog/${post.fields.slug}`}
+      onClick={createClickHandler("link_click", {
+        button_location: "mobile_blog_card",
+        button_text: "Read More",
+        url: `/blog/${post.fields.slug}`,
+      })}
+    >
       <div className="bg-black/40 border border-neutral-800 rounded-lg overflow-hidden">
         {post.fields.coverImage && (
           <div className="aspect-video relative">

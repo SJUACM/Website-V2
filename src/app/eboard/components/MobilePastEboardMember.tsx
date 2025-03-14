@@ -1,9 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import { StaticImageData } from "next/image";
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-
+import { useTrackedButton } from "@/app/hooks/useTrackedButton";
 interface MobilePastEboardMemberProps {
   name: string;
   position: string;
@@ -21,7 +23,7 @@ export function MobilePastEboardMember({
   linkedin,
   github,
 }: MobilePastEboardMemberProps) {
-  // Handle both StaticImageData and Contentful image URL
+  const { createClickHandler } = useTrackedButton();
   const imageUrl = typeof image === "string" ? image : image;
 
   return (
@@ -47,6 +49,11 @@ export function MobilePastEboardMember({
               rel="noreferrer noopener"
               className="text-neutral-400 hover:text-blue-500 transition-colors"
               aria-label={`${name}'s LinkedIn profile`}
+              onClick={createClickHandler("social_link_click", {
+                button_location: "eboard_member",
+                button_text: "LinkedIn",
+                name: name,
+              })}
             >
               <FontAwesomeIcon
                 icon={faLinkedin as IconProp}
@@ -60,6 +67,11 @@ export function MobilePastEboardMember({
                 rel="noreferrer noopener"
                 className="text-neutral-400 hover:text-red-500 transition-colors"
                 aria-label={`${name}'s GitHub profile`}
+                onClick={createClickHandler("social_link_click", {
+                  button_location: "eboard_member",
+                  button_text: "GitHub",
+                  name: name,
+                })}
               >
                 <FontAwesomeIcon
                   icon={faGithub as IconProp}

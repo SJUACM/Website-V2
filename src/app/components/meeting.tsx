@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "../components/3d-card";
 import Image from "next/image";
@@ -5,7 +7,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload, faPlay, faLink } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-
+import { useTrackedButton } from "../hooks/useTrackedButton";
 interface MeetingProps {
   title: string;
   date: string;
@@ -27,6 +29,8 @@ export default function Meeting({
   recording,
   resourcesUrl,
 }: MeetingProps) {
+  const { createClickHandler } = useTrackedButton();
+
   // Determine if slides is a string URL or an object with file details
   const slidesUrl = typeof slides === "string" ? slides : slides?.url;
 
@@ -117,6 +121,11 @@ export default function Meeting({
               href={slidesUrl}
               target="_blank"
               className="py-2 px-4 rounded-lg text-xs font-medium dark:text-white text-neutral-700 border border-neutral-300 dark:border-white/20 hover:bg-neutral-100 dark:hover:bg-white/10 transition-colors flex items-center gap-2"
+              onClick={createClickHandler("link_click", {
+                button_location: "meeting",
+                button_text: "Download Slides",
+                url: slidesUrl,
+              })}
             >
               <FontAwesomeIcon
                 icon={faDownload as IconProp}
@@ -130,6 +139,11 @@ export default function Meeting({
               href={formattedRecordingUrl}
               target="_blank"
               className="px-4 py-2 rounded-lg bg-neutral-800 hover:bg-black dark:bg-white dark:hover:bg-neutral-200 dark:text-black text-white text-xs font-bold flex items-center gap-2 transition-colors"
+              onClick={createClickHandler("link_click", {
+                button_location: "meeting",
+                button_text: "Watch Recording",
+                url: formattedRecordingUrl,
+              })}
             >
               <FontAwesomeIcon icon={faPlay as IconProp} className="text-xs" />
               Watch Recording
@@ -140,6 +154,11 @@ export default function Meeting({
               href={formattedResourcesUrl}
               target="_blank"
               className="py-2 px-4 rounded-lg text-xs font-medium bg-red-500 hover:bg-red-600 text-white transition-colors flex items-center gap-2"
+              onClick={createClickHandler("link_click", {
+                button_location: "meeting",
+                button_text: "Resources",
+                url: formattedResourcesUrl,
+              })}
             >
               <FontAwesomeIcon icon={faLink as IconProp} className="text-xs" />
               Resources

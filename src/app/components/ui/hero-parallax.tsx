@@ -9,7 +9,7 @@ import {
 } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-
+import { useTrackedButton } from "@/app/hooks/useTrackedButton";
 interface Product {
   title: string;
   link?: string;
@@ -130,6 +130,8 @@ export const ProductCard = ({
   product: Product;
   translate: MotionValue<number>;
 }) => {
+  const { createClickHandler } = useTrackedButton();
+
   const CardContent = () => (
     <>
       <div className="block group-hover/product:shadow-2xl">
@@ -156,7 +158,15 @@ export const ProductCard = ({
       className="group/product h-96 w-[30rem] relative flex-shrink-0"
     >
       {product.link ? (
-        <Link href={product.link} className="block h-full w-full">
+        <Link
+          href={product.link}
+          className="block h-full w-full"
+          onClick={createClickHandler("link_click", {
+            button_location: "hero_parallax",
+            button_text: product.title,
+            url: product.link,
+          })}
+        >
           <CardContent />
         </Link>
       ) : (

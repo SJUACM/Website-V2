@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Hackathon } from "../../lib/contentful";
 import { formatDateRange } from "../../lib/utils";
 import { SOCIAL_LINKS } from "../utils/constants";
-
+import { useTrackedButton } from "../hooks/useTrackedButton";
 interface HackathonsListProps {
   ongoingHackathons: Hackathon[];
   upcomingHackathons: Hackathon[];
@@ -19,6 +19,8 @@ export default function HackathonsList({
   upcomingHackathons,
   pastHackathons,
 }: HackathonsListProps) {
+  const { createClickHandler } = useTrackedButton();
+
   return (
     <div className="max-w-7xl mx-auto px-4 md:px-8">
       <div className="py-12">
@@ -52,6 +54,11 @@ export default function HackathonsList({
                     href={url}
                     key={hackathon.sys.id}
                     className="w-full md:w-auto md:max-w-2xl"
+                    onClick={createClickHandler("link_click", {
+                      button_location: "hackathon_list",
+                      button_text: "Ongoing Hackathons",
+                      url: url,
+                    })}
                   >
                     <HackathonCard hackathon={hackathon} status="ongoing" />
                   </Link>
@@ -77,6 +84,11 @@ export default function HackathonsList({
                     href={url}
                     key={hackathon.sys.id}
                     className="w-full md:w-auto md:max-w-2xl"
+                    onClick={createClickHandler("link_click", {
+                      button_location: "hackathon_list",
+                      button_text: "Upcoming Hackathons",
+                      url: url,
+                    })}
                   >
                     <HackathonCard hackathon={hackathon} status="upcoming" />
                   </Link>
@@ -98,7 +110,15 @@ export default function HackathonsList({
               {pastHackathons.map(hackathon => {
                 const url = `/hackathons/${hackathon.sys.id}`;
                 return (
-                  <Link href={url} key={hackathon.sys.id}>
+                  <Link
+                    href={url}
+                    key={hackathon.sys.id}
+                    onClick={createClickHandler("link_click", {
+                      button_location: "hackathon_list",
+                      button_text: "Past Hackathons",
+                      url: url,
+                    })}
+                  >
                     <HackathonCard hackathon={hackathon} status="past" />
                   </Link>
                 );
@@ -124,6 +144,10 @@ export default function HackathonsList({
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg text-center transition-colors"
+              onClick={createClickHandler("link_click", {
+                button_location: "hackathon_list",
+                button_text: "Join Our Discord",
+              })}
             >
               Join Our Discord
             </a>

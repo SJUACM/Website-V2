@@ -11,8 +11,11 @@ import {
   Resource,
 } from "./data";
 import styles from "../styles/customFont.module.css";
+import { useTrackedButton } from "../hooks/useTrackedButton";
 
 function ResourceCard({ resource }: { resource: Resource }) {
+  const { createClickHandler } = useTrackedButton();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -48,6 +51,11 @@ function ResourceCard({ resource }: { resource: Resource }) {
               rel="noreferrer noopener"
               className="text-neutral-400 hover:text-red-500 transition-all duration-300
                        transform group-hover:scale-110"
+              onClick={createClickHandler("link_click", {
+                button_location: "resource_card",
+                button_text: resource.title,
+                url: resource.link,
+              })}
             >
               <FontAwesomeIcon icon={faExternalLinkAlt as IconProp} />
             </a>

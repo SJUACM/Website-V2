@@ -1,9 +1,13 @@
+"use client";
+
 import { BlogPost } from "@/lib/contentful";
 import { CardBody, CardContainer, CardItem } from "@/app/components/3d-card";
 import Image from "next/image";
 import Link from "next/link";
+import { useTrackedButton } from "@/app/hooks/useTrackedButton";
 
 export function BlogCard({ post }: { post: BlogPost }) {
+  const { createClickHandler } = useTrackedButton();
   return (
     <CardContainer className="inter-var">
       <CardBody className="bg-black/40 relative group/card dark:hover:shadow-2xl dark:hover:shadow-red-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-[600px] rounded-xl p-6 border">
@@ -59,6 +63,11 @@ export function BlogCard({ post }: { post: BlogPost }) {
           <Link
             href={`/blog/${post.fields.slug}`}
             className="block text-center py-3 px-4 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-200 shadow-lg shadow-red-500/20 hover:shadow-red-500/30"
+            onClick={createClickHandler("link_click", {
+              button_location: "blog_card",
+              button_text: "Read More",
+              url: `/blog/${post.fields.slug}`,
+            })}
           >
             Read More
           </Link>

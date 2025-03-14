@@ -4,9 +4,12 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useTrackedButton } from "../hooks/useTrackedButton";
 
 // Client component that receives the image URL as a prop
 export function ResourcesSectionClient({ graphicUrl }: { graphicUrl: string }) {
+  const { createClickHandler } = useTrackedButton();
+
   return (
     <div className="py-24 relative">
       <div className="max-w-5xl mx-auto px-6">
@@ -29,6 +32,10 @@ export function ResourcesSectionClient({ graphicUrl }: { graphicUrl: string }) {
                 <button
                   className="px-8 py-4 rounded-full bg-red-500 text-white font-medium 
                                hover:bg-red-600 transition-colors duration-200"
+                  onClick={createClickHandler("view_resources_button_click", {
+                    button_location: "resources_section",
+                    button_text: "View our Resources",
+                  })}
                 >
                   View our Resources
                 </button>

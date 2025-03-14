@@ -1,10 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import { StaticImageData } from "next/image";
 import { CardBody, CardContainer, CardItem } from "../../components/3d-card";
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-
+import { useTrackedButton } from "@/app/hooks/useTrackedButton";
 interface PastEboardMemberProps {
   name: string;
   position: string;
@@ -22,6 +24,8 @@ export function PastEboardMember({
   linkedin,
   github,
 }: PastEboardMemberProps) {
+  const { createClickHandler } = useTrackedButton();
+
   return (
     <CardContainer className="inter-var">
       <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.3] border-black/[0.1] w-full sm:w-[280px] min-h-[580px] sm:min-h-0 sm:h-[400px] rounded-xl p-6 md:p-4 border">
@@ -62,6 +66,11 @@ export function PastEboardMember({
                 target="_blank"
                 rel="noreferrer noopener"
                 aria-label={`${name}'s LinkedIn profile`}
+                onClick={createClickHandler("social_link_click", {
+                  button_location: "eboard_member",
+                  button_text: "LinkedIn",
+                  name: name,
+                })}
               >
                 <FontAwesomeIcon
                   icon={faLinkedin as IconProp}
@@ -74,6 +83,11 @@ export function PastEboardMember({
                   target="_blank"
                   rel="noreferrer noopener"
                   aria-label={`${name}'s GitHub profile`}
+                  onClick={createClickHandler("social_link_click", {
+                    button_location: "eboard_member",
+                    button_text: "GitHub",
+                    name: name,
+                  })}
                 >
                   <FontAwesomeIcon
                     icon={faGithub as IconProp}

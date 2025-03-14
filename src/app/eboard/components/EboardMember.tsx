@@ -7,6 +7,7 @@ import { CardBody, CardContainer, CardItem } from "../../components/3d-card";
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { useTrackedButton } from "@/app/hooks/useTrackedButton";
 
 interface EboardMemberProps {
   name: string;
@@ -27,6 +28,7 @@ export function EboardMember({
 }: EboardMemberProps) {
   // Handle both StaticImageData and Contentful image URL
   const imageUrl = typeof image === "string" ? image : image;
+  const { createClickHandler } = useTrackedButton();
 
   return (
     <CardContainer className="inter-var">
@@ -76,6 +78,11 @@ export function EboardMember({
               target="_blank"
               rel="noreferrer noopener"
               aria-label={`${name}'s LinkedIn profile`}
+              onClick={createClickHandler("social_link_click", {
+                button_location: "eboard_member",
+                button_text: "LinkedIn",
+                name: name,
+              })}
             >
               <FontAwesomeIcon
                 icon={faLinkedin as IconProp}
@@ -88,6 +95,11 @@ export function EboardMember({
                 target="_blank"
                 rel="noreferrer noopener"
                 aria-label={`${name}'s GitHub profile`}
+                onClick={createClickHandler("social_link_click", {
+                  button_location: "eboard_member",
+                  button_text: "GitHub",
+                  name: name,
+                })}
               >
                 <FontAwesomeIcon
                   icon={faGithub as IconProp}

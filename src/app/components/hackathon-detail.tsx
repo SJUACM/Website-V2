@@ -6,13 +6,14 @@ import { formatDateRange } from "../../lib/utils";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import { SOCIAL_LINKS } from "../utils/constants";
-
+import { useTrackedButton } from "../hooks/useTrackedButton";
 interface HackathonDetailProps {
   hackathon: Hackathon;
 }
 
 export default function HackathonDetail({ hackathon }: HackathonDetailProps) {
   const imageUrl = hackathon.fields.image?.fields.file.url || "";
+  const { createClickHandler } = useTrackedButton();
 
   // Handle missing date fields
   const formattedDate =
@@ -50,6 +51,10 @@ export default function HackathonDetail({ hackathon }: HackathonDetailProps) {
           target="_blank"
           rel="noopener noreferrer"
           className="text-red-400 hover:text-red-500 underline"
+          onClick={createClickHandler("link_click", {
+            button_location: "hackathon_detail",
+            button_text: children,
+          })}
         >
           {children}
         </a>
@@ -63,6 +68,10 @@ export default function HackathonDetail({ hackathon }: HackathonDetailProps) {
         <Link
           href="/hackathons"
           className="text-red-400 hover:text-red-500 flex items-center mb-8"
+          onClick={createClickHandler("link_click", {
+            button_location: "hackathon_detail",
+            button_text: "Back to Hackathons",
+          })}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -121,6 +130,10 @@ export default function HackathonDetail({ hackathon }: HackathonDetailProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg inline-block transition-colors"
+                  onClick={createClickHandler("link_click", {
+                    button_location: "hackathon_detail",
+                    button_text: "Register Now",
+                  })}
                 >
                   Register Now
                 </a>
@@ -151,6 +164,10 @@ export default function HackathonDetail({ hackathon }: HackathonDetailProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg inline-block transition-colors"
+                onClick={createClickHandler("link_click", {
+                  button_location: "hackathon_detail",
+                  button_text: "Join Our Discord",
+                })}
               >
                 Join Our Discord
               </a>

@@ -1,3 +1,5 @@
+"use client";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -8,7 +10,7 @@ import {
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import { SOCIAL_LINKS } from "../../utils/constants";
-
+import { useTrackedButton } from "@/app/hooks/useTrackedButton";
 interface SocialLinkProps {
   href: string;
   icon: IconProp;
@@ -16,12 +18,17 @@ interface SocialLinkProps {
 }
 
 function SocialLink({ href, icon, label }: SocialLinkProps) {
+  const { createClickHandler } = useTrackedButton();
   return (
     <a
       href={href}
       target="_blank"
       rel="noreferrer noopener"
       className="group flex flex-col items-center no-underline"
+      onClick={createClickHandler("social_link_click", {
+        button_location: "social_links",
+        button_text: label,
+      })}
     >
       <div
         className="p-2.5 md:p-4 rounded-full bg-black/50 border border-neutral-800 

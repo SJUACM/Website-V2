@@ -1,3 +1,5 @@
+"use client";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGithub,
@@ -8,8 +10,11 @@ import {
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { SOCIAL_LINKS } from "../utils/constants";
 import Link from "next/link";
+import { useTrackedButton } from "../hooks/useTrackedButton";
 
 export default function Footer() {
+  const { createClickHandler } = useTrackedButton();
+
   return (
     <footer className="bg-black/40 border-t border-neutral-800 mt-16 xs:mt-24 md:mt-32">
       <div className="container-fluid py-8 xs:py-10 md:py-12">
@@ -35,6 +40,10 @@ export default function Footer() {
                 <Link
                   href="/about"
                   className="text-neutral-400 hover:text-red-500 text-xs xs:text-sm transition-colors"
+                  onClick={createClickHandler("link_click", {
+                    button_location: "footer",
+                    button_text: "About",
+                  })}
                 >
                   About
                 </Link>
@@ -43,6 +52,10 @@ export default function Footer() {
                 <Link
                   href="/meetings"
                   className="text-neutral-400 hover:text-red-500 text-xs xs:text-sm transition-colors"
+                  onClick={createClickHandler("link_click", {
+                    button_location: "footer",
+                    button_text: "Meetings",
+                  })}
                 >
                   Meetings
                 </Link>
@@ -51,6 +64,10 @@ export default function Footer() {
                 <Link
                   href="/resources"
                   className="text-neutral-400 hover:text-red-500 text-xs xs:text-sm transition-colors"
+                  onClick={createClickHandler("link_click", {
+                    button_location: "footer",
+                    button_text: "Resources",
+                  })}
                 >
                   Resources
                 </Link>
@@ -68,6 +85,10 @@ export default function Footer() {
                 <Link
                   href="/resources#interview-prep"
                   className="text-neutral-400 hover:text-red-500 text-xs xs:text-sm transition-colors"
+                  onClick={createClickHandler("link_click", {
+                    button_location: "footer",
+                    button_text: "Interview Prep",
+                  })}
                 >
                   Interview Prep
                 </Link>
@@ -76,6 +97,10 @@ export default function Footer() {
                 <Link
                   href="/resources#helpful-websites"
                   className="text-neutral-400 hover:text-red-500 text-xs xs:text-sm transition-colors"
+                  onClick={createClickHandler("link_click", {
+                    button_location: "footer",
+                    button_text: "Helpful Websites",
+                  })}
                 >
                   Helpful Websites
                 </Link>
@@ -84,6 +109,10 @@ export default function Footer() {
                 <Link
                   href="/resources#youtube-channels"
                   className="text-neutral-400 hover:text-red-500 text-xs xs:text-sm transition-colors"
+                  onClick={createClickHandler("link_click", {
+                    button_location: "footer",
+                    button_text: "YouTube Channels",
+                  })}
                 >
                   YouTube Channels
                 </Link>
@@ -103,6 +132,10 @@ export default function Footer() {
                 rel="noreferrer noopener"
                 className="text-neutral-400 hover:text-red-500 transition-colors"
                 aria-label="GitHub"
+                onClick={createClickHandler("social_link_click", {
+                  button_location: "footer",
+                  button_text: "GitHub",
+                })}
               >
                 <FontAwesomeIcon
                   icon={faGithub as IconProp}
@@ -115,6 +148,10 @@ export default function Footer() {
                 rel="noreferrer noopener"
                 className="text-neutral-400 hover:text-red-500 transition-colors"
                 aria-label="LinkedIn"
+                onClick={createClickHandler("social_link_click", {
+                  button_location: "footer",
+                  button_text: "LinkedIn",
+                })}
               >
                 <FontAwesomeIcon
                   icon={faLinkedin as IconProp}
@@ -127,6 +164,10 @@ export default function Footer() {
                 rel="noreferrer noopener"
                 className="text-neutral-400 hover:text-red-500 transition-colors"
                 aria-label="Discord"
+                onClick={createClickHandler("social_link_click", {
+                  button_location: "footer",
+                  button_text: "Discord",
+                })}
               >
                 <FontAwesomeIcon
                   icon={faDiscord as IconProp}
@@ -139,6 +180,10 @@ export default function Footer() {
                 rel="noreferrer noopener"
                 className="text-neutral-400 hover:text-red-500 transition-colors"
                 aria-label="Instagram"
+                onClick={createClickHandler("social_link_click", {
+                  button_location: "footer",
+                  button_text: "Instagram",
+                })}
               >
                 <FontAwesomeIcon
                   icon={faInstagram as IconProp}

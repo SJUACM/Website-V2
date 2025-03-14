@@ -6,6 +6,7 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { Analytics } from "@vercel/analytics/react";
 import { PostHogProvider } from "./providers/posthog-provider";
+import { ButtonTrackingProvider } from "./providers/button-tracking-provider";
 
 // Initialize FontAwesome configuration
 config.autoAddCss = false; // Disable auto CSS injection as we import the CSS file above
@@ -37,9 +38,11 @@ export default function RootLayout({
         className={`${comfortaa.className} bg-black text-white min-h-screen flex flex-col`}
       >
         <PostHogProvider>
-          {children}
-          <Footer />
-          <Analytics />
+          <ButtonTrackingProvider>
+            {children}
+            <Footer />
+            <Analytics />
+          </ButtonTrackingProvider>
         </PostHogProvider>
       </body>
     </html>

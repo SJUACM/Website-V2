@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { cn } from "../utils/cn";
 import { NavLink } from "./nav-link";
+import { useTrackedButton } from "../hooks/useTrackedButton";
 
 export function NavbarClient({
   logoUrl,
@@ -13,6 +14,7 @@ export function NavbarClient({
   logoUrl: string;
   className?: string;
 }) {
+  const { createClickHandler } = useTrackedButton();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -56,7 +58,14 @@ export function NavbarClient({
         )}
       >
         {/* Logo */}
-        <Link href="/" className="flex items-center">
+        <Link
+          href="/"
+          className="flex items-center"
+          onClick={createClickHandler("link_click", {
+            button_location: "navbar",
+            button_text: "Home",
+          })}
+        >
           <div className="w-9 h-9 xs:w-10 xs:h-10 md:w-11 md:h-11 relative">
             <Image
               src={logoUrl}
@@ -75,6 +84,10 @@ export function NavbarClient({
           onClick={e => {
             e.stopPropagation();
             setIsMenuOpen(!isMenuOpen);
+            createClickHandler("open_menu_button_click", {
+              button_location: "navbar",
+              button_text: "Open Menu",
+            });
           }}
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMenuOpen}

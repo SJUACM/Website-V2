@@ -14,6 +14,7 @@ import {
   faLink,
 } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { useTrackedButton } from "../hooks/useTrackedButton";
 
 interface UpcomingMeetingsViewProps {
   nextMeeting: MeetingType;
@@ -22,6 +23,8 @@ interface UpcomingMeetingsViewProps {
 export function UpcomingMeetingsView({
   nextMeeting,
 }: UpcomingMeetingsViewProps) {
+  const { createClickHandler } = useTrackedButton();
+
   const meetingDate = new Date(nextMeeting.fields.date);
   const formattedDate = meetingDate.toLocaleDateString("en-US", {
     weekday: "long",
@@ -148,6 +151,11 @@ export function UpcomingMeetingsView({
                   href={slidesUrl}
                   target="_blank"
                   className="bg-red-500 hover:bg-red-600 transition-colors text-white py-2 px-4 rounded-lg text-sm font-medium flex items-center gap-2"
+                  onClick={createClickHandler("link_click", {
+                    button_location: "upcoming_meetings_view",
+                    button_text: "Download Slides",
+                    url: slidesUrl,
+                  })}
                 >
                   <FontAwesomeIcon
                     icon={faDownload as IconProp}
@@ -162,6 +170,11 @@ export function UpcomingMeetingsView({
                   href={formattedResourcesUrl}
                   target="_blank"
                   className="bg-red-500 hover:bg-red-600 transition-colors text-white py-2 px-4 rounded-lg text-sm font-medium flex items-center gap-2"
+                  onClick={createClickHandler("link_click", {
+                    button_location: "upcoming_meetings_view",
+                    button_text: "Resources",
+                    url: formattedResourcesUrl,
+                  })}
                 >
                   <FontAwesomeIcon
                     icon={faLink as IconProp}
