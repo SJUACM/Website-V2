@@ -9,6 +9,17 @@ import { DiscordButton } from "./components/discord-button";
 import InfoSectionClient from "./components/info-section";
 import LeadershipSectionClient from "./components/leadership-section";
 import ResourcesSectionClient from "./components/resources-section";
+import sjuLogo from "../../public/images/sjulogo.png";
+
+export const metadata = {
+  other: {
+    preload: [
+      { as: "image", href: "/images/sjulogo.png" },
+      { as: "image", href: "/images/SJU_ACM_Logo.png" },
+    ],
+  },
+};
+
 export default function Home() {
   return (
     <main
@@ -25,21 +36,16 @@ export default function Home() {
         {/* Title Structure for both Mobile and Desktop */}
         <div className="flex flex-col items-center justify-center min-h-[25vh] xs:min-h-[30vh] md:min-h-[40vh] space-y-4 mb-6 md:mb-8">
           <div className="w-[120px] xs:w-[150px] md:w-[180px] mb-2">
-            <React.Suspense
-              fallback={
-                <div className="w-full h-[120px] xs:h-[150px] md:h-[180px] bg-black/20 rounded-md animate-pulse"></div>
-              }
-            >
-              <Image
-                src="/images/sjulogo.png"
-                alt="St. John's University Logo"
-                width={180}
-                height={180}
-                unoptimized
-                className="w-full h-auto"
-                priority
-              />
-            </React.Suspense>
+            <Image
+              src={sjuLogo}
+              alt="St. John's University Logo"
+              width={180}
+              height={180}
+              priority={true}
+              loading="eager"
+              fetchPriority="high"
+              className="w-full h-auto"
+            />
           </div>
           <div className="space-y-3 md:space-y-4">
             <h1

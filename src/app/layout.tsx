@@ -32,6 +32,20 @@ export default function RootLayout({
           content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover"
         />
         <meta name="color-scheme" content="dark" />
+        <link
+          rel="preload"
+          href="/images/sjulogo.png"
+          as="image"
+          type="image/png"
+          fetchPriority="high"
+        />
+        <link
+          rel="preload"
+          href="/images/SJU_ACM_Logo.png"
+          as="image"
+          type="image/png"
+          fetchPriority="high"
+        />
       </head>
       <body
         suppressHydrationWarning

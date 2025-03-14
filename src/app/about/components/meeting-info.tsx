@@ -34,20 +34,14 @@ export function MeetingInfo() {
         </div>
 
         <div className="relative h-[300px] md:h-[400px] rounded-xl overflow-hidden group">
-          <React.Suspense
-            fallback={
-              <div className="w-full h-full bg-black/20 rounded-md animate-pulse"></div>
-            }
-          >
-            <Image
-              src="/images/acm-lab.png"
-              alt="SJU Cyber Security Lab"
-              fill
-              unoptimized
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
-              priority
-            />
-          </React.Suspense>
+          <Image
+            src="/images/acm-lab.png"
+            alt="SJU Cyber Security Lab"
+            fill
+            unoptimized
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            priority
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
         </div>
       </div>
