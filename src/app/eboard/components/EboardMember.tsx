@@ -86,7 +86,7 @@ export function EboardMember({
             >
               <FontAwesomeIcon
                 icon={faLinkedin as IconProp}
-                className="text-2xl md:text-xl text-neutral-300 hover:text-blue-500 transition-colors"
+                className="text-2xl md:text-xl text-neutral-300 hover:text-red-500 transition-colors"
               />
             </a>
             {github && (
@@ -103,7 +103,7 @@ export function EboardMember({
               >
                 <FontAwesomeIcon
                   icon={faGithub as IconProp}
-                  className="text-2xl md:text-xl text-neutral-300 hover:text-purple-500 transition-colors"
+                  className="text-2xl md:text-xl text-neutral-300 hover:text-red-500 transition-colors"
                 />
               </a>
             )}

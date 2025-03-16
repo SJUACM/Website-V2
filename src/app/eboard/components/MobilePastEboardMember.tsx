@@ -47,7 +47,7 @@ export function MobilePastEboardMember({
               href={linkedin}
               target="_blank"
               rel="noreferrer noopener"
-              className="text-neutral-400 hover:text-blue-500 transition-colors"
+              className="text-neutral-400 hover:text-red-500 transition-colors"
               aria-label={`${name}'s LinkedIn profile`}
               onClick={createClickHandler("social_link_click", {
                 button_location: "eboard_member",
