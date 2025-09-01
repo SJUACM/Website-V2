@@ -1,5 +1,5 @@
 import { getAllMeetings } from "@/lib/contentful";
-import MeetingsList from "./components/meetings-list";
+import FilteredMeetings from "./components/filtered-meetings";
 
 export default async function MeetingsPage() {
   const meetings = await getAllMeetings();
@@ -7,7 +7,7 @@ export default async function MeetingsPage() {
   return (
     <div className="text-center items-center justify-center max-w-7xl mx-auto px-0 sm:px-8">
       <div className="p-0 sm:p-4 md:p-6">
-        <MeetingsList meetings={meetings} />
+        <FilteredMeetings meetings={meetings} />
       </div>
     </div>
   );
