@@ -7,31 +7,39 @@ import {
   getCurrentEboardMembers,
   getPastEboardMembers,
 } from "../../lib/contentful";
+import { 
+  sortEboardMembersByPosition, 
+  sortPastEboardMembersByYearAndPosition 
+} from "../../lib/utils";
 
 export default async function Eboard() {
   // Fetch eboard members from Contentful
   const currentEboard = await getCurrentEboardMembers();
   const pastEboard = await getPastEboardMembers();
 
-  // Map Contentful data to the format expected by components
-  const currentEboardData = currentEboard.map(member => ({
-    name: member.fields.name,
-    position: member.fields.position,
-    description: member.fields.description,
-    image: `https:${member.fields.image.fields.file.url}`,
-    linkedin: member.fields.linkedin,
-    github: member.fields.github,
-  }));
+  // Map Contentful data to the format expected by components and apply sorting
+  const currentEboardData = sortEboardMembersByPosition(
+    currentEboard.map(member => ({
+      name: member.fields.name,
+      position: member.fields.position,
+      description: member.fields.description,
+      image: `https:${member.fields.image.fields.file.url}`,
+      linkedin: member.fields.linkedin,
+      github: member.fields.github,
+    }))
+  );
 
-  const pastEboardData = pastEboard.map(member => ({
-    name: member.fields.name,
-    position: member.fields.position,
-    description: member.fields.description || "",
-    image: `https:${member.fields.image.fields.file.url}`,
-    linkedin: member.fields.linkedin,
-    github: member.fields.github,
-    year: member.fields.year || "",
-  }));
+  const pastEboardData = sortPastEboardMembersByYearAndPosition(
+    pastEboard.map(member => ({
+      name: member.fields.name,
+      position: member.fields.position,
+      description: member.fields.description || "",
+      image: `https:${member.fields.image.fields.file.url}`,
+      linkedin: member.fields.linkedin,
+      github: member.fields.github,
+      year: member.fields.year || "",
+    }))
+  );
 
   return (
     <div className="mt-[-100px] md:mt-[-100px] text-center items-center justify-center max-w-7xl mx-auto px-4 md:px-8">
