@@ -28,7 +28,8 @@ The official website for St. John's University's Association for Computing Machi
 ### Backend & Services
 
 - Contentful CMS
-- Vercel (Hosting & Analytics)
+- Vercel (Hosting)
+- Posthog (Analytics)
 
 ## 🔥 Key Sections
 
@@ -117,13 +118,17 @@ This project is licensed under the MIT License.
 
 - [**Tomas Santos Yciano**](https://github.com/tomassantos484) - Current President of ACM (2024 - Present)
   - Lead Developer & Project Manager
-- [**Hinna Zeejah**](https://github.com/hinnazeejah) - Current Information Officer of ACM (2024 - Present)
-  - Frontend Developer & Content Manager
+
+- [**Lauren Rodriguez**](https://github.com/1aur) - Current Information Officer of ACM (2025 - Present)
+  - Full-Stack Developer & Content Manager
 
 ### Original Project
 
 - [**Faizan Ahmed**](https://github.com/faizancodes) - Co-Founder @ Headstarter, former President of ACM (2021-2022)
   - Initial Website Development & Design
+
+- [**Hinna Zeejah**](https://github.com/hinnazeejah) - Former Information Officer of ACM (2024 - 2025)
+  - Frontend Developer & Content Manager
 
 ## 🔗 Links
 
