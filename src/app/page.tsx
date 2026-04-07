@@ -9,6 +9,7 @@ import { DiscordButton } from "./components/discord-button";
 import InfoSectionClient from "./components/info-section";
 import LeadershipSectionClient from "./components/leadership-section";
 import ResourcesSectionClient from "./components/resources-section";
+import LogoSlider from "./components/logo-slider";
 import sjuLogo from "../../public/images/sjulogo.png";
 
 export const metadata = {
@@ -72,7 +73,11 @@ export default function Home() {
         <ParallaxWrapper />
       </div>
 
-      <div className="container-fluid py-2 md:py-8 md:-mt-[30vh]">
+      <div className="w-full md:-mt-[30vh] relative z-10">
+        <LogoSlider />
+      </div>
+
+      <div className="container-fluid py-2 md:py-8">
         <UpcomingMeetings />
       </div>
 
