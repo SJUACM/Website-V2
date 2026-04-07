@@ -39,8 +39,11 @@ export const partnerLogos: Logo[] = [
   { src: "/logos/headstarter-logo.png", alt: "Headstarter", dark: false },
 ];
 
+const BASE_DURATION_PER_LOGO = 30 / workedAtLogos.length;
+
 export default function LogoSlider({ heading, logos, reverse = false }: LogoSliderProps) {
   const doubled = [...logos, ...logos];
+  const duration = logos.length * BASE_DURATION_PER_LOGO;
 
   return (
     <div className="py-10 md:py-14 relative">
@@ -60,7 +63,10 @@ export default function LogoSlider({ heading, logos, reverse = false }: LogoSlid
         <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
 
-        <div className={`flex w-max ${reverse ? "animate-scroll-reverse" : "animate-scroll"}`}>
+        <div
+          className={`flex w-max ${reverse ? "animate-scroll-reverse" : "animate-scroll"}`}
+          style={{ animationDuration: `${duration}s` }}
+        >
           {doubled.map((logo, i) => (
             <div
               key={`${logo.alt}-${i}`}
