@@ -4,7 +4,19 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const logos = [
+type Logo = {
+  src: string;
+  alt: string;
+  dark: boolean;
+};
+
+type LogoSliderProps = {
+  heading: string;
+  logos: Logo[];
+  reverse?: boolean;
+};
+
+export const workedAtLogos: Logo[] = [
   { src: "/logos/aws-svgrepo-com.svg", alt: "AWS", dark: true },
   { src: "/logos/samsung-svgrepo-com.svg", alt: "Samsung", dark: true },
   { src: "/logos/tiktok-svgrepo-com.svg", alt: "TikTok", dark: false },
@@ -14,15 +26,24 @@ const logos = [
   { src: "/logos/sap-svgrepo-com.svg", alt: "SAP", dark: true },
   { src: "/logos/New_Bloomberg_Logo.svg", alt: "Bloomberg", dark: true },
   { src: "/logos/sony-white-logo.png", alt: "SONY", dark: false },
-  {src: "/logos/ey-logo-white.png", alt: "EY", dark: false},
-  {src: "/logos/protiviti-logo-white.png", alt: "Protiviti", dark: false},
+  { src: "/logos/ey-logo-white.png", alt: "EY", dark: false },
+  { src: "/logos/protiviti-logo-white.png", alt: "Protiviti", dark: false },
 ];
 
-export default function LogoSlider() {
+export const partnerLogos: Logo[] = [
+  { src: "/logos/aws-svgrepo-com.svg", alt: "AWS", dark: true },
+  { src: "/logos/ey-logo-white.png", alt: "EY", dark: false },
+  { src: "/logos/trellix-logo-white.png", alt: "Trellix", dark: false },
+  // { src: "/logos/toltiq-logo.png", alt: "ToltIQ", dark: false },
+  { src: "/logos/maspethbank-logo.png", alt: "Maspeth Federal Savings Bank", dark: false },
+  { src: "/logos/headstarter-logo.png", alt: "Headstarter", dark: false },
+];
+
+export default function LogoSlider({ heading, logos, reverse = false }: LogoSliderProps) {
   const doubled = [...logos, ...logos];
 
   return (
-    <div className="py-16 md:py-24 relative">
+    <div className="py-10 md:py-14 relative">
       <div className="max-w-5xl mx-auto px-6 mb-12 md:mb-16">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -31,7 +52,7 @@ export default function LogoSlider() {
           viewport={{ once: true }}
           className="text-3xl xs:text-4xl md:text-5xl font-bold text-center"
         >
-          Our Members Have Worked At:
+          {heading}
         </motion.h2>
       </div>
 
@@ -39,7 +60,7 @@ export default function LogoSlider() {
         <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
 
-        <div className="flex animate-scroll w-max">
+        <div className={`flex w-max ${reverse ? "animate-scroll-reverse" : "animate-scroll"}`}>
           {doubled.map((logo, i) => (
             <div
               key={`${logo.alt}-${i}`}
