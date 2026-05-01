@@ -34,9 +34,11 @@ export const partnerLogos: Logo[] = [
   { src: "/logos/aws-svgrepo-com.svg", alt: "AWS", dark: true },
   { src: "/logos/ey-logo-white.png", alt: "EY", dark: false },
   { src: "/logos/trellix-logo-white.png", alt: "Trellix", dark: false },
-  // { src: "/logos/toltiq-logo.png", alt: "ToltIQ", dark: false },
+  // { src: "/logos/toltiq-logo.png", alt: "ToltIQ", dark: false }, 
   { src: "/logos/maspethbank-logo.png", alt: "Maspeth Federal Savings Bank", dark: false },
   { src: "/logos/headstarter-logo.png", alt: "Headstarter", dark: false },
+  { src: "/logos/MTA_NYC_logo.svg", alt: "MTA", dark: false },
+  { src: "/logos/NYPCC_Logo_RGB_360x360.png", alt: "NYPCC", dark: false },
 ];
 
 const BASE_DURATION_PER_LOGO = 30 / workedAtLogos.length;
