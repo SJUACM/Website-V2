@@ -4,6 +4,7 @@ import { BackgroundBeams } from "./components/background-beam";
 import { Navbar } from "./components/navbar";
 import ParallaxWrapper from "./components/hero-parallax-wrapper";
 import UpcomingMeetings from "./components/upcoming-meetings";
+import { CalendarSection } from "./components/calendar-section";
 import styles from "./styles/customFont.module.css";
 import { DiscordButton } from "./components/discord-button";
 import InfoSectionClient from "./components/info-section";
@@ -80,6 +81,10 @@ export default function Home() {
 
       <div className="container-fluid py-2 md:py-8">
         <UpcomingMeetings />
+      </div>
+
+      <div className="container-fluid py-2 md:py-8">
+        <CalendarSection />
       </div>
 
       <div className="container-fluid py-2 md:py-8">
