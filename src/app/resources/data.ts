@@ -152,6 +152,12 @@ export const interviewResources: Resource[] = [
     link: "https://www.algoexpert.io",
   },
   {
+    title: "PracHub Coding & Algorithms",
+    description:
+      "Free coding interview guides, practice material, and structured preparation paths for technical roles.",
+    link: "https://prachub.com/categories/coding-and-algorithms",
+  },
+  {
     title: "GeeksforGeeks",
     description:
       "Comprehensive resource for computer science concepts, coding problems, and interview preparation materials.",
